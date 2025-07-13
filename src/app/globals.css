@@ -118,18 +118,15 @@
   }
 }
 
+html, body {
+  /* On force la largeur à 100% et pas un pixel de plus */
+  width: 100%;
 
-body {
-  /* Notre dégradé de base */
-  /* background-color: #e2e2e2; Couleur de secours */
-  /* background-image: linear-gradient(135deg, #c9d6ff 0%, #e2e2e2 100%); */
-  
-  /* On s'assure que le body prend toute la hauteur */
-  min-height: 100vh;
-  
-  /* Important pour positionner le SVG par-dessus */
+  /* LA RÈGLE LA PLUS IMPORTANTE : on cache tout dépassement horizontal au plus haut niveau */
+  overflow-x: hidden;
+
+  /* Ceci aide à mieux contenir les éléments positionnés en 'absolute' à l'intérieur */
   position: relative;
-  overflow-x: hidden; /* Evite les débordements horizontaux */
 }
 
 /* On crée un pseudo-élément pour contenir notre SVG de fond */
@@ -152,4 +149,19 @@ body::before {
   
   /* On peut jouer avec l'opacité pour le rendre encore plus subtil */
   opacity: 0.7; 
+}
+
+
+/* --- Animation du Carrousel de Logos --- */
+.infinite-scroll-track {
+  animation: infinite-scroll 25s linear infinite;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

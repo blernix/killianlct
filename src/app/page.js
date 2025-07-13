@@ -7,6 +7,7 @@ import { AdminSection } from "@/components/Directus";
 import { FAQ } from "@/components/Faq";
 import { ContactSection } from "@/components/Cta";
 import { Footer } from "@/components/Footer";
+import { LogoCarousel } from "@/components/LogoCarousel";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Services id="services" />
       <Automations />
       <AdminSection />
+      <LogoCarousel />
       <FAQ />
       <ContactSection />
       <Footer />
