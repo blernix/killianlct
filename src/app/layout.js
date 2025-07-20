@@ -17,12 +17,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" >
       <body className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}>
-     <SidebarProvider defaultOpen={false}>
-  <AppSidebar />
-  <SidebarTrigger  className="fixed z-20 top-4 left-4  bg-muted p-2 rounded-md border border-border hover:bg-muted/80 transition" />
   
 <main className="relative z-19 flex-1 pt-16">{children}</main>
-</SidebarProvider>
       </body>
     </html>
   );

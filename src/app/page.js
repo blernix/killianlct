@@ -8,10 +8,12 @@ import { FAQ } from "@/components/Faq";
 import { ContactSection } from "@/components/Cta";
 import { Footer } from "@/components/Footer";
 import { LogoCarousel } from "@/components/LogoCarousel";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <ValueProposition  id="accueil"/>
       <Process  id="processus" />
