@@ -45,7 +45,7 @@ export function Services() {
         {/* PRESTATIONS PRINCIPALES */}
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
           {mainServices.map((service, index) => (
-            <div key={index} className="flex flex-col text-center items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/10">
+            <div key={index} className="flex flex-col text-center items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
                 {service.icon}
               </div>

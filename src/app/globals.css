@@ -129,27 +129,7 @@ html, body {
   position: relative;
 }
 
-/* On crée un pseudo-élément pour contenir notre SVG de fond */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* On applique le SVG en tant qu'image de fond */
-  background-image: url('/background-blobs.svg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  
-  /* On le place derrière le contenu */
-  z-index: -1;
-  
-  /* On peut jouer avec l'opacité pour le rendre encore plus subtil */
-  opacity: 0.7; 
-}
+
 
 
 /* --- Animation du Carrousel de Logos --- */
@@ -164,4 +144,34 @@ body::before {
   to {
     transform: translateX(-50%);
   }
+}
+
+
+/* ANIMATION BACKGROUND  */
+
+@keyframes blob {
+	0% {
+		transform: translate(0px, 0px) scale(1);
+	}
+	33% {
+		transform: translate(30px, -50px) scale(1.1);
+	}
+	66% {
+		transform: translate(-20px, 20px) scale(0.9);
+	}
+	100% {
+		transform: translate(0px, 0px) scale(1);
+	}
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }

@@ -13,7 +13,7 @@ export function ContactSection() {
       <div 
         className="mx-auto max-w-4xl flex flex-col items-center text-center p-8 md:p-16
                    rounded-3xl border shadow-2xl
-                   bg-gray-950/50 backdrop-blur-xl border-white/10"
+                   bg-gray-950/50 backdrop-blur-xl border-white/20"
       >
         <h2 
           id="contact-title" 
@@ -28,7 +28,7 @@ export function ContactSection() {
 
         {/* On utilise notre style de bouton principal (blanc) pour une cohérence maximale */}
         <Link
-          href="mailto:votre.email@example.com" // Pensez à mettre votre véritable email ici !
+          href="mailto:killian.lecrut@gmail.com" // Pensez à mettre votre véritable email ici !
           className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900
                      transition duration-300 hover:bg-gray-200 hover:scale-105"
         >

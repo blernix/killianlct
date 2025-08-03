@@ -50,7 +50,7 @@ export function FAQ() {
         >
           Questions fréquentes
         </h2>
-        <p className="mt-4 text-lg text-gray-700">
+        <p className="mt-4 text-lg text-gray-300">
           Quelques réponses pour vous aider à y voir plus clair.
         </p>
 
@@ -61,7 +61,7 @@ export function FAQ() {
                 key={item.value} 
                 value={item.value}
                 // On transforme chaque item en carte de verre, avec un espace en dessous
-                className="mb-4 rounded-2xl border bg-gray-950/20 backdrop-blur-md border-white/10"
+                className="mb-4 rounded-2xl border bg-gray-950/20 backdrop-blur-md border-white/20"
               >
                 <AccordionTrigger className="p-6 text-left font-semibold text-white hover:no-underline">
                   {item.question}

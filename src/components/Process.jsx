@@ -53,7 +53,7 @@ export function Process() {
           // Chaque étape est maintenant une carte en verre
           <div
             key={index}
-            className="flex gap-6 p-6 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/10"
+            className="flex gap-6 p-6 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20"
           >
             {/* Le numéro de l'étape */}
             <div className="text-2xl font-bold text-gray-300">

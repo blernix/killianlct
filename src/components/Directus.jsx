@@ -46,7 +46,7 @@ export function AdminSection() {
           {features.map((feature, index) => (
             <div 
                 key={index}
-                className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/10"
+                className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10">
                 {feature.icon}

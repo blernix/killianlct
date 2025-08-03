@@ -24,7 +24,7 @@ export default function ValueProposition() {
         <div className="mt-16 grid grid-cols-1 gap-8 text-center md:grid-cols-3">
           
           {/* Carte 1: Sur-Mesure */}
-          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/10">
+          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
               <Target className="h-6 w-6 text-white" />
             </div>
@@ -35,7 +35,7 @@ export default function ValueProposition() {
           </div>
 
           {/* Carte 2: Performance */}
-          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/10">
+          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
               <Rocket className="h-6 w-6 text-white" />
             </div>
@@ -46,7 +46,7 @@ export default function ValueProposition() {
           </div>
 
           {/* Carte 3: Partenariat */}
-          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/10">
+          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
               <Shield className="h-6 w-6 text-white" />
             </div>

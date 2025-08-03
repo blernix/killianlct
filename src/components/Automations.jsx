@@ -45,7 +45,7 @@ export function Automations() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex gap-4 items-start p-6 rounded-2xl border bg-gray-950/20 backdrop-blur-md border-white/10"
+              className="flex gap-4 items-start p-6 rounded-2xl border bg-gray-950/20 backdrop-blur-md border-white/20"
             >
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-orange-950/50 border border-orange-400/30">
                 {feature.icon}

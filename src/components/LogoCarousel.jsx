@@ -24,7 +24,7 @@ export function LogoCarousel() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-center text-lg font-semibold leading-8 text-gray-400">
+        <h2 className="text-center text-2xl font-semibold leading-8 text-gray-400">
           Ils m'ont fait confiance pour leur projet digital
         </h2>
         
