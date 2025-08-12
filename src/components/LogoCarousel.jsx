@@ -8,7 +8,7 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const clients = [
   { name: 'Terrasigne', logo: '/logoclients/logoterra.png', url: 'https://terrasigne.fr/' },
-  { name: 'Cabinet Mérieux', logo: '/logoclients/logo.png', url: 'https://cabinet-merieux.com/' },
+  { name: 'Cabinet Mérieux', logo: '/logoclients/logomerieux.jpeg', url: 'https://cabinet-merieux.com/' },
   { name: 'UniversClean77', logo: '/logoclients/logo_univers_clean.png', url: 'https://univers-clean77.fr/' },
   // Ajoutez vos 4ème et 5ème clients ici sans problème
   // { name: 'Client 4', logo: '/logos/logo4.svg', url: 'https://client4.com' },

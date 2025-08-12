@@ -1,32 +1,65 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
-// Les imports de la sidebar ont été retirés, car inutilisés
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata = {
-  title: "Killian Lecrut — Création de Sites & Applications Web sur-mesure",
-  description: "Je conçois et développe des expériences web rapides, modernes et sur-mesure pour aider les entreprises à atteindre leurs objectifs en ligne. Parlons de votre projet !",
+  // --- Métadonnées de base pour le SEO ---
+  metadataBase: new URL('https://creation.digitale.2minaci.xyz'), // Remplacez par votre URL finale si elle change
+  title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
+  description: "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes. Transformons votre idée en projet concret.",
+  keywords: ["développeur web freelance", "création de site web", "site sur-mesure", "Next.js", "React", "développeur full-stack", "Killian Lecrut"],
+  
+  // --- Open Graph pour les réseaux sociaux (LinkedIn, Facebook, etc.) ---
+  openGraph: {
+    title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
+    description: "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes.",
+    url: '/',
+    siteName: 'Killian Lecrut - Création Digitale',
+    images: [
+      {
+        url: '/logoK.png', // L'URL de votre image dans le dossier /public
+        width: 1200,
+        height: 630,
+        alt: 'Logo de Killian Lecrut, développeur web freelance',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+
+  // --- Twitter Cards ---
+  twitter: {
+    card: 'summary_large_image',
+    title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
+    description: "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes.",
+    images: ['/logoK.png'], // La même image
+  },
+
+  // --- Favicons ---
+ icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon-16x16.png',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    // On garde "dark" pour que vos variables de couleur du thème sombre s'appliquent
     <html lang="fr" className="dark">
 
-      {/* On garde bg-background pour la couleur de fond de base */}
       <body className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}>
         
-        {/* On place le fond animé ici, il se mettra derrière tout le reste */}
+      
         <AnimatedBackground />
   
-        {/*
-          Je suppose que votre nouvelle barre de navigation en JS pur
-          est gérée à l'intérieur de vos pages (dans {children}).
-          Cette structure de layout est donc la bonne base.
-        */}
+      
         <main className="relative z-10 flex-1 pt-16">{children}</main>
 
       </body>
