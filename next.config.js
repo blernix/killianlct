@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Vos options Next.js ici
+  // On ajoute cette ligne pour activer l'export statique
+  output: 'export',
+  
   images: {
     unoptimized: true
   },

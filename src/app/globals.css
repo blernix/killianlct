@@ -178,3 +178,24 @@ html, body {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+
+
+
+/* 
+              CARROUSEL  */
+
+
+/* --- Animation du Carrousel de Logos --- */
+.infinite-scroll-track {
+  animation: infinite-scroll 40s linear infinite;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
