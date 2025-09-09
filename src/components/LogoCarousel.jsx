@@ -10,6 +10,7 @@ const clients = [
   { name: 'Terrasigne', logo: '/logoclients/logoterra.png', url: 'https://terrasigne.fr/' },
   { name: 'Cabinet Mérieux', logo: '/logoclients/logomerieux.jpeg', url: 'https://cabinet-merieux.com/' },
   { name: 'UniversClean77', logo: '/logoclients/logo_univers_clean.png', url: 'https://univers-clean77.fr/' },
+  { name: 'bernier-palettes', logo: '/logoclients/logoBernier.png', url: 'https://bernier-palettes.fr/' },
   // Ajoutez vos 4ème et 5ème clients ici sans problème
   // { name: 'Client 4', logo: '/logos/logo4.svg', url: 'https://client4.com' },
   // { name: 'Client 5', logo: '/logos/logo5.svg', url: 'https://client5.com' },
