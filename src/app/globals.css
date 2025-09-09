@@ -1,4 +1,7 @@
 @import "tw-animate-css";
+@import "tailwindcss";
+
+/* ... et ensuite le reste de vos styles personnalisés, keyframes, etc. ... */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -126,6 +129,7 @@ html, body {
 
   /* Ceci aide à mieux contenir les éléments positionnés en 'absolute' à l'intérieur */
   position: relative;
+  
 }
 
 

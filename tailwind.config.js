@@ -6,9 +6,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      // On laisse ce bloc vide pour le moment
-    },
+    extend: {},
   },
   plugins: [],
 };
