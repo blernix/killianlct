@@ -1,4 +1,7 @@
-import { ImageIcon, ShieldCheck, SlidersHorizontal } from "lucide-react";
+"use client";
+
+import Link from 'next/link'; // On importe le composant Link
+import { ImageIcon, ShieldCheck, SlidersHorizontal, ArrowRight } from "lucide-react"; // On ajoute l'icône flèche
 
 export function AdminSection() {
   const features = [
@@ -36,12 +39,24 @@ export function AdminSection() {
           Modifiez votre site quand vous le souhaitez, sans jamais risquer de le dégrader. Vous avez la liberté de gérer, sans la peur de tout casser.
         </p>
 
-        {/* La "pilule" de mise en avant, harmonisée avec notre design */}
-        <div className="mt-6 inline-block rounded-full bg-white/100 px-4 py-1.5 text-sm font-medium text-gray-500 border border-white/20">
+        {/* Pilule de mise en avant (style légèrement corrigé pour la lisibilité) */}
+        <div className="mt-6 inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-gray-200 border border-white/20">
             <span>🔒 Accès sécurisé – contenu uniquement</span>
         </div>
 
-        {/* La grille des 3 arguments, maintenant en verre */}
+        {/* BOUTON AJOUTÉ ICI */}
+        <div className="mt-8">
+            <Link
+              href="/expertises/directus-cms"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-gray-900
+                         transition duration-300 hover:bg-gray-200 hover:scale-105"
+            >
+              Découvrir la solution sur-mesure
+              <ArrowRight size={20} />
+            </Link>
+        </div>
+
+        {/* La grille des 3 arguments */}
         <div className="mt-16 grid grid-cols-1 gap-8 text-center md:grid-cols-3">
           {features.map((feature, index) => (
             <div 

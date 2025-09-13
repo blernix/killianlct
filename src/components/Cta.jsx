@@ -1,15 +1,13 @@
-import Link from "next/link";
+// Il n'y a plus besoin d'importer Link ici
 
-export function ContactSection() {
+export function ContactSection({ onOpenModal }) {
   return (
-    // On ajoute l'id "contact" pour pouvoir faire des liens d'ancrage
     <section 
       id="contact"
       role="region"
       aria-labelledby="contact-title"
       className="py-24 sm:py-32 px-4"
     >
-      {/* On réutilise notre design de carte principale, comme pour le Hero */}
       <div 
         className="mx-auto max-w-4xl flex flex-col items-center text-center p-8 md:p-16
                    rounded-3xl border shadow-2xl
@@ -26,14 +24,16 @@ export function ContactSection() {
           Discutons-en ensemble. Que ce soit pour une simple question ou un projet déjà bien défini, je suis à votre écoute pour vous aider à concrétiser votre idée.
         </p>
 
-        {/* On utilise notre style de bouton principal (blanc) pour une cohérence maximale */}
-        <Link
-          href="mailto:killian.lecrut@gmail.com" // Pensez à mettre votre véritable email ici !
+        {/* Le Link est remplacé par un button */}
+        <button
+          type="button"
+          // Au clic, on appelle la fonction passée en prop avec le type 'general'
+          onClick={() => onOpenModal('general')}
           className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900
                      transition duration-300 hover:bg-gray-200 hover:scale-105"
         >
-          Me contacter par e-mail 🚀
-        </Link>
+          Démarrer la discussion 🚀
+        </button>
       </div>
     </section>
   );

@@ -1,4 +1,7 @@
-import { Bot, Zap, Network } from "lucide-react"; // J'ai remplacé CalendarClock par Network, plus parlant
+"use client";
+
+import Link from 'next/link'; // On importe le composant Link
+import { Bot, Zap, Network, ArrowRight } from "lucide-react"; // On ajoute l'icône flèche
 
 export function Automations() {
   const features = [
@@ -38,6 +41,18 @@ export function Automations() {
           <p className="mt-4 text-lg max-w-xl mx-auto lg:mx-0 text-gray-300">
             Je relie vos outils entre eux pour que les tâches répétitives se fassent toutes seules. Vous gagnez en temps et en efficacité, vous vous concentrez sur l'essentiel.
           </p>
+
+          {/* BOUTON AJOUTÉ ICI */}
+          <div className="mt-8">
+            <Link
+              href="/expertises/n8n-automatisation"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-gray-900
+                         transition duration-300 hover:bg-gray-200 hover:scale-105"
+            >
+              En savoir plus sur l'automatisation
+              <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
 
         {/* Colonne de Droite : Les Cartes */}
@@ -51,8 +66,8 @@ export function Automations() {
                 {feature.icon}
               </div>
               <div>
-                <h3 className="font-semibold text-gray-50">{feature.title}</h3>
-                <p className="mt-1 text-sm font-bold text-white">{feature.description}</p>
+                <h3 className="font-semibold text-white">{feature.title}</h3>
+                <p className="mt-1 text-sm text-gray-300">{feature.description}</p>
               </div>
             </div>
           ))}
