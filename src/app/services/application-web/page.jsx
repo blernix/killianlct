@@ -1,5 +1,5 @@
 import ApplicationWebClient from './ApplicationWebClient';
-import { applicationWebFaqData } from '@/app/data/faq/applicationweb';
+import { applicationWebFaqData } from '@/app/data/faq/applicationWeb';
 
 
 // Les métadonnées restent ici, dans le composant serveur

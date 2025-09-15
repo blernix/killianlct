@@ -1,43 +1,54 @@
 "use client";
 
 import { useState } from 'react';
-import  Header  from "@/components/layout/Header";
+import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
 import { formFieldsConfig } from '@/components/ContactForm';
-import { Package, Cpu, Users, Code, Server, Shield, CheckCircle, BrainCircuit, PenTool, Rocket, LifeBuoy } from 'lucide-react';
+import { Package, Cpu, Users, Code, Server, Shield, BrainCircuit, PenTool, Rocket, LifeBuoy } from 'lucide-react';
 import Image from 'next/image';
 import { FAQ } from '@/components/FAQ';
-
+import { Hero } from '@/components/blocks/hero'; // ✅ 1. On importe notre nouveau Hero
 
 export default function ApplicationWebClient({ faqData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const formType = 'application-web';
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  // ✅ 2. On prépare les données spécifiques à cette page pour le Hero
+  const heroTitle = (
+    <>
+      <span className="block text-lg font-semibold text-primary mb-4">
+        Solutions Métier Sur-Mesure
+      </span>
+      Transformez Vos Processus en Avantage Concurrentiel
+    </>
+  );
+
+  const heroSubtitle = "Au-delà d'un simple site, une application web est un levier stratégique pour optimiser vos opérations, créer de nouvelles sources de revenus et proposer des expériences utilisateur exceptionnelles.";
+
+  const heroActions = [
+    {
+      label: "Concevoir mon outil",
+      variant: "default",
+      onClick: openModal,
+    },
+  ];
+
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
-        {/* Section Hero */}
-        <section className="w-full px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center">
-            <div className="relative w-full max-w-5xl">
-                <p className="font-semibold text-cyan-300">Solutions Métier Sur-Mesure</p>
-                <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mt-4">
-                  Transformez Vos Processus en Avantage Concurrentiel
-                </h1>
-                <p className="mt-6 text-lg max-w-3xl mx-auto text-gray-300">
-                  Au-delà d'un simple site, une application web est un levier stratégique pour optimiser vos opérations, créer de nouvelles sources de revenus et proposer des expériences utilisateur exceptionnelles.
-                </p>
-                <button 
-                  onClick={openModal}
-                  className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105"
-                >
-                  Concevoir mon outil
-                </button>
-            </div>
-        </section>
+
+        {/* ✅ 3. On remplace l'ancienne section par le nouveau composant Hero */}
+        <Hero 
+          title={heroTitle}
+          subtitle={heroSubtitle}
+          actions={heroActions}
+          className="[&_.bg-primary\\/60]:bg-cyan-500/60 pt-23" // On adapte la couleur du halo au cyan de la page
+        />
 
         {/* Section "Application vs Site Web" */}
         <section className="py-16 sm:py-24 px-4">

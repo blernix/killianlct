@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from 'react';
-import  Header  from "@/components/layout/Header";
+import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
-import { formFieldsConfig } from '@/components/ContactForm'; 
+import { formFieldsConfig } from '@/components/ContactForm';
 import { Zap, BrainCircuit, SlidersHorizontal, Bot, Code, ShieldCheck, Repeat, GitBranch } from 'lucide-react';
 import Image from 'next/image';
 import { FAQ } from '@/components/FAQ';
-
+import { Hero } from '@/components/blocks/hero'; // ✅ 1. On importe le Hero
 
 export default function AutomatisationClient({ faqData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,28 +17,42 @@ export default function AutomatisationClient({ faqData }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // ✅ 2. On prépare les données pour le Hero
+  const heroTitle = (
+    <>
+      <span className="block text-lg font-semibold text-primary mb-4">
+        Expertise en Automatisation de Workflows
+      </span>
+      Travaillez Moins, Accomplissez Plus
+    </>
+  );
+
+  const heroSubtitle = (
+    <>
+      Je conçois et déploie des systèmes d'automatisation sur-mesure avec <strong>n8n</strong> pour interconnecter vos applications, éliminer les tâches répétitives et libérer le plein potentiel de votre entreprise.
+    </>
+  );
+
+  const heroActions = [
+    {
+      label: "Optimiser mon activité",
+      variant: "default",
+      onClick: openModal,
+    },
+  ];
+
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
-        {/* Section Hero */}
-        <section className="relative w-full px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center overflow-hidden">
-            <div className="relative w-full max-w-5xl">
-                <p className="font-semibold text-orange-300">Expertise en Automatisation de Workflows</p>
-                <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mt-4">
-                  Travaillez Moins, Accomplissez Plus
-                </h1>
-                <p className="mt-6 text-lg max-w-3xl mx-auto text-gray-300">
-                  Je conçois et déploie des systèmes d'automatisation sur-mesure avec <strong>n8n</strong> pour interconnecter vos applications, éliminer les tâches répétitives et libérer le plein potentiel de votre entreprise.
-                </p>
-                <button 
-                  onClick={openModal}
-                  className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105"
-                >
-                  Optimiser mon activité
-                </button>
-            </div>
-        </section>
+        
+        {/* ✅ 3. On remplace l'ancienne section par le nouveau composant Hero */}
+        <Hero 
+          title={heroTitle}
+          subtitle={heroSubtitle}
+          actions={heroActions}
+          className="[&_.bg-primary\\/60]:bg-orange-500/60 pt-23" // On adapte la couleur du halo à l'orange de la page
+        />
 
         {/* Section "Ma Proposition de Valeur" */}
         <section className="py-16 sm:py-24 px-4 ">
@@ -129,4 +143,3 @@ export default function AutomatisationClient({ faqData }) {
     </>
   );
 }
-

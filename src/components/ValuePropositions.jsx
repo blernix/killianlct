@@ -1,15 +1,30 @@
 // Pensez à importer les icônes que nous allons utiliser
 import { Rocket, Target, Shield } from "lucide-react";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"; // ✅ 1. On importe le nouveau composant
+import { cn } from "@/lib/utils";
 
 export default function ValueProposition() {
   return (
     <section
       role="region"
       aria-label="Ma philosophie de travail"
-      className="w-full px-4 py-24 sm:py-32"
-      
+      // ✅ 2. On rend la section "relative" pour contenir le fond animé
+      className="relative w-full px-4 py-24 sm:py-32 overflow-hidden" 
     >
-      <div className="mx-auto max-w-5xl">
+      {/* ✅ 3. On place le fond animé ici */}
+      <AnimatedGridPattern
+        numSquares={30}
+        maxOpacity={0.1}
+        duration={3}
+        repeatDelay={1}
+        className={cn(
+          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
+        )}
+      />
+      
+      {/* ✅ 4. On s'assure que le contenu passe au-dessus avec `relative` et `z-10` */}
+      <div className="relative z-10 mx-auto max-w-5xl">
         {/* Titre de la section */}
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-100">
@@ -20,7 +35,7 @@ export default function ValueProposition() {
           </p>
         </div>
 
-        {/* La grille avec nos 3 cartes de valeur */}
+        {/* La grille avec nos 3 cartes de valeur (le contenu ne change pas) */}
         <div className="mt-16 grid grid-cols-1 gap-8 text-center md:grid-cols-3">
           
           {/* Carte 1: Sur-Mesure */}

@@ -11,9 +11,7 @@ export const metadata = {
   title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
   description: "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes. Transformons votre idée en projet concret.",
   keywords: ["développeur web freelance", "création de site web", "site sur-mesure", "Next.js", "React", "développeur full-stack", "Killian Lecrut"],
-    verification: {
-    google: 'Sww8UXCgSBZTTIX-Rc7ib_SEi4wJmafE4Pplo93y48M',
-  },
+  
   // --- Open Graph pour les réseaux sociaux (LinkedIn, Facebook, etc.) ---
   openGraph: {
     title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
@@ -62,7 +60,7 @@ export default function RootLayout({ children }) {
         <AnimatedBackground />
   
       
-        <main className="relative z-10 flex-1 pt-16">{children}</main>
+        <main className="relative z-10 flex-1 ">{children}</main>
 
       </body>
     </html>

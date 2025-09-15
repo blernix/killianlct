@@ -10,7 +10,7 @@ export function AnimatedBackground() {
       
       {/* Halo 2: Une couleur vive et saturée */}
       <div
-        className="absolute bottom-1/4 right-1/4 h-72 w-72 animate-blob rounded-full bg-blue-600/40 opacity-100 filter blur-3xl"
+        className="absolute bottom-1/4 right-1/4 h-72 w-72 animate-blob rounded-full bg-slate-100/30 opacity-100 filter blur-3xl"
       ></div>
 
       {/* Halo 3: L'ancienne couleur rose, plus discrète */}

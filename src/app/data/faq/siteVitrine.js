@@ -21,7 +21,7 @@ export const siteVitrineFaqData = {
     {
       value: "q4",
       question: "Est-ce que je pourrai mettre à jour mon site moi-même ?",
-      answer: "Bien sûr. Chaque site est livré avec un espace d'administration (CMS) simple qui vous permet de modifier les textes, changer les images ou ajouter des actualités sur un blog, sans aucune compétence technique requise."
+      answer: "Oui, selon la solution choisie. Pour des changements ponctuels, je peux m'en charger afin de préserver la qualité technique et SEO. Si vous souhaitez une autonomie totale pour gérer un blog ou vos réalisations, j'intègre un espace d'administration (CMS) simple et personnalisé. C'est une option que nous évaluons ensemble selon vos objectifs."
     },
     {
       value: "q5",

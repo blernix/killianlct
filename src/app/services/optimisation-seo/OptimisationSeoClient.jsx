@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from 'react';
-import  Header  from "@/components/layout/Header";
+import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
-import { formFieldsConfig } from '@/components/ContactForm'; 
-import { Search, PenTool, BarChart3, Link as LinkIcon, Wrench, FileText, TrendingUp, Smartphone, Shield, Clock, BrainCircuit, Repeat, CheckCircle } from 'lucide-react';
+import { formFieldsConfig } from '@/components/ContactForm';
+import { Search, PenTool, BarChart3, Link as LinkIcon, Wrench, FileText, TrendingUp, Smartphone, Shield, Clock, BrainCircuit } from 'lucide-react';
 import Image from 'next/image';
 import { FAQ } from '@/components/FAQ';
-
+import { Hero } from '@/components/blocks/hero'; // ✅ 1. On importe le Hero
 
 export default function SeoClient({ faqData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,29 +17,42 @@ export default function SeoClient({ faqData }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // ✅ 2. On prépare les données pour le Hero
+  const heroTitle = (
+    <>
+      <span className="block text-lg font-semibold text-primary mb-4">
+        Stratégie de Référencement Naturel
+      </span>
+      Devenez la Meilleure Réponse sur Google
+    </>
+  );
+
+  const heroSubtitle = (
+    <>
+      Le SEO n'est pas un jeu pour "battre l'algorithme", mais une pratique durable pour servir vos utilisateurs. Je mets en place des stratégies <strong>"People-First"</strong> pour transformer votre site en un aimant à prospects qualifiés.
+    </>
+  );
+
+  const heroActions = [
+    {
+      label: "Planifier un audit gratuit",
+      variant: "default",
+      onClick: openModal,
+    },
+  ];
 
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
-        {/* Section Hero */}
-        <section className="w-full px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center">
-            <div className="relative w-full max-w-5xl">
-                <p className="font-semibold text-amber-300">Stratégie de Référencement Naturel</p>
-                <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mt-4">
-                  Devenez la Meilleure Réponse sur Google
-                </h1>
-                <p className="mt-6 text-lg max-w-3xl mx-auto text-gray-300">
-                  Le SEO n'est pas un jeu pour "battre l'algorithme", mais une pratique durable pour servir vos utilisateurs. Je mets en place des stratégies <strong>"People-First"</strong> pour transformer votre site en un aimant à prospects qualifiés.
-                </p>
-                <button 
-                  onClick={openModal}
-                  className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105"
-                >
-                  Planifier un audit gratuit
-                </button>
-            </div>
-        </section>
+
+        {/* ✅ 3. On remplace l'ancienne section par le nouveau composant Hero */}
+        <Hero 
+          title={heroTitle}
+          subtitle={heroSubtitle}
+          actions={heroActions}
+          className="[&_.bg-primary\\/60]:bg-amber-500/60 pt-23" // On adapte la couleur du halo à l'ambre de la page
+        />
 
         {/* Section "Ma Philosophie" */}
         <section className="py-16 sm:py-24 px-4">
@@ -85,7 +98,7 @@ export default function SeoClient({ faqData }) {
             <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-white/10">
                     <Image 
-                        src="/seo.png" // URL factice
+                        src="/seo.png"
                         alt="Illustration des piliers techniques du SEO" 
                         fill 
                         style={{ objectFit: 'cover' }}
@@ -149,4 +162,3 @@ export default function SeoClient({ faqData }) {
     </>
   );
 }
-

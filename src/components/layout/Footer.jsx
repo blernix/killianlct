@@ -4,7 +4,7 @@ import { Github, Linkedin } from 'lucide-react';
 export function Footer() {
   return (
     // MODIFICATION : On rend le footer "collant" et on le place en arrière-plan
-    <footer className="sticky bottom-0 -z-10 bg-background text-gray-400">
+    <footer className=" bottom-0 -z-10 bg-background text-gray-400">
       <div className="mx-auto max-w-7xl px-4 py-16">
         {/* Grille principale du footer */}
         <div className="grid grid-cols-1 gap-12 text-center md:text-left md:grid-cols-3">

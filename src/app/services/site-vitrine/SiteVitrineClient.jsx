@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from 'react';
-import  Header  from "@/components/layout/Header";
+import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
-import { formFieldsConfig } from '@/components/ContactForm'; 
-import { Briefcase, Users, Target, CheckCircle, TrendingUp, ShieldCheck, Zap, Info, BarChart, DollarSign, Building, Brush, UserCheck } from 'lucide-react';
-import Image from 'next/image'; // N'oubliez pas d'importer Image
+import { formFieldsConfig } from '@/components/ContactForm';
+import { TrendingUp, ShieldCheck, Zap, Info, Users, Building, UserCheck } from 'lucide-react';
+import Image from 'next/image';
 import { FAQ } from '@/components/FAQ';
-
+import { Hero } from '@/components/blocks/hero'; // ✅ 1. On importe notre nouveau Hero
 
 export default function SiteVitrineClient({ faqData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,28 +17,38 @@ export default function SiteVitrineClient({ faqData }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // ✅ 2. On prépare les données pour le Hero pour garder le code propre
+  const heroTitle = (
+    <>
+      <span className="block text-lg font-semibold text-primary mb-4">
+        Votre Atout Stratégique Numérique
+      </span>
+      Pourquoi un Site Vitrine est Indispensable Aujourd'hui
+    </>
+  );
+  
+  const heroSubtitle = "Alors que 76% des PME jugent une présence en ligne \"indispensable\", près d'un tiers n'ont toujours pas de site web. Dans un marché où 80% des consommateurs recherchent en ligne avant d'agir, cette absence n'est plus une option, c'est un risque.";
+
+  const heroActions = [
+    {
+      label: "Démarrez Votre Projet",
+      variant: "default", // Style du bouton principal
+      onClick: openModal, // On passe la fonction pour ouvrir la modale
+    },
+  ];
+
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
-        {/* Section Hero */}
-        <section className="w-full px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center">
-            <div className="relative w-full max-w-5xl">
-                <p className="font-semibold text-violet-300">Votre Atout Stratégique Numérique</p>
-                <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mt-4">
-                  Pourquoi un Site Vitrine est Indispensable Aujourd'hui
-                </h1>
-                <p className="mt-6 text-lg max-w-3xl mx-auto text-gray-300">
-                  Alors que 76% des PME jugent une présence en ligne "indispensable", près d'un tiers n'ont toujours pas de site web. Dans un marché où 80% des consommateurs recherchent en ligne avant d'agir, cette absence n'est plus une option, c'est un risque.
-                </p>
-                <button 
-                  onClick={openModal}
-                  className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105"
-                >
-                  Démarrez Votre Projet
-                </button>
-            </div>
-        </section>
+        
+        {/* ✅ 3. L'ancienne section est remplacée par le nouveau composant Hero */}
+        <Hero 
+          title={heroTitle}
+          subtitle={heroSubtitle}
+          actions={heroActions}
+          className="[&_.bg-primary\\/60]:bg-violet-500/60 pt-23"
+        />
 
         {/* Section 4 Piliers Stratégiques */}
         <section className="py-16 sm:py-24 px-4 ">
@@ -56,22 +66,21 @@ export default function SiteVitrineClient({ faqData }) {
             </div>
         </section>
 
-        {/* Section "À qui s'adresse ?" avec mise en page variée - LES MODIFICATIONS SONT ICI */}
+        {/* Section "À qui s'adresse ?" */}
         <section className="py-16 sm:py-24 px-4">
             <div className="mx-auto max-w-5xl space-y-20">
                 <div className="text-center">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Un Outil sur-mesure pour Chaque Professionnel</h2>
                 </div>
-                {/* Item 1 : Artisans & Indépendants */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-white/10">
                         <Image 
-                            src="/artisan.png" // URL factice
+                            src="/artisan.png"
                             alt="Site vitrine pour artisan ou indépendant" 
                             fill 
                             style={{ objectFit: 'cover' }}
-                            sizes="(max-width: 1024px) 100vw, 50vw" // Optimisation responsive
-                            priority={true} // Charge rapidement
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            priority={true}
                         />
                     </div>
                     <div>
@@ -81,11 +90,10 @@ export default function SiteVitrineClient({ faqData }) {
                       <p className="mt-4 text-gray-400">Le site vitrine devient un portfolio interactif et convaincant. Il présente vos réalisations "avant/après", met en avant vos certifications (RGE, Qualibat...), et rationalise les demandes de devis. Un prospect qui vous contacte est déjà convaincu de la qualité de votre travail.</p>
                     </div>
                 </div>
-                {/* Item 2 : TPE, PME & Commerçants */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div className="lg:order-last relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-white/10">
                         <Image 
-                            src="/pme.png" // URL factice
+                            src="/pme.png"
                             alt="Site vitrine pour TPE, PME et commerçant" 
                             fill 
                             style={{ objectFit: 'cover' }}
@@ -98,11 +106,10 @@ export default function SiteVitrineClient({ faqData }) {
                       </h3>
                       <p className="mt-4 text-gray-400">Pour une entreprise locale, l'enjeu est d'être visible et de faciliter la venue. Un site optimisé pour le SEO local devient votre premier point de contact : horaires, carte Google Maps, téléphone cliquable, promotions. Il transforme les recherches en ligne en visites physiques.</p></div>
                 </div>
-                 {/* Item 3 : Professions Libérales */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-white/10">
                         <Image 
-                            src="/liberal.png" // URL factice
+                            src="/liberal.png"
                             alt="Site vitrine pour profession libérale" 
                             fill 
                             style={{ objectFit: 'cover' }}

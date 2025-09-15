@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from 'react';
-import  Header  from "@/components/layout/Header";
+import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
-import { formFieldsConfig } from '@/components/ContactForm'; 
+import { formFieldsConfig } from '@/components/ContactForm';
 import { ShoppingCart, ShieldCheck, Database, CheckCircle, Smartphone, Truck, Package, Store, Users } from 'lucide-react';
 import { FAQ } from '@/components/FAQ';
+import { Hero } from '@/components/blocks/hero'; // ✅ 1. On importe le Hero
 
 export default function ECommerceClient({ faqData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,28 +16,38 @@ export default function ECommerceClient({ faqData }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // ✅ 2. On prépare les données pour le Hero
+  const heroTitle = (
+    <>
+      <span className="block text-lg font-semibold text-primary mb-4">
+        Solutions E-commerce
+      </span>
+      Construisons Votre Moteur de Vente en Ligne
+    </>
+  );
+
+  const heroSubtitle = "Une boutique en ligne est plus qu'un catalogue de produits. C'est un écosystème complet qui transforme votre entreprise en une force de vente accessible 24h/24, 7j/7, partout dans le monde.";
+
+  const heroActions = [
+    {
+      label: "Démarrer mon projet E-commerce",
+      variant: "default",
+      onClick: openModal,
+    },
+  ];
+
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
-        {/* Section Hero */}
-        <section className="w-full px-4 pt-32 pb-20 flex flex-col items-center justify-center text-center">
-            <div className="relative w-full max-w-5xl">
-                <p className="font-semibold text-green-300">Solutions E-commerce</p>
-                <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mt-4">
-                  Construisons Votre Moteur de Vente en Ligne
-                </h1>
-                <p className="mt-6 text-lg max-w-3xl mx-auto text-gray-300">
-                  Une boutique en ligne est plus qu'un catalogue de produits. C'est un écosystème complet qui transforme votre entreprise en une force de vente accessible 24h/24, 7j/7, partout dans le monde.
-                </p>
-                <button 
-                  onClick={openModal}
-                  className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105"
-                >
-                  Démarrer mon projet E-commerce
-                </button>
-            </div>
-        </section>
+
+        {/* ✅ 3. On remplace l'ancienne section par le nouveau composant Hero */}
+        <Hero 
+          title={heroTitle}
+          subtitle={heroSubtitle}
+          actions={heroActions}
+          className="[&_.bg-primary\\/60]:bg-green-500/60 pt-23" // On adapte la couleur du halo au vert de la page
+        />
         
         {/* Section "Les 4 Piliers du Succès" */}
         <section className="py-16 sm:py-24 px-4 ">

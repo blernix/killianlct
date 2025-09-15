@@ -125,7 +125,7 @@ html, body {
   width: 100%;
 
   /* LA RÈGLE LA PLUS IMPORTANTE : on cache tout dépassement horizontal au plus haut niveau */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 
   /* Ceci aide à mieux contenir les éléments positionnés en 'absolute' à l'intérieur */
   position: relative;

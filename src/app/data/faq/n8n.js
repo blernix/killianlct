@@ -26,7 +26,7 @@ export const n8nFaqData = {
     {
       value: "q5",
       question: "Est-ce que je peux voir et gérer mes workflows moi-même ?",
-      answer: "Oui, si vous le souhaitez. Je peux vous donner un accès à l'interface visuelle de n8n où vous pourrez voir vos workflows, suivre leur exécution en temps réel et même les activer ou désactiver au besoin."
+      answer: "La gestion des workflows est au cœur de mon service pour vous assurer une tranquillité d'esprit totale. Pour garantir la stabilité, la sécurité et la performance de vos automatisations, je gère personnellement l'environnement technique. Un workflow est un mécanisme de précision ; une modification involontaire pourrait interrompre un processus critique pour votre activité. Mon rôle est de m'assurer que tout fonctionne sans accroc, 24h/24."
     }
   ]
 };
