@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
-import { Chatbot } from "@/components/chatbot"; // Assure-toi que le chemin est correct
+// import { Chatbot } from "@/components/chatbot"; // Assure-toi que le chemin est correct
 import Script from 'next/script'; // <--- 1. IMPORTER LE COMPOSANT SCRIPT
 
 
