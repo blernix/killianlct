@@ -70,7 +70,7 @@ export default function RootLayout({ children }) {
         {/* <div className="fixed bottom-5 right-5 z-50">
           <Chatbot />
         </div> */}
-        <GoogleTagManager gtmId="GTM-N62XPDLH" />
+        <GoogleTagManager gaId='GTM-N62XPDLH' />
       </body>
     </html>
   );
