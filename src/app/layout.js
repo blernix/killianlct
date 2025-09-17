@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 // import { Chatbot } from "@/components/chatbot"; // Assure-toi que le chemin est correct
-import { GoogleTagManager } from '@next/third-parties/google';
+import Script from 'next/script'; // <--- 1. IMPORTER LE COMPOSANT SCRIPT
 
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -56,12 +56,39 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className="dark">
-      
-   
+      {/* Le premier script (Google Tag Manager) peut être placé ici dans le <head> 
+        ou juste avant la fermeture du <body>. Next.js gère bien son placement.
+        On le met ici pour la clarté.
+      */}
+      <head>
+        {/* --- 2. AJOUTER LE SCRIPT GOOGLE TAG MANAGER --- */}
+        <Script 
+    id="google-tag-manager" 
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N62XPDLH');
+      `,
+    }}
+  />
+      </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}>
         
-      
+        {/* --- 3. AJOUTER LA BALISE NOSCRIPT JUSTE APRÈS <body> --- */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N62XPDLH"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
+        {/* --- Fin de l'ajout --- */}
 
         <AnimatedBackground />
   
@@ -70,7 +97,6 @@ export default function RootLayout({ children }) {
         {/* <div className="fixed bottom-5 right-5 z-50">
           <Chatbot />
         </div> */}
-        <GoogleTagManager gaId='GTM-N62XPDLH' />
       </body>
     </html>
   );
