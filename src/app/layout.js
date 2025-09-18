@@ -62,6 +62,15 @@ export default function RootLayout({ children }) {
       */}
       <head>
         {/* --- 2. AJOUTER LE SCRIPT GOOGLE TAG MANAGER --- */}
+         <Script
+          id="consentmanager-script"
+          src="https://cdn.consentmanager.net/delivery/autoblocking/d12ccd3722556.js"
+          strategy="beforeInteractive" // Charge avant le site pour bloquer les cookies
+          data-cmp-ab="1"
+          data-cmp-host="a.delivery.consentmanager.net"
+          data-cmp-cdn="cdn.consentmanager.net"
+          data-cmp-codesrc="0"
+        />
         <Script 
     id="google-tag-manager" 
     strategy="afterInteractive"
