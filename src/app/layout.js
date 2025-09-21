@@ -70,6 +70,17 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {/* End Google Tag Manager */}
+
+         {/* ConsentManager */}
+  <Script
+    id="consentmanager"
+    src="https://cdn.consentmanager.net/delivery/autoblocking/d12ccd3722556.js"
+    data-cmp-ab="1"
+    data-cmp-host="a.delivery.consentmanager.net"
+    data-cmp-cdn="cdn.consentmanager.net"
+    data-cmp-codesrc="0"
+    strategy="afterInteractive"
+  />
       </head>
 
       <body
