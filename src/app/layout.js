@@ -69,23 +69,23 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-N62XPDLH');
           `}
         </Script>
-        {/* End Google Tag Manager */}
-
-         {/* ConsentManager */}
-  <Script
-    id="consentmanager"
-    src="https://cdn.consentmanager.net/delivery/autoblocking/d12ccd3722556.js"
-    data-cmp-ab="1"
-    data-cmp-host="a.delivery.consentmanager.net"
-    data-cmp-cdn="cdn.consentmanager.net"
-    data-cmp-codesrc="0"
-    strategy="afterInteractive"
-  />
       </head>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}
       >
+        {/* ConsentManager – semi automatic */}
+        <Script
+          id="consentmanager"
+          src="https://cdn.consentmanager.net/delivery/js/semiautomatic.min.js"
+          data-cmp-ab="1"
+          data-cmp-cdid="d12ccd3722556"
+          data-cmp-host="a.delivery.consentmanager.net"
+          data-cmp-cdn="cdn.consentmanager.net"
+          data-cmp-codesrc="0"
+          strategy="beforeInteractive"
+        />
+
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -93,17 +93,11 @@ export default function RootLayout({ children }) {
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
+          />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
 
         <AnimatedBackground />
-
         <main className="relative z-10 flex-1">{children}</main>
-
-        {/* <div className="fixed bottom-5 right-5 z-50">
-          <Chatbot />
-        </div> */}
       </body>
     </html>
   );
