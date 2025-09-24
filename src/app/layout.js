@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Script from "next/script";
+import { Chatbot }  from "@/components/Chatbot"
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -75,7 +76,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}
       >
         {/* ConsentManager – semi automatic */}
-        <Script
+        {/* <Script
           id="consentmanager"
           src="https://cdn.consentmanager.net/delivery/js/semiautomatic.min.js"
           data-cmp-ab="1"
@@ -84,7 +85,7 @@ export default function RootLayout({ children }) {
           data-cmp-cdn="cdn.consentmanager.net"
           data-cmp-codesrc="0"
           strategy="beforeInteractive"
-        />
+        /> */}
 
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -97,8 +98,14 @@ export default function RootLayout({ children }) {
         </noscript>
 
         <AnimatedBackground />
-        <main className="relative z-10 flex-1">{children}</main>
+        <main className="relative z-10 flex-1">{children}
+           
+        </main>
+        {/* <div className="fixed bottom-5 right-5 z-50">
+          <Chatbot />
+        </div> */}
       </body>
+     
     </html>
   );
 }
