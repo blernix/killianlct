@@ -34,7 +34,7 @@ export const metadata = {
     siteName: 'Agence Killian Lecrut',
     images: [
       {
-        url: 'https://killian-lecrut.com/og-image.png', // URL ABSOLUE
+        url: 'https://killian-lecrut.com/logoK.png', // URL ABSOLUE
         width: 1200,
         height: 630,
         alt: "Création de sites web sur-mesure - Agence Killian Lecrut",
@@ -47,7 +47,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Killian Lecrut - Votre Partenaire Digital pour des Projets Web sur-mesure',
     description: 'De la conception à la mise en ligne, notre agence vous accompagne dans la création de sites web et applications modernes.',
-    images: ['https://killian-lecrut.com/og-image.png'], // URL ABSOLUE
+    images: ['https://killian-lecrut.com/logoK.png'], // URL ABSOLUE
   },
   icons: {
     icon: [
@@ -66,11 +66,11 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Agence Killian Lecrut',
-  image: 'https://killian-lecrut.com/logo-agence.png', // Pense à créer un logo pour l'agence
+  image: 'https://killian-lecrut.com/logoK.png', // Pense à créer un logo pour l'agence
   '@id': 'https://killian-lecrut.com',
   url: 'https://killian-lecrut.com',
   // Remplace par ton numéro de téléphone professionnel
-  telephone: '+33...', 
+  telephone: '+33641970383', 
   description: "Agence web spécialisée dans la création de sites internet et d'applications web sur-mesure, axées sur la performance et l'expérience utilisateur.",
   address: {
     '@type': 'PostalAddress',
