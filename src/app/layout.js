@@ -82,6 +82,9 @@ const jsonLd = {
     // Ajoute tes liens de profils professionnels
     
     'https://www.linkedin.com/in/killian-lecrut-a80336176/',
+    'https://www.malt.fr/profile/killianlecrut',
+    'https://fr.fiverr.com/sellers/killianlecrut/',
+
   ],
 };
 
