@@ -7,43 +7,47 @@ import { Chatbot }  from "@/components/Chatbot"
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
+// --- METADATA OPTIMISÉES ---
+// Remplacement de l'objet metadata original par la version optimisée "Agence".
 export const metadata = {
   metadataBase: new URL("https://killian-lecrut.com"),
-  title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
-  description:
-    "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes. Transformons votre idée en projet concret.",
-  keywords: [
-    "développeur web freelance",
-    "création de site web",
-    "site sur-mesure",
-    "Next.js",
-    "React",
-    "développeur full-stack",
-    "Killian Lecrut",
-  ],
+  title: 'Agence Killian Lecrut - Création de Sites Web & Applications Performants',
+  description: "Notre agence web est spécialisée dans la conception et le développement de sites et applications sur-mesure. Nous transformons vos idées en solutions digitales performantes et optimisées.",
+  alternates: {
+    canonical: 'https://killian-lecrut.com',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
-    description:
-      "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes.",
-    url: "/",
-    siteName: "Killian Lecrut - Création Digitale",
+    title: 'Killian Lecrut - Votre Partenaire Digital pour des Projets Web sur-mesure',
+    description: 'De la conception à la mise en ligne, notre agence vous accompagne dans la création de sites web et applications modernes qui répondent à vos objectifs.',
+    url: 'https://killian-lecrut.com',
+    siteName: 'Agence Killian Lecrut',
     images: [
       {
-        url: "/logoK.png",
+        url: 'https://killian-lecrut.com/og-image.png', // URL ABSOLUE
         width: 1200,
         height: 630,
-        alt: "Logo de Killian Lecrut, développeur web freelance",
+        alt: "Création de sites web sur-mesure - Agence Killian Lecrut",
       },
     ],
-    locale: "fr_FR",
-    type: "website",
+    locale: 'fr_FR',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Killian Lecrut | Développeur Web Freelance sur-mesure",
-    description:
-      "Développeur web freelance spécialisé dans la création de sites et applications rapides et modernes.",
-    images: ["/logoK.png"],
+    card: 'summary_large_image',
+    title: 'Killian Lecrut - Votre Partenaire Digital pour des Projets Web sur-mesure',
+    description: 'De la conception à la mise en ligne, notre agence vous accompagne dans la création de sites web et applications modernes.',
+    images: ['https://killian-lecrut.com/og-image.png'], // URL ABSOLUE
   },
   icons: {
     icon: [
@@ -55,6 +59,32 @@ export const metadata = {
     shortcut: "/favicon-16x16.png",
   },
 };
+
+// --- DONNÉES STRUCTURÉES (JSON-LD) ---
+// Définition des données structurées pour Google, positionnement "Agence".
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Agence Killian Lecrut',
+  image: 'https://killian-lecrut.com/logo-agence.png', // Pense à créer un logo pour l'agence
+  '@id': 'https://killian-lecrut.com',
+  url: 'https://killian-lecrut.com',
+  // Remplace par ton numéro de téléphone professionnel
+  telephone: '+33...', 
+  description: "Agence web spécialisée dans la création de sites internet et d'applications web sur-mesure, axées sur la performance et l'expérience utilisateur.",
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Melun',
+    postalCode: '77000',
+    addressCountry: 'FR',
+  },
+  sameAs: [
+    // Ajoute tes liens de profils professionnels
+    
+    'https://www.linkedin.com/in/killian-lecrut-a80336176/',
+  ],
+};
+
 
 export default function RootLayout({ children }) {
   return (
@@ -70,23 +100,17 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-N62XPDLH');
           `}
         </Script>
+
+        {/* Injection des données structurées JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}
       >
-        {/* ConsentManager – semi automatic */}
-        {/* <Script
-          id="consentmanager"
-          src="https://cdn.consentmanager.net/delivery/js/semiautomatic.min.js"
-          data-cmp-ab="1"
-          data-cmp-cdid="d12ccd3722556"
-          data-cmp-host="a.delivery.consentmanager.net"
-          data-cmp-cdn="cdn.consentmanager.net"
-          data-cmp-codesrc="0"
-          strategy="beforeInteractive"
-        /> */}
-
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -98,14 +122,11 @@ export default function RootLayout({ children }) {
         </noscript>
 
         <AnimatedBackground />
-        <main className="relative z-10 flex-1">{children}
-           
-        </main>
+        <main className="relative z-10 flex-1">{children}</main>
         {/* <div className="fixed bottom-5 right-5 z-50">
           <Chatbot />
         </div> */}
       </body>
-     
     </html>
   );
 }
