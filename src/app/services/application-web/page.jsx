@@ -8,10 +8,16 @@ import { applicationWebFaqData } from '@/app/data/faq/applicationWeb'; // On imp
 export const metadata = {
   title: "Développement d'Applications Web sur Mesure | Agence Killian Lecrut",
   description: "Transformez vos processus en avantage concurrentiel. Nous créons l'application web métier qui s'adapte à votre entreprise, et non l'inverse.",
+  
+  // ✅ AJOUT DE L'URL CANONIQUE SPÉCIFIQUE À CETTE PAGE
+  alternates: {
+    canonical: '/services/application-web',
+  },
+
   openGraph: {
     title: "Créez l'Outil qui Accélère Votre Croissance | Agence Killian Lecrut",
     description: "Découvrez notre méthode pour développer des applications web robustes et évolutives.",
-    url: '/services/application-web',
+    url: 'https://killian-lecrut.com/services/application-web',
   },
   twitter: {
     title: "Créez l'Outil qui Accélère Votre Croissance | Agence Killian Lecrut",
@@ -23,3 +29,4 @@ export default function ApplicationWebPage() {
   // On passe les nouvelles données importées à votre composant client
   return <ApplicationWebClient faqData={applicationWebFaqData} />;
 }
+

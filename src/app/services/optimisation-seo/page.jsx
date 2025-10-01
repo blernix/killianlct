@@ -8,10 +8,16 @@ import { seoFaqData } from '@/app/data/faq/seo'; // On importe les NOUVELLES don
 export const metadata = {
   title: "Stratégie SEO & Référencement Durable | Agence Killian Lecrut",
   description: "Au-delà de la technique, nous construisons votre stratégie de croissance sur Google. Attirez un flux constant de clients qualifiés grâce à une approche SEO durable.",
+  
+  // ✅ AJOUT DE L'URL CANONIQUE SPÉCIFIQUE À CETTE PAGE
+  alternates: {
+    canonical: '/services/optimisation-seo',
+  },
+
   openGraph: {
     title: "Stratégie SEO Durable pour une Croissance Continue | Agence Killian Lecrut",
     description: "Découvrez notre approche stratégique du SEO pour devenir une autorité dans votre domaine.",
-    url: '/services/optimisation-seo',
+    url: 'https://killian-lecrut.com/services/optimisation-seo',
   },
   twitter: {
     title: "Stratégie SEO Durable pour une Croissance Continue | Agence Killian Lecrut",

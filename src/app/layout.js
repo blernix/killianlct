@@ -13,9 +13,7 @@ export const metadata = {
   metadataBase: new URL("https://killian-lecrut.com"),
   title: 'Agence Killian Lecrut - Création de Sites Web & Applications Performants',
   description: "Notre agence web est spécialisée dans la conception et le développement de sites et applications sur-mesure. Nous transformons vos idées en solutions digitales performantes et optimisées.",
-  alternates: {
-    canonical: 'https://killian-lecrut.com',
-  },
+  // Le bloc "alternates" a été supprimé d'ici pour ne plus s'appliquer à toutes les pages.
   robots: {
     index: true,
     follow: true,
@@ -61,15 +59,14 @@ export const metadata = {
 };
 
 // --- DONNÉES STRUCTURÉES (JSON-LD) ---
-// Définition des données structurées pour Google, positionnement "Agence".
+// Ces données sont correctes pour le layout principal car elles décrivent ton agence.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Agence Killian Lecrut',
-  image: 'https://killian-lecrut.com/logoK.png', // Pense à créer un logo pour l'agence
+  image: 'https://killian-lecrut.com/logoK.png',
   '@id': 'https://killian-lecrut.com',
   url: 'https://killian-lecrut.com',
-  // Remplace par ton numéro de téléphone professionnel
   telephone: '+33641970383', 
   description: "Agence web spécialisée dans la création de sites internet et d'applications web sur-mesure, axées sur la performance et l'expérience utilisateur.",
   address: {
@@ -79,12 +76,9 @@ const jsonLd = {
     addressCountry: 'FR',
   },
   sameAs: [
-    // Ajoute tes liens de profils professionnels
-    
     'https://www.linkedin.com/in/killian-lecrut-a80336176/',
     'https://www.malt.fr/profile/killianlecrut',
     'https://fr.fiverr.com/sellers/killianlecrut/',
-
   ],
 };
 
