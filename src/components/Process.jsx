@@ -3,34 +3,43 @@
 import { Timeline } from "@/components/ui/timeline"; // Assure-toi que le chemin est correct
 
 export function Process() {
-  const steps = [
+ const steps = [
     {
-      stepTitle: "📌 On discute de votre projet, simplement",
+      // Titre plus formel : On parle d'écoute et de stratégie.
+      stepTitle: "📌 Écoute & Cadrage Stratégique",
+      // Description qui met en avant l'analyse et la compréhension des objectifs.
       description:
-        "Vous m'expliquez vos besoins, vos envies, vos objectifs... et je traduis tout ça en solution digitale concrète. C'est ma partie du job.",
+        "Nous commençons par un atelier de découverte pour comprendre en profondeur vos objectifs, votre cible et vos défis. Cette phase est cruciale pour transformer votre vision en une feuille de route technique et fonctionnelle.",
     },
     {
-      stepTitle: "🛠️ Je vous propose un plan clair",
+      // Titre qui inclut la phase de conception (design).
+      stepTitle: "🛠️ Proposition & Conception",
+      // Description qui parle de maquette et de transparence.
       description:
-        "Je vous présente une maquette simple et un plan de création. Pas de jargon : vous savez où on va, combien ça coûte et comment ça se passera.",
+        "Sur la base de nos échanges, nous vous soumettons une proposition détaillée incluant une maquette (wireframe ou design) et un calendrier de production. Chaque aspect est présenté de manière transparente pour une visibilité totale sur le projet.",
     },
     {
-      stepTitle: "🚧 Je construis votre site étape par étape",
+      // Titre qui utilise le terme "Développement" et "Itérations" (agile).
+      stepTitle: "🚧 Développement & Itérations",
+      // Description qui rassure sur le suivi et la collaboration.
       description:
-        "Je m'occupe du développement en vous montrant régulièrement l'avancement. Vous pouvez donner votre avis et ajuster les détails.",
+        "Notre agence prend en charge le développement complet de la solution. Vous avez accès à un environnement de pré-production pour suivre l'avancement en temps réel et nous faire vos retours à chaque étape clé du processus.",
     },
     {
-      stepTitle: "🚀 On teste, on peaufine, et on met en ligne",
+      // Titre qui utilise les termes professionnels "Assurance Qualité" et "Déploiement".
+      stepTitle: "🚀 Assurance Qualité & Déploiement",
+      // Description qui met en avant la rigueur des tests.
       description:
-        "Avant la mise en ligne, je vérifie tout (rapidité, affichage mobile...). Ensemble, on valide le résultat final et on appuie sur le bouton.",
+        "Avant toute mise en production, nous procédons à une phase de tests rigoureux (performance, affichage sur tous les appareils, sécurité). Après votre validation finale, nous planifions le déploiement de votre site ou application.",
     },
     {
-      stepTitle: "🤝 Je reste disponible après la livraison",
+      // Titre qui parle de partenariat sur le long terme.
+      stepTitle: "🤝 Support & Partenariat à Long Terme",
+      // Description qui transforme la promesse en une offre de service concrète.
       description:
-        "Un problème ? Un besoin d'évolution ? Je ne disparais pas une fois le projet terminé, vous pourrez toujours me contacter.",
+        "Notre relation ne s'arrête pas à la livraison. Nous restons votre partenaire technique pour assurer la maintenance, gérer les évolutions futures et répondre à toutes vos questions, garantissant la pérennité de votre investissement.",
     },
   ];
-
   // On transforme les données pour le composant Timeline
   const timelineData = steps.map((step, index) => ({
     title: `Étape ${index + 1}`,
@@ -50,7 +59,7 @@ export function Process() {
     // On appelle notre composant Timeline flexible
     <Timeline 
       title="Un Processus en 5 Étapes Claires"
-      description="De la première discussion à la mise en ligne et au-delà, je vous accompagne avec une méthode simple et transparente."
+      description="De la première discussion à la mise en ligne et au-delà, nous vous accompagnons avec une méthode simple et transparente."
       data={timelineData}
     />
   );

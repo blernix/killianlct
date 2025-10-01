@@ -4,21 +4,25 @@ import Link from 'next/link'; // On importe le composant Link
 import { Bot, Zap, Network, ArrowRight } from "lucide-react"; // On ajoute l'icône flèche
 
 export function Automations() {
-  const features = [
+const features = [
     {
-      title: "Automatisations métier",
+      title: "Automatisations Métier",
       icon: <Zap className="h-6 w-6 text-orange-300" />,
-      description: "Rappels de RDV, envois de factures, newsletters… Je configure des automatisations pour que tout se fasse sans intervention manuelle.",
+      // On passe au "nous" avec des verbes plus forts ("concevoir", "déployer")
+      // et on se concentre sur le bénéfice final ("libérer votre temps").
+      description: "Nous concevons et déployons des workflows sur-mesure (rappels de RDV, facturation, newsletters) pour libérer votre temps et fiabiliser vos processus.",
     },
     {
-      title: "Agents IA intégrés",
+      title: "Agents IA sur-mesure", // "sur-mesure" a plus de valeur que "intégrés"
       icon: <Bot className="h-6 w-6 text-orange-300" />,
-      description: "Je peux intégrer des assistants intelligents qui lisent vos données, répondent à vos clients ou organisent vos tâches.",
+      // On affirme l'action ("Nous intégrons") et on donne des exemples à forte valeur business.
+      description: "Notre agence intègre des agents IA personnalisés dans vos processus pour analyser vos données, qualifier des prospects ou automatiser le support client.",
     },
     {
-      title: "Connexion à vos outils",
+      title: "Interconnexion de vos Outils", // "Interconnexion" est un terme plus pro.
       icon: <Network className="h-6 w-6 text-orange-300" />,
-      description: "Site, agenda, paiement, messagerie… tout est synchronisé. Exemple : réservation = email + RDV + alerte Telegram, sans clic.",
+      // La description précédente était déjà bonne. On la reformule pour parler d' "écosystème".
+      description: "Nous synchronisons l'ensemble de votre écosystème digital : site web, CRM, agenda, messagerie... L'information circule de manière fluide et automatique.",
     },
   ];
 
@@ -39,7 +43,7 @@ export function Automations() {
             Allez plus loin avec les automatisations.
           </h2>
           <p className="mt-4 text-lg max-w-xl mx-auto lg:mx-0 text-gray-300">
-            Je relie vos outils entre eux pour que les tâches répétitives se fassent toutes seules. Vous gagnez en temps et en efficacité, vous vous concentrez sur l'essentiel.
+            Nous relions vos outils entre eux pour que les tâches répétitives se fassent toutes seules. Vous gagnez en temps et en efficacité, vous vous concentrez sur l'essentiel.
           </p>
 
           {/* BOUTON AJOUTÉ ICI */}

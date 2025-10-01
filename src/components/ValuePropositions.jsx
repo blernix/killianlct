@@ -7,7 +7,7 @@ export default function ValueProposition() {
   return (
     <section
       role="region"
-      aria-label="Ma philosophie de travail"
+      aria-label="Notre philosophie de travail"
       // ✅ 2. On rend la section "relative" pour contenir le fond animé
       className="relative w-full px-4 py-24 sm:py-32 overflow-hidden" 
     >
@@ -31,7 +31,7 @@ export default function ValueProposition() {
             Une approche centrée sur l'essentiel.
           </h2>
           <p className="mt-4 text-lg text-gray-100">
-            Ma philosophie : un développement sur-mesure pour des résultats concrets.
+            Notre philosophie : un développement sur-mesure pour des résultats concrets.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function ValueProposition() {
             </div>
             <h3 className="mt-6 font-semibold text-white">Du Sur-Mesure, Rien de Superflu</h3>
             <p className="mt-2 text-sm text-gray-300">
-              Pas de fonctionnalités inutiles ni de plateformes obscures. Je code uniquement ce dont vous avez besoin pour des bases solides et une gestion simplifiée.
+              Pas de fonctionnalités inutiles ni de plateformes obscures. Nous codons uniquement ce dont vous avez besoin pour des bases solides et une gestion simplifiée.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export default function ValueProposition() {
             </div>
             <h3 className="mt-6 font-semibold text-white">La Performance au Cœur</h3>
             <p className="mt-2 text-sm text-gray-300">
-              Un site rapide est essentiel pour vos utilisateurs et votre référencement. Je privilégie les technologies modernes pour garantir une vitesse et une fluidité optimales.
+              Un site rapide est essentiel pour vos utilisateurs et votre référencement. Nous privilégions les technologies modernes pour garantir une vitesse et une fluidité optimales.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export default function ValueProposition() {
             </div>
             <h3 className="mt-6 font-semibold text-white">Un Partenaire Fiable</h3>
             <p className="mt-2 text-sm text-gray-300">
-              Plus qu'un simple prestataire, je vous accompagne pour que vous puissiez avancer sereinement. Je construis des outils durables pour aujourd'hui et pour demain.
+              Plus qu'un simple prestataire, nous vous accompagnons pour que vous puissiez avancer sereinement. Nous construisons des outils durables pour aujourd'hui et pour demain.
             </p>
           </div>
 

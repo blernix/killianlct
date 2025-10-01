@@ -1,32 +1,34 @@
 // Fichier: /data/faq/directus.js
+// Une nouvelle FAQ alignée avec votre nouvelle page de service Directus / Espace d'administration.
+
 export const directusFaqData = {
-  title: "Vos questions sur Directus",
-  subtitle: "Mieux comprendre comment vous allez gérer votre site en toute autonomie.",
+  title: "Vos questions sur nos Espaces d'Administration",
+  subtitle: "Les réponses pour comprendre comment nous vous donnons la main, en toute sécurité.",
   items: [
     {
       value: "q1",
-      question: "Concrètement, qu'est-ce que Directus change pour moi ?",
-      answer: "Directus, c'est votre espace d'administration 100% sur-mesure. Au lieu d'une interface générique et complexe, je construis un back-office simple avec uniquement les champs et les menus dont VOUS avez besoin pour gérer votre contenu (textes, images, produits, etc.)."
+      question: "En quoi est-ce différent d'un back-office WordPress ?",
+      answer: "Un back-office WordPress vous donne accès à tout : thèmes, plugins, code... ce qui est complexe et risqué. Notre approche est de vous fournir une interface 100% épurée qui ne contient QUE vos champs de contenu (texte, images, etc.). C'est plus simple, plus rapide et vous ne pouvez rien casser."
     },
     {
       value: "q2",
-      question: "Quelle est la différence avec WordPress ?",
-      answer: "WordPress mélange le contenu et le design, ce qui peut le rendre lent et complexe. Directus est un CMS 'Headless' (sans tête) : il ne gère QUE le contenu. Cela le rend plus rapide, plus sécurisé, et me permet de créer un design (le 'front-end') totalement sur-mesure et ultra-performant."
+      question: "Suis-je propriétaire de mes données ?",
+      answer: "Absolument, et c'est le cœur de notre philosophie. Nous utilisons Directus, qui s'installe par-dessus une base de données standard (SQL). Vos données vous appartiennent, elles sont pures et portables. Vous n'êtes jamais prisonnier d'une technologie propriétaire."
     },
     {
       value: "q3",
-      question: "Est-ce que c'est difficile à prendre en main ?",
-      answer: "Pas du tout. L'interface est conçue pour être aussi intuitive qu'un simple formulaire en ligne. À la livraison du site, je prévois toujours un temps de formation pour vous montrer comment tout gérer. Vous serez autonome en moins d'une heure."
+      question: "Est-ce que je peux avoir plusieurs comptes utilisateurs avec des droits différents ?",
+      answer: "Oui. Nous pouvons configurer des rôles et des permissions très précis. Par exemple, un 'Rédacteur' pourra créer des articles de blog mais ne pourra pas modifier la page d'accueil, tandis qu'un 'Administrateur' aura plus de droits. C'est entièrement personnalisable."
     },
     {
       value: "q4",
-      question: "Mes données sont-elles vraiment à moi ?",
-      answer: "Oui, à 100%. C'est l'avantage principal. Vos données sont stockées dans une base de données standard (SQL) qui vous appartient. Si un jour vous souhaitez changer de technologie, vous pouvez exporter toutes vos données facilement. Vous n'êtes jamais prisonnier."
+      question: "Que se passe-t-il si mes besoins en contenu évoluent ?",
+      answer: "C'est tout l'avantage d'une solution sur-mesure. Votre espace d'administration est conçu pour évoluer. Si vous souhaitez ajouter une nouvelle section à votre site ou une nouvelle fonctionnalité, nous analysons ensemble le besoin et nous vous proposons un devis clair pour cette nouvelle phase de développement."
     },
     {
       value: "q5",
-      question: "Peut-on tout gérer avec Directus ? Même une boutique en ligne ?",
-      answer: "Absolument. La force de Directus est sa flexibilité. On peut modéliser n'importe quel type de données : des articles de blog, des membres d'équipe, des projets, et bien sûr un catalogue complet de produits e-commerce avec les prix, les stocks, les photos, etc."
+      question: "Pourquoi utilisez-vous Directus spécifiquement ?",
+      answer: "Nous avons choisi Directus pour sa philosophie 'database-first', sa nature open-source et son incroyable flexibilité. C'est un outil qui nous permet de construire des solutions de gestion de données robustes et pérennes pour nos clients, sans les enfermer dans un système."
     }
   ]
 };

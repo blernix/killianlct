@@ -1,23 +1,25 @@
+// Fichier: app/services/directus-cms/page.jsx
+// C'est le composant "Serveur" qui importe les données et votre composant client.
+
 import DirectusClient from './DirectusClient';
-import { directusFaqData } from '@/app/data/faq/directus';
+import { directusFaqData } from '@/app/data/faq/directus'; // On importe les NOUVELLES données FAQ
 
-
-// Métadonnées optimisées pour la page Directus
+// Métadonnées pour le SEO de la page
 export const metadata = {
-  title: "Gestion de Contenu Simplifiée avec Directus | Killian Lecrut, Freelance",
-  description: "Prenez le contrôle de votre site. Je mets en place Directus, un CMS headless sur-mesure, pour vous permettre de gérer votre contenu en toute autonomie.",
-  keywords: ["Directus", "CMS headless", "gestion de contenu", "back-office sur-mesure", "API", "développeur Directus"],
+  title: "Espace d'Administration sur Mesure avec Directus | Agence Killian Lecrut",
+  description: "Gérez le contenu de votre site en toute sérénité. Nous créons des back-offices simples, sécurisés et 100% adaptés à vos besoins, sans le risque et la complexité des CMS traditionnels.",
   openGraph: {
-    title: "Gestion de Contenu Simplifiée avec Directus | Killian Lecrut, Freelance",
-    description: "Prenez le contrôle de votre site avec un espace d'administration 100% sur-mesure.",
-    url: '/expertises/directus-cms',
+    title: "Gérez Votre Contenu en Toute Confiance | Agence Killian Lecrut",
+    description: "Découvrez notre approche pour créer des espaces de gestion de contenu simples et sécurisés.",
+    url: '/expertises/directus-cms', // Mettez à jour si l'URL est différente
   },
   twitter: {
-    title: "Gestion de Contenu Simplifiée avec Directus | Killian Lecrut, Freelance",
-    description: "Prenez le contrôle de votre site avec un espace d'administration 100% sur-mesure.",
+    title: "Gérez Votre Contenu en Toute Confiance | Agence Killian Lecrut",
+    description: "Découvrez notre approche pour créer des espaces de gestion de contenu simples et sécurisés.",
   },
 };
 
 export default function DirectusPage() {
+  // On passe les nouvelles données importées à votre composant client
   return <DirectusClient faqData={directusFaqData} />;
 }

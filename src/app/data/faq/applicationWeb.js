@@ -1,32 +1,34 @@
 // Fichier: /data/faq/applicationWeb.js
+// Une nouvelle FAQ alignée avec votre nouvelle page de service Application Web.
+
 export const applicationWebFaqData = {
-  title: "Vos questions sur les Applications Web",
-  subtitle: "Les réponses aux interrogations courantes sur le développement d'outils sur-mesure.",
+  title: "Vos questions sur le Développement d'Applications Web",
+  subtitle: "Les réponses pour comprendre notre approche de la création d'outils sur-mesure.",
   items: [
     {
       value: "q1",
-      question: "Quelle est la différence entre une application web et une application mobile (iOS/Android) ?",
-      answer: "Une application web est accessible via un navigateur (Chrome, Safari...) sur n'importe quel appareil, sans installation. Une application mobile doit être téléchargée depuis un store (App Store, Google Play). Pour un outil métier interne ou un MVP, une application web est souvent plus rapide et économique à développer."
+      question: "Pourquoi développer une application sur-mesure plutôt que d'utiliser un SaaS existant ?",
+      answer: "Un SaaS vous force à adapter vos processus à son fonctionnement. Une application sur-mesure est conçue pour s'adapter à 100% à vos processus uniques. C'est un investissement pour créer un avantage concurrentiel, optimiser votre efficacité et posséder pleinement votre outil et vos données."
     },
     {
       value: "q2",
-      question: "Comment garantissez-vous la sécurité des données de mon entreprise et de mes utilisateurs ?",
-      answer: "La sécurité est la priorité numéro un. J'applique les meilleures pratiques : protection contre les injections SQL et XSS, authentification forte, gestion sécurisée des mots de passe et chiffrement des données sensibles. Le code est conçu pour être robuste face aux menaces courantes."
+      question: "Qu'est-ce qu'un MVP (Produit Minimum Viable) ?",
+      answer: "Le MVP est la version la plus simple de votre application qui résout le problème principal de vos utilisateurs. L'objectif est de le lancer rapidement sur le marché pour récolter des retours concrets et valider le concept, avant d'investir dans des fonctionnalités plus avancées."
     },
     {
       value: "q3",
-      question: "Mon application pourra-t-elle évoluer si mon entreprise grandit ?",
-      answer: "Absolument. J'utilise des architectures logicielles modernes et modulaires. Cela signifie que l'application est conçue dès le départ pour être évolutive. Ajouter de nouvelles fonctionnalités ou supporter plus d'utilisateurs se fait de manière saine, sans avoir à tout reconstruire."
+      question: "Suis-je propriétaire du code de l'application ?",
+      answer: "Absolument. À la livraison finale du projet et après paiement complet, nous vous cédons l'entière propriété intellectuelle du code source. L'application vous appartient, sans aucune dépendance cachée."
     },
     {
       value: "q4",
-      question: "Utilisez-vous des technologies spécifiques pour le backend ?",
-      answer: "Oui, je m'appuie principalement sur l'écosystème JavaScript avec Node.js pour le backend. Couplé à un CMS Headless comme Directus, cela permet de créer des API robustes et performantes pour gérer toute la logique métier de votre application."
+      question: "Quelles technologies utilisez-vous pour construire les applications ?",
+      answer: "Nous privilégions des technologies modernes, robustes et reconnues. Typiquement, nous utilisons Next.js pour l'interface utilisateur (frontend) et des solutions comme Node.js pour le serveur (backend), en nous appuyant sur des bases de données performantes. Chaque projet fait l'objet d'un choix technologique adapté."
     },
     {
       value: "q5",
-      question: "Puis-je connecter l'application à d'autres outils que j'utilise déjà (CRM, ERP...) ?",
-      answer: "Oui, c'est l'un des grands avantages d'une solution sur-mesure. Nous pouvons créer des connecteurs (via des API) pour synchroniser les données de votre application avec vos logiciels existants, ce qui permet de centraliser vos informations et d'automatiser vos flux de travail."
+      question: "Comment fonctionne le 'Partenariat d'Évolution' ?",
+      answer: "C'est un forfait mensuel flexible qui vous alloue un certain nombre d'heures de notre expertise. Ces heures peuvent être utilisées pour la maintenance préventive, la sécurité, le support, ou le développement de nouvelles fonctionnalités priorisées ensemble. C'est la garantie que votre application reste performante et évolue avec votre business."
     }
   ]
 };

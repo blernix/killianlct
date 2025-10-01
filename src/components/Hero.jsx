@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button"; // Le bouton stylé vient d'ici
 
 export default function Hero() {
     // Ton contenu
-    const title = "Artisan du web, je crée le site sur-mesure qui développe votre activité.";
-    const paragraph = "Des expériences web rapides, intuitives et uniques pour renforcer votre image de marque et atteindre vos objectifs.";
-    const buttonText = "Découvrir mes services";
+    const title = "Artisans du web, nous créons le site sur-mesure qui développe votre activité.";
+    const paragraph = "Nous concevons des solutions web complètes : sites vitrines, plateformes e-commerce, applications métier et optimisation SEO. Notre expertise en automatisation  et gestion de contenu  garantit un projet performant et évolutif.";
+    const buttonText = "Découvrir nos services";
 
     const words = title.split(" ");
 

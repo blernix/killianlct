@@ -1,32 +1,34 @@
 // Fichier: /data/faq/n8n.js
+// Une nouvelle FAQ alignée avec votre nouvelle page de service n8n / Automatisation.
+
 export const n8nFaqData = {
-  title: "Vos questions sur l'Automatisation",
-  subtitle: "Les réponses pour comprendre comment les workflows peuvent transformer votre activité.",
+  title: "Vos questions sur l'Automatisation de Workflows",
+  subtitle: "Les réponses pour comprendre notre service d'automatisation sur-mesure.",
   items: [
     {
       value: "q1",
-      question: "Quelle est la différence entre n8n, Zapier et Make ?",
-      answer: "Zapier et Make sont d'excellents outils SaaS, très simples d'accès. n8n est une plateforme 'source-available' que j'héberge moi-même. Cela offre une flexibilité totale pour du code sur-mesure, un meilleur contrôle de vos données (RGPD), et un modèle économique beaucoup plus avantageux pour les gros volumes d'opérations."
+      question: "En quoi votre offre est-elle différente de Zapier ou Make ?",
+      answer: "Zapier et Make sont d'excellents outils 'no-code', mais ils ont des limites en termes de logique complexe, de gestion des données et de coût au volume. Notre approche avec n8n auto-hébergé nous offre une flexibilité totale pour créer des workflows 100% sur-mesure, plus sécurisés et souvent plus rentables pour des processus complexes."
     },
     {
       value: "q2",
-      question: "Quasiment toutes les applications peuvent-elles être connectées ?",
-      answer: "Oui. n8n supporte des centaines d'applications populaires nativement. Pour les autres, s'il existe une API (une porte d'entrée pour les développeurs), alors il est possible de créer un connecteur sur-mesure pour intégrer quasiment n'importe quel service en ligne."
+      question: "Est-ce que j'ai accès à la plateforme n8n pour créer mes propres workflows ?",
+      answer: "Non, et c'est un choix délibéré pour garantir la qualité et la fiabilité du service. Nous ne vous vendons pas l'accès à un outil, nous vous fournissons un service complet de conception, de développement et de maintenance de vos automatisations. Nous gérons toute la complexité technique pour que vous puissiez vous concentrer sur votre métier."
     },
     {
       value: "q3",
       question: "Mes données sont-elles en sécurité ?",
-      answer: "Absolument. C'est l'un des avantages majeurs de ma solution. Comme j'héberge n8n sur mon propre serveur sécurisé, vos données (clients, commandes, etc.) ne passent jamais par les serveurs d'une entreprise tierce. Vous gardez un contrôle total sur leur confidentialité."
+      answer: "Absolument. C'est l'un des avantages majeurs de notre solution. Comme nous hébergeons nous-mêmes l'instance n8n, vos données sensibles (clients, commandes, etc.) ne transitent jamais par des plateformes tierces. Elles passent directement de vos applications à nos serveurs sécurisés, garantissant une confidentialité maximale."
     },
     {
       value: "q4",
-      question: "Quel est un bon exemple de premier projet d'automatisation ?",
-      answer: "Un excellent point de départ est d'automatiser la gestion des nouveaux prospects. Par exemple : quand quelqu'un remplit le formulaire sur votre site, le workflow peut automatiquement créer une fiche contact dans votre CRM, lui assigner une tâche dans votre outil de gestion et vous envoyer une notification sur Telegram avec un résumé."
+      question: "Quels types d'outils pouvez-vous connecter ?",
+      answer: "Pratiquement tout ce qui possède une API. De vos outils quotidiens (Google Suite, Slack, Trello, Stripe) à votre site web, votre CRM, votre ERP ou des bases de données spécifiques. S'il n'existe pas de connecteur natif, nous pouvons développer des intégrations sur-mesure."
     },
     {
       value: "q5",
-      question: "Est-ce que je peux voir et gérer mes workflows moi-même ?",
-      answer: "La gestion des workflows est au cœur de mon service pour vous assurer une tranquillité d'esprit totale. Pour garantir la stabilité, la sécurité et la performance de vos automatisations, je gère personnellement l'environnement technique. Un workflow est un mécanisme de précision ; une modification involontaire pourrait interrompre un processus critique pour votre activité. Mon rôle est de m'assurer que tout fonctionne sans accroc, 24h/24."
+      question: "Comment est facturé le 'Partenariat d'Automatisation' ?",
+      answer: "Il s'agit d'un forfait mensuel qui couvre la surveillance, la maintenance et un certain volume d'heures pour l'optimisation des workflows existants ou la création de nouveaux. C'est un modèle prévisible qui vous assure une tranquillité d'esprit et une amélioration continue de votre efficacité."
     }
   ]
 };

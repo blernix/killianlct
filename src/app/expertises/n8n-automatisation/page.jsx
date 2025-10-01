@@ -1,23 +1,25 @@
+// Fichier: app/services/automatisation-n8n/page.jsx
+// C'est le composant "Serveur" qui importe les données et votre composant client.
+
 import AutomatisationClient from './AutomatisationClient';
-import { n8nFaqData } from '@/app/data/faq/n8n';
+import { n8nFaqData } from '@/app/data/faq/n8n'; // On importe les NOUVELLES données FAQ
 
-
-// Métadonnées optimisées pour la page n8n
+// Métadonnées pour le SEO de la page
 export const metadata = {
-  title: "Automatisation sur-mesure avec n8n | Killian Lecrut, Freelance",
-  description: "Gagnez du temps et optimisez vos processus. Je crée des automatisations personnalisées avec n8n pour connecter vos applications et faire travailler votre site pour vous.",
-  keywords: ["n8n", "automatisation", "workflow", "make.com", "zapier", "automatisation de processus", "développeur n8n"],
+  title: "Automatisation de Workflows sur Mesure avec n8n | Agence Killian Lecrut",
+  description: "Libérez le potentiel de votre entreprise. Nous connectons vos outils et automatisons vos processus pour vous faire gagner en temps et en efficacité.",
   openGraph: {
-    title: "Automatisation sur-mesure avec n8n | Killian Lecrut, Freelance",
-    description: "Gagnez du temps et optimisez vos processus avec des workflows personnalisés.",
-    url: '/expertises/n8n-automatisation',
+    title: "Mettez votre Business sur Pilote Automatique | Agence Killian Lecrut",
+    description: "Découvrez notre méthode pour concevoir et déployer des systèmes d'automatisation robustes.",
+    url: '/expertises/n8n-automatisation', // Mettez à jour si l'URL est différente
   },
   twitter: {
-    title: "Automatisation sur-mesure avec n8n | Killian Lecrut, Freelance",
-    description: "Gagnez du temps et optimisez vos processus avec des workflows personnalisés.",
+    title: "Mettez votre Business sur Pilote Automatique | Agence Killian Lecrut",
+    description: "Découvrez notre méthode pour concevoir et déployer des systèmes d'automatisation robustes.",
   },
 };
 
 export default function AutomatisationPage() {
+  // On passe les nouvelles données importées à votre composant client
   return <AutomatisationClient faqData={n8nFaqData} />;
 }

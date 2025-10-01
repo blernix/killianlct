@@ -24,17 +24,16 @@ export default function SiteVitrineClient({ faqData }) {
   const heroTitle = (
     <>
       <span className="block text-lg font-semibold text-primary mb-4">
-        Le Socle de Votre Présence en Ligne
+        Agence web à Melun (77)
       </span>
-      Votre Site Vitrine : Un Commercial Actif 24h/24, 7j/7
+       Création de Site Vitrine sur-mesure
     </>
   );
   
-  const heroSubtitle = "Dans un marché où 80% des consommateurs recherchent en ligne avant d'acheter, être absent du web n'est plus une opportunité manquée, c'est un risque concurrentiel majeur. Le site vitrine est le premier pas pour transformer votre présence numérique en un puissant moteur de croissance.";
-
+  const heroSubtitle = "Transformez votre présence en ligne avec un site professionnel, performant et optimisé pour acquérir des clients. Votre commercial digital, actif 24h/24.";
   const heroActions = [
     {
-      label: "Discutons de votre projet",
+      label: "Obtenir mon devis gratuit",
       variant: "default",
       onClick: openModal,
     },
@@ -55,7 +54,7 @@ export default function SiteVitrineClient({ faqData }) {
         {/* ✅ 2. NOUVELLE SECTION : Qu'est-ce qu'un site vitrine stratégique ? */}
         <section className="py-16 sm:py-24 px-4 ">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Plus qu'une simple carte de visite numérique</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Création de Site Vitrine : Bien Plus qu'une Carte de Visite Numérique</h2>
             <p className="mt-6 text-lg text-gray-300 leading-relaxed">
               Fondamentalement, un site vitrine présente votre entreprise, vos services et vos valeurs. Mais sa mission stratégique va bien au-delà : c'est un écosystème d'information conçu pour <strong className="text-white">générer des opportunités commerciales qualifiées</strong>. Contrairement à un site e-commerce, il ne gère pas de transactions directes, ce qui le rend plus simple et plus rapide à déployer, constituant ainsi le point d'entrée idéal dans le digital.
             </p>
@@ -82,7 +81,7 @@ export default function SiteVitrineClient({ faqData }) {
         <section className="py-16 sm:py-24 px-4 ">
             <div className="mx-auto max-w-5xl space-y-20">
                 <div className="text-center">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Un outil sur-mesure pour chaque professionnel</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Création de Site Vitrine sur-mesure à Melun et en Île-de-France</h2>
                     <p className="mt-4 text-lg text-gray-400">Le site vitrine s'adapte pour rationaliser le processus commercial propre à chaque métier.</p>
                 </div>
                 {/* ... (Le reste de la section reste identique, mais le contenu est maintenant bien contextualisé) ... */}

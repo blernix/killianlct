@@ -1,33 +1,25 @@
-// Fichier: /app/services/e-commerce/page.jsx
+// Fichier: app/services/e-commerce/page.jsx
+// C'est le composant "Serveur" qui importe les données et votre composant client.
 
 import ECommerceClient from './ECommerceClient';
-// CHEMIN CORRIGÉ : On retire '/app' car '@/' pointe déjà à la racine.
-// COQUILLE CORRIGÉE : "ecomerce" -> "ecommerce"
-import { ecommerceFaqData } from '@/app/data/faq/ecomerce';
-// BONNE PRATIQUE : Nom du fichier en PascalCase (Faq.jsx ou FAQ.jsx) pour correspondre au composant
+import { ecommerceFaqData } from '@/app/data/faq/ecommerce'; // On importe les données ici
 
-
+// Métadonnées pour le SEO de la page
 export const metadata = {
-  title: "Création de Site E-commerce Performant | Vendez en Ligne",
-  description: "Développeur freelance spécialisé en création de boutiques en ligne sur-mesure. Solutions e-commerce rapides, sécurisées et optimisées pour la conversion.",
-  keywords: ["création site e-commerce", "boutique en ligne", "vendre en ligne", "développeur e-commerce", "site de vente", "Next.js e-commerce"],
+  title: "Création de Boutique E-commerce sur Mesure avec MedusaJS | Agence Killian Lecrut",
+  description: "Dépassez les limites de Shopify. Nous créons votre boutique e-commerce performante, 100% sur-mesure et sans abonnement, basée sur MedusaJS et Next.js.",
   openGraph: {
-    title: "Création de Site E-commerce Performant | Vendez en Ligne",
-    description: "Développeur freelance spécialisé en création de boutiques en ligne sur-mesure.",
+    title: "Solution E-commerce Performante et sans Abonnement | Agence Killian Lecrut",
+    description: "Découvrez notre approche pour créer une boutique en ligne qui vous appartient vraiment.",
     url: '/services/e-commerce',
   },
   twitter: {
-    title: "Création de Site E-commerce Performant | Vendez en Ligne",
-    description: "Développeur freelance spécialisé en création de boutiques en ligne sur-mesure.",
+    title: "Solution E-commerce Performante et sans Abonnement | Agence Killian Lecrut",
+    description: "Découvrez notre approche pour créer une boutique en ligne qui vous appartient vraiment.",
   },
 };
 
 export default function ECommercePage() {
-  // ERREUR CORRIGÉE : On enveloppe les deux composants dans un Fragment <>...</>
-  return (
-    
-       <ECommerceClient faqData={ecommerceFaqData} />
-      
-    
-  );
+  // On passe les données importées en tant que prop "faqData" à votre composant client
+  return <ECommerceClient faqData={ecommerceFaqData} />;
 }

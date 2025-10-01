@@ -14,7 +14,7 @@ export function LogoCarousel() {
     <section className="py-16 sm:py-24 overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-center text-2xl font-semibold leading-8 text-gray-400">
-          Ils m'ont fait confiance pour leur projet digital
+          Ils nous ont fait confiance pour leur projet digital
         </h2>
         
         <div

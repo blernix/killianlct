@@ -6,10 +6,10 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
 import { formFieldsConfig } from '@/components/ContactForm';
-import { Package, Cpu, Users, Code, Server, Shield, BrainCircuit, PenTool, Rocket, LifeBuoy } from 'lucide-react';
-import Image from 'next/image';
+// ✅ Nouvelles icônes pour la nouvelle structure
+import { BoxSelect, Layers, GitBranch, Puzzle, DraftingCompass, TestTube2, Rocket, LifeBuoy, ArrowRight, Lightbulb, TrendingUp } from 'lucide-react';
 import { FAQ } from '@/components/FAQ';
-import { Hero } from '@/components/blocks/hero'; // ✅ 1. On importe notre nouveau Hero
+import { Hero } from '@/components/blocks/hero';
 
 export default function ApplicationWebClient({ faqData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,140 +17,108 @@ export default function ApplicationWebClient({ faqData }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // ✅ 2. On prépare les données spécifiques à cette page pour le Hero
-  const heroTitle = (
-    <>
-      <span className="block text-lg font-semibold text-primary mb-4">
-        Solutions Métier Sur-Mesure
-      </span>
-      Transformez Vos Processus en Avantage Concurrentiel
-    </>
-  );
-
-  const heroSubtitle = "Au-delà d'un simple site, une application web est un levier stratégique pour optimiser vos opérations, créer de nouvelles sources de revenus et proposer des expériences utilisateur exceptionnelles.";
-
-  const heroActions = [
-    {
-      label: "Concevoir mon outil",
-      variant: "default",
-      onClick: openModal,
-    },
-  ];
+  // --- HERO STRATÉGIQUE ---
+  const heroTitle = "Et si votre logiciel métier était votre meilleur avantage concurrentiel ?";
+  const heroSubtitle = "Arrêtez de tordre vos processus pour qu'ils rentrent dans un logiciel standard. Nous créons l'application web sur-mesure qui s'adapte à votre façon unique de travailler et qui accélère votre croissance.";
+  const heroActions = [{ label: "Découvrir notre méthode", variant: "default", href: "#methode" }];
 
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
 
-        {/* ✅ 3. On remplace l'ancienne section par le nouveau composant Hero */}
         <Hero 
           title={heroTitle}
           subtitle={heroSubtitle}
           actions={heroActions}
-          className="[&_.bg-primary\\/60]:bg-cyan-500/60 pt-23" // On adapte la couleur du halo au cyan de la page
+          className="[&_.bg-primary\\/60]:bg-cyan-500/60 pt-23"
         />
 
-        {/* Section "Application vs Site Web" */}
-        <section className="py-16 sm:py-24 px-4">
-            <div className="mx-auto max-w-4xl">
-                <div className="text-center">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Plus qu'un Site, un Outil Conçu pour l'Action</h2>
-                    <p className="mt-6 text-lg text-gray-300 leading-relaxed">
-                      La distinction est fondamentale : un site web est conçu pour <strong>informer</strong> ; une application web est conçue pour <strong>agir</strong>. Elle permet à vos utilisateurs de manipuler des données, d'interagir avec des fonctionnalités complexes et d'obtenir des résultats personnalisés, transformant votre navigateur en un véritable logiciel métier.
-                    </p>
-                </div>
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                    <div className="bg-gray-950/40 border border-white/15 p-8 rounded-2xl"><h3 className="text-xl font-semibold text-white">Site Web</h3><p className="mt-2 text-gray-400">Présente du contenu (brochure, blog). L'interaction est limitée à la navigation.</p></div>
-                    <div className="bg-cyan-600/20 border border-cyan-400/30 p-8 rounded-2xl"><h3 className="text-xl font-semibold text-white">Application Web</h3><p className="mt-2 text-gray-400">Permet d'exécuter des tâches (gestion de projet, facturation, réservation).</p></div>
-                </div>
+        {/* --- SECTION 1 : LE PROBLÈME À RÉSOUDRE --- */}
+        <section id="methode" className="py-16 sm:py-24 px-4">
+            <div className="mx-auto max-w-4xl text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Le Plafond de Verre du Logiciel Standard</h2>
+                <p className="mt-6 text-lg text-gray-300 leading-relaxed">
+                  Les logiciels SaaS sont puissants, mais ils sont conçus pour le plus grand nombre. Résultat : vous payez pour des fonctionnalités que vous n'utilisez pas, pendant que le processus unique qui fait votre force est bridé par des limitations techniques. C'est le moment de construire un outil qui vous ressemble vraiment.
+                </p>
             </div>
         </section>
 
-        {/* Section "Architecture" */}
-        <section className="py-16 sm:py-24 px-4 ">
-            <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Les Coulisses de la Performance</h2>
-                    <p className="mt-6 text-gray-300 leading-relaxed">
-                      Toute application robuste repose sur le modèle client-serveur. Je construis les deux facettes de votre projet avec la même rigueur, en assurant que la partie visible soit aussi solide que la partie immergée.
-                    </p>
-                    <ul className="mt-6 space-y-4">
-                      <li className="flex items-start gap-4"><Code size={24} className="text-cyan-400 mt-1 flex-shrink-0" /><p className="text-gray-300"><strong className="text-white">Le Frontend (Partie Visible) :</strong> C'est l'interface avec laquelle vos utilisateurs interagissent. Je la conçois avec Next.js pour garantir une expérience fluide, rapide et agréable sur tous les appareils.</p></li>
-                      <li className="flex items-start gap-4"><Server size={24} className="text-cyan-400 mt-1 flex-shrink-0" /><p className="text-gray-300"><strong className="text-white">Le Backend (Le Cerveau) :</strong> C'est le moteur invisible de l'application. Il gère la logique métier, la base de données et la sécurité. C'est le coffre-fort de votre projet, développé pour être robuste et évolutif.</p></li>
-                    </ul>
-                </div>
-                <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl border border-white/10">
-                    <Image 
-                        src="/applicationweb.png" // Votre image
-                        alt="Diagramme de l'architecture client-serveur d'une application web" 
-                        fill 
-                        style={{ objectFit: 'cover' }}
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                </div>
-            </div>
-        </section>
-
-        {/* Section "Cas d'usage" */}
-        <section className="py-16 sm:py-24 px-4">
-          <div className="mx-auto max-w-5xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Des Outils Adaptés à Votre Stade de Croissance</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col text-center items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
-                <Package size={32} className="text-white mb-4" /><h3 className="text-xl font-semibold text-white">Pour les Startups</h3><p className="mt-2 text-gray-300">Développement rapide d'un <strong>Produit Minimum Viable (MVP)</strong> pour valider votre concept sur le marché avec un investissement maîtrisé.</p>
-              </div>
-              <div className="flex flex-col text-center items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
-                <Cpu size={32} className="text-white mb-4" /><h3 className="text-xl font-semibold text-white">Pour les PME</h3><p className="mt-2 text-gray-300"><strong>Automatisation des processus</strong> internes (CRM, gestion de chantier) pour optimiser vos opérations, réduire les erreurs et libérer du temps précieux.</p>
-              </div>
-              <div className="flex flex-col text-center items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
-                <Users size={32} className="text-white mb-4" /><h3 className="text-xl font-semibold text-white">Pour les Grandes Entreprises</h3><p className="mt-2 text-gray-300">Création de <strong>portails intranet/extranet</strong> pour centraliser l'information, intégrer vos systèmes existants et faciliter la collaboration à grande échelle.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section "Cycle de vie" */}
-        <section className="py-16 sm:py-24 px-4 ">
+        {/* --- SECTION 2 : LES DEUX PILIERS --- */}
+        <section className="py-16 sm:py-24 px-4 bg-white/5">
             <div className="mx-auto max-w-6xl">
                 <div className="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Un Processus Structuré, de l'Idée à la Réalité</h2>
-                    <p className="mt-4 text-lg text-gray-400">Le développement d'une application performante n'est pas un événement, mais un processus structuré et cyclique.</p>
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Notre Méthode : 2 Piliers pour une Solution Durable</h2>
+                    <p className="mt-4 text-lg text-gray-400">Une application réussie combine une conception initiale rigoureuse et une capacité à évoluer dans le temps.</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                    <div className="flex items-start gap-4"><BrainCircuit size={32} className="text-cyan-400 mt-1 flex-shrink-0" /><div><h3 className="text-xl font-semibold text-white">Stratégie & Planification</h3><p className="mt-2 text-gray-400">Tout commence par un cahier des charges détaillé pour définir les objectifs, l'audience et le périmètre du projet.</p></div></div>
-                    <div className="flex items-start gap-4"><PenTool size={32} className="text-cyan-400 mt-1 flex-shrink-0" /><div><h3 className="text-xl font-semibold text-white">Conception UX/UI</h3><p className="mt-2 text-gray-400">Je conçois des maquettes et prototypes pour créer une interface intuitive et agréable à utiliser, avant d'écrire la moindre ligne de code.</p></div></div>
-                    <div className="flex items-start gap-4"><Code size={32} className="text-cyan-400 mt-1 flex-shrink-0" /><div><h3 className="text-xl font-semibold text-white">Développement</h3><p className="mt-2 text-gray-400">Je transforme le design en une application fonctionnelle, en construisant un backend robuste et une interface utilisateur réactive.</p></div></div>
-                    <div className="flex items-start gap-4"><Shield size={32} className="text-cyan-400 mt-1 flex-shrink-0" /><div><h3 className="text-xl font-semibold text-white">Tests & Qualité</h3><p className="mt-2 text-gray-400">Une phase de tests rigoureux est menée pour garantir la qualité, la stabilité et la sécurité de l'application.</p></div></div>
-                    <div className="flex items-start gap-4"><Rocket size={32} className="text-cyan-400 mt-1 flex-shrink-0" /><div><h3 className="text-xl font-semibold text-white">Déploiement & Lancement</h3><p className="mt-2 text-gray-400">Je m'occupe de la mise en production sur votre serveur pour rendre l'application accessible à vos utilisateurs finaux.</p></div></div>
-                    <div className="flex items-start gap-4"><LifeBuoy size={32} className="text-cyan-400 mt-1 flex-shrink-0" /><div><h3 className="text-xl font-semibold text-white">Maintenance & Évolution</h3><p className="mt-2 text-gray-400">Le travail ne s'arrête pas au lancement. Je reste disponible pour corriger les bugs, ajouter des fonctionnalités et assurer les mises à jour de sécurité.</p></div></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Pilier 1: Application Socle */}
+                  <div className="flex flex-col p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
+                    <div className="flex items-center gap-3 mb-4"><Layers size={32} className="text-cyan-300" /><h3 className="text-2xl font-semibold text-white">Pilier 1 : L'Application Socle (MVP)</h3></div>
+                    <p className="text-gray-300 mb-6 flex-grow">Nous transformons votre idée en une première version fonctionnelle et robuste. L'objectif est de valider le concept, de résoudre votre problème le plus urgent et de déployer rapidement une solution qui apporte une valeur immédiate.</p>
+                    <ul className="space-y-3 text-gray-400">
+                      <li className="flex items-center gap-3"><Lightbulb size={16} /> Atelier de conception & stratégie</li>
+                      <li className="flex items-center gap-3"><DraftingCompass size={16} /> Design UX/UI centré utilisateur</li>
+                      <li className="flex items-center gap-3"><Puzzle size={16} /> Développement d'un socle robuste</li>
+                      <li className="flex items-center gap-3"><TestTube2 size={16} /> Phase de tests & assurance qualité</li>
+                    </ul>
+                  </div>
+                  {/* Pilier 2: Partenariat d'Évolution */}
+                  <div className="flex flex-col p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
+                    <div className="flex items-center gap-3 mb-4"><GitBranch size={32} className="text-cyan-300" /><h3 className="text-2xl font-semibold text-white">Pilier 2 : Le Partenariat d'Évolution</h3></div>
+                    <p className="text-gray-300 mb-6 flex-grow">Une application n'est jamais vraiment "terminée". C'est un actif qui doit vivre. Nous devenons votre partenaire technique pour maintenir, sécuriser et faire évoluer votre outil en fonction des retours utilisateurs et de vos nouveaux défis.</p>
+                     <ul className="space-y-3 text-gray-400">
+                      <li className="flex items-center gap-3"><LifeBuoy size={16} /> Maintenance préventive & sécurité</li>
+                      <li className="flex items-center gap-3"><Rocket size={16} /> Ajout de nouvelles fonctionnalités</li>
+                      <li className="flex items-center gap-3"><TrendingUp size={16} /> Optimisation des performances</li>
+                      <li className="flex items-center gap-3"><BoxSelect size={16} /> Intégration avec d'autres outils</li>
+                    </ul>
+                  </div>
                 </div>
             </div>
         </section>
 
-        {/* CTA Section */}
+        {/* --- SECTION 3 : NOS OFFRES --- */}
         <section className="py-16 sm:py-24 px-4">
-            <div className="text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-100">Votre projet d'application commence ici</h2>
-                <p className="mt-4 text-lg text-gray-300">Discutons de vos besoins pour créer l'outil qui fera la différence.</p>
-                <button onClick={openModal} className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105">
-                    Obtenir une consultation gratuite
-                </button>
+            <div className="mx-auto max-w-5xl">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Deux Offres pour Concrétiser Votre Projet</h2>
+                  <p className="mt-4 text-lg text-gray-400">Que vous ayez besoin de construire l'outil ou de le faire grandir, nous avons une solution.</p>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                  {/* Offre 1 */}
+                  <div className="flex flex-col text-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
+                    <h3 className="text-xl font-semibold text-cyan-300">OFFRE INITIALE</h3>
+                    <h4 className="text-2xl font-bold text-white mt-2">Développement d'Application Socle</h4>
+                    <p className="mt-4 text-gray-300 flex-grow">Pour les entreprises qui souhaitent lancer une nouvelle application. Nous gérons le projet de A à Z, de l'idée à la mise en production de votre Produit Minimum Viable (MVP).</p>
+                    <button onClick={openModal} className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/20">
+                        Lancer mon projet <ArrowRight size={20} />
+                    </button>
+                  </div>
+                  {/* Offre 2 */}
+                   <div className="flex flex-col text-center p-8 rounded-3xl border-2 shadow-2xl bg-gray-950/60 backdrop-blur-lg border-cyan-400">
+                    <h3 className="text-xl font-semibold text-cyan-300">NOTRE RECOMMANDATION</h3>
+                    <h4 className="text-2xl font-bold text-white mt-2">Partenariat d'Évolution</h4>
+                    <p className="mt-4 text-gray-300 flex-grow">Pour les entreprises qui ont déjà une application (créée par nous ou non). Un accompagnement mensuel pour assurer la maintenance, la sécurité et le développement continu de nouvelles fonctionnalités.</p>
+                    <button onClick={openModal} className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105">
+                        Faire évoluer mon application <ArrowRight size={20} />
+                    </button>
+                  </div>
+                </div>
             </div>
         </section>
-
-          {faqData && (
+        
+        {faqData && (
           <FAQ 
             title={faqData.title}
             subtitle={faqData.subtitle}
             faqItems={faqData.items}
           />
         )}
-        
+
         <Footer />
       </main>
-      
+
       <Modal isOpen={isModalOpen} onClose={closeModal} title={formFieldsConfig[formType]?.subject}>
         <ContactForm formType={formType} onClose={closeModal} />
       </Modal>

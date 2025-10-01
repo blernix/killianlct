@@ -5,29 +5,33 @@ import Link from 'next/link';
 import { MonitorSmartphone, AppWindow, ShoppingCart, TrendingUp, Info, } from "lucide-react";
 
 export function Services() {
-  const mainServices = [
+const mainServices = [
     {
       icon: <MonitorSmartphone className="h-8 w-8 text-white" />,
       title: "Sites Vitrines sur-mesure",
-      description: "Présentez votre activité avec un site rapide, responsive et unique. Parfait pour les indépendants, PME et artisans.",
+      // On conserve cette description qui est déjà excellente et impersonnelle.
+      description: "Présentez votre activité avec un site rapide, responsive et unique. La solution idéale pour les indépendants, PME et artisans.",
       url: "/services/site-vitrine"
     },
     {
       icon: <AppWindow className="h-8 w-8 text-white" />,
       title: "Applications Web complexes",
-      description: "Besoin d’un outil métier spécifique ? Je développe votre solution : espace client, outil de gestion, plateforme interne…",
+      // On passe au "nous" et on utilise un vocabulaire plus "agence".
+      description: "Besoin d’un outil métier ? Notre agence développe votre solution sur-mesure : espace client, outil de gestion, plateforme interne…",
       url: "/services/application-web"
     },
     {
       icon: <ShoppingCart className="h-8 w-8 text-white" />,
       title: "E-commerce & Vente en ligne",
-      description: "Vendez en ligne avec une boutique optimisée et simple à gérer pour vous (paniers, paiements, abonnements).",
+      // On renforce la promesse en parlant de "performance" et d' "expérience utilisateur".
+      description: "Vendez en ligne avec une boutique performante, optimisée pour l'expérience utilisateur et simple à administrer pour vous.",
       url: "/services/e-commerce"
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-white" />,
-      title: "Optimisation SEO & Suivi",
-      description: "Améliorez votre classement sur Google et attirez plus de clients. J'optimise votre site et assure un suivi pour des résultats durables.",
+      title: "Optimisation SEO & Stratégie",
+      // On passe au "nous" et on élargit le service au-delà de la simple "optimisation" vers la "stratégie".
+      description: "Améliorez votre classement sur Google et attirez plus de clients. Nous optimisons votre site et définissons une stratégie pour des résultats durables.",
       url: "/services/optimisation-seo"
     },
   ];
@@ -45,7 +49,7 @@ export function Services() {
             Des solutions pour chaque projet
           </h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto text-gray-300">
-            Que vous partiez de zéro ou cherchiez à améliorer l'existant, je propose des prestations adaptées à vos ambitions.
+            Que vous partiez de zéro ou cherchiez à améliorer l'existant, nous proposons des prestations adaptées à vos ambitions.
           </p>
         </div>
 
