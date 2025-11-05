@@ -28,47 +28,56 @@ export default function ValueProposition() {
         {/* Titre de la section */}
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-100">
-            Une approche centrée sur l'essentiel.
+            Pourquoi nous choisir ?
           </h2>
           <p className="mt-4 text-lg text-gray-100">
-            Notre philosophie : un développement sur-mesure pour des résultats concrets.
+            Des résultats mesurables, pas des promesses marketing.
           </p>
         </div>
 
         {/* La grille avec nos 3 cartes de valeur (le contenu ne change pas) */}
         <div className="mt-16 grid grid-cols-1 gap-8 text-center md:grid-cols-3">
           
-          {/* Carte 1: Sur-Mesure */}
+          {/* Carte 1: Délais */}
           <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-              <Target className="h-6 w-6 text-white" />
+              <Rocket className="h-6 w-6 text-white" />
             </div>
-            <h3 className="mt-6 font-semibold text-white">Du Sur-Mesure, Rien de Superflu</h3>
+            <h3 className="mt-6 font-semibold text-white">Livraison en 3 Semaines</h3>
             <p className="mt-2 text-sm text-gray-300">
-              Pas de fonctionnalités inutiles ni de plateformes obscures. Nous codons uniquement ce dont vous avez besoin pour des bases solides et une gestion simplifiée.
+              Pas de projets qui traînent pendant 6 mois. Nous travaillons en sprints courts avec des livrables concrets chaque semaine. Vous voyez l'avancement en temps réel.
             </p>
+            <div className="mt-4 inline-block rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-300 border border-green-500/30">
+              3x plus rapide que la moyenne
+            </div>
           </div>
 
           {/* Carte 2: Performance */}
           <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-              <Rocket className="h-6 w-6 text-white" />
+              <Target className="h-6 w-6 text-white" />
             </div>
-            <h3 className="mt-6 font-semibold text-white">La Performance au Cœur</h3>
+            <h3 className="mt-6 font-semibold text-white">Score Google 95+/100</h3>
             <p className="mt-2 text-sm text-gray-300">
-              Un site rapide est essentiel pour vos utilisateurs et votre référencement. Nous privilégions les technologies modernes pour garantir une vitesse et une fluidité optimales.
+              Tous nos sites obtiennent un score Lighthouse supérieur à 95/100. Temps de chargement {'<'} 1 seconde. Optimisé pour le SEO et la conversion dès le premier jour.
             </p>
+            <div className="mt-4 inline-block rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300 border border-blue-500/30">
+              Performance garantie
+            </div>
           </div>
 
-          {/* Carte 3: Partenariat */}
+          {/* Carte 3: Autonomie */}
           <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
               <Shield className="h-6 w-6 text-white" />
             </div>
-            <h3 className="mt-6 font-semibold text-white">Un Partenaire Fiable</h3>
+            <h3 className="mt-6 font-semibold text-white">Autonomie Totale en 2h</h3>
             <p className="mt-2 text-sm text-gray-300">
-              Plus qu'un simple prestataire, nous vous accompagnons pour que vous puissiez avancer sereinement. Nous construisons des outils durables pour aujourd'hui et pour demain.
+              Interface d'administration sur-mesure, sans les 50 menus WordPress. Formation de 2h incluse + 3 mois de support offert. Vous gérez votre contenu sans jamais nous rappeler.
             </p>
+            <div className="mt-4 inline-block rounded-full bg-purple-500/20 px-3 py-1 text-xs font-medium text-purple-300 border border-purple-500/30">
+              Zéro dépendance technique
+            </div>
           </div>
 
         </div>

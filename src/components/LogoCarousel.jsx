@@ -11,11 +11,19 @@ const clients = [
 
 export function LogoCarousel() {
   return (
-    <section className="py-16 sm:py-24 overflow-x-hidden">
+    <section className="py-16 sm:py-24 overflow-x-hidden bg-gradient-to-b from-transparent via-gray-950/30 to-transparent">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-center text-2xl font-semibold leading-8 text-gray-400">
-          Ils nous ont fait confiance pour leur projet digital
-        </h2>
+        <div className="text-center mb-8">
+          <div className="inline-block rounded-full bg-green-500/20 px-4 py-1.5 text-sm font-medium text-green-300 border border-green-500/30 mb-4">
+            4 projets livrés en 2024
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
+            Ils ont choisi notre expertise
+          </h2>
+          <p className="mt-2 text-gray-400">
+            Sites rapides, modernes et performants. Tous livrés dans les délais.
+          </p>
+        </div>
         
         <div
           className="mx-auto mt-10 max-w-4xl relative

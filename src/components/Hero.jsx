@@ -8,9 +8,9 @@ import { MicroPromises } from "@/components/MicroPromises";
 
 export default function Hero() {
     // Ton contenu
-    const title = "Artisans du web, nous créons le site sur-mesure qui développe votre activité.";
-    const paragraph = "Nous concevons des solutions web complètes : sites vitrines, plateformes e-commerce, applications métier et optimisation SEO. Notre expertise en automatisation  et gestion de contenu  garantit un projet performant et évolutif.";
-    const buttonText = "Découvrir nos services";
+    const title = "Votre site web livré en 3 semaines, pas en 3 mois.";
+    const paragraph = "Développement sur-mesure sans les bugs de WordPress. Interface d'administration épurée, performances optimales et formation incluse. Vous êtes autonome dès le premier jour.";
+    const buttonText = "Voir nos réalisations";
 
     const words = title.split(" ");
 
@@ -73,9 +73,9 @@ export default function Hero() {
                     {/* Micro-promesses */}
                     <MicroPromises
                         promises={[
-                            "Réponse sous 24h",
-                            "Devis gratuit",
-                            "Conseils personnalisés"
+                            "Livraison en 3 semaines",
+                            "Formation de 2h incluse",
+                            "Support technique 3 mois offert"
                         ]}
                         variant="inline"
                         className="mt-2"

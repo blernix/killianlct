@@ -6,19 +6,22 @@ import { ImageIcon, ShieldCheck, SlidersHorizontal, ArrowRight } from "lucide-re
 export function AdminSection() {
   const features = [
     {
-      title: "Mettez à jour votre site en toute simplicité",
+      title: "Gestion de contenu simplifiée",
       icon: <ImageIcon className="h-7 w-7 text-white" />,
-      description: "Ajoutez articles, photos ou services quand vous le souhaitez. Une interface intuitive vous permet de gérer votre contenu facilement, sans passer par un développeur.",
+      description: "Modifiez textes, images, produits en 2 clics. Interface épurée, zéro complexité. Formation de 2h suffit pour être 100% autonome.",
+      price: "Inclus dans votre site"
     },
     {
-      title: "Une structure protégée, sans risques",
+      title: "Sécurité totale vs WordPress",
       icon: <ShieldCheck className="h-7 w-7 text-white" />,
-      description: "Contrairement à WordPress, vous n'avez pas accès aux parties sensibles du site. Vous pouvez modifier votre contenu librement sans jamais risquer de casser l’affichage.",
+      description: "Impossible de casser le design ou le code. Vous ne voyez QUE vos contenus, pas les réglages techniques. Zéro risque, 100% sérénité.",
+      price: "Protection native"
     },
     {
-      title: "Un espace admin 100% adapté à votre besoin",
+      title: "Interface 100% sur-mesure",
       icon: <SlidersHorizontal className="h-7 w-7 text-white" />,
-      description: "Votre tableau de bord ne contient que l’essentiel. Pas de menus inutiles ou d’options compliquées : vous voyez uniquement ce que vous avez besoin de gérer.",
+      description: "On configure uniquement les champs dont vous avez besoin. Pas de 50 menus comme WordPress. Vous gagnez 80% de temps sur vos mises à jour.",
+      price: "À partir de 2 500€"
     },
   ];
 
@@ -29,19 +32,22 @@ export function AdminSection() {
       className="py-24 sm:py-32 px-4 text-center"
     >
       <div className="mx-auto max-w-5xl">
-        <h2 
-            id="admin-title" 
+        <div className="inline-block rounded-full bg-indigo-500/20 px-4 py-1.5 text-sm font-medium text-indigo-300 border border-indigo-500/30 mb-4">
+          Expertise complémentaire
+        </div>
+        <h2
+            id="admin-title"
             className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-gray-300 via-gray-400 to-white text-transparent bg-clip-text"
         >
-          Prenez la main sur votre contenu
+          Interface admin épurée : zéro risque de casser votre site
         </h2>
         <p className="mt-4 text-lg max-w-2xl mx-auto text-gray-400">
-          Modifiez votre site quand vous le souhaitez, sans jamais risquer de le dégrader. Vous avez la liberté de gérer, sans la peur de tout casser.
+          Oubliez les 50 menus WordPress. Interface sur-mesure où vous ne voyez QUE vos contenus. Modifier votre site en toute sérénité, impossible de toucher au code.
         </p>
 
         {/* Pilule de mise en avant (style légèrement corrigé pour la lisibilité) */}
         <div className="mt-6 inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-gray-200 border border-white/20">
-            <span>🔒 Accès sécurisé – contenu uniquement</span>
+            <span>🔒 Livré en 3 semaines • Formation 2h incluse</span>
         </div>
 
         {/* BOUTON AJOUTÉ ICI */}
@@ -59,7 +65,7 @@ export function AdminSection() {
         {/* La grille des 3 arguments */}
         <div className="mt-16 grid grid-cols-1 gap-8 text-center md:grid-cols-3">
           {features.map((feature, index) => (
-            <div 
+            <div
                 key={index}
                 className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20"
             >
@@ -67,7 +73,10 @@ export function AdminSection() {
                 {feature.icon}
               </div>
               <h3 className="mt-6 font-semibold text-white">{feature.title}</h3>
-              <p className="mt-2 text-sm text-gray-300">{feature.description}</p>
+              <p className="mt-2 text-sm text-gray-300 flex-grow">{feature.description}</p>
+              <div className="mt-4 text-sm font-bold text-indigo-300">
+                {feature.price}
+              </div>
             </div>
           ))}
         </div>
