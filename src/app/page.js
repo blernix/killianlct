@@ -13,11 +13,8 @@ import { Footer } from "@/components/layout/Footer";
 import { LogoCarousel } from "@/components/LogoCarousel";
 import Header from "@/components/layout/Header";
 import Modal from '@/components/Modal';
-import ContactForm from '@/components/ContactForm';
+import ContactForm, { getModalTitle } from '@/components/ContactForm';
 import { accueilFaqData } from './data/faq/accueil';
-
-// Note: Il faudra exporter la config depuis ContactForm.jsx
- import { formFieldsConfig } from '@/components/ContactForm';
 
 export default function Home() {
   // Étape 3: On crée les états pour piloter la modale
@@ -55,10 +52,10 @@ export default function Home() {
       </main>
 
       {/* Étape 6: La modale est ajoutée ici, en dehors du 'main', prête à être affichée */}
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        title={`Demande d'information` /* On pourra rendre ce titre dynamique */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={getModalTitle(formType)}
       >
         <ContactForm formType={formType} onClose={closeModal} />
       </Modal>

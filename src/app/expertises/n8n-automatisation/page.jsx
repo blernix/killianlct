@@ -1,31 +1,44 @@
-// Fichier: app/expertises/n8n-automatisation/page.jsx
-// C'est le composant "Serveur" qui importe les données et votre composant client.
-
 import AutomatisationClient from './AutomatisationClient';
-import { n8nFaqData } from '@/app/data/faq/n8n'; // On importe les NOUVELLES données FAQ
 
-// Métadonnées pour le SEO de la page
+// Métadonnées optimisées pour le SEO automatisation n8n
 export const metadata = {
-  title: "Automatisation de Workflows sur Mesure avec n8n | Agence Killian Lecrut",
-  description: "Libérez le potentiel de votre entreprise. Nous connectons vos outils et automatisons vos processus pour vous faire gagner en temps et en efficacité.",
-  
-  // ✅ AJOUT DE L'URL CANONIQUE SPÉCIFIQUE À CETTE PAGE
+  title: "Automatisation Workflows n8n | Gagnez 20h/Semaine | Killian Lecrut",
+  description: "Automatisez vos processus avec n8n. Connectez vos outils, éliminez les tâches manuelles, réduisez les erreurs. Premier workflow en 2 semaines. ROI immédiat. Devis gratuit.",
+  keywords: [
+    "automatisation n8n",
+    "workflow automatisation",
+    "n8n consultant",
+    "automatisation processus",
+    "intégration outils",
+    "zapier alternative",
+    "automatisation business",
+    "Paris",
+    "Seine-et-Marne"
+  ],
   alternates: {
     canonical: '/expertises/n8n-automatisation',
   },
-
   openGraph: {
-    title: "Mettez votre Business sur Pilote Automatique | Agence Killian Lecrut",
-    description: "Découvrez notre méthode pour concevoir et déployer des systèmes d'automatisation robustes.",
+    title: "Automatisation n8n | Libérez 20h par Semaine en Automatisant",
+    description: "Arrêtez de perdre du temps en tâches répétitives. Nous connectons vos outils et automatisons vos processus métier avec n8n. ROI visible dès le 1er mois.",
     url: 'https://killian-lecrut.com/expertises/n8n-automatisation',
+    type: 'website',
+    images: [
+      {
+        url: 'https://killian-lecrut.com/og/n8n-automatisation.png',
+        width: 1200,
+        height: 630,
+        alt: "Automatisation de workflows avec n8n"
+      }
+    ]
   },
   twitter: {
-    title: "Mettez votre Business sur Pilote Automatique | Agence Killian Lecrut",
-    description: "Découvrez notre méthode pour concevoir et déployer des systèmes d'automatisation robustes.",
+    card: 'summary_large_image',
+    title: "Automatisation n8n | Gagnez 20h/Semaine",
+    description: "Connectez vos outils et automatisez vos processus métier. Premier workflow en 2 semaines, ROI immédiat.",
   },
 };
 
 export default function AutomatisationPage() {
-  // On passe les nouvelles données importées à votre composant client
-  return <AutomatisationClient faqData={n8nFaqData} />;
+  return <AutomatisationClient />;
 }

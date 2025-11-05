@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Home, Rocket, BrainCircuit, Rss, Mail, Menu, X, ChevronDown } from "lucide-react";
+import { Home, Rocket, BrainCircuit, Rss, Mail, Menu, X, ChevronDown, Briefcase } from "lucide-react";
 
 // Nouvelle structure de données pour gérer les sous-menus
 const navLinks = [
@@ -18,12 +18,19 @@ const navLinks = [
       { name: 'Optimisation SEO', href: '/services/optimisation-seo' },
     ]
   },
-  { 
-    name: 'Expertises', 
+  {
+    name: 'Expertises',
     icon: BrainCircuit,
     submenu: [
       { name: 'Automatisation (n8n)', href: '/expertises/n8n-automatisation' },
       { name: 'Gestion de Contenu (Directus)', href: '/expertises/directus-cms' },
+    ]
+  },
+  {
+    name: 'Secteurs',
+    icon: Briefcase,
+    submenu: [
+      { name: 'Avocats', href: '/secteurs/professions-liberales/avocat' },
     ]
   },
   // { name: 'Blog', href: '/blog', icon: Rss }, // Vous pourrez décommenter ça plus tard

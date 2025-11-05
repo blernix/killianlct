@@ -42,7 +42,12 @@ export function Footer() {
 
         {/* Ligne de séparation et copyright */}
         <div className="mt-12 border-t border-gray-800 pt-8 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} Killian Lecrut. Tous droits réservés.</p>
+          <p className="mb-2">&copy; {new Date().getFullYear()} Killian Lecrut. Tous droits réservés.</p>
+          <p>
+            <Link href="/mentions-legales" className="hover:text-white transition underline">
+              Mentions Légales & Politique de Confidentialité
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

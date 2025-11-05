@@ -4,121 +4,715 @@ import { useState } from 'react';
 import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
-import ContactForm from "@/components/ContactForm";
-import { formFieldsConfig } from '@/components/ContactForm';
-// ✅ Nouvelles icônes pour la nouvelle structure
-import { Map, Settings, PlayCircle, ShieldCheck, Repeat, Code, ArrowRight, Lightbulb, BoxSelect } from 'lucide-react';
+import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { FAQ } from '@/components/FAQ';
-import { Hero } from '@/components/blocks/hero';
+import {
+  CheckCircle,
+  AlertCircle,
+  X,
+  TrendingUp,
+  Shield,
+  ArrowRight,
+  Sparkles,
+  Zap,
+  BarChart
+} from 'lucide-react';
+import { n8nData } from './data';
 
-export default function AutomatisationClient({ faqData }) {
+export default function AutomatisationClient() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [teamSize, setTeamSize] = useState(3);
+  const [hoursPerDay, setHoursPerDay] = useState(1);
+  const [hourlyRate, setHourlyRate] = useState(50);
+  const [selectedPackage, setSelectedPackage] = useState(3500);
+  const [selectedOffer, setSelectedOffer] = useState('');
   const formType = 'automatisation';
-  const openModal = () => setIsModalOpen(true);
+
+  const openModal = (offerName = '') => {
+    const offer = typeof offerName === 'string' ? offerName : '';
+    setSelectedOffer(offer);
+    setIsModalOpen(true);
+  };
   const closeModal = () => setIsModalOpen(false);
 
-  // --- HERO STRATÉGIQUE ---
-  const heroTitle = "Et si vos logiciels travaillaient enfin ensemble, pour vous ?";
-  const heroSubtitle = "Arrêtez de perdre du temps en tâches manuelles et en copier-coller. Notre agence conçoit des systèmes d'automatisation intelligents qui connectent vos outils, fiabilisent vos processus et libèrent le potentiel de votre équipe.";
-  const heroActions = [{ label: "Découvrir notre méthode", variant: "default", href: "#methode" }];
+  // Calculs ROI
+  const monthlyHoursSaved = teamSize * hoursPerDay * 20; // jours ouvrés/mois
+  const monthlySavings = monthlyHoursSaved * hourlyRate;
+  const monthsToROI = (selectedPackage / monthlySavings).toFixed(1);
+  const yearlyROI = (monthlySavings * 12) - selectedPackage;
+
+  // Préparer les données FAQ
+  const faqItems = n8nData.faq.items.map((item, index) => ({
+    value: `item-${index}`,
+    question: item.question,
+    answer: item.answer
+  }));
+
+  const renderComparisonValue = (value) => {
+    if (value === true) return <CheckCircle className="text-green-400 mx-auto" size={24} />;
+    if (value === false) return <X className="text-red-400 mx-auto" size={24} />;
+    return <span className="text-gray-300 text-sm">{value}</span>;
+  };
 
   return (
     <>
       <main>
         <Header onOpenModal={openModal} />
-        
-        <Hero 
-          title={heroTitle}
-          subtitle={heroSubtitle}
-          actions={heroActions}
-          className="[&_.bg-primary\\/60]:bg-orange-500/60 pt-23"
-        />
 
-        {/* --- SECTION 1 : LE PROBLÈME À RÉSOUDRE --- */}
-        <section id="methode" className="py-16 sm:py-24 px-4">
-            <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Le Coût Invisible de la "Désynchronisation"</h2>
-                <p className="mt-6 text-lg text-gray-300 leading-relaxed">
-                  Chaque tâche manuelle, chaque information recopiée d'un outil à l'autre est une micro-perte de temps et un risque d'erreur. Cumulées, ces frictions créent des "silos de données", ralentissent votre croissance et frustrent vos équipes. L'automatisation n'est pas un luxe, c'est la colonne vertébrale d'une entreprise efficace.
+        {/* HERO MODERNE */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-950 to-gray-900">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-orange-600/20 rounded-full blur-[120px]" />
+
+          <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
+            <div className="max-w-5xl mx-auto">
+              <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
+                  <Zap className="text-orange-400" size={16} />
+                  n8n Certifié
+                </span>
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
+                  <Shield className="text-green-400" size={16} />
+                  Infrastructure Sécurisée
+                </span>
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
+                  <BarChart className="text-blue-400" size={16} />
+                  Monitoring 24/7
+                </span>
+              </div>
+
+              <div className="text-center space-y-6 mb-12">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                  {n8nData.hero.title.split('20h').map((part, i) =>
+                    i === 0 ? part : (
+                      <span key={i}>
+                        <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+                          20h
+                        </span>
+                        {part}
+                      </span>
+                    )
+                  )}
+                </h1>
+                <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                  {n8nData.hero.subtitle}
                 </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <button
+                  onClick={() => openModal()}
+                  className="group relative px-8 py-4 bg-white hover:bg-gray-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(251,146,60,0.5)] flex items-center gap-3"
+                >
+                  <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
+                  {n8nData.hero.ctaLabel}
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                <div className="flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-amber-600 border-2 border-gray-900" />
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600 border-2 border-gray-900" />
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-orange-600 border-2 border-gray-900" />
+                  </div>
+                  <span className="text-sm text-gray-300">
+                    <strong className="text-white">50+ workflows</strong> automatisés
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                {n8nData.hero.microPromises.map((promise, i) => (
+                  <div key={i} className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
+                    <CheckCircle className="text-green-400 flex-shrink-0" size={20} />
+                    <span className="text-sm text-gray-300">{promise}</span>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
         </section>
 
-        {/* --- SECTION 2 : LES DEUX PILIERS --- */}
-        <section className="py-16 sm:py-24 px-4 bg-white/5">
-            <div className="mx-auto max-w-6xl">
-                <div className="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Notre Méthode : De la Stratégie à l'Exécution</h2>
-                    <p className="mt-4 text-lg text-gray-400">Un workflow efficace n'est pas juste un branchement de tuyaux. Il naît d'une réflexion stratégique sur vos processus métiers.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Pilier 1: Conception Stratégique */}
-                  <div className="flex flex-col p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
-                    <div className="flex items-center gap-3 mb-4"><Map size={32} className="text-orange-300" /><h3 className="text-2xl font-semibold text-white">Pilier 1 : La Conception Stratégique</h3></div>
-                    <p className="text-gray-300 mb-6 flex-grow">Nous ne commençons jamais par la technique. Nous cartographions vos processus actuels pour identifier les goulots d'étranglement et les tâches à plus fort potentiel d'automatisation. C'est la phase de l'architecte.</p>
-                    <ul className="space-y-3 text-gray-400">
-                      <li className="flex items-center gap-3"><Lightbulb size={16} /> Audit de vos processus existants</li>
-                      <li className="flex items-center gap-3"><BoxSelect size={16} /> Identification des opportunités</li>
-                      <li className="flex items-center gap-3"><Settings size={16} /> Architecture du workflow cible</li>
-                    </ul>
-                  </div>
-                  {/* Pilier 2: Développement & Maintenance */}
-                  <div className="flex flex-col p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
-                    <div className="flex items-center gap-3 mb-4"><PlayCircle size={32} className="text-orange-300" /><h3 className="text-2xl font-semibold text-white">Pilier 2 : Le Développement & la Maintenance</h3></div>
-                    <p className="text-gray-300 mb-6 flex-grow">Une fois la stratégie validée, nous construisons, testons et déployons les workflows sur notre infrastructure sécurisée. Nous gérons tout de A à Z pour votre tranquillité d'esprit. C'est la phase de l'ingénieur.</p>
-                     <ul className="space-y-3 text-gray-400">
-                      <li className="flex items-center gap-3"><Code size={16} /> Développement de workflows robustes</li>
-                      <li className="flex items-center gap-3"><ShieldCheck size={16} /> Déploiement et surveillance pro-active</li>
-                      <li className="flex items-center gap-3"><Repeat size={16} /> Optimisation continue des performances</li>
-                    </ul>
-                  </div>
-                </div>
+        {/* Section Défis/Solutions */}
+        <section className="relative py-24 px-4 overflow-hidden bg-black">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[150px]" />
+          <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-green-600/10 rounded-full blur-[150px]" />
+
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/30 rounded-full text-sm text-red-400 mb-6">
+                <AlertCircle size={16} />
+                <span className="font-semibold">Les Pièges à Éviter</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                Les 3 Freins à la{' '}
+                <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                  Croissance de Votre Business
+                </span>
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Et comment l'automatisation résout chacun définitivement
+              </p>
             </div>
+
+            <div className="space-y-8">
+              {n8nData.challenges.map((challenge, index) => {
+                const Icon = challenge.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-orange-500/30 transition-all duration-500"
+                  >
+                    <div className="absolute -top-6 left-8 w-12 h-12 bg-gradient-to-br from-orange-600 to-amber-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                      {index + 1}
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 pt-4">
+                      <div className="relative">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="relative bg-gradient-to-br from-red-500/10 to-orange-500/5 border border-red-500/20 rounded-2xl p-6 h-full">
+                          <div className="flex items-start gap-3 mb-4">
+                            <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <X className="text-red-400" size={20} />
+                            </div>
+                            <div>
+                              <span className="text-xs uppercase tracking-wider text-red-400 font-bold">Problème</span>
+                              <h3 className="text-xl font-bold text-white mt-1">{challenge.title}</h3>
+                            </div>
+                          </div>
+                          <p className="text-gray-300 leading-relaxed mb-4">{challenge.problem}</p>
+                          {challenge.stat && (
+                            <div className="flex items-start gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                              <span className="text-xl flex-shrink-0">📊</span>
+                              <p className="text-sm text-red-300 font-medium">{challenge.stat}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="relative">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="relative bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 rounded-2xl p-6 h-full">
+                          <div className="flex items-start gap-3 mb-4">
+                            <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <CheckCircle className="text-green-400" size={20} />
+                            </div>
+                            <div>
+                              <span className="text-xs uppercase tracking-wider text-green-400 font-bold">Notre Solution</span>
+                              <h3 className="text-xl font-bold text-white mt-1">Automatisation n8n</h3>
+                            </div>
+                          </div>
+                          <p className="text-gray-300 leading-relaxed">{challenge.solution}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </section>
 
-        {/* --- SECTION 3 : NOS OFFRES --- */}
-        <section className="py-16 sm:py-24 px-4">
-            <div className="mx-auto max-w-5xl">
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-100">Deux Offres pour Mettre Votre Business sur Pilote Automatique</h2>
-                  <p className="mt-4 text-lg text-gray-400">Selon vos besoins, nous pouvons résoudre un problème ponctuel ou devenir votre partenaire d'automatisation.</p>
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-                  {/* Offre 1 */}
-                  <div className="flex flex-col text-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/15">
-                    <h3 className="text-xl font-semibold text-orange-300">OFFRE INITIALE</h3>
-                    <h4 className="text-2xl font-bold text-white mt-2">Audit & Workflow Initial</h4>
-                    <p className="mt-4 text-gray-300 flex-grow">Idéal pour démarrer. Nous analysons vos processus et construisons un premier workflow pour résoudre votre problème le plus chronophage et démontrer un retour sur investissement immédiat.</p>
-                    <button onClick={openModal} className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/20">
-                        Automatiser une tâche <ArrowRight size={20} />
-                    </button>
-                  </div>
-                  {/* Offre 2 */}
-                   <div className="flex flex-col text-center p-8 rounded-3xl border-2 shadow-2xl bg-gray-950/60 backdrop-blur-lg border-orange-400">
-                    <h3 className="text-xl font-semibold text-orange-300">NOTRE RECOMMANDATION</h3>
-                    <h4 className="text-2xl font-bold text-white mt-2">Partenariat d'Automatisation</h4>
-                    <p className="mt-4 text-gray-300 flex-grow">Notre offre principale. Un accompagnement mensuel pour identifier, construire et maintenir l'ensemble de vos workflows. Nous devenons votre pôle d'automatisation externalisé.</p>
-                    <button onClick={openModal} className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-gray-900 transition duration-300 hover:bg-gray-200 hover:scale-105">
-                        Devenir partenaire <ArrowRight size={20} />
-                    </button>
-                  </div>
-                </div>
+        {/* Section Processus */}
+        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-sm text-orange-400 mb-6">
+                <Zap size={16} />
+                <span className="font-semibold">Notre Méthode</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {n8nData.process.title}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                {n8nData.process.subtitle}
+              </p>
             </div>
+
+            <div className="space-y-6">
+              {n8nData.process.steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-orange-500/50 hover:shadow-[0_0_30px_rgba(251,146,60,0.2)] transition-all duration-500"
+                  >
+                    <div className="flex flex-col lg:flex-row gap-6">
+                      <div className="flex lg:flex-col items-center lg:items-start gap-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-amber-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg flex-shrink-0">
+                          {step.number}
+                        </div>
+                        <div className="w-14 h-14 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Icon className="text-orange-400" size={28} />
+                        </div>
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">
+                            {step.title}
+                          </h3>
+                          <span className="text-sm text-orange-400 font-semibold bg-orange-500/10 px-3 py-1 rounded-full">
+                            {step.duration}
+                          </span>
+                        </div>
+                        <p className="text-gray-300 leading-relaxed mb-4">
+                          {step.description}
+                        </p>
+
+                        <div>
+                          <p className="text-sm text-gray-500 mb-2 font-semibold">Livrables :</p>
+                          <div className="flex flex-wrap gap-2">
+                            {step.deliverables.map((deliverable, i) => (
+                              <span
+                                key={i}
+                                className="text-xs bg-white/5 border border-white/10 px-3 py-1 rounded-full text-gray-400"
+                              >
+                                {deliverable}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-12 text-center">
+              <button
+                onClick={() => openModal()}
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(251,146,60,0.6)]"
+              >
+                Lancer mon premier workflow
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
         </section>
-        
-        {faqData && (
-          <FAQ 
-            title={faqData.title}
-            subtitle={faqData.subtitle}
-            faqItems={faqData.items}
-          />
-        )}
+
+        {/* Section Cas d'usage */}
+        <section className="relative py-24 px-4 overflow-hidden bg-black">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[150px]" />
+
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-sm text-blue-400 mb-6">
+                <Sparkles size={16} />
+                <span className="font-semibold">Cas d'Usage</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {n8nData.useCases.title}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                {n8nData.useCases.subtitle}
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {n8nData.useCases.cases.map((useCase, index) => {
+                const Icon = useCase.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-orange-500/50 hover:shadow-[0_0_30px_rgba(251,146,60,0.15)] transition-all duration-500 hover:-translate-y-2"
+                  >
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="text-orange-400" size={24} />
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
+                      {useCase.title}
+                    </h3>
+                    <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                      {useCase.description}
+                    </p>
+
+                    <div className="pt-3 border-t border-white/10">
+                      <p className="text-xs text-orange-400/70 italic">
+                        🔗 {useCase.examples}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Section Intégrations */}
+        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-black">
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full text-sm text-purple-400 mb-6">
+                <Zap size={16} />
+                <span className="font-semibold">Intégrations</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {n8nData.integrations.title}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                {n8nData.integrations.subtitle}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {n8nData.integrations.categories.map((category, index) => {
+                const Icon = category.icon;
+                const colorMap = {
+                  blue: 'from-blue-500/20 to-cyan-500/20 border-blue-500/30',
+                  green: 'from-green-500/20 to-emerald-500/20 border-green-500/30',
+                  purple: 'from-purple-500/20 to-pink-500/20 border-purple-500/30',
+                  orange: 'from-orange-500/20 to-amber-500/20 border-orange-500/30',
+                  cyan: 'from-cyan-500/20 to-blue-500/20 border-cyan-500/30',
+                  red: 'from-red-500/20 to-orange-500/20 border-red-500/30'
+                };
+                const iconColorMap = {
+                  blue: 'text-blue-400',
+                  green: 'text-green-400',
+                  purple: 'text-purple-400',
+                  orange: 'text-orange-400',
+                  cyan: 'text-cyan-400',
+                  red: 'text-red-400'
+                };
+                return (
+                  <div
+                    key={index}
+                    className={`bg-gradient-to-br ${colorMap[category.color]} backdrop-blur-sm border rounded-2xl p-6 hover:scale-105 transition-all duration-300`}
+                  >
+                    <div className={`w-12 h-12 bg-gradient-to-br ${colorMap[category.color]} rounded-xl flex items-center justify-center mb-4`}>
+                      <Icon className={iconColorMap[category.color]} size={24} />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">{category.name}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {category.tools.map((tool, i) => (
+                        <span
+                          key={i}
+                          className="text-xs bg-white/10 border border-white/20 px-2 py-1 rounded text-gray-300"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-gray-400 mb-6">
+                Et 200+ autres intégrations disponibles. Si votre outil a une API, on peut le connecter !
+              </p>
+              <button
+                onClick={() => openModal()}
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-orange-500/50 text-white font-bold rounded-full transition-all duration-300"
+              >
+                Vérifier mes intégrations
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Calculateur ROI */}
+        <section className="relative py-24 px-4 overflow-hidden bg-black">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[150px]" />
+
+          <div className="relative z-10 max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
+                <TrendingUp size={16} />
+                <span className="font-semibold">Simulation ROI</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                Calculez Votre{' '}
+                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  Retour sur Investissement
+                </span>
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Combien votre entreprise peut-elle économiser en automatisant ?
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
+              <div className="grid md:grid-cols-4 gap-6 mb-8">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Taille équipe
+                  </label>
+                  <input
+                    type="number"
+                    value={teamSize}
+                    onChange={(e) => setTeamSize(Number(e.target.value))}
+                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white placeholder-gray-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
+                    placeholder="3"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Heures gagnées/pers./jour
+                  </label>
+                  <input
+                    type="number"
+                    value={hoursPerDay}
+                    onChange={(e) => setHoursPerDay(Number(e.target.value))}
+                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white placeholder-gray-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
+                    placeholder="1"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Coût horaire (€)
+                  </label>
+                  <input
+                    type="number"
+                    value={hourlyRate}
+                    onChange={(e) => setHourlyRate(Number(e.target.value))}
+                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white placeholder-gray-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
+                    placeholder="50"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Forfait choisi
+                  </label>
+                  <select
+                    value={selectedPackage}
+                    onChange={(e) => setSelectedPackage(Number(e.target.value))}
+                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all [&>option]:bg-gray-900"
+                  >
+                    <option value={1500}>1 Workflow - 1 500€</option>
+                    <option value={3500}>Pack 3 - 3 500€</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 rounded-2xl p-8 border border-green-500/30">
+                <p className="text-gray-300 text-center mb-6">
+                  Avec <strong className="text-white">{teamSize} personnes</strong> qui gagnent{' '}
+                  <strong className="text-white">{hoursPerDay}h/jour</strong> chacune à{' '}
+                  <strong className="text-white">{hourlyRate}€/h</strong> :
+                </p>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <p className="text-sm text-gray-400 mb-2">Économie mensuelle</p>
+                    <p className="text-3xl font-bold text-white">
+                      {monthlySavings.toLocaleString()}€
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <p className="text-sm text-gray-400 mb-2">Workflow rentabilisé en</p>
+                    <p className="text-3xl font-bold text-green-400">
+                      {monthsToROI} mois
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <p className="text-sm text-gray-400 mb-2">ROI sur 12 mois</p>
+                    <p className="text-3xl font-bold text-green-400 flex items-center justify-center gap-2">
+                      <TrendingUp size={28} />
+                      +{yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 text-center">
+                <button
+                  onClick={() => openModal(selectedPackage === 1500 ? 'Workflow Unique - 1 500€' : 'Pack 3 Workflows - 3 500€')}
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]"
+                >
+                  Obtenir mon devis pour cette offre
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Tarifs */}
+        <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-950">
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[150px]" />
+
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-sm text-orange-400 mb-6">
+                <Sparkles size={16} />
+                <span className="font-semibold">Tarifs Transparents</span>
+              </div>
+              <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6">
+                {n8nData.pricing.title}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                {n8nData.pricing.subtitle}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              {n8nData.pricing.packages.map((pkg, index) => (
+                <div
+                  key={index}
+                  className={`group relative rounded-3xl p-8 transition-all duration-500 ${
+                    pkg.highlighted
+                      ? 'bg-gradient-to-br from-white/15 to-white/5 border-2 border-orange-500/50 shadow-[0_0_60px_rgba(251,146,60,0.3)] scale-105 md:scale-110'
+                      : 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-orange-500/30 hover:shadow-[0_0_30px_rgba(251,146,60,0.15)]'
+                  }`}
+                >
+                  {pkg.highlighted && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-orange-600 to-amber-600 text-white text-sm font-bold rounded-full shadow-lg">
+                      ⭐ {pkg.cta}
+                    </div>
+                  )}
+
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      {pkg.name}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {pkg.description}
+                    </p>
+                    <p className="text-xs text-orange-400 mb-6">
+                      ⏱️ {pkg.timeframe}
+                    </p>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-bold text-white">
+                        {pkg.price.split('€')[0].split('/')[0]}
+                      </span>
+                      {pkg.price.includes('€') && <span className="text-2xl text-gray-400">€{pkg.price.includes('/mois') ? '/mois' : ''}</span>}
+                    </div>
+                    {pkg.savingsExample && (
+                      <p className="text-xs text-green-400 mt-3">
+                        💡 {pkg.savingsExample}
+                      </p>
+                    )}
+                  </div>
+
+                  <ul className="space-y-4 mb-8">
+                    {pkg.features.map((feature, fIndex) => (
+                      <li key={fIndex} className="flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle className="text-green-400" size={14} />
+                        </div>
+                        <span className="text-sm text-gray-300 leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
+                    className={`w-full py-4 px-6 rounded-full font-bold transition-all duration-300 ${
+                      pkg.highlighted
+                        ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white shadow-lg hover:shadow-[0_0_30px_rgba(251,146,60,0.5)] hover:scale-105'
+                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-orange-500/50'
+                    }`}
+                  >
+                    {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* ROI Justification */}
+            <div className="max-w-4xl mx-auto">
+              <div className="relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-yellow-600 to-orange-600 text-white font-bold rounded-full shadow-lg">
+                  {n8nData.pricing.roi.title}
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6 mt-6">
+                  {n8nData.pricing.roi.points.map((point, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-600 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <span className="text-white font-bold">{index + 1}</span>
+                      </div>
+                      <p className="text-gray-300 leading-relaxed pt-1">{point}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <p className="text-sm text-gray-400 max-w-3xl mx-auto leading-relaxed p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <strong className="text-white">✨ {n8nData.pricing.note}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparaison */}
+        <section className="relative py-24 px-4 overflow-hidden bg-black">
+          <div className="relative z-10 max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {n8nData.comparison.title}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                {n8nData.comparison.subtitle}
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-white/10">
+                      <th className="text-left p-6 text-gray-400 font-semibold">Critère</th>
+                      {n8nData.comparison.columns.map((col, index) => (
+                        <th
+                          key={index}
+                          className={`p-6 text-center font-bold ${
+                            col.highlighted ? 'text-orange-400' : 'text-gray-300'
+                          }`}
+                        >
+                          {col.label}
+                          {col.highlighted && <span className="block text-xs text-orange-500 mt-1">Notre Choix</span>}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {n8nData.comparison.categories.map((category, index) => (
+                      <tr key={index} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                        <td className="p-6 text-gray-300 font-medium">{category.name}</td>
+                        <td className="p-6 text-center">{renderComparisonValue(category.zapier)}</td>
+                        <td className="p-6 text-center bg-orange-500/5">{renderComparisonValue(category.n8n)}</td>
+                        <td className="p-6 text-center">{renderComparisonValue(category.custom)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <FAQ
+          title={n8nData.faq.title}
+          subtitle={n8nData.faq.subtitle}
+          faqItems={faqItems}
+        />
 
         <Footer />
       </main>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={formFieldsConfig[formType]?.subject}>
-        <ContactForm formType={formType} onClose={closeModal} />
+      <Modal isOpen={isModalOpen} onClose={closeModal} title={getModalTitle(formType)}>
+        <ContactForm
+          formType={formType}
+          onClose={closeModal}
+          initialData={{ selectedOffer }}
+        />
       </Modal>
     </>
   );

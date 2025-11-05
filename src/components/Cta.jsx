@@ -1,4 +1,4 @@
-// Il n'y a plus besoin d'importer Link ici
+import { MicroPromises } from "@/components/MicroPromises";
 
 export function ContactSection({ onOpenModal }) {
   return (
@@ -21,7 +21,7 @@ export function ContactSection({ onOpenModal }) {
         </h2>
 
         <p className="mt-4 text-lg max-w-xl text-gray-300">
-          Discutons-en ensemble. Que ce soit pour une simple question ou un projet déjà bien défini, je suis à votre écoute pour vous aider à concrétiser votre idée.
+          Discutons-en ensemble. Que ce soit pour une simple question ou un projet déjà bien défini, nous sommes à votre écoute pour vous aider à concrétiser votre idée.
         </p>
 
         {/* Le Link est remplacé par un button */}
@@ -32,8 +32,19 @@ export function ContactSection({ onOpenModal }) {
           className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900
                      transition duration-300 hover:bg-gray-200 hover:scale-105"
         >
-          Démarrer la discussion 🚀
+          Obtenir mon devis gratuit
         </button>
+
+        {/* Micro-promesses */}
+        <MicroPromises
+          promises={[
+            "Sans engagement",
+            "Tarifs transparents",
+            "Premier échange offert"
+          ]}
+          variant="inline"
+          className="mt-4"
+        />
       </div>
     </section>
   );

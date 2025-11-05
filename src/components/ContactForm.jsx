@@ -9,38 +9,62 @@ export const formFieldsConfig = {
   'site-vitrine': {
     subject: 'Demande de devis pour un Site Vitrine',
     fields: ['name', 'email', 'company', 'message'],
+    modalTitle: 'Demande de devis - Site Vitrine',
+  },
+  'site-avocat': {
+    subject: 'Demande de devis pour un Site Avocat',
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
+    modalTitle: 'Demande de devis - Site Avocat',
   },
   'e-commerce': {
     subject: 'Demande de devis pour un Site E-commerce',
     fields: ['name', 'email', 'company', 'budget', 'message'],
+    modalTitle: 'Demande de devis - Site E-commerce',
   },
   'application-web': {
     subject: 'Demande de devis pour une Application Web',
     fields: ['name', 'email', 'company', 'budget', 'message'],
+    modalTitle: 'Demande de devis - Application Web',
   },
   'seo': {
     subject: 'Demande d\'information pour un suivi SEO',
     fields: ['name', 'email', 'company', 'message'],
+    modalTitle: 'Demande d\'information - SEO',
   },
   'automatisation': {
     subject: 'Demande d\'information sur un projet d\'Automatisation (n8n)',
     fields: ['name', 'email', 'company', 'message'],
+    modalTitle: 'Demande d\'information - Automatisation',
   },
   'directus': {
     subject: 'Demande d\'information pour un back-office (Directus)',
     fields: ['name', 'email', 'company', 'message'],
+    modalTitle: 'Demande d\'information - Directus CMS',
   },
   'general': {
     subject: 'Demande d\'information générale',
     fields: ['name', 'email', 'message'],
+    modalTitle: 'Nous contacter',
   }
 };
 
-const initialFormData = { name: '', email: '', message: '', company: '', budget: 'Moins de 1500€' };
+// Fonction helper pour obtenir le titre de la modal
+export const getModalTitle = (formType = 'general') => {
+  return formFieldsConfig[formType]?.modalTitle || 'Demande d\'information';
+};
 
-export default function ContactForm({ formType = 'general', onClose }) {
+export default function ContactForm({ formType = 'general', onClose, initialData = {} }) {
   const config = formFieldsConfig[formType];
-  const [formData, setFormData] = useState(initialFormData);
+
+  // Créer initialFormData en fonction des champs requis par le formType
+  const [formData, setFormData] = useState(() => {
+    const baseData = { name: '', email: '', message: '', company: '', selectedOffer: '' };
+    // Ajouter le budget uniquement si le champ est requis pour ce type de formulaire
+    if (config.fields.includes('budget')) {
+      baseData.budget = 'Moins de 1500€';
+    }
+    return { ...baseData, ...initialData };
+  });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,6 +111,7 @@ export default function ContactForm({ formType = 'general', onClose }) {
     const templateParams = {
       name: formData.name, email: formData.email, subject: config.subject, message: formData.message,
       company: formData.company || 'Non spécifié', budget: formData.budget || 'Non spécifié',
+      selectedOffer: formData.selectedOffer || 'Non spécifié',
     };
     emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
@@ -110,7 +135,14 @@ export default function ContactForm({ formType = 'general', onClose }) {
         <div className="space-y-3 text-sm">
           {config.fields.map(field => formData[field] && (
             <div key={field} className="p-3 bg-black/10 rounded-md border border-white/10">
-              <span className="font-semibold text-gray-400 capitalize">{field === 'name' ? 'Nom' : field === 'email' ? 'Email' : field === 'company' ? 'Société' : field === 'budget' ? 'Budget' : 'Message'}</span>
+              <span className="font-semibold text-gray-400 capitalize">
+                {field === 'name' ? 'Nom' :
+                 field === 'email' ? 'Email' :
+                 field === 'company' ? 'Société' :
+                 field === 'budget' ? 'Budget' :
+                 field === 'selectedOffer' ? 'Offre sélectionnée' :
+                 'Message'}
+              </span>
               <p className="text-white whitespace-pre-wrap break-words">{formData[field]}</p>
             </div>
           ))}
@@ -127,9 +159,58 @@ export default function ContactForm({ formType = 'general', onClose }) {
   }
 
   // Vue de Succès
-  if (submitStatus === 'success') { /* ... (code inchangé) ... */ }
+  if (submitStatus === 'success') {
+    return (
+      <div className="text-center py-8">
+        <div className="flex justify-center mb-6">
+          <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center">
+            <CheckCircle2 className="text-green-400" size={48} />
+          </div>
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">Message envoyé avec succès !</h3>
+        <p className="text-gray-300 mb-6">
+          Merci pour votre demande. Nous vous répondrons dans les plus brefs délais, généralement sous 24h.
+        </p>
+        <button
+          onClick={onClose}
+          className="bg-white hover:bg-gray-200 text-black font-bold py-3 px-8 rounded-full transition-colors duration-300"
+        >
+          Fermer
+        </button>
+      </div>
+    );
+  }
+
   // Vue d'Erreur
-  if (submitStatus === 'error') { /* ... (code inchangé) ... */ }
+  if (submitStatus === 'error') {
+    return (
+      <div className="text-center py-8">
+        <div className="flex justify-center mb-6">
+          <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center">
+            <XCircle className="text-red-400" size={48} />
+          </div>
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">Erreur d'envoi</h3>
+        <p className="text-gray-300 mb-6">
+          Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer ou nous contacter directement par email.
+        </p>
+        <div className="flex gap-4 justify-center">
+          <button
+            onClick={() => setSubmitStatus(null)}
+            className="bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-6 rounded-full border border-white/20 transition-colors duration-300"
+          >
+            Réessayer
+          </button>
+          <button
+            onClick={onClose}
+            className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-6 rounded-full transition-colors duration-300"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   // Vue du Formulaire Initial
   return (
@@ -152,6 +233,13 @@ export default function ContactForm({ formType = 'general', onClose }) {
         <div>
           <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">Société / Organisation <span className="text-gray-500">(Optionnel)</span></label>
           <input type="text" id="company" value={formData.company} onChange={handleChange} onBlur={handleBlur} className="w-full bg-black/20 border rounded-md p-3 text-white focus:ring-2 focus:ring-white/50" />
+        </div>
+      )}
+      {config.fields.includes('selectedOffer') && (
+        <div>
+          <label htmlFor="selectedOffer" className="block text-sm font-medium text-gray-300 mb-1">Offre sélectionnée <span className="text-gray-500">(Optionnel)</span></label>
+          <input type="text" id="selectedOffer" value={formData.selectedOffer} onChange={handleChange} onBlur={handleBlur} className="w-full bg-black/20 border border-green-500/30 rounded-md p-3 text-white focus:ring-2 focus:ring-white/50" placeholder="Ex: Site Professionnel Complet - 4 500€" />
+          <p className="text-xs text-gray-500 mt-1">Indiquez l'offre qui vous intéresse ou laissez vide pour en discuter</p>
         </div>
       )}
       {config.fields.includes('budget') && (
