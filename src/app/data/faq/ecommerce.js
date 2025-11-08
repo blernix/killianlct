@@ -19,8 +19,13 @@ export const ecommerceFaqData = {
     },
     {
       value: "q4",
-      question: "Comment se passe la maintenance et les mises à jour ?",
-      answer: "Nous proposons des contrats de maintenance pour gérer la sécurité et les mises à jour de votre boutique. L'avantage d'une solution sur-mesure est que les mises à jour sont contrôlées et n'impactent pas une dizaine d'applications tierces, réduisant les risques de bugs."
+      question: "Quelle est la différence entre le support inclus et la maintenance payante ?",
+      answer: "Le support inclus dans votre pack (3 à 6 mois selon l'offre) couvre les corrections de bugs et les réponses à vos questions techniques. C'est une période de garantie. Les forfaits de maintenance payants (à partir de 300€/mois) vont au-delà : monitoring proactif 24/7, évolutions fonctionnelles, nouvelles features, optimisations de performance et hébergement continu. L'avantage d'une solution sur-mesure est que les mises à jour sont contrôlées et n'impactent pas une dizaine d'applications tierces, réduisant les risques de bugs."
+    },
+    {
+      value: "q6",
+      question: "Combien de temps pour lancer ma boutique e-commerce ?",
+      answer: "Un site e-commerce Starter (10-20 produits) prend 4-5 semaines. Une boutique Business complète (produits illimités, multi-devises) prend 6-8 semaines. Un projet Enterprise avec marketplace ou intégrations ERP prend 8-12 semaines. Ces délais incluent toutes les phases : design, développement, intégration des produits, tests de paiement et formation au backoffice."
     },
     {
       value: "q5",

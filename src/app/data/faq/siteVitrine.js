@@ -15,7 +15,7 @@ export const siteVitrineFaqData = {
       value: "q2",
       // La question n°2 la plus fréquente. On gère les attentes.
       question: "Combien de temps faut-il pour la création d'un site ?",
-      answer: "Un projet de site vitrine prend en moyenne entre 4 et 8 semaines. Ce délai inclut nos différentes phases : l'atelier stratégique pour définir vos objectifs, la conception du design, le développement technique, l'intégration de vos contenus et la mise en ligne. La fluidité de nos échanges est la clé pour respecter ce calendrier."
+      answer: "Un projet de site vitrine simple (pack Essentiel) prend 3 semaines. Pour un site personnalisé avec blog et CMS (pack Personnalisé), comptez 3-4 semaines. Les projets avancés avec fonctionnalités complexes prennent 4-6 semaines. Ce délai inclut toutes nos phases : stratégie, design, développement, intégration de vos contenus et mise en ligne. La fluidité de nos échanges est la clé pour respecter ces délais."
     },
     {
       value: "q3",
@@ -28,14 +28,14 @@ export const siteVitrineFaqData = {
       // On reformule pour parler de SEO, ce qui montre l'expertise.
       question: "Le référencement (SEO) est-il inclus dans la création du site vitrine ?",
       // On renforce la réponse en parlant de "fondations".
-      answer: "Absolument. Pour notre agence, un site web sans fondations SEO solides n'est pas un site web terminé. Nous intégrons toutes les bonnes pratiques techniques (vitesse, responsive design, structure des balises, métadonnées) pour donner à votre site toutes les chances d'être bien positionné et visible sur Google."
+      answer: "Absolument. Tous nos sites incluent le SEO technique de base : balises meta optimisées, balises alt sur les images, Schema.org, vitesse de chargement, responsive design. À partir du pack Personnalisé, nous ajoutons une stratégie de mots-clés, le sitemap XML et la configuration Google Search Console. Pour le pack Avancé, nous réalisons un audit SEO complet avec stratégie de contenu et recommandations pour les backlinks. Un site sans SEO, c'est comme un magasin sans enseigne."
     },
     {
       value: "q5",
       // On garde la question sur l'autonomie, mais on précise le type de solution (CMS).
       question: "Pourrai-je mettre à jour le contenu de mon site facilement ?",
       // En mentionnant "CMS Headless comme Directus", tu montres que tu utilises des technos modernes.
-      answer: "Oui. Selon vos besoins, nous pouvons intégrer un espace d'administration (CMS) intuitif et sur-mesure. Nous privilégions des solutions modernes comme un CMS Headless (par exemple Directus) qui vous permettent de gérer facilement votre blog, vos réalisations ou vos actualités, sans aucune connaissance technique."
+      answer: "Cela dépend du pack choisi. Le pack Essentiel est un site statique : pour modifier le contenu, vous passez par nous (petites modifications comprises dans le support). À partir du pack Personnalisé, nous intégrons un CMS moderne (Directus) qui vous permet de gérer facilement votre blog, vos actualités ou vos réalisations en totale autonomie. Nous incluons une formation de 2h pour que vous soyez opérationnel dès le premier jour."
     },
     {
         value: "q6",

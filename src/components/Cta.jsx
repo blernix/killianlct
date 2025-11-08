@@ -32,7 +32,7 @@ export function ContactSection({ onOpenModal }) {
           className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-base font-semibold text-gray-900
                      transition duration-300 hover:bg-gray-200 hover:scale-105"
         >
-          Obtenir mon devis gratuit
+          Discuter de mon projet
         </button>
 
         {/* Micro-promesses */}

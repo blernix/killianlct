@@ -7,8 +7,8 @@ export const seoFaqData = {
   items: [
     {
       value: "q1",
-      question: "Quelle est la différence entre l'offre 'Socle Technique' et le 'Partenariat de Croissance' ?",
-      answer: "Le 'Socle Technique' est un projet ponctuel pour construire ou réparer les fondations de votre site. Le 'Partenariat de Croissance' est un accompagnement mensuel continu où nous pilotons activement votre stratégie de contenu et d'autorité pour générer une croissance durable du trafic."
+      question: "Quelle est la différence entre l'offre 'Audit & Recommandations' et le 'Partenariat de Croissance' ?",
+      answer: "L'Audit & Recommandations (800-2000€) est un projet ponctuel de 2-3 semaines : diagnostic complet + rapport détaillé avec plan d'action. L'implémentation des corrections se fait ensuite sur devis séparé. Le Partenariat de Croissance (dès 800€/mois, engagement 6 mois) inclut l'audit le 1er mois + l'implémentation des corrections + un accompagnement mensuel continu pour piloter activement votre stratégie de contenu et d'autorité."
     },
     {
       value: "q2",
@@ -28,7 +28,12 @@ export const seoFaqData = {
     {
       value: "q5",
       question: "Quel budget faut-il prévoir pour un partenariat de croissance SEO ?",
-      answer: "Nos partenariats sont sur-mesure et dépendent de la compétitivité de votre secteur et de vos ambitions. Ils sont conçus comme un investissement dans votre principal canal d'acquisition. Contactez-nous pour un devis adapté à votre situation."
+      answer: "Nos partenariats démarrent à partir de 800€/mois avec un engagement minimum de 6 mois recommandé (le SEO est un marathon, pas un sprint). Le tarif exact dépend de la compétitivité de votre secteur, de l'état actuel de votre site et de vos ambitions. Le premier mois inclut l'audit complet et l'implémentation des corrections critiques. Contactez-nous pour un devis adapté à votre situation."
+    },
+    {
+      value: "q6",
+      question: "L'audit seul suffit-il ou dois-je prendre le partenariat ?",
+      answer: "Cela dépend de vos ressources internes. Si vous avez une équipe technique capable d'implémenter nos recommandations et de piloter la stratégie de contenu, l'audit seul peut suffire. Si vous préférez déléguer totalement le pilotage SEO pour vous concentrer sur votre métier, le partenariat est plus adapté. L'avantage du partenariat : l'audit est inclus le 1er mois + nous implémentons directement les corrections."
     }
   ]
 };

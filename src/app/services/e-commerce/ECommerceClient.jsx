@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
+import { useContactModal } from "@/hooks/useContactModal";
 import {
   Zap, Palette, KeyRound, Scaling, Check, Server, MonitorSmartphone,
   PackageCheck, Banknote, Users, BarChart, Mail, AlertTriangle,
@@ -16,17 +17,86 @@ const StripeLogo = () => <span className="font-bold text-indigo-500">Stripe</spa
 const PayPalLogo = () => <span className="font-bold text-blue-400">PayPal</span>;
 
 export default function ECommerceClient({ faqData }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [monthlyVisitors, setMonthlyVisitors] = useState(1000);
   const [conversionRate, setConversionRate] = useState(2);
   const [averageCart, setAverageCart] = useState(80);
 
   const formType = 'e-commerce';
-  const openModal = (offerName = '') => {
-    const offer = typeof offerName === 'string' ? offerName : '';
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
+
+  // Packages disponibles
+  const packages = [
+    {
+      name: "Starter",
+      price: "5 000€ - 10 000€",
+      description: "Pour lancer votre boutique",
+      features: [
+        "10-20 produits",
+        "Design personnalisé",
+        "Paiement Stripe/PayPal sécurisé",
+        "Gestion des stocks & commandes",
+        "Paniers & tunnel de paiement",
+        "Espace client basique",
+        "SEO technique de base (balises meta, Schema.org, sitemap)",
+        "Responsive mobile & tablette",
+        "Formation backoffice (2h)",
+        "Nom de domaine offert 1 an",
+        "Hébergement cloud 1 an inclus",
+        "3 mois de support technique (corrections de bugs)",
+        "Livraison : 4-5 semaines"
+      ],
+      cta: "Idéal pour démarrer",
+      highlighted: false
+    },
+    {
+      name: "Business",
+      price: "10 000€ - 20 000€",
+      description: "La solution la plus complète",
+      features: [
+        "Produits illimités",
+        "Design premium 100% sur-mesure",
+        "Architecture headless (Next.js + MedusaJS)",
+        "Multi-devises & multi-régions",
+        "Promotions & codes promo avancés",
+        "Espace client complet avec historique",
+        "SEO optimisé avancé : stratégie mots-clés + GSC",
+        "Intégrations tierces (analytics, email, etc.)",
+        "Blog intégré avec CMS",
+        "Formation backoffice avancée (4h)",
+        "Nom de domaine offert 1 an",
+        "Hébergement cloud premium 1 an inclus",
+        "6 mois de support technique prioritaire",
+        "Livraison : 6-8 semaines"
+      ],
+      cta: "Le plus populaire",
+      highlighted: true
+    },
+    {
+      name: "Enterprise",
+      price: "Sur devis",
+      description: "Pour les projets ambitieux",
+      features: [
+        "Tout du Business inclus",
+        "Intégrations ERP/CRM complexes",
+        "Marketplace multi-vendeurs",
+        "API personnalisées pour partenaires",
+        "B2B & B2C combinés",
+        "Gestion avancée RMA & SAV",
+        "Workflows métier automatisés",
+        "SEO approfondi : audit + backlinks",
+        "Formation équipe complète (sur-mesure)",
+        "Nom de domaine offert 1 an",
+        "Hébergement cloud enterprise 1 an inclus",
+        "Support prioritaire 12 mois avec SLA",
+        "Livraison : selon complexité (8-12 semaines)"
+      ],
+      cta: "Discutons-en",
+      highlighted: false
+    }
+  ];
+
+  // Liste des offres pour le formulaire
+  const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}`);
 
   // Calculs ROI e-commerce
   const monthlyOrders = Math.round((monthlyVisitors * conversionRate) / 100);
@@ -439,60 +509,7 @@ export default function ECommerceClient({ faqData }) {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-16">
-              {[
-                {
-                  name: "Starter",
-                  price: "5 000€ - 10 000€",
-                  description: "Pour lancer votre boutique",
-                  features: [
-                    "10-20 produits",
-                    "Design personnalisé",
-                    "Paiement Stripe/PayPal",
-                    "Gestion des stocks",
-                    "Paniers & commandes",
-                    "Espace client basique",
-                    "Responsive complet",
-                    "3 mois de support"
-                  ],
-                  cta: "Idéal pour démarrer",
-                  highlighted: false
-                },
-                {
-                  name: "Business",
-                  price: "10 000€ - 20 000€",
-                  description: "La solution la plus complète",
-                  features: [
-                    "Produits illimités",
-                    "Design premium sur-mesure",
-                    "Architecture headless",
-                    "Multi-devises & régions",
-                    "Promotions avancées",
-                    "Espace client complet",
-                    "SEO optimisé avancé",
-                    "Intégrations tierces",
-                    "6 mois de support premium"
-                  ],
-                  cta: "Le plus populaire",
-                  highlighted: true
-                },
-                {
-                  name: "Enterprise",
-                  price: "Sur devis",
-                  description: "Pour les projets ambitieux",
-                  features: [
-                    "Tout du Business +",
-                    "Intégrations ERP/CRM",
-                    "Marketplace multi-vendeurs",
-                    "API personnalisées",
-                    "B2B & B2C combinés",
-                    "Gestion avancée RMA",
-                    "Formation équipe complète",
-                    "Support prioritaire 12 mois"
-                  ],
-                  cta: "Discutons-en",
-                  highlighted: false
-                }
-              ].map((pkg, index) => (
+              {packages.map((pkg, index) => (
                 <div
                   key={index}
                   className={`group relative rounded-3xl p-8 transition-all duration-500 ${
@@ -544,15 +561,57 @@ export default function ECommerceClient({ faqData }) {
               ))}
             </div>
 
-            {/* Note importante */}
-            <div className="max-w-4xl mx-auto">
+            {/* Note importante + Maintenance */}
+            <div className="max-w-4xl mx-auto space-y-8">
               <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10 text-center">
                 <h3 className="text-2xl font-bold text-white mb-4">
                   💡 Investissement unique, rentabilité sur le long terme
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Contrairement aux plateformes SaaS qui prélèvent des frais mensuels à vie, vous investissez une seule fois dans une boutique qui <strong className="text-white">vous appartient totalement</strong>. Seuls les frais d'hébergement (~50-200€/an) et de maintenance optionnelle s'appliquent.
+                  Contrairement aux plateformes SaaS qui prélèvent des frais mensuels à vie, vous investissez une seule fois dans une boutique qui <strong className="text-white">vous appartient totalement</strong>. Après la 1ère année, seuls l'hébergement (~100-200€/an) et la maintenance optionnelle s'appliquent.
                 </p>
+              </div>
+
+              {/* Forfaits Maintenance */}
+              <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
+                <h3 className="text-2xl font-bold text-white mb-4 text-center">
+                  🔧 Maintenance & Support Continu (après période incluse)
+                </h3>
+                <p className="text-gray-400 text-center mb-8">
+                  ⚠️ Le support inclus couvre les corrections de bugs. La maintenance payante ajoute les évolutions, le monitoring proactif et l'hébergement continu.
+                </p>
+                <div className="grid sm:grid-cols-3 gap-6">
+                  {[
+                    {
+                      name: "Maintenance Basique",
+                      price: "300€/mois",
+                      features: ["Monitoring 24/7", "Correctifs de bugs", "Mises à jour sécurité", "Hébergement inclus", "Support email sous 48h"]
+                    },
+                    {
+                      name: "Évolution Active",
+                      price: "800€/mois",
+                      features: ["Tout Basique +", "3h de dev/mois", "Nouvelles features", "Optimisations", "Support sous 24h"]
+                    },
+                    {
+                      name: "Partenariat Premium",
+                      price: "2000€/mois",
+                      features: ["Tout Évolution +", "15h de dev/mois", "Roadmap stratégique", "Support prioritaire", "Conseil mensuel"]
+                    }
+                  ].map((plan, i) => (
+                    <div key={i} className="bg-white/5 rounded-xl p-6 border border-white/10">
+                      <h4 className="font-bold text-white mb-2">{plan.name}</h4>
+                      <p className="text-2xl font-bold text-green-400 mb-4">{plan.price}</p>
+                      <ul className="space-y-2">
+                        {plan.features.map((f, j) => (
+                          <li key={j} className="text-sm text-gray-400 flex items-start gap-2">
+                            <Check className="text-green-400 flex-shrink-0 mt-0.5" size={14} />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -571,7 +630,7 @@ export default function ECommerceClient({ faqData }) {
       </main>
 
       <Modal isOpen={isModalOpen} onClose={closeModal} title={getModalTitle(formType)}>
-        <ContactForm formType={formType} onClose={closeModal} />
+        <ContactForm formType={formType} onClose={closeModal} initialData={initialData} availableOffers={availableOffers} />
       </Modal>
     </>
   );

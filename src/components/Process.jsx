@@ -10,19 +10,19 @@ export function Process() {
         "Un échange sans engagement pour comprendre votre projet, vos objectifs et vos contraintes. Nous vous donnons un premier avis technique et une estimation de délai dès cet appel. Réponse sous 24h garantie.",
     },
     {
-      stepTitle: "🛠️ Maquette & Devis Détaillé (48h)",
+      stepTitle: "🛠️ Proposition & Devis Détaillé (48h)",
       description:
-        "Nous créons une maquette interactive de votre site et un devis ligne par ligne. Aucune surprise : vous voyez exactement ce que vous payez et à quoi ressemblera votre site avant de signer.",
+        "Nous vous présentons une proposition détaillée avec architecture technique et un devis ligne par ligne. Aucune surprise : vous voyez exactement ce que vous payez et le scope du projet avant de signer.",
     },
     {
-      stepTitle: "🚧 Développement avec Accès Live (2-3 semaines)",
+      stepTitle: "🚧 Développement avec Accès Live (3-10 semaines selon projet)",
       description:
-        "Nous développons votre site sur un environnement de préproduction accessible 24/7. Vous suivez l'avancement en temps réel et nous faites vos retours. Points hebdomadaires pour valider chaque étape ensemble.",
+        "Nous développons votre projet sur un environnement de préproduction accessible 24/7. Vous suivez l'avancement en temps réel et nous faites vos retours. Points hebdomadaires pour valider chaque étape ensemble.",
     },
     {
-      stepTitle: "🚀 Formation & Mise en Ligne (2h)",
+      stepTitle: "🚀 Tests, Formation & Mise en Ligne",
       description:
-        "Avant le déploiement, nous testons tout : performances, responsive, SEO. Puis nous vous formons pendant 2h à l'utilisation de votre interface admin. Mise en ligne sans interruption de service.",
+        "Avant le déploiement, nous testons tout : performances, responsive, SEO. Si votre projet inclut une interface admin, nous vous formons à son utilisation (2-4h selon complexité). Mise en ligne sans interruption de service.",
     },
     {
       stepTitle: "🤝 Support Offert (3 mois)",

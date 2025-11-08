@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
+import { useContactModal } from "@/hooks/useContactModal";
 import { FAQ } from '@/components/FAQ';
 import {
   CheckCircle,
@@ -20,16 +21,11 @@ import {
 import { directusData } from './data';
 
 export default function DirectusClient() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedOffer, setSelectedOffer] = useState('');
+  const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const formType = 'directus';
 
-  const openModal = (offerName = '') => {
-    const offer = typeof offerName === 'string' ? offerName : '';
-    setSelectedOffer(offer);
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
+  // Liste des offres disponibles pour le formulaire
+  const availableOffers = directusData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
 
   // Préparer les données FAQ
   const faqItems = directusData.faq.items.map((item, index) => ({
@@ -511,7 +507,8 @@ export default function DirectusClient() {
         <ContactForm
           formType={formType}
           onClose={closeModal}
-          initialData={{ selectedOffer }}
+          initialData={initialData}
+          availableOffers={availableOffers}
         />
       </Modal>
     </>

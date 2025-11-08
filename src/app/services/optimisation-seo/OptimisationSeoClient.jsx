@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
+import { useContactModal } from "@/hooks/useContactModal";
 import {
   Target, Building2, TrendingUp, Search, PenTool, Link as LinkIcon,
   BarChart3, Wrench, FileText, Smartphone, Clock, Sparkles, ArrowRight,
@@ -13,18 +14,13 @@ import {
 import { FAQ } from '@/components/FAQ';
 
 export default function SeoClient({ faqData }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [searchVolume, setSearchVolume] = useState(1000);
   const [currentPosition, setCurrentPosition] = useState(15);
   const [conversionRate, setConversionRate] = useState(3);
   const [clientValue, setClientValue] = useState(1500);
 
   const formType = 'seo';
-  const openModal = (offerName = '') => {
-    const offer = typeof offerName === 'string' ? offerName : '';
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
 
   // Calculs ROI SEO
   // Position 1-3: 30% CTR, 4-10: 10% CTR, 11-20: 3% CTR, >20: 0.5% CTR
@@ -393,17 +389,19 @@ export default function SeoClient({ faqData }) {
               {[
                 {
                   badge: "OFFRE INITIALE",
-                  name: "Audit & Socle Technique",
-                  price: "Sur devis",
-                  description: "Idéal pour démarrer ou corriger un site existant",
+                  name: "Audit & Recommandations SEO",
+                  price: "800€ - 2 000€",
+                  description: "Diagnostic complet + plan d'action détaillé (implémentation sur devis)",
                   features: [
                     "Audit SEO complet (technique, contenu, backlinks)",
                     "Analyse concurrentielle approfondie",
-                    "Correction des erreurs techniques critiques",
-                    "Optimisation Core Web Vitals",
-                    "Mise en place Schema.org",
-                    "Plan d'action détaillé pour la croissance",
-                    "Rapport de recommandations stratégiques"
+                    "Analyse Core Web Vitals et performance",
+                    "Audit Schema.org et données structurées",
+                    "Rapport détaillé des erreurs critiques à corriger",
+                    "Plan d'action priorisé pour la croissance",
+                    "Recommandations stratégiques de contenu",
+                    "Devis séparé pour l'implémentation des corrections",
+                    "Livraison : 2-3 semaines"
                   ],
                   cta: "Demander un audit",
                   highlighted: false
@@ -412,16 +410,18 @@ export default function SeoClient({ faqData }) {
                   badge: "NOTRE RECOMMANDATION",
                   name: "Partenariat de Croissance SEO",
                   price: "À partir de 800€/mois",
-                  description: "Accompagnement mensuel pour une croissance durable",
+                  description: "Accompagnement mensuel pour une croissance durable (engagement 6 mois minimum)",
                   features: [
-                    "Tout de l'audit initial inclus",
+                    "Audit complet inclus le 1er mois",
+                    "Implémentation des corrections techniques critiques",
                     "Stratégie de contenu mensuelle personnalisée",
-                    "Rédaction et optimisation de contenus",
+                    "Rédaction et optimisation de contenus (selon forfait)",
                     "Netlinking qualitatif (construction d'autorité)",
                     "Suivi des positions et analytics détaillés",
-                    "Ajustements stratégiques mensuels",
-                    "Appels stratégiques réguliers",
-                    "Reporting transparent des résultats"
+                    "Ajustements stratégiques mensuels basés sur les données",
+                    "Appels stratégiques réguliers (mensuel ou bimensuel)",
+                    "Reporting transparent des résultats et KPIs",
+                    "Engagement minimum : 6 mois recommandé"
                   ],
                   cta: "Le plus populaire",
                   highlighted: true
@@ -528,7 +528,7 @@ export default function SeoClient({ faqData }) {
       </main>
 
       <Modal isOpen={isModalOpen} onClose={closeModal} title={getModalTitle(formType)}>
-        <ContactForm formType={formType} onClose={closeModal} />
+        <ContactForm formType={formType} onClose={closeModal} initialData={initialData} />
       </Modal>
     </>
   );

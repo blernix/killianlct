@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
+import { useContactModal } from "@/hooks/useContactModal";
 import {
   TrendingUp, ShieldCheck, Zap, Info, Users, Building, UserCheck,
   LayoutDashboard, FileText, Image as ImageIcon, MessageSquare, Phone,
@@ -14,18 +15,80 @@ import Image from 'next/image';
 import { FAQ } from '@/components/FAQ';
 
 export default function SiteVitrineClient({ faqData }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [monthlyVisitors, setMonthlyVisitors] = useState(500);
   const [conversionRate, setConversionRate] = useState(3);
   const [averageSale, setAverageSale] = useState(1500);
   const [selectedPackage, setSelectedPackage] = useState(2500);
 
   const formType = 'site-vitrine';
-  const openModal = (offerName = '') => {
-    const offer = typeof offerName === 'string' ? offerName : '';
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
+
+  // Packages disponibles
+  const packages = [
+    {
+      name: "Essentiel",
+      price: "1 000€ - 3 000€",
+      description: "Pour démarrer votre présence en ligne",
+      features: [
+        "3-5 pages professionnelles",
+        "Design basé sur template premium",
+        "Formulaire de contact simple",
+        "Responsive mobile & tablette",
+        "SEO technique de base (balises meta, alt, Schema.org)",
+        "Nom de domaine offert 1 an",
+        "Hébergement inclus ou sur votre serveur",
+        "1 mois de support technique",
+        "Livraison : 3 semaines"
+      ],
+      cta: "Idéal pour démarrer",
+      highlighted: false
+    },
+    {
+      name: "Personnalisé",
+      price: "2 500€ - 6 000€",
+      description: "La solution la plus populaire",
+      features: [
+        "5-10 pages sur-mesure",
+        "Design 100% personnalisé",
+        "Blog intégré avec CMS Directus",
+        "SEO optimisé : stratégie mots-clés + sitemap XML + GSC",
+        "Intégration Google Analytics",
+        "Formulaires avancés",
+        "Formation CMS incluse (2h)",
+        "Nom de domaine offert 1 an",
+        "Hébergement inclus ou sur votre serveur",
+        "3 mois de support technique",
+        "Livraison : 3-4 semaines"
+      ],
+      cta: "Le plus populaire",
+      highlighted: true
+    },
+    {
+      name: "Avancé",
+      price: "5 000€+",
+      description: "Pour les projets ambitieux",
+      features: [
+        "10+ pages complexes",
+        "Design premium sur-mesure",
+        "Fonctionnalités personnalisées",
+        "SEO approfondi : audit + stratégie contenu + backlinks",
+        "Animations & interactions avancées",
+        "Multilingue",
+        "Intégrations tierces (API, CRM, etc.)",
+        "CMS Directus avec workflows personnalisés",
+        "Formation avancée (4h)",
+        "Nom de domaine offert 1 an",
+        "Hébergement premium inclus ou sur votre serveur",
+        "6 mois de support premium",
+        "Livraison : 4-6 semaines (selon complexité)"
+      ],
+      cta: "Discutons-en",
+      highlighted: false
+    }
+  ];
+
+  // Liste des offres pour le formulaire
+  const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}`);
 
   // Calculs ROI
   const monthlyLeads = Math.round((monthlyVisitors * conversionRate) / 100);
@@ -52,7 +115,7 @@ export default function SiteVitrineClient({ faqData }) {
               <div className="flex flex-wrap justify-center gap-3 mb-8">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
                   <Zap className="text-yellow-400" size={16} />
-                  Livré en 15 jours
+                  Livré en 3 semaines
                 </span>
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
                   <ShieldCheck className="text-green-400" size={16} />
@@ -344,58 +407,7 @@ export default function SiteVitrineClient({ faqData }) {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-16">
-              {[
-                {
-                  name: "Essentiel",
-                  price: "1 000€ - 3 000€",
-                  description: "Pour démarrer votre présence en ligne",
-                  features: [
-                    "3-5 pages professionnelles",
-                    "Design basé sur template premium",
-                    "Formulaire de contact simple",
-                    "Responsive mobile & tablette",
-                    "SEO de base",
-                    "Formation à la gestion (1h)",
-                    "1 mois de support"
-                  ],
-                  cta: "Idéal pour démarrer",
-                  highlighted: false
-                },
-                {
-                  name: "Personnalisé",
-                  price: "2 500€ - 6 000€",
-                  description: "La solution la plus populaire",
-                  features: [
-                    "5-10 pages sur-mesure",
-                    "Design 100% personnalisé",
-                    "Blog intégré avec CMS",
-                    "SEO optimisé avancé",
-                    "Intégration Google Analytics",
-                    "Formulaires avancés",
-                    "Formation complète (2h)",
-                    "3 mois de support inclus"
-                  ],
-                  cta: "Le plus populaire",
-                  highlighted: true
-                },
-                {
-                  name: "Avancé",
-                  price: "5 000€+",
-                  description: "Pour les projets ambitieux",
-                  features: [
-                    "10+ pages complexes",
-                    "Design premium sur-mesure",
-                    "Fonctionnalités personnalisées",
-                    "SEO approfondi + stratégie",
-                    "Animations & interactions",
-                    "Multilingue",
-                    "Intégrations tierces",
-                    "6 mois de support premium"
-                  ],
-                  cta: "Discutons-en",
-                  highlighted: false
-                }
-              ].map((pkg, index) => (
+              {packages.map((pkg, index) => (
                 <div
                   key={index}
                   className={`group relative rounded-3xl p-8 transition-all duration-500 ${
@@ -447,17 +459,17 @@ export default function SiteVitrineClient({ faqData }) {
               ))}
             </div>
 
-            {/* Coûts récurrents */}
+            {/* Coûts après la première année */}
             <div className="max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
                 <h3 className="text-2xl font-bold text-white mb-6 text-center">
-                  💡 N'oubliez pas les coûts récurrents
+                  💡 Coûts après la première année
                 </h3>
                 <div className="grid sm:grid-cols-3 gap-6">
                   {[
-                    { icon: "🌐", title: "Nom de Domaine", price: "~15€/an", desc: "L'adresse de votre site" },
-                    { icon: "☁️", title: "Hébergement Web", price: "~100€/an", desc: "L'espace serveur de qualité" },
-                    { icon: "🔧", title: "Maintenance", price: "Optionnel", desc: "Sécurité & mises à jour" }
+                    { icon: "🌐", title: "Nom de Domaine", price: "~15€/an", desc: "Offert la 1ère année, puis renouvellement annuel" },
+                    { icon: "☁️", title: "Hébergement", price: "Inclus ou 100€/an", desc: "Sur notre serveur (payant) ou le vôtre (gratuit)" },
+                    { icon: "🔧", title: "Support / Maintenance", price: "Optionnel", desc: "Forfaits disponibles selon vos besoins" }
                   ].map((item, index) => (
                     <div key={index} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
                       <div className="text-4xl mb-3">{item.icon}</div>
@@ -467,6 +479,9 @@ export default function SiteVitrineClient({ faqData }) {
                     </div>
                   ))}
                 </div>
+                <p className="text-center text-sm text-gray-400 mt-6">
+                  Le nom de domaine et l'hébergement (si sur notre serveur) sont <strong className="text-white">offerts pendant 1 an</strong>. Après, vous choisissez de renouveler ou de migrer.
+                </p>
               </div>
             </div>
           </div>
@@ -485,7 +500,7 @@ export default function SiteVitrineClient({ faqData }) {
       </main>
 
       <Modal isOpen={isModalOpen} onClose={closeModal} title={getModalTitle(formType)}>
-        <ContactForm formType={formType} onClose={closeModal} />
+        <ContactForm formType={formType} onClose={closeModal} initialData={initialData} availableOffers={availableOffers} />
       </Modal>
     </>
   );

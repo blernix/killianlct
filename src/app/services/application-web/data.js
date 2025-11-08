@@ -35,7 +35,7 @@ export const applicationWebData = {
       "MVP livré en 10 semaines",
       "Architecture évolutive garantie",
       "Code source 100% à vous",
-      "Support technique 6 mois inclus"
+      "Hébergement 1 an inclus"
     ]
   },
 
@@ -224,7 +224,7 @@ export const applicationWebData = {
         price: "15 000€",
         description: "Pour valider rapidement un concept",
         features: [
-          "Atelier stratégique (1-2 semaines)",
+          "Atelier stratégique (2 semaines)",
           "Design UX/UI sobre (5-7 écrans)",
           "Développement MVP (3-4 fonctionnalités core)",
           "Authentification utilisateur",
@@ -233,22 +233,23 @@ export const applicationWebData = {
           "API REST documentée",
           "Déploiement sur cloud sécurisé",
           "SSL/TLS + backups quotidiens",
+          "Hébergement cloud 1 an inclus",
           "Formation équipe (2h)",
           "Documentation utilisateur",
-          "3 mois de support technique",
+          "3 mois de support technique (corrections de bugs)",
           "Code source fourni (licence MIT)"
         ],
         cta: "Démarrer rapidement",
-        timeframe: "8-10 semaines"
+        timeframe: "10 semaines"
       },
       {
         name: "Application Métier Complète",
         price: "35 000€",
-        description: "Pour transformer vos processus en profondeur",
+        description: "Pour transformer vos processus en profondeur (prix TOTAL, pas en addition)",
         features: [
-          "Tout du pack MVP Simple +",
+          "Tout du pack MVP Simple inclus dans le prix",
           "Atelier stratégique approfondi (2 semaines)",
-          "Design system complet & maquettes avancées",
+          "Design system complet & maquettes avancées (15-20 écrans)",
           "10-15 fonctionnalités métier sur-mesure",
           "Gestion des rôles et permissions (RBAC)",
           "Workflow métier automatisé",
@@ -259,8 +260,9 @@ export const applicationWebData = {
           "Module de reporting avancé",
           "Tests automatisés (95% de couverture)",
           "Monitoring & alertes (Sentry)",
+          "Hébergement cloud premium 1 an inclus",
           "Formation avancée équipe (1 journée)",
-          "6 mois de support technique prioritaire",
+          "6 mois de support technique prioritaire (corrections + questions)",
           "Documentation technique complète"
         ],
         cta: "La plus populaire",
@@ -272,7 +274,7 @@ export const applicationWebData = {
         price: "Sur devis",
         description: "Pour applications critiques à fort volume",
         features: [
-          "Tout du pack Complet +",
+          "Tout du pack Complet inclus",
           "Architecture microservices scalable",
           "Multi-tenancy (SaaS multi-clients)",
           "Haute disponibilité (99.99% uptime)",
@@ -283,8 +285,9 @@ export const applicationWebData = {
           "Intelligence artificielle / ML sur-mesure",
           "Audit de sécurité par pentester",
           "Infrastructure multi-région",
-          "Support 24/7 avec SLA garanti",
-          "Évolutions continues (forfait mensuel)",
+          "Hébergement cloud enterprise inclus 1 an",
+          "Support 24/7 avec SLA garanti (12 mois)",
+          "Évolutions continues (forfait mensuel négociable)",
           "Accompagnement stratégique long terme"
         ],
         cta: "Discutons-en",
@@ -293,23 +296,24 @@ export const applicationWebData = {
     ],
     note: "Tous nos forfaits incluent : code source 100% à vous, hébergement 1ère année incluse, conformité RGPD, et garantie satisfaction.",
     maintenance: {
-      title: "Maintenance & Évolution Continue",
-      description: "Après la livraison, votre application a besoin de vivre et d'évoluer. Nous proposons des forfaits mensuels pour assurer la pérennité de votre investissement.",
+      title: "Maintenance & Évolution Continue (après période de support inclus)",
+      description: "Après la période de support inclus dans votre pack, votre application a besoin de vivre et d'évoluer. Nous proposons des forfaits mensuels optionnels pour assurer la pérennité de votre investissement.",
+      note: "⚠️ La différence entre Support inclus et Maintenance payante : Le support inclus couvre les corrections de bugs et questions techniques. La maintenance payante ajoute les évolutions fonctionnelles, le monitoring proactif et les nouvelles features.",
       plans: [
         {
-          name: "Support Basique",
+          name: "Maintenance Basique",
           price: "500€/mois",
-          includes: ["Monitoring 24/7", "Correctifs de bugs", "Mises à jour de sécurité", "Backups quotidiens", "Support email sous 48h"]
+          includes: ["Monitoring 24/7", "Correctifs de bugs prioritaires", "Mises à jour de sécurité", "Backups quotidiens", "Support email sous 48h", "Hébergement inclus"]
         },
         {
           name: "Évolution Active",
           price: "2 000€/mois",
-          includes: ["Tout du Support Basique +", "4h de dev par mois pour nouvelles features", "Support prioritaire sous 4h", "Optimisations performance", "Rapports mensuels"]
+          includes: ["Tout de la Maintenance Basique +", "4h de dev par mois pour nouvelles features", "Support prioritaire sous 4h", "Optimisations performance", "Rapports mensuels", "Hébergement premium inclus"]
         },
         {
           name: "Partenariat Stratégique",
           price: "5 000€/mois",
-          includes: ["Tout de l'Évolution Active +", "20h de dev par mois", "Roadmap trimestrielle", "Support 24/7 avec SLA", "Conseil stratégique mensuel"]
+          includes: ["Tout de l'Évolution Active +", "20h de dev par mois", "Roadmap trimestrielle", "Support 24/7 avec SLA", "Conseil stratégique mensuel", "Hébergement enterprise inclus"]
         }
       ]
     }

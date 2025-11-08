@@ -8,7 +8,7 @@ import { Loader2, Send, CheckCircle2, XCircle, Check, Edit3 } from 'lucide-react
 export const formFieldsConfig = {
   'site-vitrine': {
     subject: 'Demande de devis pour un Site Vitrine',
-    fields: ['name', 'email', 'company', 'message'],
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande de devis - Site Vitrine',
   },
   'site-avocat': {
@@ -16,14 +16,19 @@ export const formFieldsConfig = {
     fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande de devis - Site Avocat',
   },
+  'artisan': {
+    subject: 'Demande de devis pour un Site Artisan',
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
+    modalTitle: 'Demande de devis - Site Artisan',
+  },
   'e-commerce': {
     subject: 'Demande de devis pour un Site E-commerce',
-    fields: ['name', 'email', 'company', 'budget', 'message'],
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande de devis - Site E-commerce',
   },
   'application-web': {
     subject: 'Demande de devis pour une Application Web',
-    fields: ['name', 'email', 'company', 'budget', 'message'],
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande de devis - Application Web',
   },
   'seo': {
@@ -33,12 +38,12 @@ export const formFieldsConfig = {
   },
   'automatisation': {
     subject: 'Demande d\'information sur un projet d\'Automatisation (n8n)',
-    fields: ['name', 'email', 'company', 'message'],
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande d\'information - Automatisation',
   },
   'directus': {
     subject: 'Demande d\'information pour un back-office (Directus)',
-    fields: ['name', 'email', 'company', 'message'],
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande d\'information - Directus CMS',
   },
   'general': {
@@ -53,16 +58,12 @@ export const getModalTitle = (formType = 'general') => {
   return formFieldsConfig[formType]?.modalTitle || 'Demande d\'information';
 };
 
-export default function ContactForm({ formType = 'general', onClose, initialData = {} }) {
+export default function ContactForm({ formType = 'general', onClose, initialData = {}, availableOffers = [] }) {
   const config = formFieldsConfig[formType];
 
   // Créer initialFormData en fonction des champs requis par le formType
   const [formData, setFormData] = useState(() => {
     const baseData = { name: '', email: '', message: '', company: '', selectedOffer: '' };
-    // Ajouter le budget uniquement si le champ est requis pour ce type de formulaire
-    if (config.fields.includes('budget')) {
-      baseData.budget = 'Moins de 1500€';
-    }
     return { ...baseData, ...initialData };
   });
   const [errors, setErrors] = useState({});
@@ -139,7 +140,6 @@ export default function ContactForm({ formType = 'general', onClose, initialData
                 {field === 'name' ? 'Nom' :
                  field === 'email' ? 'Email' :
                  field === 'company' ? 'Société' :
-                 field === 'budget' ? 'Budget' :
                  field === 'selectedOffer' ? 'Offre sélectionnée' :
                  'Message'}
               </span>
@@ -237,20 +237,41 @@ export default function ContactForm({ formType = 'general', onClose, initialData
       )}
       {config.fields.includes('selectedOffer') && (
         <div>
-          <label htmlFor="selectedOffer" className="block text-sm font-medium text-gray-300 mb-1">Offre sélectionnée <span className="text-gray-500">(Optionnel)</span></label>
-          <input type="text" id="selectedOffer" value={formData.selectedOffer} onChange={handleChange} onBlur={handleBlur} className="w-full bg-black/20 border border-green-500/30 rounded-md p-3 text-white focus:ring-2 focus:ring-white/50" placeholder="Ex: Site Professionnel Complet - 4 500€" />
-          <p className="text-xs text-gray-500 mt-1">Indiquez l'offre qui vous intéresse ou laissez vide pour en discuter</p>
-        </div>
-      )}
-      {config.fields.includes('budget') && (
-        <div>
-          <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-1">Budget approximatif <span className="text-gray-500">(Optionnel)</span></label>
-          <select id="budget" value={formData.budget} onChange={handleChange} onBlur={handleBlur} className="w-full bg-black/20 border rounded-md p-3 text-white focus:ring-2 focus:ring-white/50 [&>option]:bg-gray-900">
-            <option>Moins de 1500€</option>
-            <option>1500€ - 3000€</option>
-            <option>3000€ - 5000€</option>
-            <option>Plus de 5000€</option>
-          </select>
+          <label htmlFor="selectedOffer" className="block text-sm font-medium text-gray-300 mb-1">
+            Offre sélectionnée <span className="text-gray-500">(Optionnel)</span>
+          </label>
+          {availableOffers.length > 0 ? (
+            <select
+              id="selectedOffer"
+              value={formData.selectedOffer}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="w-full bg-black/20 border border-green-500/30 rounded-md p-3 text-white focus:ring-2 focus:ring-white/50 [&>option]:bg-gray-900"
+            >
+              <option value="">-- Choisir une offre --</option>
+              {availableOffers.map((offer, index) => (
+                <option key={index} value={offer}>
+                  {offer}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              type="text"
+              id="selectedOffer"
+              value={formData.selectedOffer}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="w-full bg-black/20 border border-green-500/30 rounded-md p-3 text-white focus:ring-2 focus:ring-white/50"
+              placeholder="Ex: Site Professionnel Complet - 4 500€"
+            />
+          )}
+          <p className="text-xs text-gray-500 mt-1">
+            {availableOffers.length > 0
+              ? 'Sélectionnez l\'offre qui vous intéresse'
+              : 'Indiquez l\'offre qui vous intéresse ou laissez vide pour en discuter'
+            }
+          </p>
         </div>
       )}
       {config.fields.includes('message') && (

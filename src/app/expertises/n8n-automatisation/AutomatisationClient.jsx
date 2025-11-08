@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
+import { useContactModal } from "@/hooks/useContactModal";
 import { FAQ } from '@/components/FAQ';
 import {
   CheckCircle,
@@ -20,20 +21,15 @@ import {
 import { n8nData } from './data';
 
 export default function AutomatisationClient() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [teamSize, setTeamSize] = useState(3);
   const [hoursPerDay, setHoursPerDay] = useState(1);
   const [hourlyRate, setHourlyRate] = useState(50);
   const [selectedPackage, setSelectedPackage] = useState(3500);
-  const [selectedOffer, setSelectedOffer] = useState('');
   const formType = 'automatisation';
 
-  const openModal = (offerName = '') => {
-    const offer = typeof offerName === 'string' ? offerName : '';
-    setSelectedOffer(offer);
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
+  // Liste des offres disponibles pour le formulaire
+  const availableOffers = n8nData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
 
   // Calculs ROI
   const monthlyHoursSaved = teamSize * hoursPerDay * 20; // jours ouvrés/mois
@@ -711,7 +707,8 @@ export default function AutomatisationClient() {
         <ContactForm
           formType={formType}
           onClose={closeModal}
-          initialData={{ selectedOffer }}
+          initialData={initialData}
+          availableOffers={availableOffers}
         />
       </Modal>
     </>

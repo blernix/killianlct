@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
+import { useContactModal } from "@/hooks/useContactModal";
 import { FAQ } from '@/components/FAQ';
 import {
   CheckCircle,
@@ -20,19 +21,14 @@ import {
 import { avocatData } from './data';
 
 export default function AvocatClient() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [feePerCase, setFeePerCase] = useState(2000);
   const [clientsPerMonth, setClientsPerMonth] = useState(2);
   const [selectedPackage, setSelectedPackage] = useState(2500);
-  const [selectedOffer, setSelectedOffer] = useState('');
   const formType = 'site-avocat';
-  const openModal = (offerName = '') => {
-    // Vérifier si offerName est un événement React (pas une string)
-    const offer = typeof offerName === 'string' ? offerName : '';
-    setSelectedOffer(offer);
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
+
+  // Liste des offres disponibles pour le formulaire
+  const availableOffers = avocatData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
 
 
   // Calculs ROI
@@ -388,7 +384,7 @@ export default function AvocatClient() {
             {/* CTA après fonctionnalités */}
             <div className="mt-16 text-center">
               <p className="text-gray-400 mb-6">
-                Toutes ces fonctionnalités sont <strong className="text-white">incluses par défaut</strong> dans nos offres
+                Ces fonctionnalités sont <strong className="text-white">disponibles selon le pack choisi</strong>. Détails ci-dessous.
               </p>
               <a
                 href="#tarifs"
@@ -649,7 +645,8 @@ export default function AvocatClient() {
         <ContactForm
           formType={formType}
           onClose={closeModal}
-          initialData={{ selectedOffer }}
+          initialData={initialData}
+          availableOffers={availableOffers}
         />
       </Modal>
     </>

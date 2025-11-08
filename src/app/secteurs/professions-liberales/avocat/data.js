@@ -26,7 +26,7 @@ export const avocatData = {
     subtitle: "Attirez 3x plus de clients qualifiés sans enfreindre la déontologie. Site internet conforme RGPD, optimisé pour le référencement local, et conçu pour transformer vos visiteurs en rendez-vous.",
     ctaLabel: "Obtenir mon devis avocat gratuit",
     microPromises: [
-      "Livraison en 15 jours ouvrés",
+      "Livraison en 3 semaines",
       "Conformité CNB 2023 garantie",
       "Modifications illimitées pendant 30 jours",
       "Support prioritaire 6 mois inclus"
@@ -99,8 +99,8 @@ export const avocatData = {
     },
     {
       icon: FileText,
-      title: "Blog Juridique",
-      description: "Démontrez votre expertise avec des articles pédagogiques sur l'actualité juridique. Excellent pour le SEO et la crédibilité professionnelle.",
+      title: "Blog Juridique (Pack Pro)",
+      description: "Démontrez votre expertise avec des articles pédagogiques sur l'actualité juridique. Excellent pour le SEO et la crédibilité professionnelle. Disponible à partir du pack Professionnel.",
       technical: "CMS intégré, optimisé référencement"
     },
     {
@@ -111,8 +111,8 @@ export const avocatData = {
     },
     {
       icon: Calendar,
-      title: "Prise de Rendez-vous en Ligne",
-      description: "Intégration Calendly ou solution sur-mesure pour automatiser votre agenda et réduire les allers-retours par téléphone.",
+      title: "Prise de Rendez-vous en Ligne (Pack Pro)",
+      description: "Intégration Calendly ou solution sur-mesure pour automatiser votre agenda et réduire les allers-retours par téléphone. Disponible à partir du pack Professionnel.",
       technical: "Synchronisation agenda, confirmation auto"
     },
     {
@@ -172,7 +172,7 @@ export const avocatData = {
       },
       {
         question: "Quel délai pour créer un site d'avocat conforme ?",
-        answer: "Comptez 3 à 4 semaines pour un site vitrine complet et conforme : 1 semaine de cadrage et maquette (validation de la charte graphique et du contenu), 2 semaines de développement avec intégration RGPD, 1 semaine de tests, corrections et validation finale. Si vous souhaitez un blog avec plusieurs articles rédigés ou des fonctionnalités avancées (prise de RDV en ligne, espace client sécurisé, CRM intégré), prévoyez 5 à 6 semaines."
+        answer: "Comptez 3 semaines pour un site vitrine essentiel conforme (pack à 2 500€) : 1 semaine de cadrage et maquette, 1,5 semaine de développement avec intégration RGPD, 0,5 semaine de tests et validation finale. Pour le pack Professionnel avec blog, prise de RDV en ligne et SEO avancé (4 500€), prévoyez 4 semaines. Pour un site Premium sur-mesure avec espace client sécurisé et CRM, comptez 5 à 6 semaines."
       },
       {
         question: "Le site sera-t-il compatible avec l'inscription à l'Ordre des Avocats ?",
@@ -203,10 +203,9 @@ export const avocatData = {
           "Configuration cookies essentiels uniquement (pas de traceurs publicitaires)",
           "Dossier de conformité complet pour déclaration au Conseil de l'Ordre",
           "Notice de gestion des données clients",
-          "Formation gestion du site (1h)",
-          "Nom de domaine + hébergement premium UE inclus (valeur 200€/an)",
+          "Nom de domaine + hébergement premium UE inclus 1 an (valeur 200€/an)",
           "Certificat SSL/TLS",
-          "3 mois de maintenance"
+          "3 mois de maintenance avec veille réglementaire"
         ],
         cta: "Idéal pour démarrer"
       },

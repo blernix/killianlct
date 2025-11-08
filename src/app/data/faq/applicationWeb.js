@@ -12,8 +12,8 @@ export const applicationWebFaqData = {
     },
     {
       value: "q2",
-      question: "Qu'est-ce qu'un MVP (Produit Minimum Viable) ?",
-      answer: "Le MVP est la version la plus simple de votre application qui résout le problème principal de vos utilisateurs. L'objectif est de le lancer rapidement sur le marché pour récolter des retours concrets et valider le concept, avant d'investir dans des fonctionnalités plus avancées."
+      question: "Qu'est-ce qu'un MVP (Produit Minimum Viable) et comment ça fonctionne avec vos packs ?",
+      answer: "Le MVP est la version la plus simple de votre application qui résout le problème principal de vos utilisateurs. Notre pack 'MVP Simple' (15 000€) livre cette première version en 10 semaines avec 3-4 fonctionnalités core. Si après validation vous souhaitez évoluer vers le pack 'Application Métier Complète' (35 000€ total), ce dernier INCLUT déjà le MVP dans son prix - ce n'est pas une addition de 15k + 35k. Le pack Complet est une offre globale à 35 000€ avec 10-15 fonctionnalités, conçue dès le départ pour une application complète."
     },
     {
       value: "q3",
@@ -27,8 +27,13 @@ export const applicationWebFaqData = {
     },
     {
       value: "q5",
-      question: "Comment fonctionne le 'Partenariat d'Évolution' ?",
-      answer: "C'est un forfait mensuel flexible qui vous alloue un certain nombre d'heures de notre expertise. Ces heures peuvent être utilisées pour la maintenance préventive, la sécurité, le support, ou le développement de nouvelles fonctionnalités priorisées ensemble. C'est la garantie que votre application reste performante et évolue avec votre business."
+      question: "Quelle est la différence entre le support inclus et les forfaits de maintenance payants ?",
+      answer: "Le support inclus dans votre pack (3 à 6 mois selon l'offre) couvre les corrections de bugs et les réponses à vos questions techniques. C'est une période de garantie pour s'assurer que tout fonctionne parfaitement. Les forfaits de maintenance payants (à partir de 500€/mois) vont au-delà : ils incluent le monitoring proactif 24/7, les évolutions fonctionnelles, les nouvelles features, les optimisations de performance et l'hébergement continu. C'est une relation de partenariat long terme pour faire vivre et grandir votre application."
+    },
+    {
+      value: "q6",
+      question: "Combien de temps pour développer une application ?",
+      answer: "Un MVP simple prend 10 semaines. Une application métier complète prend 12-14 semaines. Une plateforme enterprise complexe prend 20+ semaines. Ces délais incluent toutes les phases : stratégie, design, développement, tests et mise en production. Nous travaillons en sprints d'1 semaine avec des démos chaque vendredi pour que vous suiviez l'avancement en temps réel."
     }
   ]
 };

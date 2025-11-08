@@ -31,6 +31,7 @@ const navLinks = [
     icon: Briefcase,
     submenu: [
       { name: 'Avocats', href: '/secteurs/professions-liberales/avocat' },
+      { name: 'Artisans', href: '/secteurs/artisans' },
     ]
   },
   // { name: 'Blog', href: '/blog', icon: Rss }, // Vous pourrez décommenter ça plus tard
