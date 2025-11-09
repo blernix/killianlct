@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
-import { FAQ } from '@/components/FAQ';
+import ROICalculator from "@/components/ROICalculator";
 import {
   CheckCircle,
   AlertCircle,
@@ -19,26 +19,23 @@ import {
   Sparkles,
   Code,
   Zap,
-  ChevronRight
+  ChevronRight,
+  ChevronUp,
+  ChevronDown
 } from 'lucide-react';
 import { applicationWebData } from './data';
 
 export default function ApplicationWebClient() {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
-  const [teamSize, setTeamSize] = useState(5);
-  const [hoursSaved, setHoursSaved] = useState(10);
-  const [hourlyRate, setHourlyRate] = useState(50);
-  const [selectedPackage, setSelectedPackage] = useState(35000);
+  const [expandedFaq, setExpandedFaq] = useState(null);
   const formType = 'application-web';
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
 
   // Liste des offres disponibles pour le formulaire
   const availableOffers = applicationWebData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
-
-  // Calculs ROI
-  const monthlyTimeSaved = teamSize * hoursSaved * 4; // heures/mois
-  const monthlySavings = monthlyTimeSaved * hourlyRate;
-  const monthsToROI = (selectedPackage / monthlySavings).toFixed(1);
-  const yearlyROI = (monthlySavings * 12) - selectedPackage;
 
   // Préparer les données FAQ
   const faqItems = applicationWebData.faq.items.map((item, index) => ({
@@ -401,127 +398,50 @@ export default function ApplicationWebClient() {
         </section>
 
         {/* Calculateur ROI */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[150px]" />
+        <ROICalculator
+          title={
+            <>
+              Calculez Votre{' '}
+              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                Retour sur Investissement
+              </span>
+            </>
+          }
+          subtitle="Combien votre application peut-elle vous faire économiser ?"
+          color="cyan"
+          inputs={[
+            { name: 'teamSize', label: "Taille de l'équipe", defaultValue: 5, min: 1, max: 100, step: 1 },
+            { name: 'hoursSaved', label: 'Heures gagnées/pers./semaine', defaultValue: 10, min: 1, max: 40, step: 1 },
+            { name: 'hourlyRate', label: 'Coût horaire (€)', defaultValue: 50, min: 10, max: 200, step: 5 },
+          ]}
+          packageOptions={{
+            label: 'Forfait choisi',
+            defaultValue: 35000,
+            options: [
+              { value: 15000, label: 'MVP - 15 000€' },
+              { value: 35000, label: 'Complet - 35 000€' },
+            ],
+          }}
+          calculate={(values) => {
+            const monthlySavings = values.teamSize * values.hoursSaved * values.hourlyRate * 4;
+            const monthsToROI = Math.ceil(values.selectedPackage / monthlySavings);
+            const yearlyROI = (monthlySavings * 12) - values.selectedPackage;
 
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <TrendingUp size={16} />
-                <span className="font-semibold">Simulation Personnalisée</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Calculez Votre{' '}
-                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  Retour sur Investissement
-                </span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Combien votre application peut-elle vous faire économiser ?
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-              <div className="grid md:grid-cols-4 gap-6 mb-8">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Taille de l'équipe
-                  </label>
-                  <input
-                    type="number"
-                    value={teamSize}
-                    onChange={(e) => setTeamSize(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
-                    placeholder="5"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Heures gagnées/pers./semaine
-                  </label>
-                  <input
-                    type="number"
-                    value={hoursSaved}
-                    onChange={(e) => setHoursSaved(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
-                    placeholder="10"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Coût horaire (€)
-                  </label>
-                  <input
-                    type="number"
-                    value={hourlyRate}
-                    onChange={(e) => setHourlyRate(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
-                    placeholder="50"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Forfait choisi
-                  </label>
-                  <select
-                    value={selectedPackage}
-                    onChange={(e) => setSelectedPackage(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all [&>option]:bg-gray-900"
-                  >
-                    <option value={15000}>MVP - 15 000€</option>
-                    <option value={35000}>Complet - 35 000€</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 rounded-2xl p-8 border border-green-500/30">
-                <p className="text-gray-300 text-center mb-6">
-                  Avec <strong className="text-white">{teamSize} personnes</strong> qui gagnent{' '}
-                  <strong className="text-white">{hoursSaved}h/semaine</strong> chacune à{' '}
-                  <strong className="text-white">{hourlyRate}€/h</strong> :
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Économie mensuelle</p>
-                    <p className="text-3xl font-bold text-white">
-                      {monthlySavings.toLocaleString()}€
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">App rentabilisée en</p>
-                    <p className="text-3xl font-bold text-green-400">
-                      {monthsToROI} mois
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">ROI sur 12 mois</p>
-                    <p className="text-3xl font-bold text-green-400 flex items-center justify-center gap-2">
-                      <TrendingUp size={28} />
-                      +{yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 text-center">
-                <button
-                  onClick={() => openModal(selectedPackage === 15000 ? 'MVP Simple - 15 000€' : 'Application Métier Complète - 35 000€')}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]"
-                >
-                  Obtenir mon devis pour cette offre
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+            return {
+              description: `Avec <strong>${values.teamSize} personnes</strong> qui gagnent <strong>${values.hoursSaved}h/semaine</strong> chacune à <strong>${values.hourlyRate}€/h</strong> :`,
+              metrics: [
+                { label: 'Économie mensuelle', value: `${monthlySavings.toLocaleString()}€` },
+                { label: 'App rentabilisée en', value: `${monthsToROI} mois`, highlight: true },
+                { label: 'ROI sur 12 mois', value: `+${yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€`, icon: TrendingUp, highlight: true },
+              ],
+              cta: {
+                label: 'Obtenir mon devis pour cette offre',
+                icon: ArrowRight,
+                onClick: () => openModal(values.selectedPackage === 15000 ? 'MVP Simple - 15 000€' : 'Application Métier Complète - 35 000€'),
+              },
+            };
+          }}
+        />
 
         {/* Section Tarifs */}
         <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-950">
@@ -687,11 +607,41 @@ export default function ApplicationWebClient() {
           </div>
         </section>
 
-        <FAQ
-          title={applicationWebData.faq.title}
-          subtitle={applicationWebData.faq.subtitle}
-          faqItems={faqItems}
-        />
+        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {applicationWebData.faq.title}
+              </h2>
+              <p className="text-xl text-gray-400">
+                {applicationWebData.faq.subtitle}
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {applicationWebData.faq.items.map((item, index) => (
+                <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                  >
+                    <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                    {expandedFaq === index ? (
+                      <ChevronUp className="text-cyan-400 flex-shrink-0" size={24} />
+                    ) : (
+                      <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                    )}
+                  </button>
+                  {expandedFaq === index && (
+                    <div className="px-6 pb-6">
+                      <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <Footer />
       </main>

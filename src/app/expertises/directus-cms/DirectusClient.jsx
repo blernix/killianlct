@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
-import { FAQ } from '@/components/FAQ';
 import {
   CheckCircle,
   AlertCircle,
@@ -16,13 +15,20 @@ import {
   Sparkles,
   Zap,
   Palette,
-  Code
+  Code,
+  ChevronUp,
+  ChevronDown
 } from 'lucide-react';
 import { directusData } from './data';
 
 export default function DirectusClient() {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
+  const [expandedFaq, setExpandedFaq] = useState(null);
   const formType = 'directus';
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
 
   // Liste des offres disponibles pour le formulaire
   const availableOffers = directusData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
@@ -494,11 +500,41 @@ export default function DirectusClient() {
           </div>
         </section>
 
-        <FAQ
-          title={directusData.faq.title}
-          subtitle={directusData.faq.subtitle}
-          faqItems={faqItems}
-        />
+        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {directusData.faq.title}
+              </h2>
+              <p className="text-xl text-gray-400">
+                {directusData.faq.subtitle}
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {directusData.faq.items.map((item, index) => (
+                <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                  >
+                    <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                    {expandedFaq === index ? (
+                      <ChevronUp className="text-indigo-400 flex-shrink-0" size={24} />
+                    ) : (
+                      <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                    )}
+                  </button>
+                  {expandedFaq === index && (
+                    <div className="px-6 pb-6">
+                      <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <Footer />
       </main>

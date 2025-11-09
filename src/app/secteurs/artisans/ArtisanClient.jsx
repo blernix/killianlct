@@ -6,27 +6,17 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
+import ROICalculator from "@/components/ROICalculator";
 import { artisanData } from './data';
 import { ArrowRight, Check, ChevronDown, ChevronUp, TrendingUp } from 'lucide-react';
 
 export default function ArtisanClient() {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [expandedFaq, setExpandedFaq] = useState(null);
-
-  // States pour le calculateur ROI
-  const [pricePerJob, setPricePerJob] = useState(800);
-  const [jobsPerMonth, setJobsPerMonth] = useState(3);
-  const [selectedPackage, setSelectedPackage] = useState(2000);
-
   const formType = 'artisan';
 
   // Liste des offres disponibles pour le formulaire
   const availableOffers = artisanData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
-
-  // Calculs ROI
-  const monthlyRevenue = pricePerJob * jobsPerMonth;
-  const monthsToROI = Math.ceil(selectedPackage / monthlyRevenue);
-  const yearlyRevenue = monthlyRevenue * 12;
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -379,117 +369,49 @@ export default function ArtisanClient() {
         </section>
 
         {/* CALCULATEUR ROI */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          {/* Gradients d'ambiance */}
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[150px]" />
+        <ROICalculator
+          title={
+            <>
+              Calculez Votre{' '}
+              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                Retour sur Investissement
+              </span>
+            </>
+          }
+          subtitle="Simulation simple pour évaluer la rentabilité réelle de votre site"
+          color="orange"
+          inputs={[
+            { name: 'pricePerJob', label: 'Prix moyen par chantier', defaultValue: 800, min: 200, max: 10000, step: 100 },
+            { name: 'jobsPerMonth', label: 'Nouveaux chantiers visés/mois', defaultValue: 3, min: 1, max: 20, step: 1 },
+          ]}
+          packageOptions={{
+            label: 'Forfait choisi',
+            defaultValue: 2000,
+            options: [
+              { value: 2000, label: 'Essentiel - 1 500-2 500€ (moyenne 2 000€)' },
+              { value: 4000, label: 'Professionnel - 3 500-5 000€ (moyenne 4 000€)' },
+            ],
+          }}
+          calculate={(values) => {
+            const monthlyRevenue = values.pricePerJob * values.jobsPerMonth;
+            const monthsToROI = Math.ceil(values.selectedPackage / monthlyRevenue);
+            const yearlyRevenue = monthlyRevenue * 12;
 
-          <div className="relative z-10 max-w-5xl mx-auto">
-            {/* Titre */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <TrendingUp size={16} />
-                <span className="font-semibold">Simulation Personnalisée</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Calculez Votre{' '}
-                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  Retour sur Investissement
-                </span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Simulation simple pour évaluer la rentabilité réelle de votre site
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Prix moyen par chantier
-                  </label>
-                  <input
-                    type="number"
-                    value={pricePerJob}
-                    onChange={(e) => setPricePerJob(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white placeholder-gray-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
-                    placeholder="800"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Nouveaux chantiers visés/mois
-                  </label>
-                  <input
-                    type="number"
-                    value={jobsPerMonth}
-                    onChange={(e) => setJobsPerMonth(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white placeholder-gray-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
-                    placeholder="3"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Forfait choisi
-                  </label>
-                  <select
-                    value={selectedPackage}
-                    onChange={(e) => setSelectedPackage(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-orange-500/30 rounded-xl text-white focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all [&>option]:bg-gray-900"
-                  >
-                    <option value={2000}>Essentiel - 1 500-2 500€ (moyenne 2 000€)</option>
-                    <option value={4000}>Professionnel - 3 500-5 000€ (moyenne 4 000€)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 rounded-2xl p-8 border border-green-500/30">
-                <p className="text-gray-300 text-center mb-6">
-                  Si votre site vous amène <strong className="text-white">{jobsPerMonth} nouveaux chantiers/mois</strong> à{' '}
-                  <strong className="text-white">{pricePerJob}€</strong> le chantier :
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">CA mensuel supplémentaire</p>
-                    <p className="text-3xl font-bold text-white">
-                      {monthlyRevenue.toLocaleString()}€
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Site rentabilisé en</p>
-                    <p className="text-3xl font-bold text-green-400">
-                      {monthsToROI} mois
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">CA supplémentaire 1ère année</p>
-                    <p className="text-3xl font-bold text-white">
-                      {yearlyRevenue.toLocaleString()}€
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center">
-                <button
-                  onClick={openModal}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(234,88,12,0.6)]"
-                >
-                  Obtenir mon devis gratuit
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </button>
-                <p className="text-gray-400 text-sm mt-4">
-                  Premier échange offert • Sans engagement • Réponse sous 24h
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+            return {
+              description: `Si votre site vous amène <strong>${values.jobsPerMonth} nouveaux chantiers/mois</strong> à <strong>${values.pricePerJob}€</strong> le chantier :`,
+              metrics: [
+                { label: 'CA mensuel supplémentaire', value: `${monthlyRevenue.toLocaleString()}€` },
+                { label: 'Site rentabilisé en', value: `${monthsToROI} mois`, highlight: true },
+                { label: 'CA supplémentaire 1ère année', value: `${yearlyRevenue.toLocaleString()}€` },
+              ],
+              cta: {
+                label: 'Obtenir mon devis gratuit',
+                icon: ArrowRight,
+                onClick: () => openModal(),
+              },
+            };
+          }}
+        />
 
         {/* FAQ SECTION */}
         <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">

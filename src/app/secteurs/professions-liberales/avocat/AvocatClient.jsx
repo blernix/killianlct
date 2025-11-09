@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
-import { FAQ } from '@/components/FAQ';
+import ROICalculator from "@/components/ROICalculator";
 import {
   CheckCircle,
   AlertCircle,
@@ -16,25 +16,23 @@ import {
   Scale,
   Lock,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  ChevronUp,
+  ChevronDown
 } from 'lucide-react';
 import { avocatData } from './data';
 
 export default function AvocatClient() {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
-  const [feePerCase, setFeePerCase] = useState(2000);
-  const [clientsPerMonth, setClientsPerMonth] = useState(2);
-  const [selectedPackage, setSelectedPackage] = useState(2500);
+  const [expandedFaq, setExpandedFaq] = useState(null);
   const formType = 'site-avocat';
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
 
   // Liste des offres disponibles pour le formulaire
   const availableOffers = avocatData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
-
-
-  // Calculs ROI
-  const monthlyRevenue = feePerCase * clientsPerMonth;
-  const monthsToROI = (selectedPackage / monthlyRevenue).toFixed(1);
-  const yearlyROI = (monthlyRevenue * 12) - selectedPackage;
 
   // Préparer les données FAQ pour le composant FAQ existant
   const faqItems = avocatData.faq.items.map((item, index) => ({
@@ -405,116 +403,49 @@ export default function AvocatClient() {
         {/* Je le garde commenté pour ne pas surcharger, focus sur ROI et tarifs */}
 
         {/* 🎨 Calculateur ROI REDESIGNÉ */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          {/* Gradients d'ambiance */}
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[150px]" />
+        <ROICalculator
+          title={
+            <>
+              Calculez Votre{' '}
+              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                Retour sur Investissement
+              </span>
+            </>
+          }
+          subtitle="Simulation simple pour évaluer la rentabilité réelle de votre site"
+          color="violet"
+          inputs={[
+            { name: 'feePerCase', label: 'Honoraires moyens par dossier', defaultValue: 2000, min: 500, max: 20000, step: 100 },
+            { name: 'clientsPerMonth', label: 'Nouveaux clients visés/mois', defaultValue: 2, min: 1, max: 20, step: 1 },
+          ]}
+          packageOptions={{
+            label: 'Forfait choisi',
+            defaultValue: 2500,
+            options: [
+              { value: 2500, label: 'Essentiel - 2 500€' },
+              { value: 4500, label: 'Professionnel - 4 500€' },
+            ],
+          }}
+          calculate={(values) => {
+            const monthlyRevenue = values.feePerCase * values.clientsPerMonth;
+            const monthsToROI = (values.selectedPackage / monthlyRevenue).toFixed(1);
+            const yearlyROI = (monthlyRevenue * 12) - values.selectedPackage;
 
-          <div className="relative z-10 max-w-5xl mx-auto">
-            {/* Titre */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <TrendingUp size={16} />
-                <span className="font-semibold">Simulation Personnalisée</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Calculez Votre{' '}
-                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  Retour sur Investissement
-                </span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Simulation simple pour évaluer la rentabilité réelle de votre site
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Honoraires moyens par dossier
-                  </label>
-                  <input
-                    type="number"
-                    value={feePerCase}
-                    onChange={(e) => setFeePerCase(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-violet-500/30 rounded-xl text-white placeholder-gray-500 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all"
-                    placeholder="2000"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Nouveaux clients visés/mois
-                  </label>
-                  <input
-                    type="number"
-                    value={clientsPerMonth}
-                    onChange={(e) => setClientsPerMonth(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-violet-500/30 rounded-xl text-white placeholder-gray-500 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all"
-                    placeholder="2"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Forfait choisi
-                  </label>
-                  <select
-                    value={selectedPackage}
-                    onChange={(e) => setSelectedPackage(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-violet-500/30 rounded-xl text-white focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-all [&>option]:bg-gray-900"
-                  >
-                    <option value={2500}>Essentiel - 2 500€</option>
-                    <option value={4500}>Professionnel - 4 500€</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 rounded-2xl p-8 border border-green-500/30">
-                <p className="text-gray-300 text-center mb-6">
-                  Si votre site vous amène <strong className="text-white">{clientsPerMonth} nouveaux clients/mois</strong> à{' '}
-                  <strong className="text-white">{feePerCase}€</strong> le dossier :
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">CA mensuel supplémentaire</p>
-                    <p className="text-3xl font-bold text-white">
-                      {monthlyRevenue.toLocaleString()}€
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Site rentabilisé en</p>
-                    <p className="text-3xl font-bold text-green-400">
-                      {monthsToROI} mois
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">ROI sur 12 mois</p>
-                    <p className="text-3xl font-bold text-green-400 flex items-center justify-center gap-2">
-                      <TrendingUp size={28} />
-                      +{yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA pour ouvrir le formulaire avec l'offre sélectionnée */}
-              <div className="mt-10 text-center">
-                <button
-                  onClick={() => openModal(selectedPackage === 2500 ? 'Site Vitrine Essentiel - 2 500€' : 'Site Professionnel Complet - 4 500€')}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]"
-                >
-                  Obtenir mon devis pour cette offre
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+            return {
+              description: `Si votre site vous amène <strong>${values.clientsPerMonth} nouveaux clients/mois</strong> à <strong>${values.feePerCase}€</strong> le dossier :`,
+              metrics: [
+                { label: 'CA mensuel supplémentaire', value: `${monthlyRevenue.toLocaleString()}€` },
+                { label: 'Site rentabilisé en', value: `${monthsToROI} mois`, highlight: true },
+                { label: 'ROI sur 12 mois', value: `+${yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€`, icon: TrendingUp, highlight: true },
+              ],
+              cta: {
+                label: 'Obtenir mon devis pour cette offre',
+                icon: ArrowRight,
+                onClick: () => openModal(values.selectedPackage === 2500 ? 'Site Vitrine Essentiel - 2 500€' : 'Site Professionnel Complet - 4 500€'),
+              },
+            };
+          }}
+        />
 
         {/* 🎨 Section Tarifs REDESIGNÉE */}
         <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-950">
@@ -632,11 +563,41 @@ export default function AvocatClient() {
         </section>
 
         {/* FAQ */}
-        <FAQ
-          title={avocatData.faq.title}
-          subtitle={avocatData.faq.subtitle}
-          faqItems={faqItems}
-        />
+        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                {avocatData.faq.title}
+              </h2>
+              <p className="text-xl text-gray-400">
+                {avocatData.faq.subtitle}
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {avocatData.faq.items.map((item, index) => (
+                <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                  >
+                    <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                    {expandedFaq === index ? (
+                      <ChevronUp className="text-violet-400 flex-shrink-0" size={24} />
+                    ) : (
+                      <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                    )}
+                  </button>
+                  {expandedFaq === index && (
+                    <div className="px-6 pb-6">
+                      <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <Footer />
       </main>

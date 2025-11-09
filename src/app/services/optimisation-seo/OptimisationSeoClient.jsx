@@ -6,44 +6,22 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
+import ROICalculator from "@/components/ROICalculator";
 import {
   Target, Building2, TrendingUp, Search, PenTool, Link as LinkIcon,
   BarChart3, Wrench, FileText, Smartphone, Clock, Sparkles, ArrowRight,
-  CheckCircle, Zap, LineChart, Award, Check, Euro, Users, MousePointerClick
+  CheckCircle, Zap, LineChart, Award, Check, Euro, Users, MousePointerClick,
+  ChevronUp, ChevronDown
 } from 'lucide-react';
-import { FAQ } from '@/components/FAQ';
 
 export default function SeoClient({ faqData }) {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
-  const [searchVolume, setSearchVolume] = useState(1000);
-  const [currentPosition, setCurrentPosition] = useState(15);
-  const [conversionRate, setConversionRate] = useState(3);
-  const [clientValue, setClientValue] = useState(1500);
-
+  const [expandedFaq, setExpandedFaq] = useState(null);
   const formType = 'seo';
 
-  // Calculs ROI SEO
-  // Position 1-3: 30% CTR, 4-10: 10% CTR, 11-20: 3% CTR, >20: 0.5% CTR
-  const getCTR = (pos) => {
-    if (pos <= 3) return 30;
-    if (pos <= 10) return 10;
-    if (pos <= 20) return 3;
-    return 0.5;
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
   };
-
-  const currentCTR = getCTR(currentPosition);
-  const targetCTR = getCTR(3); // Objectif top 3
-
-  const currentVisitors = Math.round((searchVolume * currentCTR) / 100);
-  const targetVisitors = Math.round((searchVolume * targetCTR) / 100);
-  const additionalVisitors = targetVisitors - currentVisitors;
-
-  const currentLeads = Math.round((currentVisitors * conversionRate) / 100);
-  const targetLeads = Math.round((targetVisitors * conversionRate) / 100);
-  const additionalLeads = targetLeads - currentLeads;
-
-  const additionalRevenue = additionalLeads * clientValue;
-  const yearlyRevenue = additionalRevenue * 12;
 
   return (
     <>
@@ -228,140 +206,111 @@ export default function SeoClient({ faqData }) {
         </section>
 
         {/* 🎨 Calculateur ROI SEO - NOUVELLE SECTION */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-900">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[150px]" />
+        <ROICalculator
+          title={
+            <>
+              Estimez Votre{' '}
+              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
+                Potentiel de Croissance
+              </span>
+            </>
+          }
+          subtitle="Calculez l'impact d'un meilleur positionnement sur votre chiffre d'affaires"
+          color="violet"
+          inputs={[
+            {
+              name: 'searchVolume',
+              label: 'Volume de recherches mensuelles',
+              defaultValue: 1000,
+              min: 100,
+              max: 100000,
+              step: 100,
+              placeholder: '1000'
+            },
+            {
+              name: 'currentPosition',
+              label: 'Position moyenne actuelle',
+              defaultValue: 15,
+              min: 1,
+              max: 100,
+              step: 1,
+              placeholder: '15'
+            },
+            {
+              name: 'conversionRate',
+              label: 'Taux de conversion (%)',
+              defaultValue: 3,
+              min: 0.1,
+              max: 20,
+              step: 0.1,
+              placeholder: '3'
+            },
+            {
+              name: 'clientValue',
+              label: 'Valeur moyenne par client (€)',
+              defaultValue: 1500,
+              min: 50,
+              max: 50000,
+              step: 50,
+              placeholder: '1500'
+            },
+          ]}
+          calculate={(values) => {
+            // Position 1-3: 30% CTR, 4-10: 10% CTR, 11-20: 3% CTR, >20: 0.5% CTR
+            const getCTR = (pos) => {
+              if (pos <= 3) return 30;
+              if (pos <= 10) return 10;
+              if (pos <= 20) return 3;
+              return 0.5;
+            };
 
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-sm text-blue-400 mb-6">
-                <LineChart size={16} />
-                <span className="font-semibold">Simulation SEO</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Estimez Votre{' '}
-                <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
-                  Potentiel de Croissance
-                </span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Calculez l'impact d'un meilleur positionnement sur votre chiffre d'affaires
-              </p>
-            </div>
+            const currentCTR = getCTR(values.currentPosition);
+            const targetCTR = getCTR(3); // Objectif top 3
 
-            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Volume de recherches mensuelles
-                  </label>
-                  <input
-                    type="number"
-                    value={searchVolume}
-                    onChange={(e) => setSearchVolume(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-blue-500/30 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    placeholder="1000"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Pour vos mots-clés cibles</p>
-                </div>
+            const currentVisitors = Math.round((values.searchVolume * currentCTR) / 100);
+            const targetVisitors = Math.round((values.searchVolume * targetCTR) / 100);
+            const additionalVisitors = targetVisitors - currentVisitors;
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Position moyenne actuelle
-                  </label>
-                  <input
-                    type="number"
-                    value={currentPosition}
-                    onChange={(e) => setCurrentPosition(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-blue-500/30 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    placeholder="15"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Mettez 50+ si pas encore positionné</p>
-                </div>
+            const currentLeads = Math.round((currentVisitors * values.conversionRate) / 100);
+            const targetLeads = Math.round((targetVisitors * values.conversionRate) / 100);
+            const additionalLeads = targetLeads - currentLeads;
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Taux de conversion (%)
-                  </label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={conversionRate}
-                    onChange={(e) => setConversionRate(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-blue-500/30 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    placeholder="3"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">De visiteur à client</p>
-                </div>
+            const additionalRevenue = additionalLeads * values.clientValue;
+            const yearlyRevenue = additionalRevenue * 12;
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Valeur moyenne par client (€)
-                  </label>
-                  <input
-                    type="number"
-                    value={clientValue}
-                    onChange={(e) => setClientValue(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-blue-500/30 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    placeholder="1500"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-blue-500/10 to-violet-500/5 rounded-2xl p-8 border border-blue-500/30">
-                <p className="text-gray-300 text-center mb-6">
-                  En atteignant le <strong className="text-white">Top 3</strong> sur vos mots-clés cibles :
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-6 mb-6">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Visiteurs additionnels/mois</p>
-                    <p className="text-3xl font-bold text-white">
-                      +{additionalVisitors}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">CTR: {currentCTR}% → {targetCTR}%</p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Leads additionnels/mois</p>
-                    <p className="text-3xl font-bold text-white">
-                      +{additionalLeads}
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">CA additionnel/mois</p>
-                    <p className="text-3xl font-bold text-blue-400">
-                      +{additionalRevenue.toLocaleString()}€
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-white/10 text-center">
-                  <p className="text-sm text-gray-400 mb-2">Potentiel annuel additionnel</p>
-                  <p className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text flex items-center justify-center gap-2">
-                    <TrendingUp size={32} />
-                    {yearlyRevenue.toLocaleString()}€
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-10 text-center">
-                <a
-                  href="#tarifs"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]"
-                >
-                  Voir nos offres
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+            return {
+              description: `En atteignant le <strong>Top 3</strong> sur vos mots-clés cibles (CTR: ${currentCTR}% → ${targetCTR}%) :`,
+              metrics: [
+                {
+                  label: 'Visiteurs additionnels/mois',
+                  value: `+${additionalVisitors}`
+                },
+                {
+                  label: 'Leads additionnels/mois',
+                  value: `+${additionalLeads}`
+                },
+                {
+                  label: 'CA additionnel/mois',
+                  value: `+${additionalRevenue.toLocaleString()}€`,
+                  highlight: true
+                },
+                {
+                  label: 'Potentiel annuel additionnel',
+                  value: `${yearlyRevenue.toLocaleString()}€`,
+                  icon: TrendingUp,
+                  highlight: true
+                },
+              ],
+              cta: {
+                label: 'Voir nos offres',
+                icon: ArrowRight,
+                onClick: () => {
+                  document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                },
+              },
+            };
+          }}
+        />
 
         {/* 🎨 Section Tarifs REDESIGNÉE */}
         <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-950">
@@ -517,11 +466,41 @@ export default function SeoClient({ faqData }) {
         </section>
 
         {faqData && (
-          <FAQ
-            title={faqData.title}
-            subtitle={faqData.subtitle}
-            faqItems={faqData.items}
-          />
+          <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+            <div className="relative z-10 mx-auto max-w-4xl">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                  {faqData.title}
+                </h2>
+                <p className="text-xl text-gray-400">
+                  {faqData.subtitle}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {faqData.items.map((item, index) => (
+                  <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                    >
+                      <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                      {expandedFaq === index ? (
+                        <ChevronUp className="text-violet-400 flex-shrink-0" size={24} />
+                      ) : (
+                        <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                      )}
+                    </button>
+                    {expandedFaq === index && (
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         )}
 
         <Footer />

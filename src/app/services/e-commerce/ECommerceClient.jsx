@@ -6,23 +6,25 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
+import ROICalculator from "@/components/ROICalculator";
 import {
   Zap, Palette, KeyRound, Scaling, Check, Server, MonitorSmartphone,
   PackageCheck, Banknote, Users, BarChart, Mail, AlertTriangle,
-  TrendingUp, ShieldCheck, Sparkles, ArrowRight, Euro, CreditCard, ShoppingCart, CheckCircle
+  TrendingUp, ShieldCheck, Sparkles, ArrowRight, Euro, CreditCard, ShoppingCart, CheckCircle,
+  ChevronUp, ChevronDown
 } from 'lucide-react';
-import { FAQ } from '@/components/FAQ';
 
 const StripeLogo = () => <span className="font-bold text-indigo-500">Stripe</span>;
 const PayPalLogo = () => <span className="font-bold text-blue-400">PayPal</span>;
 
 export default function ECommerceClient({ faqData }) {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
-  const [monthlyVisitors, setMonthlyVisitors] = useState(1000);
-  const [conversionRate, setConversionRate] = useState(2);
-  const [averageCart, setAverageCart] = useState(80);
-
+  const [expandedFaq, setExpandedFaq] = useState(null);
   const formType = 'e-commerce';
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
 
   // Packages disponibles
   const packages = [
@@ -97,11 +99,6 @@ export default function ECommerceClient({ faqData }) {
 
   // Liste des offres pour le formulaire
   const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}`);
-
-  // Calculs ROI e-commerce
-  const monthlyOrders = Math.round((monthlyVisitors * conversionRate) / 100);
-  const monthlyRevenue = monthlyOrders * averageCart;
-  const yearlyRevenue = monthlyRevenue * 12;
 
   return (
     <>
@@ -375,116 +372,74 @@ export default function ECommerceClient({ faqData }) {
         </section>
 
         {/* 🎨 Calculateur ROI E-COMMERCE - NOUVELLE SECTION */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-900">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[150px]" />
+        <ROICalculator
+          title={<>Calculez Votre <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">Chiffre d'Affaires</span></>}
+          subtitle="Estimez le potentiel de votre boutique en ligne avec notre calculateur"
+          color="green"
+          inputs={[
+            {
+              name: 'monthlyVisitors',
+              label: 'Visiteurs mensuels',
+              defaultValue: 1000,
+              min: 0,
+              max: 1000000,
+              step: 100,
+              placeholder: '1000'
+            },
+            {
+              name: 'conversionRate',
+              label: 'Taux de conversion (%)',
+              defaultValue: 2,
+              min: 0,
+              max: 100,
+              step: 0.1,
+              placeholder: '2'
+            },
+            {
+              name: 'averageCart',
+              label: 'Panier moyen (€)',
+              defaultValue: 80,
+              min: 0,
+              max: 10000,
+              step: 10,
+              placeholder: '80'
+            }
+          ]}
+          calculate={(values) => {
+            const monthlyOrders = Math.round((values.monthlyVisitors * values.conversionRate) / 100);
+            const monthlyRevenue = monthlyOrders * values.averageCart;
+            const yearlyRevenue = monthlyRevenue * 12;
 
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <TrendingUp size={16} />
-                <span className="font-semibold">Simulation E-commerce</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Calculez Votre{' '}
-                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  Chiffre d'Affaires
-                </span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Estimez le potentiel de votre boutique en ligne avec notre calculateur
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Visiteurs mensuels
-                  </label>
-                  <input
-                    type="number"
-                    value={monthlyVisitors}
-                    onChange={(e) => setMonthlyVisitors(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-green-500/30 rounded-xl text-white placeholder-gray-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all"
-                    placeholder="1000"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Taux de conversion (%)
-                  </label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={conversionRate}
-                    onChange={(e) => setConversionRate(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-green-500/30 rounded-xl text-white placeholder-gray-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all"
-                    placeholder="2"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Panier moyen (€)
-                  </label>
-                  <input
-                    type="number"
-                    value={averageCart}
-                    onChange={(e) => setAverageCart(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-black/40 border border-green-500/30 rounded-xl text-white placeholder-gray-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all"
-                    placeholder="80"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 rounded-2xl p-8 border border-green-500/30">
-                <p className="text-gray-300 text-center mb-6">
-                  Avec <strong className="text-white">{monthlyVisitors} visiteurs/mois</strong> et un taux de conversion de <strong className="text-white">{conversionRate}%</strong> :
-                </p>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">Commandes mensuelles</p>
-                    <p className="text-3xl font-bold text-white">
-                      {monthlyOrders}
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">CA mensuel</p>
-                    <p className="text-3xl font-bold text-green-400">
-                      {monthlyRevenue.toLocaleString()}€
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-2">CA annuel</p>
-                    <p className="text-3xl font-bold text-green-400 flex items-center justify-center gap-2">
-                      <TrendingUp size={28} />
-                      {yearlyRevenue.toLocaleString()}€
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 text-center">
-                <a
-                  href="#tarifs"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]"
-                >
-                  Voir les tarifs
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+            return {
+              description: `Avec <strong class="text-white">${values.monthlyVisitors} visiteurs/mois</strong> et un taux de conversion de <strong class="text-white">${values.conversionRate}%</strong> :`,
+              metrics: [
+                {
+                  label: 'Commandes mensuelles',
+                  value: monthlyOrders,
+                  highlight: false
+                },
+                {
+                  label: 'CA mensuel',
+                  value: `${monthlyRevenue.toLocaleString()}€`,
+                  highlight: true
+                },
+                {
+                  label: 'CA annuel',
+                  value: `${yearlyRevenue.toLocaleString()}€`,
+                  highlight: true,
+                  icon: TrendingUp
+                }
+              ],
+              cta: {
+                label: 'Voir les tarifs',
+                icon: ArrowRight,
+                onClick: () => {
+                  document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }
+            };
+          }}
+        />
 
         {/* 🎨 Section Tarifs REDESIGNÉE */}
         <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-950">
@@ -619,11 +574,41 @@ export default function ECommerceClient({ faqData }) {
 
         {/* FAQ */}
         {faqData && (
-          <FAQ
-            title={faqData.title}
-            subtitle={faqData.subtitle}
-            faqItems={faqData.items}
-          />
+          <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+            <div className="relative z-10 mx-auto max-w-4xl">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                  {faqData.title}
+                </h2>
+                <p className="text-xl text-gray-400">
+                  {faqData.subtitle}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {faqData.items.map((item, index) => (
+                  <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                    >
+                      <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                      {expandedFaq === index ? (
+                        <ChevronUp className="text-green-400 flex-shrink-0" size={24} />
+                      ) : (
+                        <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                      )}
+                    </button>
+                    {expandedFaq === index && (
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         )}
 
         <Footer />
