@@ -16,6 +16,11 @@ export const formFieldsConfig = {
     fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande de devis - Site Avocat',
   },
+  'site-psychologue': {
+    subject: 'Demande de devis pour un Site Psychologue',
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
+    modalTitle: 'Demande de devis - Site Psychologue',
+  },
   'artisan': {
     subject: 'Demande de devis pour un Site Artisan',
     fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
