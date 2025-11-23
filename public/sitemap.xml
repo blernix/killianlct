@@ -63,7 +63,21 @@
 
   <url>
     <loc>https://killian-lecrut.com/secteurs/professions-liberales/avocat</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://killian-lecrut.com/secteurs/professions-liberales/psychologue</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://killian-lecrut.com/secteurs/professions-liberales/osteopathe</loc>
+    <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
