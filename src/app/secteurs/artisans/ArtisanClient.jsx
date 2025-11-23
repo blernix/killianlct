@@ -16,7 +16,7 @@ export default function ArtisanClient() {
   const formType = 'artisan';
 
   // Liste des offres disponibles pour le formulaire
-  const availableOffers = artisanData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
+  const availableOffers = artisanData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`);
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -274,6 +274,7 @@ export default function ArtisanClient() {
                     <h3 className="text-2xl font-bold text-white mb-3">{pkg.name}</h3>
                     <p className="text-gray-400 text-sm mb-6">{pkg.description}</p>
                     <p className="text-3xl font-bold text-white">{pkg.price}</p>
+                    {pkg.monthly && <p className="text-orange-400 font-medium mt-2">+ {pkg.monthly}</p>}
                   </div>
 
                   <ul className="space-y-4 mb-8">

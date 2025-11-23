@@ -25,6 +25,8 @@ export const avocatData = {
     title: "Un Site d'Avocat Conforme CNB 2023 Qui Convertit les Visiteurs en Clients",
     subtitle: "Attirez 3x plus de clients qualifiés sans enfreindre la déontologie. Site internet conforme RGPD, optimisé pour le référencement local, et conçu pour transformer vos visiteurs en rendez-vous.",
     ctaLabel: "Obtenir mon devis avocat gratuit",
+    demoUrl: "https://demo.avocat.2minaci.xyz/",
+    demoLabel: "Voir la démo",
     microPromises: [
       "Livraison en 3 semaines",
       "Conformité CNB 2023 garantie",
@@ -181,6 +183,10 @@ export const avocatData = {
       {
         question: "Que se passe-t-il si les règles du CNB évoluent ?",
         answer: "Nous assurons une veille juridique continue sur les évolutions du RIN et des règles déontologiques. Si une modification réglementaire impacte votre site, nous vous informons immédiatement et proposons les mises à jour nécessaires. De plus, nous incluons systématiquement 3 mois de maintenance dans nos forfaits, couvrant les ajustements de conformité éventuels post-livraison."
+      },
+      {
+        question: "Que comprend l'abonnement mensuel ?",
+        answer: "Votre abonnement mensuel inclut :\n\n• Hébergement cloud premium (serveurs français en UE, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel)\n• Certificat SSL/TLS (sécurité HTTPS)\n• Mises à jour de sécurité\n• Modifications de contenu (textes, images, coordonnées, tarifs)\n• Support technique par email\n• Veille réglementaire CNB et alertes conformité\n• Surveillance et maintenance préventive\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et conforme tant que l'abonnement est actif."
       }
     ]
   },
@@ -192,6 +198,7 @@ export const avocatData = {
       {
         name: "Site Vitrine Essentiel",
         price: "2 500€",
+        monthly: "35€/mois",
         description: "Pour avocat indépendant ou petit cabinet",
         features: [
           "5 pages (Accueil, À propos, Domaines, Contact, Mentions légales)",
@@ -203,7 +210,7 @@ export const avocatData = {
           "Configuration cookies essentiels uniquement (pas de traceurs publicitaires)",
           "Dossier de conformité complet pour déclaration au Conseil de l'Ordre",
           "Notice de gestion des données clients",
-          "Nom de domaine + hébergement premium UE inclus 1 an (valeur 200€/an)",
+          "Nom de domaine + hébergement premium UE inclus",
           "Certificat SSL/TLS",
           "3 mois de maintenance avec veille réglementaire"
         ],
@@ -212,6 +219,7 @@ export const avocatData = {
       {
         name: "Site Professionnel Complet",
         price: "4 500€",
+        monthly: "50€/mois",
         description: "Pour cabinet établi souhaitant se développer",
         features: [
           "Tout du pack Essentiel +",
@@ -228,7 +236,7 @@ export const avocatData = {
           "Galerie diplômes et certifications professionnelles",
           "Registre des traitements RGPD inclus",
           "Formation gestion blog + conformité (2h)",
-          "6 mois de maintenance avec veille réglementaire"
+          "6 mois de maintenance prioritaire"
         ],
         cta: "Le plus populaire",
         highlighted: true
@@ -236,6 +244,7 @@ export const avocatData = {
       {
         name: "Site Premium sur-mesure",
         price: "Sur devis",
+        monthly: "75€/mois",
         description: "Pour cabinet d'avocats avec besoins spécifiques",
         features: [
           "Tout du pack Professionnel +",
@@ -246,12 +255,12 @@ export const avocatData = {
           "Traductions multilingues",
           "Intégrations spécifiques (logiciel métier, etc.)",
           "Accompagnement marketing digital",
-          "Maintenance premium 12 mois"
+          "12 mois de maintenance premium"
         ],
         cta: "Discutons-en"
       }
     ],
-    note: "Tous nos forfaits incluent la conformité RGPD complète, le respect de la déontologie CNB, et la documentation technique pour déclaration au Conseil de l'Ordre.",
+    note: "Tous nos forfaits incluent : hébergement premium, nom de domaine, maintenance, conformité RGPD, respect de la déontologie CNB, et support technique.",
     justification: {
       title: "💡 Pourquoi ces tarifs ?",
       points: [

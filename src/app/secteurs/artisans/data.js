@@ -30,7 +30,7 @@ export const artisanData = {
       "Site livré en 3 semaines",
       "Optimisé Google Maps & recherche locale",
       "Galerie photos de vos réalisations",
-      "Nom de domaine offert 1 an"
+      "Hébergement & maintenance inclus"
     ]
   },
 
@@ -162,7 +162,7 @@ export const artisanData = {
       },
       {
         question: "Combien coûte un site web pour artisan ?",
-        answer: "Nos sites pour artisans démarrent à 1 500€ pour un site essentiel (5 pages, galerie photos, formulaire contact, SEO local de base, nom de domaine et hébergement 1 an inclus). Pour un site professionnel complet avec blog, avis clients, devis en ligne et SEO local avancé, comptez 3 500€. Pas d'abonnement mensuel caché : c'est un investissement unique. Après la 1ère année, seuls l'hébergement (~100€/an) et la maintenance optionnelle s'appliquent."
+        answer: "Nos sites pour artisans démarrent à 1 500€ + 35€/mois pour un site essentiel (5 pages, galerie photos, formulaire contact, SEO local de base). Pour un site professionnel complet avec blog, avis clients, devis en ligne et SEO local avancé, comptez 2 500€ + 50€/mois. L'abonnement mensuel inclut l'hébergement premium, le nom de domaine, les mises à jour de sécurité, le support technique et la maintenance."
       },
       {
         question: "Combien de temps pour créer le site ?",
@@ -181,8 +181,8 @@ export const artisanData = {
         answer: "Ça dépend du pack choisi. Le pack Essentiel est un site statique : pour modifier le contenu, vous passez par nous (petites modifications comprises dans le support 3 mois). Le pack Professionnel inclut un espace d'administration (CMS) simple qui vous permet d'ajouter des photos de chantiers, des actualités ou des avis clients en toute autonomie. Nous vous formons en 1h, c'est aussi simple qu'utiliser Facebook."
       },
       {
-        question: "Qu'est-ce qui est inclus dans le prix ?",
-        answer: "Tout ce dont vous avez besoin pour être en ligne : design sur-mesure, développement du site, formulaire de contact, galerie photos, optimisation SEO local de base, nom de domaine offert 1 an, hébergement 1 an inclus, certificat SSL pour la sécurité, et 3 mois de support technique (corrections de bugs et questions). Aucun frais caché. Après la 1ère année, vous payez juste le renouvellement du nom de domaine (~15€/an) et l'hébergement (~100€/an), et vous pouvez souscrire à un forfait maintenance optionnel si vous souhaitez déléguer les mises à jour."
+        question: "Que comprend l'abonnement mensuel ?",
+        answer: "Votre abonnement mensuel inclut :\n\n• Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel)\n• Certificat SSL (sécurité HTTPS)\n• Mises à jour de sécurité\n• Modifications de contenu (textes, images, coordonnées)\n• Support technique par email\n• Surveillance et maintenance préventive\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et à jour tant que l'abonnement est actif."
       }
     ]
   },
@@ -193,7 +193,8 @@ export const artisanData = {
     packages: [
       {
         name: "Site Essentiel",
-        price: "1 500€ - 2 500€",
+        price: "1 500€",
+        monthly: "35€/mois",
         description: "Pour démarrer votre présence en ligne",
         features: [
           "5 pages professionnelles (Accueil, Services, Réalisations, Zone intervention, Contact)",
@@ -203,8 +204,8 @@ export const artisanData = {
           "Zone d'intervention avec carte",
           "Responsive mobile & tablette",
           "SEO local de base (balises meta, Schema.org Local Business)",
-          "Nom de domaine offert 1 an (ex: votrenom-plomberie.fr)",
-          "Hébergement cloud 1 an inclus",
+          "Nom de domaine inclus",
+          "Hébergement cloud premium inclus",
           "Certificat SSL sécurisé",
           "3 mois de support technique",
           "Livraison : 3 semaines"
@@ -214,7 +215,8 @@ export const artisanData = {
       },
       {
         name: "Site Professionnel",
-        price: "3 500€ - 5 000€",
+        price: "2 500€",
+        monthly: "50€/mois",
         description: "Pour développer votre activité et dominer Google",
         features: [
           "Tout du pack Essentiel +",
@@ -237,6 +239,7 @@ export const artisanData = {
       {
         name: "Site Premium",
         price: "Sur devis",
+        monthly: "75€/mois",
         description: "Pour entreprises artisanales avec équipes multiples",
         features: [
           "Tout du pack Professionnel +",
@@ -255,7 +258,7 @@ export const artisanData = {
         highlighted: false
       }
     ],
-    note: "Tous nos forfaits incluent : nom de domaine 1 an, hébergement 1 an, SEO local optimisé, et garantie satisfaction. Aucun abonnement mensuel caché.",
+    note: "Tous nos forfaits incluent : hébergement premium, nom de domaine, maintenance, SEO local optimisé, et support technique.",
     justification: {
       title: "💡 Pourquoi investir dans un site web ?",
       points: [
@@ -322,9 +325,9 @@ export const artisanData = {
       },
       {
         name: "Coût mensuel",
-        us: "0€ après 1an",
+        us: "À partir de 35€/mois",
         facebook: "Publicités obligatoires",
-        note: "Pour être visible sur Facebook, il faut payer des pubs"
+        note: "L'abonnement inclut hébergement, maintenance et support"
       },
       {
         name: "Propriété de vos données",

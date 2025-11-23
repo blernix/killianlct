@@ -139,7 +139,7 @@ export const psychologueData = {
       },
       {
         question: "Puis-je voir un exemple de site pour psychologue ?",
-        answer: "Oui ! Nous avons créé une démo de site pour psychologue que vous pouvez consulter.\n\nCette démo illustre le design sobre et empathique, la structure de contenu, et les fonctionnalités disponibles. Chaque site est ensuite personnalisé selon votre identité : couleurs, typographie, photos, contenus."
+        answer: "Oui ! Nous avons créé une démo de site pour psychologue que vous pouvez consulter ici : https://demo.psychologue.2minaci.xyz/\n\nCette démo illustre le design sobre et empathique, la structure de contenu, et les fonctionnalités disponibles. Chaque site est ensuite personnalisé selon votre identité : couleurs, typographie, photos, contenus."
       }
     ]
   },

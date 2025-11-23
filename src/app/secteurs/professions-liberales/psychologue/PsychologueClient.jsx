@@ -91,12 +91,18 @@ export default function PsychologueClient() {
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </a>
 
-                <button
-                  onClick={() => openModal()}
+                <a
+                  href="https://demo.psychologue.2minaci.xyz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/10 transition-colors flex items-center gap-2"
                 >
-                  Discuter de mon projet
-                </button>
+                  <span className="flex flex-col items-start">
+                    <span className="font-bold">Voir un exemple de maquette</span>
+                    <span className="text-xs opacity-70">100% personnalisable</span>
+                  </span>
+                  <ArrowRight size={16} />
+                </a>
               </div>
 
               {/* Micro-promesses en grille */}
