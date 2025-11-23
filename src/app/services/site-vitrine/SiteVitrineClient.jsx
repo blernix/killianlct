@@ -28,7 +28,8 @@ export default function SiteVitrineClient({ faqData }) {
   const packages = [
     {
       name: "Essentiel",
-      price: "1 000€ - 3 000€",
+      price: "1000-3000€",
+      monthly: "35€/mois",
       description: "Pour démarrer votre présence en ligne",
       features: [
         "3-5 pages professionnelles",
@@ -36,8 +37,9 @@ export default function SiteVitrineClient({ faqData }) {
         "Formulaire de contact simple",
         "Responsive mobile & tablette",
         "SEO technique de base (balises meta, alt, Schema.org)",
-        "Nom de domaine offert 1 an",
-        "Hébergement inclus ou sur votre serveur",
+        "Nom de domaine inclus",
+        "Hébergement premium inclus",
+        "Certificat SSL/TLS",
         "1 mois de support technique",
         "Livraison : 3 semaines"
       ],
@@ -46,7 +48,8 @@ export default function SiteVitrineClient({ faqData }) {
     },
     {
       name: "Personnalisé",
-      price: "2 500€ - 6 000€",
+      price: "4 500€",
+      monthly: "50€/mois",
       description: "La solution la plus populaire",
       features: [
         "5-10 pages sur-mesure",
@@ -56,8 +59,9 @@ export default function SiteVitrineClient({ faqData }) {
         "Intégration Google Analytics",
         "Formulaires avancés",
         "Formation CMS incluse (2h)",
-        "Nom de domaine offert 1 an",
-        "Hébergement inclus ou sur votre serveur",
+        "Nom de domaine inclus",
+        "Hébergement premium inclus",
+        "Certificat SSL/TLS",
         "3 mois de support technique",
         "Livraison : 3-4 semaines"
       ],
@@ -66,7 +70,8 @@ export default function SiteVitrineClient({ faqData }) {
     },
     {
       name: "Avancé",
-      price: "5 000€+",
+      price: "Sur devis",
+      monthly: "75€/mois",
       description: "Pour les projets ambitieux",
       features: [
         "10+ pages complexes",
@@ -78,8 +83,9 @@ export default function SiteVitrineClient({ faqData }) {
         "Intégrations tierces (API, CRM, etc.)",
         "CMS Directus avec workflows personnalisés",
         "Formation avancée (4h)",
-        "Nom de domaine offert 1 an",
-        "Hébergement premium inclus ou sur votre serveur",
+        "Nom de domaine inclus",
+        "Hébergement premium inclus",
+        "Certificat SSL/TLS",
         "6 mois de support premium",
         "Livraison : 4-6 semaines (selon complexité)"
       ],
@@ -89,7 +95,7 @@ export default function SiteVitrineClient({ faqData }) {
   ];
 
   // Liste des offres pour le formulaire
-  const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}`);
+  const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`);
 
   return (
     <>
@@ -383,9 +389,13 @@ export default function SiteVitrineClient({ faqData }) {
                     <p className="text-gray-400 text-sm mb-6">
                       {pkg.description}
                     </p>
-                    <p className="text-3xl font-bold text-white">
-                      {pkg.price}
-                    </p>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-bold text-white">
+                        {pkg.price.replace('€', '')}
+                      </span>
+                      {pkg.price.includes('€') && <span className="text-2xl text-gray-400">€</span>}
+                    </div>
+                    {pkg.monthly && <p className="text-violet-400 font-medium mt-2">+ {pkg.monthly}</p>}
                   </div>
 
                   <ul className="space-y-4 mb-8">
@@ -400,7 +410,7 @@ export default function SiteVitrineClient({ faqData }) {
                   </ul>
 
                   <button
-                    onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
+                    onClick={() => openModal(`${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`)}
                     className={`w-full py-4 px-6 rounded-full font-bold transition-all duration-300 ${
                       pkg.highlighted
                         ? 'bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white shadow-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] hover:scale-105'
@@ -413,28 +423,36 @@ export default function SiteVitrineClient({ faqData }) {
               ))}
             </div>
 
-            {/* Coûts après la première année */}
+            {/* Ce que comprend l'abonnement */}
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
-                <h3 className="text-2xl font-bold text-white mb-6 text-center">
-                  💡 Coûts après la première année
-                </h3>
-                <div className="grid sm:grid-cols-3 gap-6">
+              <div className="relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold rounded-full shadow-lg">
+                  Que comprend l'abonnement ?
+                </div>
+                <div className="grid sm:grid-cols-2 gap-6 mt-6">
                   {[
-                    { icon: "🌐", title: "Nom de Domaine", price: "~15€/an", desc: "Offert la 1ère année, puis renouvellement annuel" },
-                    { icon: "☁️", title: "Hébergement", price: "Inclus ou 100€/an", desc: "Sur notre serveur (payant) ou le vôtre (gratuit)" },
-                    { icon: "🔧", title: "Support / Maintenance", price: "Optionnel", desc: "Forfaits disponibles selon vos besoins" }
-                  ].map((item, index) => (
-                    <div key={index} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
-                      <div className="text-4xl mb-3">{item.icon}</div>
-                      <h4 className="font-bold text-white mb-2">{item.title}</h4>
-                      <p className="text-violet-400 font-bold mb-2">{item.price}</p>
-                      <p className="text-sm text-gray-400">{item.desc}</p>
+                    "Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)",
+                    "Nom de domaine (renouvellement annuel inclus)",
+                    "Certificat SSL/TLS (sécurité HTTPS)",
+                    "Mises à jour de sécurité",
+                    "Modifications de contenu (textes, images, coordonnées)",
+                    "Support technique par email",
+                    "Surveillance et maintenance préventive"
+                  ].map((point, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <CheckCircle className="text-white" size={18} />
+                      </div>
+                      <p className="text-gray-300 leading-relaxed pt-2">{point}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-center text-sm text-gray-400 mt-6">
-                  Le nom de domaine et l'hébergement (si sur notre serveur) sont <strong className="text-white">offerts pendant 1 an</strong>. Après, vous choisissez de renouveler ou de migrer.
+              </div>
+
+              {/* Note finale */}
+              <div className="mt-12 text-center">
+                <p className="text-sm text-gray-400 max-w-3xl mx-auto leading-relaxed p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <strong className="text-white">Pas de surprise, pas de frais cachés.</strong> Votre site reste en ligne, sécurisé et performant tant que l'abonnement est actif.
                 </p>
               </div>
             </div>
