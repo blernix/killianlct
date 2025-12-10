@@ -92,7 +92,7 @@ export default function PsychologueClient() {
                 </a>
 
                 <a
-                  href="https://demo.psychologue.2minaci.xyz/"
+                  href="https://maquette.psychologue.killian-lecrut.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/10 transition-colors flex items-center gap-2"

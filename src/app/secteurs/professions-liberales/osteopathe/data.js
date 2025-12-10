@@ -33,7 +33,7 @@ export const osteopatheData = {
     subtitle: "40 000 Ostéopathes en France. Comment Vos Patients Vous Trouvent-ils ?",
     description: "Le marché de l'ostéopathie est saturé. Le bouche-à-oreille ne suffit plus pour construire une patientèle stable. Un site web professionnel vous rend visible, communique vos spécialisations et attire des patients qualifiés pendant que vous êtes en consultation.",
     ctaLabel: "Découvrir les offres",
-    demoUrl: "https://demo.osteopathe.2minaci.xyz/",
+    demoUrl: "https://maquette.osteopathe.killian-lecrut.com/",
     demoLabel: "Voir la démo",
     microPromises: [
       "Livraison en 2-4 semaines",

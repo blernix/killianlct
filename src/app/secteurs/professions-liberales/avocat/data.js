@@ -25,7 +25,7 @@ export const avocatData = {
     title: "Un Site d'Avocat Conforme CNB 2023 Qui Convertit les Visiteurs en Clients",
     subtitle: "Attirez 3x plus de clients qualifiés sans enfreindre la déontologie. Site internet conforme RGPD, optimisé pour le référencement local, et conçu pour transformer vos visiteurs en rendez-vous.",
     ctaLabel: "Obtenir mon devis avocat gratuit",
-    demoUrl: "https://demo.avocat.2minaci.xyz/",
+    demoUrl: "https://maquette.avocat.killian-lecrut.com/",
     demoLabel: "Voir la démo",
     microPromises: [
       "Livraison en 3 semaines",
