@@ -6,6 +6,9 @@ const clients = [
   { name: 'Cabinet Mérieux', logo: '/logoclients/logomerieux.jpeg', url: 'https://cabinet-merieux.com/' },
   { name: 'UniversClean77', logo: '/logoclients/logo_univers_clean.png', url: 'https://univers-clean77.fr/' },
   { name: 'bernier-palettes', logo: '/logoclients/logoBernier.png', url: 'https://bernier-palettes.fr/' },
+  { name: 'lea-sgiaravello', logo: '/logoclients/logo_psy.jpg', url: 'https://lea_sgiaravello.fr/' },
+  { name: 'renoveu', logo: '/logoclients/renoveu.png', url: 'https://renoveu.fr/' },
+
   // Ajoutez d'autres clients ici, l'animation s'adaptera
 ];
 
@@ -15,7 +18,7 @@ export function LogoCarousel() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mb-8">
           <div className="inline-block rounded-full bg-green-500/20 px-4 py-1.5 text-sm font-medium text-green-300 border border-green-500/30 mb-4">
-            4 projets livrés en 2024
+            6 projets livrés en 2025
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
             Ils ont choisi notre expertise
