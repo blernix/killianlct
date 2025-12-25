@@ -6,7 +6,7 @@ const clients = [
   { name: 'Cabinet Mérieux', logo: '/logoclients/logomerieux.jpeg', url: 'https://cabinet-merieux.com/' },
   { name: 'UniversClean77', logo: '/logoclients/logo_univers_clean.png', url: 'https://univers-clean77.fr/' },
   { name: 'bernier-palettes', logo: '/logoclients/logoBernier.png', url: 'https://bernier-palettes.fr/' },
-  { name: 'lea-sgiaravello', logo: '/logoclients/logo_psy.jpg', url: 'https://lea_sgiaravello.fr/' },
+  { name: 'lea-sgiaravello', logo: '/logoclients/logo_psy.jpg', url: 'https://lea-sgiaravello.fr/' },
   { name: 'renoveu', logo: '/logoclients/renoveu.png', url: 'https://renoveu.fr/' },
 
   // Ajoutez d'autres clients ici, l'animation s'adaptera
