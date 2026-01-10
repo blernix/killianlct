@@ -1,85 +1,84 @@
-// Pensez à importer les icônes que nous allons utiliser
 import { Rocket, Target, Shield } from "lucide-react";
-import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"; // ✅ 1. On importe le nouveau composant
-import { cn } from "@/lib/utils";
 
 export default function ValueProposition() {
   return (
     <section
       role="region"
       aria-label="Notre philosophie de travail"
-      // ✅ 2. On rend la section "relative" pour contenir le fond animé
-      className="relative w-full px-4 py-24 sm:py-32 overflow-hidden" 
+      className="relative w-full px-4 py-32 bg-white"
     >
-      {/* ✅ 3. On place le fond animé ici */}
-      <AnimatedGridPattern
-        numSquares={30}
-        maxOpacity={0.1}
-        duration={3}
-        repeatDelay={1}
-        className={cn(
-          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
-        )}
-      />
-      
-      {/* ✅ 4. On s'assure que le contenu passe au-dessus avec `relative` et `z-10` */}
-      <div className="relative z-10 mx-auto max-w-5xl">
-        {/* Titre de la section */}
-        <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-100">
-            Pourquoi nous choisir ?
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Section header */}
+        <div className="mb-24">
+          <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+            <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+              Pourquoi nous choisir ?
+            </span>
+          </div>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-[-0.02em] text-[#2A2A2A] leading-[1.1] max-w-4xl">
+            Des résultats mesurables,<br />
+            <span className="text-[#0066FF]">pas des promesses</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-100">
-            Des résultats mesurables, pas des promesses marketing.
-          </p>
         </div>
 
-        {/* La grille avec nos 3 cartes de valeur (le contenu ne change pas) */}
-        <div className="mt-16 grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-          
-          {/* Carte 1: Délais */}
-          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-              <Rocket className="h-6 w-6 text-white" />
+        {/* Cards grid - Perfect alignment */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E5E5E5]">
+          {/* Card 1 */}
+          <div className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300">
+            <div className="w-12 h-12 flex items-center justify-center border border-[#0066FF] mb-8">
+              <Rocket className="h-6 w-6 text-[#0066FF]" />
             </div>
-            <h3 className="mt-6 font-semibold text-white">Livraison en 3 Semaines</h3>
-            <p className="mt-2 text-sm text-gray-300">
-              Pas de projets qui traînent pendant 6 mois. Nous travaillons en sprints courts avec des livrables concrets chaque semaine. Vous voyez l'avancement en temps réel.
+            <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
+              Livraison en<br />3 Semaines
+            </h3>
+            <p className="text-[#666666] leading-relaxed mb-6 font-light">
+              Pas de projets qui traînent pendant 6 mois. Nous travaillons en sprints courts avec des livrables concrets chaque semaine.
             </p>
-            <div className="mt-4 inline-block rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-300 border border-green-500/30">
-              3x plus rapide que la moyenne
+            <div className="inline-block px-3 py-1 border border-[#0066FF]">
+              <span className="text-xs font-medium text-[#0066FF] uppercase tracking-wide">
+                3× plus rapide
+              </span>
             </div>
           </div>
 
-          {/* Carte 2: Performance */}
-          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-              <Target className="h-6 w-6 text-white" />
+          {/* Card 2 */}
+          <div className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300">
+            <div className="w-12 h-12 flex items-center justify-center border border-[#0066FF] mb-8">
+              <Target className="h-6 w-6 text-[#0066FF]" />
             </div>
-            <h3 className="mt-6 font-semibold text-white">Score Google 95+/100</h3>
-            <p className="mt-2 text-sm text-gray-300">
-              Tous nos sites obtiennent un score Lighthouse supérieur à 95/100. Temps de chargement {'<'} 1 seconde. Optimisé pour le SEO et la conversion dès le premier jour.
+            <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
+              Score Google<br />95+/100
+            </h3>
+            <p className="text-[#666666] leading-relaxed mb-6 font-light">
+              Tous nos sites obtiennent un score Lighthouse supérieur à 95/100. Temps de chargement {'<'} 1 seconde.
             </p>
-            <div className="mt-4 inline-block rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300 border border-blue-500/30">
-              Performance garantie
+            <div className="inline-block px-3 py-1 border border-[#0066FF]">
+              <span className="text-xs font-medium text-[#0066FF] uppercase tracking-wide">
+                Performance garantie
+              </span>
             </div>
           </div>
 
-          {/* Carte 3: Autonomie */}
-          <div className="flex flex-col items-center p-8 rounded-3xl border shadow-xl bg-gray-950/40 backdrop-blur-lg border-white/20">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-              <Shield className="h-6 w-6 text-white" />
+          {/* Card 3 */}
+          <div className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300">
+            <div className="w-12 h-12 flex items-center justify-center border border-[#0066FF] mb-8">
+              <Shield className="h-6 w-6 text-[#0066FF]" />
             </div>
-            <h3 className="mt-6 font-semibold text-white">Autonomie Totale en 2h</h3>
-            <p className="mt-2 text-sm text-gray-300">
-              Interface d'administration sur-mesure, sans les 50 menus WordPress. Formation de 2h incluse + 3 mois de support offert. Vous gérez votre contenu sans jamais nous rappeler.
+            <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
+              Autonomie Totale<br />en 2h
+            </h3>
+            <p className="text-[#666666] leading-relaxed mb-6 font-light">
+              Interface d'administration sur-mesure. Formation 2h incluse + 3 mois de support offert.
             </p>
-            <div className="mt-4 inline-block rounded-full bg-purple-500/20 px-3 py-1 text-xs font-medium text-purple-300 border border-purple-500/30">
-              Zéro dépendance technique
+            <div className="inline-block px-3 py-1 border border-[#0066FF]">
+              <span className="text-xs font-medium text-[#0066FF] uppercase tracking-wide">
+                Zéro dépendance
+              </span>
             </div>
           </div>
-
         </div>
       </div>
     </section>

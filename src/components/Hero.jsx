@@ -2,86 +2,121 @@
 
 import Link from 'next/link';
 import { motion } from "framer-motion";
-import { BackgroundPaths } from '@/components/ui/background-paths';
-import { Button } from "@/components/ui/button"; // Le bouton stylé vient d'ici
-import { MicroPromises } from "@/components/MicroPromises";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
-    // Ton contenu
     const title = "Votre site web livré en 3 semaines, pas en 3 mois.";
     const paragraph = "Développement sur-mesure sans les bugs de WordPress. Interface d'administration épurée, performances optimales et formation incluse. Vous êtes autonome dès le premier jour.";
     const buttonText = "Voir nos réalisations";
 
-    const words = title.split(" ");
-
     return (
-        <BackgroundPaths>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
+            {/* Subtle grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-40" />
+
+            {/* Blue accent line */}
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 2 }}
-                className="max-w-4xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative z-10 max-w-6xl mx-auto"
             >
-                {/* 1. Le titre avec l'animation lettre par lettre */}
-                <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-8 tracking-tighter">
-                    {words.map((word, wordIndex) => (
-                        <span key={wordIndex} className="inline-block mr-3 last:mr-0">
-                            {word.split("").map((letter, letterIndex) => (
-                                <motion.span
-                                    key={`${wordIndex}-${letterIndex}`}
-                                    initial={{ y: 100, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{
-                                        delay: letterIndex * 0.02, // On simplifie un peu le delay
-                                        type: "spring",
-                                        stiffness: 150,
-                                        damping: 25,
-                                    }}
-                                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-700/80 dark:from-white dark:to-white/80"
-                                >
-                                    {letter === " " ? "\u00A0" : letter}
-                                </motion.span>
-                            ))}
-                        </span>
-                    ))}
+                {/* Small label */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="inline-block px-4 py-1 mb-12 border border-[#0066FF] bg-white"
+                >
+                    <span className="text-xs font-medium text-[#0066FF] uppercase tracking-[0.2em]">
+                        Agence Web • 6 projets livrés en 2025
+                    </span>
+                </motion.div>
+
+                {/* Main title - clean and large */}
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light mb-16 tracking-[-0.02em] leading-[0.95] text-[#2A2A2A]">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                    >
+                        Votre site web
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                        className="text-[#0066FF]"
+                    >
+                        livré en 3 semaines,
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.7, duration: 0.8 }}
+                    >
+                        pas en 3 mois.
+                    </motion.div>
                 </h1>
 
-                {/* 2. Ton paragraphe, avec un style adapté */}
-                <p className="mt-6 max-w-xl mx-auto text-lg text-neutral-700 dark:text-neutral-300">
-                    {paragraph}
-                </p>
+                {/* Subtitle with vertical line accent */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9, duration: 0.8 }}
+                    className="max-w-2xl mb-16 border-l-2 border-[#0066FF] pl-8"
+                >
+                    <p className="text-xl text-[#666666] leading-relaxed font-light">
+                        {paragraph}
+                    </p>
+                </motion.div>
 
-                {/* 3. Le bouton, qui est un Link mais avec le style de la démo */}
-                <div className="mt-10 flex flex-col items-center gap-4">
-                    <div className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 dark:from-white/10 dark:to-black/10 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <Button
-                            asChild // Important: dis au bouton de se comporter comme son enfant (le Link)
-                            variant="ghost"
-                            className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-black dark:text-white transition-all duration-300 group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10 hover:shadow-md dark:hover:shadow-neutral-800/50"
-                        >
-                            <Link href="/#services">
-                                <span className="opacity-90 group-hover:opacity-100 transition-opacity">
-                                    {buttonText}
-                                </span>
-                                <span className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">
-                                    →
-                                </span>
-                            </Link>
-                        </Button>
-                    </div>
+                {/* CTA */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.1, duration: 0.8 }}
+                    className="flex flex-col sm:flex-row items-start gap-8"
+                >
+                    <Link href="/#services">
+                        <button className="group relative px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300">
+                            <span className="flex items-center gap-3">
+                                {buttonText}
+                                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                            </span>
+                        </button>
+                    </Link>
 
-                    {/* Micro-promesses */}
-                    <MicroPromises
-                        promises={[
+                    {/* Micro-promises - minimal style */}
+                    <div className="flex flex-col gap-3 pt-2">
+                        {[
                             "Livraison en 3 semaines",
                             "Formation de 2h incluse",
                             "Support technique 3 mois offert"
-                        ]}
-                        variant="inline"
-                        className="mt-2"
-                    />
-                </div>
+                        ].map((promise, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                                <div className="w-1 h-1 bg-[#0066FF]" />
+                                <span className="text-sm text-[#666666] font-light">{promise}</span>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
             </motion.div>
-        </BackgroundPaths>
+
+            <style jsx global>{`
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+
+                body {
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                    font-weight: 300;
+                }
+
+                h1, h2, h3, h4, h5, h6 {
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                }
+            `}</style>
+        </section>
     );
 }
