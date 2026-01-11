@@ -20,12 +20,7 @@ export function Process() {
     {
       stepTitle: "Tests, Formation & Mise en Ligne",
       description:
-        "Avant le déploiement, nous testons tout : performances, responsive, SEO. Si votre projet inclut une interface admin, nous vous formons à son utilisation (2-4h selon complexité). Mise en ligne sans interruption de service.",
-    },
-    {
-      stepTitle: "Support Offert (3 mois)",
-      description:
-        "Les 3 premiers mois, nous restons disponibles pour toute question ou ajustement mineur. Support par email/téléphone inclus. Ensuite, vous pouvez souscrire à un forfait maintenance selon vos besoins.",
+        "Avant le déploiement, nous testons tout : performances, responsive, SEO. Formation de 2h incluse pour maîtriser votre site (gestion interface admin si option souscrite). Mise en ligne sans interruption de service.",
     },
   ];
 
@@ -46,7 +41,7 @@ export function Process() {
           </div>
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-[-0.02em] text-[#2A2A2A] leading-[1.1] mb-6">
             Notre Méthode en<br />
-            <span className="text-[#0066FF]">5 Étapes</span>
+            <span className="text-[#0066FF]">4 Étapes</span>
           </h2>
           <p className="text-lg text-[#666666] max-w-2xl font-light">
             De l'appel découverte à la mise en ligne, tout est chronométré et transparent

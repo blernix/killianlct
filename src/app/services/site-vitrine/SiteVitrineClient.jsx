@@ -11,7 +11,7 @@ import {
   TrendingUp, ShieldCheck, Zap, Info, Users, Building, UserCheck,
   LayoutDashboard, FileText, Image as ImageIcon, MessageSquare, Phone,
   Newspaper, HelpCircle, CheckCircle, ArrowRight, Sparkles, Euro, Clock, Target,
-  ChevronUp, ChevronDown
+  ChevronUp, ChevronDown, Scale, Brain, Activity, Wrench, Briefcase
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -24,73 +24,110 @@ export default function SiteVitrineClient({ faqData }) {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
-  // Packages disponibles
+  // Packages disponibles par secteur
   const packages = [
     {
-      name: "Essentiel",
-      price: "1000-3000€",
-      monthly: "35€/mois",
-      description: "Pour démarrer votre présence en ligne",
+      name: "Avocat",
+      price: "À partir de 2 500€",
+      monthly: "dès 35€/mois",
+      description: "Site conforme CNB 2023, RGPD et secret professionnel",
+      icon: Scale,
       features: [
-        "3-5 pages professionnelles",
-        "Design basé sur template premium",
-        "Formulaire de contact simple",
-        "Responsive mobile & tablette",
-        "SEO technique de base (balises meta, alt, Schema.org)",
-        "Nom de domaine inclus",
-        "Hébergement premium inclus",
-        "Certificat SSL/TLS",
-        "1 mois de support technique",
-        "Livraison : 3 semaines"
+        "Conformité CNB 2023 garantie",
+        "Dossier complet pour déclaration à l'Ordre",
+        "Mentions légales rédigées par juristes",
+        "Formulaire sécurisé avec chiffrement bout en bout",
+        "Hébergement français en UE",
+        "Pages dédiées par domaine de compétence",
+        "Section diplômes et certifications",
+        "Support prioritaire 6 mois",
+        "3 forfaits disponibles : Essentiel (2 500€), Professionnel (4 500€), Premium (sur devis)"
       ],
-      cta: "Idéal pour démarrer",
+      cta: "Voir les offres Avocat",
+      link: "/secteurs/professions-liberales/avocat",
       highlighted: false
     },
     {
-      name: "Personnalisé",
-      price: "4 500€",
-      monthly: "50€/mois",
-      description: "La solution la plus populaire",
+      name: "Psychologue",
+      price: "À partir de 500€",
+      monthly: "dès 25€/mois",
+      description: "Site sobre et empathique avec respect du secret professionnel",
+      icon: Brain,
       features: [
-        "5-10 pages sur-mesure",
-        "Design 100% personnalisé",
-        "Blog intégré avec CMS Directus",
-        "SEO optimisé : stratégie mots-clés + sitemap XML + GSC",
-        "Intégration Google Analytics",
-        "Formulaires avancés",
-        "Formation CMS incluse (2h)",
-        "Nom de domaine inclus",
-        "Hébergement premium inclus",
-        "Certificat SSL/TLS",
-        "3 mois de support technique",
-        "Livraison : 3-4 semaines"
+        "Design apaisant et professionnel",
+        "Conformité RGPD + Secret professionnel",
+        "Présentation détaillée de votre approche thérapeutique",
+        "Formulaire de contact confidentiel",
+        "Numéro ADELI et diplômes mis en valeur",
+        "Intégration Calendly pour prise de RDV (pack Pro)",
+        "Blog professionnel optionnel (pack Premium)",
+        "3 forfaits disponibles : Essentiel (500€), Professionnel (800€), Premium (1 200€)"
       ],
-      cta: "Le plus populaire",
-      highlighted: true
+      cta: "Voir les offres Psychologue",
+      link: "/secteurs/professions-liberales/psychologue",
+      highlighted: false
     },
     {
-      name: "Avancé",
+      name: "Ostéopathe",
+      price: "À partir de 1 500€",
+      monthly: "dès 35€/mois",
+      description: "Site optimisé SEO local pour développer votre patientèle",
+      icon: Activity,
+      features: [
+        "SEO local optimisé (ville + spécialité)",
+        "Pages dédiées par spécialisation (pédiatrie, sport, périnatalité...)",
+        "Conformité RGPD + Secret professionnel",
+        "Motifs de consultation détaillés",
+        "Tarifs et remboursements mutuelles",
+        "Intégration Calendly pour prise de RDV (pack Pro)",
+        "Blog santé et prévention (pack Premium)",
+        "3 forfaits disponibles : Essentiel (1 500€), Professionnel (2 500€), Premium (4 000€)"
+      ],
+      cta: "Voir les offres Ostéopathe",
+      link: "/secteurs/professions-liberales/osteopathe",
+      highlighted: false
+    },
+    {
+      name: "Artisan",
+      price: "À partir de 1 500€",
+      monthly: "dès 35€/mois",
+      description: "Site qui génère des chantiers grâce au référencement local",
+      icon: Wrench,
+      features: [
+        "Optimisé Google Maps & recherche locale",
+        "Galerie photos avant/après de vos réalisations",
+        "Zone d'intervention avec carte interactive",
+        "Formulaire devis pré-qualifiant",
+        "Certifications et labels (RGE, Qualibat...)",
+        "Intégration avis Google automatique (pack Pro)",
+        "Blog conseils et actualités (pack Pro)",
+        "3 forfaits disponibles : Essentiel (1 500€), Professionnel (2 500€), Premium (sur devis)"
+      ],
+      cta: "Voir les offres Artisan",
+      link: "/secteurs/artisans",
+      highlighted: false
+    },
+    {
+      name: "Autre Profession",
       price: "Sur devis",
-      monthly: "75€/mois",
-      description: "Pour les projets ambitieux",
+      monthly: "selon vos besoins",
+      description: "Vous exercez un autre métier ? Contactez-nous !",
+      icon: Briefcase,
       features: [
-        "10+ pages complexes",
-        "Design premium sur-mesure",
-        "Fonctionnalités personnalisées",
-        "SEO approfondi : audit + stratégie contenu + backlinks",
-        "Animations & interactions avancées",
-        "Multilingue",
-        "Intégrations tierces (API, CRM, etc.)",
-        "CMS Directus avec workflows personnalisés",
-        "Formation avancée (4h)",
-        "Nom de domaine inclus",
+        "Site sur-mesure adapté à votre secteur",
+        "Design professionnel et moderne",
+        "Formulaire de contact sécurisé",
+        "Responsive mobile & tablette",
+        "SEO technique optimisé",
         "Hébergement premium inclus",
-        "Certificat SSL/TLS",
-        "6 mois de support premium",
-        "Livraison : 4-6 semaines (selon complexité)"
+        "Nom de domaine inclus",
+        "Support technique inclus",
+        "Maintenance et mises à jour de sécurité"
       ],
-      cta: "Discutons-en",
-      highlighted: false
+      cta: "Demander un devis",
+      link: "#contact",
+      highlighted: true,
+      isGeneric: true
     }
   ];
 
@@ -375,31 +412,38 @@ export default function SiteVitrineClient({ faqData }) {
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
                 <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
-                  Tarifs Transparents
+                  Tarifs par Secteur
                 </span>
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
-                Un Investissement{' '}
-                <span className="text-[#0066FF]">Rentable</span>
+                Des Tarifs Adaptés à{' '}
+                <span className="text-[#0066FF]">Votre Profession</span>
               </h2>
 
               <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
-                Le prix d'un site dépend de vos ambitions. La vraie question est : combien de clients me faut-il pour le rentabiliser ? Souvent, <strong className="text-[#2A2A2A] font-normal">un ou deux suffisent</strong>.
+                Nos tarifs varient selon votre secteur d'activité et ses contraintes spécifiques : conformité réglementaire, complexité technique, besoins métier. <strong className="text-[#2A2A2A] font-normal">Cliquez sur votre profession pour voir les offres détaillées</strong>.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
               {packages.map((pkg, index) => (
                 <div
                   key={index}
                   className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
-                    pkg.highlighted ? 'md:scale-105 border-2 border-[#0066FF] relative' : ''
+                    pkg.highlighted ? 'border-2 border-[#0066FF] relative' : ''
                   }`}
                 >
                   {pkg.highlighted && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
-                      {pkg.cta}
+                      Autres professions
+                    </div>
+                  )}
+
+                  {/* Icône */}
+                  {pkg.icon && (
+                    <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center mb-8 group-hover:border-[#0066FF] transition-colors">
+                      <pkg.icon className="text-[#0066FF]" size={24} />
                     </div>
                   )}
 
@@ -410,13 +454,12 @@ export default function SiteVitrineClient({ faqData }) {
                     <p className="text-[#666666] text-sm mb-6 font-light">
                       {pkg.description}
                     </p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-light text-[#2A2A2A]">
-                        {pkg.price.replace('€', '')}
+                    <div className="mb-2">
+                      <span className="text-2xl font-light text-[#2A2A2A]">
+                        {pkg.price}
                       </span>
-                      {pkg.price.includes('€') && <span className="text-2xl text-[#666666]">€</span>}
                     </div>
-                    {pkg.monthly && <p className="text-[#0066FF] font-light mt-2">+ {pkg.monthly}</p>}
+                    {pkg.monthly && <p className="text-[#0066FF] font-light text-sm">{pkg.monthly}</p>}
                   </div>
 
                   <ul className="space-y-3 mb-8">
@@ -428,16 +471,22 @@ export default function SiteVitrineClient({ faqData }) {
                     ))}
                   </ul>
 
-                  <button
-                    onClick={() => openModal(`${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`)}
-                    className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
-                      pkg.highlighted
-                        ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
-                        : 'bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
-                    }`}
-                  >
-                    {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
-                  </button>
+                  {/* Bouton selon le type de package */}
+                  {pkg.isGeneric ? (
+                    <button
+                      onClick={() => openModal('general')}
+                      className="w-full py-4 px-6 font-medium transition-all duration-300 bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]"
+                    >
+                      {pkg.cta}
+                    </button>
+                  ) : (
+                    <a
+                      href={pkg.link}
+                      className="block w-full py-4 px-6 text-center font-medium transition-all duration-300 bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white"
+                    >
+                      {pkg.cta}
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

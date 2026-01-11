@@ -23,7 +23,8 @@ import {
 export const artisanData = {
   hero: {
     eyebrow: "Sites Web pour Artisans & Professionnels du Bâtiment",
-    title: "Le Site Web Qui Génère des Chantiers, Pas Juste des Visites",
+    title: "Le Site Web Qui Génère des Chantiers,",
+    titleGradient: "Pas Juste des Visites",
     subtitle: "Vous êtes excellent dans votre métier, mais invisible sur Google. Nous créons le site vitrine qui attire des clients locaux qualifiés pendant que vous êtes sur vos chantiers. Optimisé pour Melun, Seine-et-Marne et Île-de-France.",
     ctaLabel: "Obtenir mon devis artisan",
     microPromises: [

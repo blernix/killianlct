@@ -22,7 +22,8 @@ import {
 export const avocatData = {
   hero: {
     eyebrow: "Agence Web pour Professions Juridiques",
-    title: "Un Site d'Avocat Conforme CNB 2023 Qui Convertit les Visiteurs en Clients",
+    title: "Un Site d'Avocat Conforme CNB 2023",
+    titleGradient: "Qui Convertit Vos Visiteurs en Clients",
     subtitle: "Attirez 3x plus de clients qualifiés sans enfreindre la déontologie. Site internet conforme RGPD, optimisé pour le référencement local, et conçu pour transformer vos visiteurs en rendez-vous.",
     ctaLabel: "Obtenir mon devis avocat gratuit",
     demoUrl: "https://maquette.avocat.killian-lecrut.com/",

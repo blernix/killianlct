@@ -8,8 +8,8 @@ export function AdminSection() {
     {
       title: "Gestion de contenu simplifiée",
       icon: <ImageIcon className="h-6 w-6" />,
-      description: "Modifiez textes, images, produits en 2 clics. Interface épurée, zéro complexité. Formation de 2h suffit pour être 100% autonome.",
-      price: "Inclus dans votre site"
+      description: "Modifiez textes, images, produits en 2 clics. Interface épurée, zéro complexité. Formation de 2h pour être 100% autonome.",
+      price: "Option recommandée"
     },
     {
       title: "Sécurité totale vs WordPress",
@@ -18,7 +18,7 @@ export function AdminSection() {
       price: "Protection native"
     },
     {
-      title: "Interface 100% sur-mesure",
+      title: "Configuration 100% sur-mesure",
       icon: <SlidersHorizontal className="h-6 w-6" />,
       description: "On configure uniquement les champs dont vous avez besoin. Pas de 50 menus comme WordPress. Vous gagnez 80% de temps sur vos mises à jour.",
       price: "À partir de 2 500€"
@@ -44,16 +44,16 @@ export function AdminSection() {
           id="admin-title"
           className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1] max-w-4xl mx-auto"
         >
-          Interface admin <span className="text-[#0066FF]">épurée</span>,<br />
-          zéro risque de casser votre site
+          Interface admin <span className="text-[#0066FF]">sur-mesure</span><br />
+          pour gérer votre contenu en autonomie
         </h2>
         <p className="text-lg text-[#666666] max-w-2xl mx-auto mb-10 font-light">
-          Oubliez les 50 menus WordPress. Interface sur-mesure où vous ne voyez QUE vos contenus.
+          Option CMS Directus : interface épurée où vous ne voyez QUE vos contenus. Oubliez les 50 menus WordPress et les risques de casser votre site.
         </p>
 
         <div className="inline-block px-4 py-2 mb-12 border border-[#E5E5E5]">
           <span className="text-sm font-light text-[#666666]">
-            Livré en 3 semaines • Formation 2h incluse
+            Option selon besoins • Formation de 2h incluse si souscrite
           </span>
         </div>
 

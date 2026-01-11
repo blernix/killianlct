@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
-    const title = "Votre site web livré en 3 semaines, pas en 3 mois.";
-    const paragraph = "Développement sur-mesure sans les bugs de WordPress. Interface d'administration épurée, performances optimales et formation incluse. Vous êtes autonome dès le premier jour.";
-    const buttonText = "Voir nos tarifs";
+    const paragraph = "Sites web sur-mesure pour avocats, psychologues, ostéopathes et artisans. Conformité réglementaire, performances optimales et formation incluse. Sans WordPress, sans template, juste du code propre adapté à votre métier.";
+    const buttonText = "Découvrir nos offres";
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
@@ -42,7 +41,7 @@ export default function Hero() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                     >
-                        Votre site web
+                        Votre site professionnel
                     </motion.div>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -57,7 +56,7 @@ export default function Hero() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.7, duration: 0.8 }}
                     >
-                        pas en 3 mois.
+                        conforme à votre métier.
                     </motion.div>
                 </h1>
 
@@ -92,9 +91,9 @@ export default function Hero() {
                     {/* Micro-promises - minimal style */}
                     <div className="flex flex-col gap-3 pt-2">
                         {[
-                            "Livraison en 3 semaines",
+                            "Livraison en 3 semaines garantie",
                             "Formation de 2h incluse",
-                            "Support technique 3 mois offert"
+                            "3 mois de support offert"
                         ].map((promise, i) => (
                             <div key={i} className="flex items-center gap-3">
                                 <div className="w-1 h-1 bg-[#0066FF]" />

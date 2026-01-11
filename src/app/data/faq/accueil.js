@@ -19,7 +19,7 @@ export const accueilFaqData = {
       {
       value: "q3",
       question: "Pourrai-je gérer le contenu de mon site moi-même ?",
-      answer: "Oui, c'est un point essentiel. Nous mettons en place un espace d'administration sur-mesure (CMS Headless comme Directus) qui vous donne la main sur les contenus du quotidien : publication d'articles de blog, ajout de réalisations, mise à jour de vos actualités, etc. L'interface est simple et 100% sécurisée.Cependant, pour préserver la performance de votre référencement (SEO), les éléments stratégiques du site (architecture, titres de pages, URLs) sont gérés en collaboration avec notre agence. Cette approche garantit que votre site peut vivre et évoluer, sans jamais risquer de dégrader son positionnement sur Google."
+      answer: "Oui, si votre site nécessite des mises à jour régulières. Nous proposons l'option CMS Directus (interface d'administration sur-mesure) qui vous donne la main sur les contenus : publication d'articles de blog, ajout de réalisations, mise à jour de vos actualités, etc. L'interface est simple et 100% sécurisée. Si votre site est majoritairement statique (site vitrine classique), cette option n'est pas nécessaire : nous gérons les modifications ponctuelles via votre forfait support. Pour préserver votre référencement, les éléments stratégiques (architecture, titres de pages, URLs) sont toujours gérés en collaboration avec notre équipe."
     },
 
       
@@ -32,8 +32,7 @@ export const accueilFaqData = {
     {
       value: "q5",
       question: "Quels sont vos tarifs ?",
-      // On justifie le devis par la nature "sur-mesure" du travail, ce qui renforce la valeur.
-      answer: "Chaque projet que nous développons est unique et sur-mesure. Nous fonctionnons donc exclusivement sur devis. Contactez-nous pour discuter de votre idée, nous vous fournirons une proposition chiffrée, détaillée et transparente."
+      answer: "Nos tarifs sont adaptés à chaque secteur d'activité. Ils varient selon votre métier et les contraintes spécifiques associées : conformité réglementaire pour les professions libérales (avocats, psychologues, ostéopathes), optimisation SEO local pour les artisans, complexité technique pour les e-commerces et applications web. Consultez nos pages dédiées par secteur pour voir les grilles tarifaires détaillées, ou contactez-nous directement pour un devis personnalisé."
     }
   ]
 };

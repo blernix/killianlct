@@ -29,9 +29,9 @@ import {
 export const osteopatheData = {
   hero: {
     eyebrow: "Agence Web pour Professionnels de Santé",
-    title: "Site Web pour Ostéopathe | Développez Votre Patientèle",
-    subtitle: "40 000 Ostéopathes en France. Comment Vos Patients Vous Trouvent-ils ?",
-    description: "Le marché de l'ostéopathie est saturé. Le bouche-à-oreille ne suffit plus pour construire une patientèle stable. Un site web professionnel vous rend visible, communique vos spécialisations et attire des patients qualifiés pendant que vous êtes en consultation.",
+    title: "40 000 Ostéopathes en France.",
+    titleGradient: "Comment Vos Patients Vous Trouvent-ils ?",
+    subtitle: "Le marché de l'ostéopathie est saturé. Le bouche-à-oreille ne suffit plus pour construire une patientèle stable. Un site web professionnel vous rend visible, communique vos spécialisations et attire des patients qualifiés pendant que vous êtes en consultation.",
     ctaLabel: "Découvrir les offres",
     demoUrl: "https://maquette.osteopathe.killian-lecrut.com/",
     demoLabel: "Voir la démo",

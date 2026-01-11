@@ -22,7 +22,8 @@ export const psychologueData = {
     titleGradient: "Mérite Mieux qu'une Fiche Annuaire",
     subtitle: "Vous n'avez pas besoin d'un site web pour faire fonctionner votre cabinet. Mais vous méritez un espace où votre approche thérapeutique, votre parcours et votre éthique de soin s'expriment avec vos propres mots. Un site sobre, professionnel, qui vous ressemble.",
     ctaLabel: "Découvrir les offres",
-    ctaSecondary: "Voir un exemple",
+    demoUrl: "https://maquette.psychologue.killian-lecrut.com/",
+    demoLabel: "Voir la démo",
     microPromises: [
       "Design sobre et apaisant",
       "Conformité RGPD + Secret professionnel",

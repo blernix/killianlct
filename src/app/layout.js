@@ -85,7 +85,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="fr">
       <head>
         {/* Google Tag Manager */}
         <Script id="gtm-script" strategy="afterInteractive">

@@ -35,7 +35,7 @@ export default function ValueProposition() {
               Livraison en<br />3 Semaines
             </h3>
             <p className="text-[#666666] leading-relaxed mb-6 font-light">
-              Pas de projets qui traînent pendant 6 mois. Nous travaillons en sprints courts avec des livrables concrets chaque semaine.
+              Site vitrine livré en 21 jours, pas en 3 mois. Nous travaillons en sprints courts avec des validations hebdomadaires. Vous suivez l'avancement en temps réel.
             </p>
             <div className="inline-block px-3 py-1 border border-[#0066FF]">
               <span className="text-xs font-medium text-[#0066FF] uppercase tracking-wide">
@@ -68,14 +68,14 @@ export default function ValueProposition() {
               <Shield className="h-6 w-6 text-[#0066FF]" />
             </div>
             <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
-              Autonomie Totale<br />en 2h
+              Formation<br />& Support Inclus
             </h3>
             <p className="text-[#666666] leading-relaxed mb-6 font-light">
-              Interface d'administration sur-mesure. Formation 2h incluse + 3 mois de support offert.
+              Formation de 2h pour maîtriser votre site. Support technique pendant 3 mois pour vous accompagner au démarrage.
             </p>
             <div className="inline-block px-3 py-1 border border-[#0066FF]">
               <span className="text-xs font-medium text-[#0066FF] uppercase tracking-wide">
-                Zéro dépendance
+                Accompagnement garanti
               </span>
             </div>
           </div>

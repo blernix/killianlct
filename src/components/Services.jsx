@@ -7,31 +7,31 @@ export function Services() {
 const mainServices = [
     {
       icon: <MonitorSmartphone className="h-6 w-6" />,
-      title: "Sites Vitrines",
-      description: "Site professionnel en 3 semaines. Design moderne, ultra-rapide et optimisé SEO.",
+      title: "Site Vitrine Professionnel",
+      description: "Site conforme à votre déontologie (avocat, psy, ostéo) ou optimisé SEO local (artisan). Livraison en 3 semaines.",
       url: "/services/site-vitrine",
       badge: "Populaire",
       popular: true,
-      price: "À partir de 1000€"
+      price: "Selon profession"
     },
     {
       icon: <ShoppingCart className="h-6 w-6" />,
       title: "E-commerce",
-      description: "Boutique en ligne performante avec gestion stocks, paiements sécurisés.",
+      description: "Boutique en ligne sur-mesure avec MedusaJS. Idéal pour artisans qui souhaitent vendre leurs créations en ligne.",
       url: "/services/e-commerce",
-      price: "À partir de 5000€"
+      price: "À partir de 5 000€"
     },
     {
       icon: <AppWindow className="h-6 w-6" />,
-      title: "Applications Web",
-      description: "Outil métier sur-mesure : espace client, plateforme de gestion, SaaS.",
+      title: "Espace Client Sécurisé",
+      description: "Portail pour partager documents avec vos clients (avocats) ou gérer prises de RDV en ligne (professions santé).",
       url: "/services/application-web",
-      price: "À partir de 15 000€"
+      price: "Sur devis"
     },
     {
       icon: <TrendingUp className="h-6 w-6" />,
       title: "Optimisation SEO",
-      description: "Audit technique complet + plan d'action SEO. Améliorez votre visibilité Google.",
+      description: "Audit technique complet + stratégie de contenu. Idéal pour renforcer votre visibilité locale ou sectorielle.",
       url: "/services/optimisation-seo",
       price: "À partir de 800€"
     },

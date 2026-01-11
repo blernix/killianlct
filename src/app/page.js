@@ -38,8 +38,8 @@ export default function Home() {
         {/* J'ai corrigé et ajouté les IDs manquants pour la navigation */}
         <Hero id="accueil" />
         <ValueProposition />
-        <Process id="processus" />
         <Services id="services" onOpenModal={openModal} />
+        <Process id="processus" />
         <Automations />
         <AdminSection />
         <LogoCarousel />
