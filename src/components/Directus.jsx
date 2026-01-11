@@ -59,7 +59,7 @@ export function AdminSection() {
 
         <Link
           href="/expertises/directus-cms"
-          className="inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-white hover:bg-[#0066FF] hover:text-white transition-all duration-300 mb-24"
+          className="inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-[#0066FF] text-white hover:bg-white hover:text-[#0066FF] transition-all duration-300 mb-24"
         >
           <span className="font-medium">Découvrir la solution sur-mesure</span>
           <ArrowRight size={20} />

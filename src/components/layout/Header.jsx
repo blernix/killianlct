@@ -8,8 +8,8 @@ import { Home, Rocket, BrainCircuit, Rss, Mail, Menu, X, ChevronDown, Briefcase 
 // Nouvelle structure de données pour gérer les sous-menus
 const navLinks = [
   { name: 'Accueil', href: '/', icon: Home },
-  { 
-    name: 'Services', 
+  {
+    name: 'Services',
     icon: Rocket,
     submenu: [
       { name: 'Site Vitrine', href: '/services/site-vitrine' },
@@ -37,7 +37,7 @@ const navLinks = [
     ]
   },
   // { name: 'Blog', href: '/blog', icon: Rss }, // Vous pourrez décommenter ça plus tard
-  { name: 'Me Contacter', href: '#', icon: Mail, isModal: true }, 
+  { name: 'Me Contacter', href: '#', icon: Mail, isModal: true },
 ];
 
 // Le composant accepte la prop "onOpenModal"
@@ -83,7 +83,7 @@ export default function Header({ onOpenModal }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E5E5E5] transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } py-4`}
     >
@@ -97,27 +97,27 @@ export default function Header({ onOpenModal }) {
             className="h-14 w-auto"
           />
         </Link>
-        
+
         {/* Menu pour Desktop */}
         <ul className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
             <li key={link.name} className="relative group">
               {link.submenu ? (
-                <span className="flex items-center gap-1 cursor-default font-medium text-white hover:text-opacity-80 transition-opacity text-lg">
+                <span className="flex items-center gap-1 cursor-default font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors">
                   {link.name}
                   <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
                 </span>
               ) : link.isModal ? (
-                <button 
+                <button
                   onClick={() => onOpenModal('general')}
-                  className="font-medium text-white hover:text-opacity-80 transition-opacity text-lg"
+                  className="font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors"
                 >
                   {link.name}
                 </button>
               ) : (
-                <Link 
-                  href={link.href} 
-                  className="font-medium text-white hover:text-opacity-80 transition-opacity text-lg"
+                <Link
+                  href={link.href}
+                  className="font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -126,12 +126,15 @@ export default function Header({ onOpenModal }) {
               {/* Le sous-menu déroulant pour Desktop */}
               {link.submenu && (
                <ul className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 origin-top
-                               bg-gray-950/80 backdrop-blur-md border border-white/10 rounded-lg shadow-xl
-                               opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 
+                               bg-white border border-[#E5E5E5] shadow-lg
+                               opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
                                transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-                  {link.submenu.map((subLink) => (
-                    <li key={subLink.name}>
-                      <Link href={subLink.href} className="block px-4 py-3 text-white hover:bg-white/5 transition-colors text-base">
+                  {link.submenu.map((subLink, index) => (
+                    <li key={subLink.name} className={index !== link.submenu.length - 1 ? 'border-b border-[#E5E5E5]' : ''}>
+                      <Link
+                        href={subLink.href}
+                        className="block px-6 py-4 text-[#2A2A2A] font-light hover:bg-[#FAFAFA] hover:text-[#0066FF] transition-colors"
+                      >
                         {subLink.name}
                       </Link>
                     </li>
@@ -150,9 +153,9 @@ export default function Header({ onOpenModal }) {
             aria-label="Ouvrir le menu"
           >
             {isMenuOpen ? (
-              <X size={30} className="text-white" />
+              <X size={30} className="text-[#2A2A2A]" />
             ) : (
-              <Menu size={30} className="text-white" />
+              <Menu size={30} className="text-[#2A2A2A]" />
             )}
           </button>
         </div>
@@ -160,28 +163,32 @@ export default function Header({ onOpenModal }) {
 
       {/* Panel du Menu Mobile */}
       <div
-        className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-md pt-24 px-6 transform transition-transform duration-500 ease-in-out ${
+        className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-white pt-24 px-6 transform transition-transform duration-500 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        } flex flex-col items-center`}
+        } flex flex-col items-center overflow-y-auto`}
       >
         <ul className="flex flex-col items-center w-full">
           {navLinks.map((link) => (
-            <li key={link.name} className="w-full text-center border-b border-white/10 last:border-b-0">
+            <li key={link.name} className="w-full text-center border-b border-[#E5E5E5] last:border-b-0">
               {link.submenu ? (
                 <div>
                   <button
                     onClick={() => setOpenMobileSubmenu(openMobileSubmenu === link.name ? null : link.name)}
-                    className="w-full py-6 text-2xl font-bold text-white flex items-center justify-center gap-3"
+                    className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                   >
-                    <link.icon size={24} />
+                    <link.icon size={20} />
                     {link.name}
-                    <ChevronDown size={20} className={`transition-transform ${openMobileSubmenu === link.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={18} className={`transition-transform ${openMobileSubmenu === link.name ? 'rotate-180' : ''}`} />
                   </button>
                   {openMobileSubmenu === link.name && (
-                    <ul className="bg-white/5 pb-4">
+                    <ul className="bg-[#FAFAFA] pb-4">
                       {link.submenu.map((subLink) => (
                         <li key={subLink.name}>
-                          <Link href={subLink.href} onClick={handleLinkClick} className="block py-3 text-lg text-gray-300 hover:text-white">
+                          <Link
+                            href={subLink.href}
+                            onClick={handleLinkClick}
+                            className="block py-3 text-base font-light text-[#666666] hover:text-[#0066FF] transition-colors"
+                          >
                             {subLink.name}
                           </Link>
                         </li>
@@ -195,18 +202,18 @@ export default function Header({ onOpenModal }) {
                     handleLinkClick();
                     onOpenModal('general');
                   }}
-                  className="w-full py-6 text-2xl font-bold text-white flex items-center justify-center gap-3"
+                  className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                 >
-                  <link.icon size={24} />
+                  <link.icon size={20} />
                   {link.name}
                 </button>
               ) : (
-                <Link 
-                  href={link.href} 
-                  onClick={handleLinkClick} 
-                  className="w-full block py-6 text-2xl font-bold text-white flex items-center justify-center gap-3"
+                <Link
+                  href={link.href}
+                  onClick={handleLinkClick}
+                  className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                 >
-                  <link.icon size={24} />
+                  <link.icon size={20} />
                   {link.name}
                 </Link>
               )}

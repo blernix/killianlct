@@ -105,121 +105,124 @@ export default function ECommerceClient({ faqData }) {
       <main>
         <Header onOpenModal={openModal} />
 
-        {/* 🎨 HERO REDESIGNÉ */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-950 to-gray-900">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-600/20 rounded-full blur-[120px]" />
+        {/* HERO SECTION - Swiss Minimal */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-40" />
 
-          <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
-            <div className="max-w-5xl mx-auto">
-              {/* Badges */}
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <KeyRound className="text-green-400" size={16} />
-                  100% sur-mesure
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <Zap className="text-yellow-400" size={16} />
-                  Performance maximale
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <CreditCard className="text-blue-400" size={16} />
-                  Zéro abonnement
-                </span>
-              </div>
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-              {/* Titre */}
-              <div className="text-center space-y-6 mb-12">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                  Une Boutique{' '}
-                  <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                    Qui Vous Appartient
-                  </span>
-                </h1>
-                <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Au-delà des plateformes standards, créez une <strong className="text-white">solution e-commerce performante et sur-mesure</strong>, sans abonnement mensuel, conçue pour convertir et évoluer.
-                </p>
-              </div>
+          <div className="relative z-10 max-w-6xl mx-auto text-center">
+            {/* Badges */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                <KeyRound className="text-[#0066FF]" size={16} />
+                <span className="text-sm text-[#2A2A2A] font-light">100% sur-mesure</span>
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                <Zap className="text-[#0066FF]" size={16} />
+                <span className="text-sm text-[#2A2A2A] font-light">Performance maximale</span>
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                <CreditCard className="text-[#0066FF]" size={16} />
+                <span className="text-sm text-[#2A2A2A] font-light">Zéro abonnement</span>
+              </span>
+            </div>
 
-              {/* CTA + Social proof */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                <button
-                  onClick={() => openModal()}
-                  className="group relative px-8 py-4 bg-white hover:bg-gray-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] flex items-center gap-3"
-                >
-                  <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
+            {/* Titre principal */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-10 leading-[1.05]">
+              Une Boutique{' '}
+              <span className="text-[#0066FF]">Qui Vous Appartient</span>
+            </h1>
+
+            <p className="text-xl sm:text-2xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-16 font-light">
+              Au-delà des plateformes standards, créez une <strong className="text-[#2A2A2A] font-normal">solution e-commerce performante et sur-mesure</strong>, sans abonnement mensuel, conçue pour convertir et évoluer.
+            </p>
+
+            {/* CTA principal */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+              <button
+                onClick={() => openModal()}
+                className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+              >
+                <span className="flex items-center gap-3">
                   Discuter de mon projet
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </span>
+              </button>
 
-                <div className="flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
-                  <span className="text-sm text-gray-300">
-                    <strong className="text-white">Next.js</strong> + <strong className="text-white">MedusaJS</strong>
-                  </span>
+              <div className="flex items-center gap-3 px-6 py-3 border border-[#E5E5E5] bg-white">
+                <span className="text-sm text-[#666666] font-light">
+                  <strong className="text-[#2A2A2A] font-medium">Next.js</strong> + <strong className="text-[#2A2A2A] font-medium">MedusaJS</strong>
+                </span>
+              </div>
+            </div>
+
+            {/* Micro-promesses */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] max-w-4xl mx-auto">
+              {[
+                "Propriété totale",
+                "Headless architecture",
+                "SEO optimisé",
+                "Paiements sécurisés"
+              ].map((promise, i) => (
+                <div key={i} className="flex items-center gap-3 p-6 bg-white hover:bg-[#FAFAFA] transition-colors">
+                  <CheckCircle className="text-[#0066FF] flex-shrink-0" size={18} />
+                  <span className="text-sm text-[#2A2A2A] font-light">{promise}</span>
                 </div>
-              </div>
-
-              {/* Micro-promesses */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                {[
-                  "Propriété totale",
-                  "Headless architecture",
-                  "SEO optimisé",
-                  "Paiements sécurisés"
-                ].map((promise, i) => (
-                  <div key={i} className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
-                    <CheckCircle className="text-green-400 flex-shrink-0" size={20} />
-                    <span className="text-sm text-gray-300">{promise}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 🎨 Section Problème REDESIGNÉE */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-600/10 rounded-full blur-[150px]" />
+        {/* Section Problème */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-sm text-yellow-400 mb-6">
-              <AlertTriangle size={16} />
-              <span className="font-semibold">Les Limites des Plateformes Standards</span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Quand Shopify & Wix{' '}
-              <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-                Freinent Votre Croissance
+            <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+              <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                Les Limites des Plateformes Standards
               </span>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              Quand Shopify & Wix{' '}
+              <span className="text-[#0066FF]">Freinent Votre Croissance</span>
             </h2>
-            <p className="text-xl text-gray-400 leading-relaxed">
-              Les plateformes SaaS sont excellentes pour démarrer, mais leur modèle montre vite ses faiblesses : <strong className="text-white">thèmes rigides</strong> qui brident votre marque, <strong className="text-white">lenteur</strong> due aux apps tierces, et <strong className="text-white">frais mensuels</strong> qui augmentent avec votre succès.
+
+            <p className="text-lg text-[#666666] leading-relaxed font-light">
+              Les plateformes SaaS sont excellentes pour démarrer, mais leur modèle montre vite ses faiblesses : <strong className="text-[#2A2A2A] font-normal">thèmes rigides</strong> qui brident votre marque, <strong className="text-[#2A2A2A] font-normal">lenteur</strong> due aux apps tierces, et <strong className="text-[#2A2A2A] font-normal">frais mensuels</strong> qui augmentent avec votre succès.
             </p>
           </div>
         </section>
 
-        {/* 🎨 Section Approche Technique REDESIGNÉE */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-green-600/10 rounded-full blur-[150px]" />
+        {/* Section Approche Technique */}
+        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <Zap size={16} />
-                <span className="font-semibold">Notre Approche</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                La Maîtrise Technique au{' '}
-                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  Service de la Vente
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Notre Approche
                 </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                La Maîtrise Technique au{' '}
+                <span className="text-[#0066FF]">Service de la Vente</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+
+              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
                 Nous ne sommes pas des installateurs de thèmes. Chaque choix technique est pensé pour avoir un impact direct sur votre business.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5]">
               {[
                 {
                   icon: Zap,
@@ -246,82 +249,15 @@ export default function ECommerceClient({ faqData }) {
                 return (
                   <div
                     key={index}
-                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-500"
+                    className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="text-green-400" size={24} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-400 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
+                    <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center mb-8 group-hover:border-[#0066FF] transition-colors">
+                      <Icon className="text-[#0066FF]" size={24} />
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* 🎨 Section Architecture Headless REDESIGNÉE */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-black">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px]" />
-
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-sm text-blue-400 mb-6">
-                <Server size={16} />
-                <span className="font-semibold">Architecture Headless</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Notre Secret :{' '}
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                  Headless & Open-Source
-                </span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Nous séparons le 'moteur' de la 'carrosserie' pour une flexibilité et une performance inégalées
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: Server,
-                  title: "Le Moteur (Back-end)",
-                  subtitle: "MedusaJS",
-                  description: "Pour la gestion, nous utilisons MedusaJS, une fondation e-commerce open-source robuste. C'est le cœur sécurisé : produits, commandes, clients, promotions.",
-                  color: "violet"
-                },
-                {
-                  icon: MonitorSmartphone,
-                  title: "La Vitrine (Front-end)",
-                  subtitle: "Next.js",
-                  description: "Pour l'interface client, nous construisons une application 100% sur-mesure avec Next.js. Cette séparation garantit une UX unique et des performances exceptionnelles.",
-                  color: "green"
-                }
-              ].map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10 hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.2)] transition-all duration-500"
-                  >
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`w-16 h-16 bg-gradient-to-br ${item.color === 'violet' ? 'from-violet-500/20 to-purple-500/20 border-violet-500/30' : 'from-green-500/20 to-emerald-500/20 border-green-500/30'} backdrop-blur-sm border rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className={item.color === 'violet' ? 'text-violet-400' : 'text-green-400'} size={28} />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500 uppercase tracking-wider">{item.title}</p>
-                        <h3 className="text-2xl font-bold text-white">{item.subtitle}</h3>
-                      </div>
-                    </div>
-                    <p className="text-gray-400 leading-relaxed">
+                    <h3 className="text-xl font-light text-[#2A2A2A] mb-4">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#666666] leading-relaxed font-light">
                       {item.description}
                     </p>
                   </div>
@@ -331,23 +267,89 @@ export default function ECommerceClient({ faqData }) {
           </div>
         </section>
 
-        {/* 🎨 Fonctionnalités REDESIGNÉE */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
+        {/* Section Architecture Headless */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Architecture Headless
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Notre Secret :{' '}
+                <span className="text-[#0066FF]">Headless & Open-Source</span>
+              </h2>
+
+              <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
+                Nous séparons le 'moteur' de la 'carrosserie' pour une flexibilité et une performance inégalées
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-px bg-[#E5E5E5]">
+              {[
+                {
+                  icon: Server,
+                  title: "Le Moteur (Back-end)",
+                  subtitle: "MedusaJS",
+                  description: "Pour la gestion, nous utilisons MedusaJS, une fondation e-commerce open-source robuste. C'est le cœur sécurisé : produits, commandes, clients, promotions."
+                },
+                {
+                  icon: MonitorSmartphone,
+                  title: "La Vitrine (Front-end)",
+                  subtitle: "Next.js",
+                  description: "Pour l'interface client, nous construisons une application 100% sur-mesure avec Next.js. Cette séparation garantit une UX unique et des performances exceptionnelles."
+                }
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300"
+                  >
+                    <div className="flex items-center gap-4 mb-8">
+                      <div className="w-14 h-14 border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
+                        <Icon className="text-[#0066FF]" size={24} />
+                      </div>
+                      <div>
+                        <p className="text-xs text-[#666666] uppercase tracking-wider font-medium">{item.title}</p>
+                        <h3 className="text-2xl font-light text-[#2A2A2A]">{item.subtitle}</h3>
+                      </div>
+                    </div>
+                    <p className="text-[#666666] leading-relaxed font-light">
+                      {item.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Fonctionnalités */}
+        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
           <div className="relative z-10 mx-auto max-w-5xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <PackageCheck size={16} />
-                <span className="font-semibold">Fonctionnalités Incluses</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Toutes les Fonctionnalités{' '}
-                <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                  Sans les Contraintes
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Fonctionnalités Incluses
                 </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Toutes les Fonctionnalités{' '}
+                <span className="text-[#0066FF]">Sans les Contraintes</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-[#E5E5E5]">
               {[
                 "Gestion de produits avancée",
                 "Paniers et commande optimisée",
@@ -361,153 +363,176 @@ export default function ECommerceClient({ faqData }) {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:border-green-500/30 hover:bg-white/10 transition-all"
+                  className="flex items-center gap-3 p-6 bg-white hover:bg-[#FAFAFA] transition-colors"
                 >
-                  <Check className="text-green-400 flex-shrink-0" size={20} />
-                  <span className="text-sm text-gray-300">{feature}</span>
+                  <Check className="text-[#0066FF] flex-shrink-0" size={18} />
+                  <span className="text-sm text-[#2A2A2A] font-light">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 🎨 Calculateur ROI E-COMMERCE - NOUVELLE SECTION */}
-        <ROICalculator
-          title={<>Calculez Votre <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">Chiffre d'Affaires</span></>}
-          subtitle="Estimez le potentiel de votre boutique en ligne avec notre calculateur"
-          color="green"
-          inputs={[
-            {
-              name: 'monthlyVisitors',
-              label: 'Visiteurs mensuels',
-              defaultValue: 1000,
-              min: 0,
-              max: 1000000,
-              step: 100,
-              placeholder: '1000'
-            },
-            {
-              name: 'conversionRate',
-              label: 'Taux de conversion (%)',
-              defaultValue: 2,
-              min: 0,
-              max: 100,
-              step: 0.1,
-              placeholder: '2'
-            },
-            {
-              name: 'averageCart',
-              label: 'Panier moyen (€)',
-              defaultValue: 80,
-              min: 0,
-              max: 10000,
-              step: 10,
-              placeholder: '80'
-            }
-          ]}
-          calculate={(values) => {
-            const monthlyOrders = Math.round((values.monthlyVisitors * values.conversionRate) / 100);
-            const monthlyRevenue = monthlyOrders * values.averageCart;
-            const yearlyRevenue = monthlyRevenue * 12;
+        {/* Calculateur ROI */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
-            return {
-              description: `Avec <strong class="text-white">${values.monthlyVisitors} visiteurs/mois</strong> et un taux de conversion de <strong class="text-white">${values.conversionRate}%</strong> :`,
-              metrics: [
-                {
-                  label: 'Commandes mensuelles',
-                  value: monthlyOrders,
-                  highlight: false
-                },
-                {
-                  label: 'CA mensuel',
-                  value: `${monthlyRevenue.toLocaleString()}€`,
-                  highlight: true
-                },
-                {
-                  label: 'CA annuel',
-                  value: `${yearlyRevenue.toLocaleString()}€`,
-                  highlight: true,
-                  icon: TrendingUp
-                }
-              ],
-              cta: {
-                label: 'Voir les tarifs',
-                icon: ArrowRight,
-                onClick: () => {
-                  document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }
-            };
-          }}
-        />
-
-        {/* 🎨 Section Tarifs REDESIGNÉE */}
-        <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-950">
-          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-green-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px]" />
-
-          <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-sm text-green-400 mb-6">
-                <Euro size={16} />
-                <span className="font-semibold">Investissement</span>
-              </div>
-              <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6">
-                Tarifs pour une{' '}
-                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  Boutique Performante
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Calculateur ROI
                 </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Calculez Votre <span className="text-[#0066FF]">Chiffre d'Affaires</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Investissez dans une boutique qui vous appartient. <strong className="text-white">Aucun abonnement mensuel</strong>, uniquement votre investissement initial.
+
+              <p className="text-lg text-[#666666] font-light">
+                Estimez le potentiel de votre boutique en ligne avec notre calculateur
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <ROICalculator
+              title={<>Calculez Votre <span className="text-[#0066FF]">Chiffre d'Affaires</span></>}
+              subtitle="Estimez le potentiel de votre boutique en ligne avec notre calculateur"
+              color="green"
+              inputs={[
+                {
+                  name: 'monthlyVisitors',
+                  label: 'Visiteurs mensuels',
+                  defaultValue: 1000,
+                  min: 0,
+                  max: 1000000,
+                  step: 100,
+                  placeholder: '1000'
+                },
+                {
+                  name: 'conversionRate',
+                  label: 'Taux de conversion (%)',
+                  defaultValue: 2,
+                  min: 0,
+                  max: 100,
+                  step: 0.1,
+                  placeholder: '2'
+                },
+                {
+                  name: 'averageCart',
+                  label: 'Panier moyen (€)',
+                  defaultValue: 80,
+                  min: 0,
+                  max: 10000,
+                  step: 10,
+                  placeholder: '80'
+                }
+              ]}
+              calculate={(values) => {
+                const monthlyOrders = Math.round((values.monthlyVisitors * values.conversionRate) / 100);
+                const monthlyRevenue = monthlyOrders * values.averageCart;
+                const yearlyRevenue = monthlyRevenue * 12;
+
+                return {
+                  description: `Avec <strong class="text-[#2A2A2A]">${values.monthlyVisitors} visiteurs/mois</strong> et un taux de conversion de <strong class="text-[#2A2A2A]">${values.conversionRate}%</strong> :`,
+                  metrics: [
+                    {
+                      label: 'Commandes mensuelles',
+                      value: monthlyOrders,
+                      highlight: false
+                    },
+                    {
+                      label: 'CA mensuel',
+                      value: `${monthlyRevenue.toLocaleString()}€`,
+                      highlight: true
+                    },
+                    {
+                      label: 'CA annuel',
+                      value: `${yearlyRevenue.toLocaleString()}€`,
+                      highlight: true,
+                      icon: TrendingUp
+                    }
+                  ],
+                  cta: {
+                    label: 'Voir les tarifs',
+                    icon: ArrowRight,
+                    onClick: () => {
+                      document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                };
+              }}
+            />
+          </div>
+        </section>
+
+        {/* Section Tarifs */}
+        <section id="tarifs" className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Investissement
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Tarifs pour une{' '}
+                <span className="text-[#0066FF]">Boutique Performante</span>
+              </h2>
+
+              <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
+                Investissez dans une boutique qui vous appartient. <strong className="text-[#2A2A2A] font-normal">Aucun abonnement mensuel</strong>, uniquement votre investissement initial.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
               {packages.map((pkg, index) => (
                 <div
                   key={index}
-                  className={`group relative rounded-3xl p-8 transition-all duration-500 ${
-                    pkg.highlighted
-                      ? 'bg-gradient-to-br from-white/15 to-white/5 border-2 border-green-500/50 shadow-[0_0_60px_rgba(16,185,129,0.3)] scale-105 md:scale-110'
-                      : 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]'
+                  className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
+                    pkg.highlighted ? 'md:scale-105 border-2 border-[#0066FF] relative' : ''
                   }`}
                 >
                   {pkg.highlighted && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-sm font-bold rounded-full shadow-lg">
-                      ⭐ {pkg.cta}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
+                      {pkg.cta}
                     </div>
                   )}
 
                   <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-3">
+                    <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
                       {pkg.name}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-6">
+                    <p className="text-[#666666] text-sm mb-6 font-light">
                       {pkg.description}
                     </p>
-                    <p className="text-3xl font-bold text-white">
+                    <p className="text-3xl font-light text-[#2A2A2A]">
                       {pkg.price}
                     </p>
                   </div>
 
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-3 mb-8">
                     {pkg.features.map((feature, fIndex) => (
                       <li key={fIndex} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Check className="text-green-400" size={14} />
-                        </div>
-                        <span className="text-sm text-gray-300 leading-relaxed">{feature}</span>
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={16} />
+                        <span className="text-sm text-[#666666] leading-relaxed font-light">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
                   <button
                     onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
-                    className={`w-full py-4 px-6 rounded-full font-bold transition-all duration-300 ${
+                    className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
-                        ? 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105'
-                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-green-500/50'
+                        ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
+                        : 'bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
                     }`}
                   >
                     {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
@@ -518,24 +543,28 @@ export default function ECommerceClient({ faqData }) {
 
             {/* Note importante + Maintenance */}
             <div className="max-w-4xl mx-auto space-y-8">
-              <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10 text-center">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  💡 Investissement unique, rentabilité sur le long terme
+              <div className="border border-[#E5E5E5] bg-white p-12 text-center">
+                <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
+                  Investissement unique, rentabilité sur le long terme
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Contrairement aux plateformes SaaS qui prélèvent des frais mensuels à vie, vous investissez une seule fois dans une boutique qui <strong className="text-white">vous appartient totalement</strong>. Après la 1ère année, seuls l'hébergement (~100-200€/an) et la maintenance optionnelle s'appliquent.
+                <p className="text-[#666666] leading-relaxed font-light">
+                  Contrairement aux plateformes SaaS qui prélèvent des frais mensuels à vie, vous investissez une seule fois dans une boutique qui <strong className="text-[#2A2A2A] font-normal">vous appartient totalement</strong>. Après la 1ère année, seuls l'hébergement (~100-200€/an) et la maintenance optionnelle s'appliquent.
                 </p>
               </div>
 
               {/* Forfaits Maintenance */}
-              <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
-                <h3 className="text-2xl font-bold text-white mb-4 text-center">
-                  🔧 Maintenance & Support Continu (après période incluse)
-                </h3>
-                <p className="text-gray-400 text-center mb-8">
-                  ⚠️ Le support inclus couvre les corrections de bugs. La maintenance payante ajoute les évolutions, le monitoring proactif et l'hébergement continu.
+              <div className="border border-[#E5E5E5] bg-white p-12">
+                <div className="relative mb-8">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-sm font-medium whitespace-nowrap">
+                    Maintenance & Support Continu
+                  </div>
+                </div>
+
+                <p className="text-[#666666] text-center mb-8 font-light">
+                  Le support inclus couvre les corrections de bugs. La maintenance payante ajoute les évolutions, le monitoring proactif et l'hébergement continu.
                 </p>
-                <div className="grid sm:grid-cols-3 gap-6">
+
+                <div className="grid sm:grid-cols-3 gap-px bg-[#E5E5E5]">
                   {[
                     {
                       name: "Maintenance Basique",
@@ -553,13 +582,13 @@ export default function ECommerceClient({ faqData }) {
                       features: ["Tout Évolution +", "15h de dev/mois", "Roadmap stratégique", "Support prioritaire", "Conseil mensuel"]
                     }
                   ].map((plan, i) => (
-                    <div key={i} className="bg-white/5 rounded-xl p-6 border border-white/10">
-                      <h4 className="font-bold text-white mb-2">{plan.name}</h4>
-                      <p className="text-2xl font-bold text-green-400 mb-4">{plan.price}</p>
+                    <div key={i} className="bg-white p-6">
+                      <h4 className="font-light text-[#2A2A2A] mb-2">{plan.name}</h4>
+                      <p className="text-2xl font-light text-[#0066FF] mb-4">{plan.price}</p>
                       <ul className="space-y-2">
                         {plan.features.map((f, j) => (
-                          <li key={j} className="text-sm text-gray-400 flex items-start gap-2">
-                            <Check className="text-green-400 flex-shrink-0 mt-0.5" size={14} />
+                          <li key={j} className="text-sm text-[#666666] font-light flex items-start gap-2">
+                            <Check className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                             {f}
                           </li>
                         ))}
@@ -574,34 +603,44 @@ export default function ECommerceClient({ faqData }) {
 
         {/* FAQ */}
         {faqData && (
-          <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+          <section className="relative py-32 px-4 bg-white">
+            {/* Subtle grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
             <div className="relative z-10 mx-auto max-w-4xl">
               <div className="text-center mb-16">
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                  <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                    FAQ
+                  </span>
+                </div>
+
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                   {faqData.title}
                 </h2>
-                <p className="text-xl text-gray-400">
+
+                <p className="text-lg text-[#666666] font-light">
                   {faqData.subtitle}
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-px bg-[#E5E5E5]">
                 {faqData.items.map((item, index) => (
-                  <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                  <div key={index} className="bg-white">
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                      className="w-full flex items-center justify-between p-8 text-left hover:bg-[#FAFAFA] transition-colors"
                     >
-                      <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                      <span className="text-lg font-light text-[#2A2A2A] pr-4">{item.question}</span>
                       {expandedFaq === index ? (
-                        <ChevronUp className="text-green-400 flex-shrink-0" size={24} />
+                        <ChevronUp className="text-[#0066FF] flex-shrink-0" size={24} />
                       ) : (
-                        <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                        <ChevronDown className="text-[#666666] flex-shrink-0" size={24} />
                       )}
                     </button>
                     {expandedFaq === index && (
-                      <div className="px-6 pb-6">
-                        <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                      <div className="px-8 pb-8 border-t border-[#E5E5E5]">
+                        <p className="text-[#666666] leading-relaxed font-light pt-6">{item.answer}</p>
                       </div>
                     )}
                   </div>

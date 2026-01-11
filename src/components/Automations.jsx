@@ -58,7 +58,7 @@ const features = [
 
             <Link
               href="/expertises/n8n-automatisation"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-white hover:bg-[#0066FF] hover:text-white transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-[#0066FF] text-white hover:bg-white hover:text-[#0066FF] transition-all duration-300"
             >
               <span className="font-medium">En savoir plus</span>
               <ArrowRight size={20} />

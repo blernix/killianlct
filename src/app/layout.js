@@ -118,7 +118,7 @@ export default function RootLayout({ children }) {
           />
         </noscript>
 
-        <AnimatedBackground />
+        {/* <AnimatedBackground /> */}
         <main className="relative z-10 flex-1">{children}</main>
         {/* <div className="fixed bottom-5 right-5 z-50">
           <Chatbot />

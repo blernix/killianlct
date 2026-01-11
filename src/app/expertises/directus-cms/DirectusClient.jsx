@@ -10,14 +10,9 @@ import {
   CheckCircle,
   AlertCircle,
   X,
-  Shield,
   ArrowRight,
-  Sparkles,
-  Zap,
-  Palette,
-  Code,
-  ChevronUp,
-  ChevronDown
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { directusData } from './data';
 
@@ -41,9 +36,9 @@ export default function DirectusClient() {
   }));
 
   const renderComparisonValue = (value) => {
-    if (value === true) return <CheckCircle className="text-green-400 mx-auto" size={24} />;
-    if (value === false) return <X className="text-red-400 mx-auto" size={24} />;
-    return <span className="text-gray-300 text-sm text-center block">{value}</span>;
+    if (value === true) return <CheckCircle className="text-[#0066FF]" size={20} />;
+    if (value === false) return <X className="text-[#666666]" size={20} />;
+    return <span className="text-[#666666] text-sm">{value}</span>;
   };
 
   return (
@@ -51,42 +46,34 @@ export default function DirectusClient() {
       <main>
         <Header onOpenModal={openModal} />
 
-        {/* HERO MODERNE */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-950 to-gray-900">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[120px]" />
+        {/* HERO */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-40" />
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-          <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
+          <div className="relative z-10 container mx-auto max-w-6xl">
             <div className="max-w-5xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <Code className="text-indigo-400" size={16} />
-                  Open Source
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <Palette className="text-purple-400" size={16} />
-                  Interface Sur-Mesure
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <Shield className="text-green-400" size={16} />
-                  Zéro Risque
-                </span>
+              <div className="flex flex-wrap justify-center gap-3 mb-10">
+                {directusData.badges.map((badge, i) => {
+                  const Icon = badge.icon;
+                  return (
+                    <div key={i} className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                      <Icon className="text-[#0066FF]" size={16} />
+                      <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                        {badge.label}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
 
-              <div className="text-center space-y-6 mb-12">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                  {directusData.hero.title.split('Sans Jamais').map((part, i) =>
-                    i === 0 ? part : (
-                      <span key={i}>
-                        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                          Sans Jamais Risquer
-                        </span>
-                        {part}
-                      </span>
-                    )
-                  )}
+              <div className="text-center space-y-8 mb-12">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] leading-[1.1]">
+                  Gérez Votre Contenu{" "}
+                  <span className="text-[#0066FF]">Sans Jamais Risquer</span>{" "}
+                  de Tout Casser
                 </h1>
-                <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-lg sm:text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed font-light">
                   {directusData.hero.subtitle}
                 </p>
               </div>
@@ -94,30 +81,31 @@ export default function DirectusClient() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                 <button
                   onClick={() => openModal()}
-                  className="group relative px-8 py-4 bg-white hover:bg-gray-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.5)] flex items-center gap-3"
+                  className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
                 >
-                  <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
-                  {directusData.hero.ctaLabel}
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <span className="flex items-center gap-3">
+                    {directusData.hero.ctaLabel}
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  </span>
                 </button>
 
-                <div className="flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+                <div className="flex items-center gap-3 px-6 py-3 border border-[#E5E5E5] bg-white">
                   <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 border-2 border-gray-900" />
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 border-2 border-gray-900" />
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-indigo-600 border-2 border-gray-900" />
+                    <div className="w-8 h-8 rounded-full bg-[#0066FF] border-2 border-white" />
+                    <div className="w-8 h-8 rounded-full bg-[#2A2A2A] border-2 border-white" />
+                    <div className="w-8 h-8 rounded-full bg-[#666666] border-2 border-white" />
                   </div>
-                  <span className="text-sm text-gray-300">
-                    <strong className="text-white">30+ interfaces</strong> créées
+                  <span className="text-sm text-[#666666] font-light">
+                    <strong className="text-[#2A2A2A] font-medium">30+ interfaces</strong> créées
                   </span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] max-w-4xl mx-auto">
                 {directusData.hero.microPromises.map((promise, i) => (
-                  <div key={i} className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
-                    <CheckCircle className="text-green-400 flex-shrink-0" size={20} />
-                    <span className="text-sm text-gray-300">{promise}</span>
+                  <div key={i} className="flex items-center gap-3 p-4 bg-white hover:bg-[#FAFAFA] transition-colors">
+                    <div className="w-1 h-1 bg-[#0066FF] rounded-full flex-shrink-0" />
+                    <span className="text-sm text-[#666666] font-light">{promise}</span>
                   </div>
                 ))}
               </div>
@@ -126,76 +114,75 @@ export default function DirectusClient() {
         </section>
 
         {/* Section Défis/Solutions */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[150px]" />
-          <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-green-600/10 rounded-full blur-[150px]" />
+        <section className="relative py-32 px-4 bg-white">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/30 rounded-full text-sm text-red-400 mb-6">
-                <AlertCircle size={16} />
-                <span className="font-semibold">Les Problèmes à Résoudre</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Les 3 Cauchemars des{' '}
-                <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                  CMS Traditionnels
+            <div className="mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Les Problèmes à Résoudre
                 </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
+                Les 3 Cauchemars des{' '}
+                <span className="text-[#0066FF]">CMS Traditionnels</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-[#666666] max-w-2xl font-light">
                 Et comment Directus résout chacun définitivement
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-px bg-[#E5E5E5]">
               {directusData.challenges.map((challenge, index) => {
                 const Icon = challenge.icon;
                 return (
-                  <div
-                    key={index}
-                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-indigo-500/30 transition-all duration-500"
-                  >
-                    <div className="absolute -top-6 left-8 w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                      {index + 1}
+                  <div key={index} className="bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300">
+                    <div className="flex items-center gap-4 mb-8">
+                      <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center text-[#0066FF] font-light text-2xl flex-shrink-0">
+                        {index + 1}
+                      </div>
+                      <div className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center flex-shrink-0">
+                        <Icon className="text-[#666666]" size={20} />
+                      </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 pt-4">
-                      <div className="relative">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative bg-gradient-to-br from-red-500/10 to-orange-500/5 border border-red-500/20 rounded-2xl p-6 h-full">
-                          <div className="flex items-start gap-3 mb-4">
-                            <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <X className="text-red-400" size={20} />
+                    <div className="grid md:grid-cols-2 gap-px bg-[#E5E5E5]">
+                      <div className="bg-white p-8">
+                        <div className="mb-4">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-6 h-6 border border-[#E5E5E5] flex items-center justify-center flex-shrink-0">
+                              <X className="text-[#666666]" size={14} />
                             </div>
-                            <div>
-                              <span className="text-xs uppercase tracking-wider text-red-400 font-bold">Problème</span>
-                              <h3 className="text-xl font-bold text-white mt-1">{challenge.title}</h3>
-                            </div>
+                            <span className="text-xs uppercase tracking-[0.2em] text-[#666666] font-medium">
+                              Problème
+                            </span>
                           </div>
-                          <p className="text-gray-300 leading-relaxed mb-4">{challenge.problem}</p>
-                          {challenge.stat && (
-                            <div className="flex items-start gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-                              <span className="text-xl flex-shrink-0">📊</span>
-                              <p className="text-sm text-red-300 font-medium">{challenge.stat}</p>
-                            </div>
-                          )}
+                          <h3 className="text-xl font-light text-[#2A2A2A]">{challenge.title}</h3>
                         </div>
+                        <p className="text-[#666666] leading-relaxed mb-4 font-light">
+                          {challenge.problem}
+                        </p>
+                        {challenge.stat && (
+                          <div className="p-4 border border-[#E5E5E5] bg-[#FAFAFA]">
+                            <p className="text-sm text-[#666666] font-light">{challenge.stat}</p>
+                          </div>
+                        )}
                       </div>
 
-                      <div className="relative">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="relative bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 rounded-2xl p-6 h-full">
-                          <div className="flex items-start gap-3 mb-4">
-                            <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <CheckCircle className="text-green-400" size={20} />
+                      <div className="bg-white p-8">
+                        <div className="mb-4">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-6 h-6 border border-[#E5E5E5] flex items-center justify-center flex-shrink-0">
+                              <CheckCircle className="text-[#0066FF]" size={14} />
                             </div>
-                            <div>
-                              <span className="text-xs uppercase tracking-wider text-green-400 font-bold">Solution Directus</span>
-                              <h3 className="text-xl font-bold text-white mt-1">Interface Sur-Mesure</h3>
-                            </div>
+                            <span className="text-xs uppercase tracking-[0.2em] text-[#0066FF] font-medium">
+                              Solution Directus
+                            </span>
                           </div>
-                          <p className="text-gray-300 leading-relaxed">{challenge.solution}</p>
+                          <h3 className="text-xl font-light text-[#2A2A2A]">Interface Sur-Mesure</h3>
                         </div>
+                        <p className="text-[#666666] leading-relaxed font-light">{challenge.solution}</p>
                       </div>
                     </div>
                   </div>
@@ -206,61 +193,62 @@ export default function DirectusClient() {
         </section>
 
         {/* Section Processus */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/30 rounded-full text-sm text-indigo-400 mb-6">
-                <Zap size={16} />
-                <span className="font-semibold">Notre Méthode</span>
+            <div className="mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Notre Méthode
+                </span>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              <h2 className="text-4xl sm:text-5xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                 {directusData.process.title}
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-[#666666] max-w-2xl font-light">
                 {directusData.process.subtitle}
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-px bg-[#E5E5E5]">
               {directusData.process.steps.map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <div
                     key={index}
-                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)] transition-all duration-500"
+                    className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300"
                   >
-                    <div className="flex flex-col lg:flex-row gap-6">
-                      <div className="flex lg:flex-col items-center lg:items-start gap-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg flex-shrink-0">
+                    <div className="flex flex-col lg:flex-row gap-8">
+                      <div className="flex items-center lg:items-start gap-4">
+                        <div className="w-16 h-16 border border-[#E5E5E5] flex items-center justify-center text-[#0066FF] font-light text-3xl flex-shrink-0">
                           {step.number}
                         </div>
-                        <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <Icon className="text-indigo-400" size={28} />
+                        <div className="w-14 h-14 border border-[#E5E5E5] flex items-center justify-center flex-shrink-0">
+                          <Icon className="text-[#666666]" size={24} />
                         </div>
                       </div>
 
                       <div className="flex-1">
-                        <div className="flex items-start justify-between mb-3">
-                          <h3 className="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                          <h3 className="text-2xl font-light text-[#2A2A2A] mb-2 md:mb-0">
                             {step.title}
                           </h3>
-                          <span className="text-sm text-indigo-400 font-semibold bg-indigo-500/10 px-3 py-1 rounded-full">
+                          <span className="text-sm text-[#0066FF] border border-[#E5E5E5] px-3 py-1 w-fit">
                             {step.duration}
                           </span>
                         </div>
-                        <p className="text-gray-300 leading-relaxed mb-4">
+                        <p className="text-[#666666] leading-relaxed mb-6 font-light">
                           {step.description}
                         </p>
 
                         <div>
-                          <p className="text-sm text-gray-500 mb-2 font-semibold">Livrables :</p>
-                          <div className="flex flex-wrap gap-2">
+                          <p className="text-xs text-[#666666] mb-3 uppercase tracking-[0.2em]">Livrables :</p>
+                          <div className="flex flex-wrap gap-px bg-[#E5E5E5]">
                             {step.deliverables.map((deliverable, i) => (
                               <span
                                 key={i}
-                                className="text-xs bg-white/5 border border-white/10 px-3 py-1 rounded-full text-gray-400"
+                                className="text-sm bg-white px-4 py-2 text-[#666666] font-light"
                               >
                                 {deliverable}
                               </span>
@@ -277,7 +265,7 @@ export default function DirectusClient() {
             <div className="mt-12 text-center">
               <button
                 onClick={() => openModal()}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
+                className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 Configurer mon interface Directus
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -287,45 +275,46 @@ export default function DirectusClient() {
         </section>
 
         {/* Section Cas d'usage */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px]" />
+        <section className="relative py-32 px-4 bg-white">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-sm text-blue-400 mb-6">
-                <Sparkles size={16} />
-                <span className="font-semibold">Cas d'Usage</span>
+            <div className="mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Cas d'Usage
+                </span>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              <h2 className="text-4xl sm:text-5xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                 {directusData.useCases.title}
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-[#666666] max-w-2xl font-light">
                 {directusData.useCases.subtitle}
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E5E5E5]">
               {directusData.useCases.cases.map((useCase, index) => {
                 const Icon = useCase.icon;
                 return (
                   <div
                     key={index}
-                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] transition-all duration-500 hover:-translate-y-2"
+                    className="group bg-white p-8 hover:bg-[#FAFAFA] transition-colors duration-300"
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="text-indigo-400" size={24} />
+                    <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center mb-6">
+                      <Icon className="text-[#0066FF]" size={20} />
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-xl font-light text-[#2A2A2A] mb-3">
                       {useCase.title}
                     </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                    <p className="text-sm text-[#666666] leading-relaxed mb-4 font-light">
                       {useCase.description}
                     </p>
 
-                    <div className="pt-3 border-t border-white/10">
-                      <p className="text-xs text-indigo-400/70 italic">
-                        📝 {useCase.examples}
+                    <div className="pt-4 border-t border-[#E5E5E5]">
+                      <p className="text-xs text-[#666666] font-light">
+                        {useCase.examples}
                       </p>
                     </div>
                   </div>
@@ -336,75 +325,84 @@ export default function DirectusClient() {
         </section>
 
         {/* Section Tarifs */}
-        <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-950">
-          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px]" />
+        <section id="tarifs" className="relative py-32 px-4 bg-[#FAFAFA]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/30 rounded-full text-sm text-indigo-400 mb-6">
-                <Sparkles size={16} />
-                <span className="font-semibold">Tarifs Transparents</span>
+            <div className="mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Tarifs Transparents
+                </span>
               </div>
-              <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6">
+              <h2 className="text-4xl sm:text-5xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                 {directusData.pricing.title}
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-[#666666] max-w-2xl font-light">
                 {directusData.pricing.subtitle}
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
               {directusData.pricing.packages.map((pkg, index) => (
                 <div
                   key={index}
-                  className={`group relative rounded-3xl p-8 transition-all duration-500 ${
+                  className={`group relative p-10 transition-all duration-300 ${
                     pkg.highlighted
-                      ? 'bg-gradient-to-br from-white/15 to-white/5 border-2 border-indigo-500/50 shadow-[0_0_60px_rgba(99,102,241,0.3)] scale-105 md:scale-110'
-                      : 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-indigo-500/30 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)]'
+                      ? 'bg-[#0066FF] text-white'
+                      : 'bg-white hover:bg-[#FAFAFA]'
                   }`}
                 >
                   {pkg.highlighted && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
-                      ⭐ {pkg.cta}
-                    </div>
+                    <div className="absolute -top-px left-0 right-0 h-[2px] bg-white" />
                   )}
 
                   <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-3">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-gray-400 text-sm mb-2">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className={`text-2xl font-light ${pkg.highlighted ? 'text-white' : 'text-[#2A2A2A]'}`}>
+                        {pkg.name}
+                      </h3>
+                      {pkg.highlighted && (
+                        <span className="text-xs uppercase tracking-[0.2em] border border-white px-2 py-1">
+                          {pkg.cta}
+                        </span>
+                      )}
+                    </div>
+                    <p className={`text-sm mb-2 font-light ${pkg.highlighted ? 'text-white/80' : 'text-[#666666]'}`}>
                       {pkg.description}
                     </p>
-                    <p className="text-xs text-indigo-400 mb-6">
-                      ⏱️ {pkg.timeframe}
+                    <p className={`text-xs mb-6 font-light ${pkg.highlighted ? 'text-white/60' : 'text-[#666666]'}`}>
+                      {pkg.timeframe}
                     </p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold text-white">
+                      <span className={`text-5xl font-light ${pkg.highlighted ? 'text-white' : 'text-[#2A2A2A]'}`}>
                         {pkg.price.split('€')[0]}
                       </span>
-                      {pkg.price.includes('€') && <span className="text-2xl text-gray-400">€</span>}
+                      {pkg.price.includes('€') && (
+                        <span className={`text-2xl font-light ${pkg.highlighted ? 'text-white/80' : 'text-[#666666]'}`}>
+                          €
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-3 mb-8">
                     {pkg.features.map((feature, fIndex) => (
                       <li key={fIndex} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <CheckCircle className="text-green-400" size={14} />
-                        </div>
-                        <span className="text-sm text-gray-300 leading-relaxed">{feature}</span>
+                        <div className={`w-1 h-1 rounded-full flex-shrink-0 mt-2 ${pkg.highlighted ? 'bg-white' : 'bg-[#0066FF]'}`} />
+                        <span className={`text-sm leading-relaxed font-light ${pkg.highlighted ? 'text-white' : 'text-[#666666]'}`}>
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
 
                   <button
                     onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
-                    className={`w-full py-4 px-6 rounded-full font-bold transition-all duration-300 ${
+                    className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
-                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105'
-                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-indigo-500/50'
+                        ? 'bg-white text-[#0066FF] border border-white hover:bg-transparent hover:text-white'
+                        : 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
                     }`}
                   >
                     {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
@@ -415,27 +413,27 @@ export default function DirectusClient() {
 
             {/* Maintenance */}
             <div className="max-w-5xl mx-auto mb-16">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl font-bold text-white mb-4">
+              <div className="mb-12">
+                <h3 className="text-3xl font-light text-[#2A2A2A] mb-4">
                   {directusData.pricing.maintenance.title}
                 </h3>
-                <p className="text-gray-400 max-w-2xl mx-auto">
+                <p className="text-[#666666] max-w-2xl font-light">
                   {directusData.pricing.maintenance.description}
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5]">
                 {directusData.pricing.maintenance.plans.map((plan, index) => (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 transition-all duration-300"
+                    className="bg-white p-8 hover:bg-[#FAFAFA] transition-colors duration-300"
                   >
-                    <h4 className="text-xl font-bold text-white mb-2">{plan.name}</h4>
-                    <p className="text-3xl font-bold text-indigo-400 mb-6">{plan.price}</p>
+                    <h4 className="text-xl font-light text-[#2A2A2A] mb-2">{plan.name}</h4>
+                    <p className="text-3xl font-light text-[#0066FF] mb-6">{plan.price}</p>
                     <ul className="space-y-3">
                       {plan.includes.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
-                          <CheckCircle className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                        <li key={i} className="flex items-start gap-3 text-sm text-[#666666] font-light">
+                          <div className="w-1 h-1 bg-[#0066FF] rounded-full flex-shrink-0 mt-2" />
                           {item}
                         </li>
                       ))}
@@ -446,50 +444,56 @@ export default function DirectusClient() {
             </div>
 
             <div className="text-center">
-              <p className="text-sm text-gray-400 max-w-3xl mx-auto leading-relaxed p-6 bg-white/5 rounded-2xl border border-white/10">
-                <strong className="text-white">✨ {directusData.pricing.note}</strong>
+              <p className="text-sm text-[#666666] max-w-3xl mx-auto leading-relaxed p-6 border border-[#E5E5E5] bg-white font-light">
+                {directusData.pricing.note}
               </p>
             </div>
           </div>
         </section>
 
         {/* Comparaison */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+        <section className="relative py-32 px-4 bg-white">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="mb-16">
+              <h2 className="text-4xl sm:text-5xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                 {directusData.comparison.title}
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-[#666666] max-w-2xl font-light">
                 {directusData.comparison.subtitle}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl overflow-hidden">
+            <div className="border border-[#E5E5E5] bg-white overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-white/10">
-                      <th className="text-left p-6 text-gray-400 font-semibold">Critère</th>
+                    <tr className="border-b border-[#E5E5E5]">
+                      <th className="text-left p-6 text-[#666666] font-medium text-sm">Critère</th>
                       {directusData.comparison.columns.map((col, index) => (
                         <th
                           key={index}
-                          className={`p-6 text-center font-bold ${
-                            col.highlighted ? 'text-indigo-400' : 'text-gray-300'
+                          className={`p-6 text-center font-light text-sm ${
+                            col.highlighted ? 'text-[#0066FF] bg-[#FAFAFA]' : 'text-[#2A2A2A]'
                           }`}
                         >
                           {col.label}
-                          {col.highlighted && <span className="block text-xs text-indigo-500 mt-1">Notre Choix</span>}
+                          {col.highlighted && (
+                            <span className="block text-xs text-[#666666] mt-1 font-light">
+                              Notre Choix
+                            </span>
+                          )}
                         </th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {directusData.comparison.categories.map((category, index) => (
-                      <tr key={index} className="border-b border-white/10 hover:bg-white/5 transition-colors">
-                        <td className="p-6 text-gray-300 font-medium">{category.name}</td>
+                      <tr key={index} className="border-b border-[#E5E5E5] hover:bg-[#FAFAFA] transition-colors">
+                        <td className="p-6 text-[#2A2A2A] font-light">{category.name}</td>
                         <td className="p-6 text-center">{renderComparisonValue(category.wordpress)}</td>
-                        <td className="p-6 text-center bg-indigo-500/5">{renderComparisonValue(category.directus)}</td>
+                        <td className="p-6 text-center bg-[#FAFAFA]">{renderComparisonValue(category.directus)}</td>
                         <td className="p-6 text-center">{renderComparisonValue(category.strapi)}</td>
                       </tr>
                     ))}
@@ -500,34 +504,45 @@ export default function DirectusClient() {
           </div>
         </section>
 
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+        {/* FAQ - Swiss Clean Style */}
+        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
           <div className="relative z-10 mx-auto max-w-4xl">
             <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  FAQ
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                 {directusData.faq.title}
               </h2>
-              <p className="text-xl text-gray-400">
+
+              <p className="text-lg text-[#666666] font-light">
                 {directusData.faq.subtitle}
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-px bg-[#E5E5E5]">
               {directusData.faq.items.map((item, index) => (
-                <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                <div key={index} className="bg-white">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                    className="w-full flex items-center justify-between p-8 text-left hover:bg-[#FAFAFA] transition-colors"
                   >
-                    <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                    <span className="text-lg font-light text-[#2A2A2A] pr-4">{item.question}</span>
                     {expandedFaq === index ? (
-                      <ChevronUp className="text-indigo-400 flex-shrink-0" size={24} />
+                      <ChevronUp className="text-[#0066FF] flex-shrink-0" size={24} />
                     ) : (
-                      <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                      <ChevronDown className="text-[#666666] flex-shrink-0" size={24} />
                     )}
                   </button>
                   {expandedFaq === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                    <div className="px-8 pb-8 border-t border-[#E5E5E5]">
+                      <p className="text-[#666666] leading-relaxed font-light pt-6">{item.answer}</p>
                     </div>
                   )}
                 </div>

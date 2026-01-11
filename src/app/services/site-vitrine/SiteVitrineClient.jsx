@@ -102,130 +102,130 @@ export default function SiteVitrineClient({ faqData }) {
       <main>
         <Header onOpenModal={openModal} />
 
-        {/* 🎨 HERO REDESIGNÉ */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-gray-950 to-gray-900">
-          {/* Grille de fond subtile */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        {/* HERO SECTION - Swiss Minimal */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-40" />
 
-          {/* Gradient spot violet */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-600/20 rounded-full blur-[120px]" />
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-          <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
-            <div className="max-w-5xl mx-auto">
-              {/* Badges en haut */}
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <Zap className="text-yellow-400" size={16} />
-                  Livré en 3 semaines
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <ShieldCheck className="text-green-400" size={16} />
-                  Performance garantie
-                </span>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-300">
-                  <TrendingUp className="text-blue-400" size={16} />
-                  SEO optimisé
-                </span>
-              </div>
+          <div className="relative z-10 max-w-6xl mx-auto text-center">
+            {/* Badges */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                <Zap className="text-[#0066FF]" size={16} />
+                <span className="text-sm text-[#2A2A2A] font-light">Livré en 3 semaines</span>
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                <ShieldCheck className="text-[#0066FF]" size={16} />
+                <span className="text-sm text-[#2A2A2A] font-light">Performance garantie</span>
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+                <TrendingUp className="text-[#0066FF]" size={16} />
+                <span className="text-sm text-[#2A2A2A] font-light">SEO optimisé</span>
+              </span>
+            </div>
 
-              {/* Titre principal */}
-              <div className="text-center space-y-6 mb-12">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                  Votre{' '}
-                  <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
-                    Commercial Digital
-                  </span>{' '}
-                  Actif 24h/24
-                </h1>
-                <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Transformez votre présence en ligne avec un <strong className="text-white">site vitrine professionnel</strong>, performant et optimisé pour <strong className="text-white">générer des clients</strong>.
-                </p>
-              </div>
+            {/* Titre principal */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-10 leading-[1.05]">
+              Votre{' '}
+              <span className="text-[#0066FF]">Commercial Digital</span>{' '}
+              Actif 24h/24
+            </h1>
 
-              {/* CTA principal + stats */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                <button
-                  onClick={() => openModal()}
-                  className="group relative px-8 py-4 bg-white hover:bg-gray-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] flex items-center gap-3"
-                >
-                  <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
+            <p className="text-xl sm:text-2xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-16 font-light">
+              Transformez votre présence en ligne avec un <strong className="text-[#2A2A2A] font-normal">site vitrine professionnel</strong>, performant et optimisé pour <strong className="text-[#2A2A2A] font-normal">générer des clients</strong>.
+            </p>
+
+            {/* CTA principal */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+              <button
+                onClick={() => openModal()}
+                className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+              >
+                <span className="flex items-center gap-3">
                   Obtenir mon devis gratuit
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </span>
+              </button>
 
-                <div className="flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
-                  <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 border-2 border-gray-900" />
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 border-2 border-gray-900" />
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 border-2 border-gray-900" />
-                  </div>
-                  <span className="text-sm text-gray-300">
-                    <strong className="text-white">50+ clients</strong> satisfaits
-                  </span>
+              <div className="flex items-center gap-3 px-6 py-3 border border-[#E5E5E5] bg-white">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-[#0066FF] border-2 border-white" />
+                  <div className="w-8 h-8 rounded-full bg-[#2A2A2A] border-2 border-white" />
+                  <div className="w-8 h-8 rounded-full bg-[#666666] border-2 border-white" />
                 </div>
+                <span className="text-sm text-[#666666] font-light">
+                  <strong className="text-[#2A2A2A] font-medium">50+ clients</strong> satisfaits
+                </span>
               </div>
+            </div>
 
-              {/* Micro-promesses en grille */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                {[
-                  "Design sur-mesure",
-                  "SEO optimisé",
-                  "Mobile-first",
-                  "Support inclus"
-                ].map((promise, i) => (
-                  <div key={i} className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
-                    <CheckCircle className="text-green-400 flex-shrink-0" size={20} />
-                    <span className="text-sm text-gray-300">{promise}</span>
-                  </div>
-                ))}
-              </div>
+            {/* Micro-promesses */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] max-w-4xl mx-auto">
+              {[
+                "Design sur-mesure",
+                "SEO optimisé",
+                "Mobile-first",
+                "Support inclus"
+              ].map((promise, i) => (
+                <div key={i} className="flex items-center gap-3 p-6 bg-white hover:bg-[#FAFAFA] transition-colors">
+                  <CheckCircle className="text-[#0066FF] flex-shrink-0" size={18} />
+                  <span className="text-sm text-[#2A2A2A] font-light">{promise}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 🎨 Section Introduction REDESIGNÉE */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[150px]" />
+        {/* Section Introduction */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 border border-violet-500/30 rounded-full text-sm text-violet-400 mb-6">
-              <Info size={16} />
-              <span className="font-semibold">Bien Plus qu'une Carte de Visite</span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Un Site Vitrine, C'est Quoi{' '}
-              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
-                Exactement ?
+            <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+              <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                Bien Plus qu'une Carte de Visite
               </span>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              Un Site Vitrine, C'est Quoi{' '}
+              <span className="text-[#0066FF]">Exactement</span> ?
             </h2>
-            <p className="text-xl text-gray-400 leading-relaxed">
-              Fondamentalement, un site vitrine présente votre entreprise, vos services et vos valeurs. Mais sa mission stratégique va bien au-delà : c'est un <strong className="text-white">écosystème d'information conçu pour générer des opportunités commerciales qualifiées</strong>. Contrairement à un site e-commerce, il ne gère pas de transactions directes, ce qui le rend plus simple et plus rapide à déployer.
+
+            <p className="text-lg text-[#666666] leading-relaxed font-light">
+              Fondamentalement, un site vitrine présente votre entreprise, vos services et vos valeurs. Mais sa mission stratégique va bien au-delà : c'est un <strong className="text-[#2A2A2A] font-normal">écosystème d'information conçu pour générer des opportunités commerciales qualifiées</strong>. Contrairement à un site e-commerce, il ne gère pas de transactions directes, ce qui le rend plus simple et plus rapide à déployer.
             </p>
           </div>
         </section>
 
-        {/* 🎨 Section 4 Piliers REDESIGNÉE */}
-        <section className="relative py-24 px-4 overflow-hidden bg-black">
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[150px]" />
+        {/* Section 4 Piliers */}
+        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-sm text-blue-400 mb-6">
-                <Target size={16} />
-                <span className="font-semibold">Les 4 Piliers de la Réussite</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Un Écosystème Conçu pour{' '}
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                  Bâtir la Confiance
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Les 4 Piliers de la Réussite
                 </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Un Écosystème Conçu pour{' '}
+                <span className="text-[#0066FF]">Bâtir la Confiance</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+
+              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
                 Le rôle d'un site vitrine repose sur quatre piliers qui transforment un simple visiteur en prospect qualifié
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5]">
               {[
                 {
                   icon: TrendingUp,
@@ -252,21 +252,17 @@ export default function SiteVitrineClient({ faqData }) {
                 return (
                   <div
                     key={index}
-                    className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-violet-500/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] transition-all duration-500"
+                    className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-violet-500/20 to-purple-500/20 backdrop-blur-sm border border-violet-500/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="text-violet-400" size={24} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-violet-400 transition-colors">
-                          {pillar.title}
-                        </h3>
-                        <p className="text-gray-400 leading-relaxed">
-                          {pillar.description}
-                        </p>
-                      </div>
+                    <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center mb-8 group-hover:border-[#0066FF] transition-colors">
+                      <Icon className="text-[#0066FF]" size={24} />
                     </div>
+                    <h3 className="text-xl font-light text-[#2A2A2A] mb-4">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-[#666666] leading-relaxed font-light">
+                      {pillar.description}
+                    </p>
                   </div>
                 );
               })}
@@ -274,147 +270,170 @@ export default function SiteVitrineClient({ faqData }) {
           </div>
         </section>
 
-        {/* 🎨 Calculateur ROI */}
-        <ROICalculator
-          title={<>Calculez Votre <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">Retour sur Investissement</span></>}
-          subtitle="Combien de clients votre site peut-il vous apporter ? Faites le calcul."
-          color="violet"
-          inputs={[
-            {
-              name: 'monthlyVisitors',
-              label: 'Visiteurs mensuels estimés',
-              defaultValue: 500,
-              min: 0,
-              max: 100000,
-              step: 50,
-              placeholder: '500'
-            },
-            {
-              name: 'conversionRate',
-              label: 'Taux de conversion (%)',
-              defaultValue: 3,
-              min: 0,
-              max: 100,
-              step: 0.5,
-              placeholder: '3'
-            },
-            {
-              name: 'averageSale',
-              label: 'Tarifs prestation moyenne (€)',
-              defaultValue: 1500,
-              min: 0,
-              max: 100000,
-              step: 100,
-              placeholder: '1500'
-            }
-          ]}
-          calculate={(values) => {
-            const monthlyLeads = Math.round((values.monthlyVisitors * values.conversionRate) / 100);
-            const monthlyRevenue = monthlyLeads * values.averageSale;
-            const yearlyROI = (monthlyRevenue * 12);
+        {/* Calculateur ROI - Adapter au style Swiss */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
-            return {
-              description: `Avec <strong class="text-white">${values.monthlyVisitors} visiteurs/mois</strong> et un taux de conversion de <strong class="text-white">${values.conversionRate}%</strong> :`,
-              metrics: [
-                {
-                  label: 'Leads mensuels',
-                  value: monthlyLeads,
-                  highlight: false
-                },
-                {
-                  label: 'CA mensuel potentiel',
-                  value: `${monthlyRevenue.toLocaleString()}€`,
-                  highlight: true
-                },
-                {
-                  label: 'ROI sur 12 mois',
-                  value: `+${yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€`,
-                  highlight: true,
-                  icon: TrendingUp
-                }
-              ],
-              cta: {
-                label: 'Voir les tarifs',
-                icon: ArrowRight,
-                onClick: () => {
-                  document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }
-            };
-          }}
-        />
-
-        {/* 🎨 Section Tarifs REDESIGNÉE */}
-        <section id="tarifs" className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-950">
-          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px]" />
-
-          <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 border border-violet-500/30 rounded-full text-sm text-violet-400 mb-6">
-                <Euro size={16} />
-                <span className="font-semibold">Tarifs Transparents</span>
-              </div>
-              <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6">
-                Un Investissement{' '}
-                <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
-                  Rentable
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Calculateur ROI
                 </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Calculez Votre <span className="text-[#0066FF]">Retour sur Investissement</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Le prix d'un site dépend de vos ambitions. La vraie question est : combien de clients me faut-il pour le rentabiliser ? Souvent, <strong className="text-white">un ou deux suffisent</strong>.
+
+              <p className="text-lg text-[#666666] font-light">
+                Combien de clients votre site peut-il vous apporter ? Faites le calcul.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <ROICalculator
+              title={<>Calculez Votre <span className="text-[#0066FF]">Retour sur Investissement</span></>}
+              subtitle="Combien de clients votre site peut-il vous apporter ? Faites le calcul."
+              color="cyan"
+              inputs={[
+                {
+                  name: 'monthlyVisitors',
+                  label: 'Visiteurs mensuels estimés',
+                  defaultValue: 500,
+                  min: 0,
+                  max: 100000,
+                  step: 50,
+                  placeholder: '500'
+                },
+                {
+                  name: 'conversionRate',
+                  label: 'Taux de conversion (%)',
+                  defaultValue: 3,
+                  min: 0,
+                  max: 100,
+                  step: 0.5,
+                  placeholder: '3'
+                },
+                {
+                  name: 'averageSale',
+                  label: 'Tarifs prestation moyenne (€)',
+                  defaultValue: 1500,
+                  min: 0,
+                  max: 100000,
+                  step: 100,
+                  placeholder: '1500'
+                }
+              ]}
+              calculate={(values) => {
+                const monthlyLeads = Math.round((values.monthlyVisitors * values.conversionRate) / 100);
+                const monthlyRevenue = monthlyLeads * values.averageSale;
+                const yearlyROI = (monthlyRevenue * 12);
+
+                return {
+                  description: `Avec <strong class="text-[#2A2A2A]">${values.monthlyVisitors} visiteurs/mois</strong> et un taux de conversion de <strong class="text-[#2A2A2A]">${values.conversionRate}%</strong> :`,
+                  metrics: [
+                    {
+                      label: 'Leads mensuels',
+                      value: monthlyLeads,
+                      highlight: false
+                    },
+                    {
+                      label: 'CA mensuel potentiel',
+                      value: `${monthlyRevenue.toLocaleString()}€`,
+                      highlight: true
+                    },
+                    {
+                      label: 'ROI sur 12 mois',
+                      value: `+${yearlyROI > 0 ? yearlyROI.toLocaleString() : 0}€`,
+                      highlight: true,
+                      icon: TrendingUp
+                    }
+                  ],
+                  cta: {
+                    label: 'Voir les tarifs',
+                    icon: ArrowRight,
+                    onClick: () => {
+                      document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                };
+              }}
+            />
+          </div>
+        </section>
+
+        {/* Section Tarifs */}
+        <section id="tarifs" className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Tarifs Transparents
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Un Investissement{' '}
+                <span className="text-[#0066FF]">Rentable</span>
+              </h2>
+
+              <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
+                Le prix d'un site dépend de vos ambitions. La vraie question est : combien de clients me faut-il pour le rentabiliser ? Souvent, <strong className="text-[#2A2A2A] font-normal">un ou deux suffisent</strong>.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
               {packages.map((pkg, index) => (
                 <div
                   key={index}
-                  className={`group relative rounded-3xl p-8 transition-all duration-500 ${
-                    pkg.highlighted
-                      ? 'bg-gradient-to-br from-white/15 to-white/5 border-2 border-violet-500/50 shadow-[0_0_60px_rgba(139,92,246,0.3)] scale-105 md:scale-110'
-                      : 'bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-violet-500/30 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)]'
+                  className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
+                    pkg.highlighted ? 'md:scale-105 border-2 border-[#0066FF] relative' : ''
                   }`}
                 >
                   {pkg.highlighted && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
-                      ⭐ {pkg.cta}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
+                      {pkg.cta}
                     </div>
                   )}
 
                   <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-white mb-3">
+                    <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
                       {pkg.name}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-6">
+                    <p className="text-[#666666] text-sm mb-6 font-light">
                       {pkg.description}
                     </p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold text-white">
+                      <span className="text-5xl font-light text-[#2A2A2A]">
                         {pkg.price.replace('€', '')}
                       </span>
-                      {pkg.price.includes('€') && <span className="text-2xl text-gray-400">€</span>}
+                      {pkg.price.includes('€') && <span className="text-2xl text-[#666666]">€</span>}
                     </div>
-                    {pkg.monthly && <p className="text-violet-400 font-medium mt-2">+ {pkg.monthly}</p>}
+                    {pkg.monthly && <p className="text-[#0066FF] font-light mt-2">+ {pkg.monthly}</p>}
                   </div>
 
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-3 mb-8">
                     {pkg.features.map((feature, fIndex) => (
                       <li key={fIndex} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <CheckCircle className="text-green-400" size={14} />
-                        </div>
-                        <span className="text-sm text-gray-300 leading-relaxed">{feature}</span>
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={16} />
+                        <span className="text-sm text-[#666666] leading-relaxed font-light">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
                   <button
                     onClick={() => openModal(`${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`)}
-                    className={`w-full py-4 px-6 rounded-full font-bold transition-all duration-300 ${
+                    className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
-                        ? 'bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white shadow-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] hover:scale-105'
-                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-violet-500/50'
+                        ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
+                        : 'bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
                     }`}
                   >
                     {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
@@ -425,11 +444,12 @@ export default function SiteVitrineClient({ faqData }) {
 
             {/* Ce que comprend l'abonnement */}
             <div className="max-w-4xl mx-auto">
-              <div className="relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/20 rounded-3xl p-10">
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold rounded-full shadow-lg">
+              <div className="relative border border-[#E5E5E5] bg-white p-12">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-sm font-medium">
                   Que comprend l'abonnement ?
                 </div>
-                <div className="grid sm:grid-cols-2 gap-6 mt-6">
+
+                <div className="grid sm:grid-cols-2 gap-px bg-[#E5E5E5] mt-4">
                   {[
                     "Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)",
                     "Nom de domaine (renouvellement annuel inclus)",
@@ -439,11 +459,9 @@ export default function SiteVitrineClient({ faqData }) {
                     "Support technique par email",
                     "Surveillance et maintenance préventive"
                   ].map((point, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <CheckCircle className="text-white" size={18} />
-                      </div>
-                      <p className="text-gray-300 leading-relaxed pt-2">{point}</p>
+                    <div key={index} className="flex items-start gap-4 p-6 bg-white">
+                      <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-1" size={18} />
+                      <p className="text-[#666666] leading-relaxed font-light">{point}</p>
                     </div>
                   ))}
                 </div>
@@ -451,8 +469,8 @@ export default function SiteVitrineClient({ faqData }) {
 
               {/* Note finale */}
               <div className="mt-12 text-center">
-                <p className="text-sm text-gray-400 max-w-3xl mx-auto leading-relaxed p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <strong className="text-white">Pas de surprise, pas de frais cachés.</strong> Votre site reste en ligne, sécurisé et performant tant que l'abonnement est actif.
+                <p className="text-sm text-[#666666] max-w-3xl mx-auto leading-relaxed p-8 border border-[#E5E5E5] bg-white font-light">
+                  <strong className="text-[#2A2A2A] font-medium">Pas de surprise, pas de frais cachés.</strong> Votre site reste en ligne, sécurisé et performant tant que l'abonnement est actif.
                 </p>
               </div>
             </div>
@@ -461,34 +479,44 @@ export default function SiteVitrineClient({ faqData }) {
 
         {/* FAQ */}
         {faqData && (
-          <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+          <section className="relative py-32 px-4 bg-white">
+            {/* Subtle grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+
             <div className="relative z-10 mx-auto max-w-4xl">
               <div className="text-center mb-16">
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+                <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                  <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                    FAQ
+                  </span>
+                </div>
+
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
                   {faqData.title}
                 </h2>
-                <p className="text-xl text-gray-400">
+
+                <p className="text-lg text-[#666666] font-light">
                   {faqData.subtitle}
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-px bg-[#E5E5E5]">
                 {faqData.items.map((item, index) => (
-                  <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                  <div key={index} className="bg-white">
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                      className="w-full flex items-center justify-between p-8 text-left hover:bg-[#FAFAFA] transition-colors"
                     >
-                      <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
+                      <span className="text-lg font-light text-[#2A2A2A] pr-4">{item.question}</span>
                       {expandedFaq === index ? (
-                        <ChevronUp className="text-violet-400 flex-shrink-0" size={24} />
+                        <ChevronUp className="text-[#0066FF] flex-shrink-0" size={24} />
                       ) : (
-                        <ChevronDown className="text-gray-400 flex-shrink-0" size={24} />
+                        <ChevronDown className="text-[#666666] flex-shrink-0" size={24} />
                       )}
                     </button>
                     {expandedFaq === index && (
-                      <div className="px-6 pb-6">
-                        <p className="text-gray-300 leading-relaxed">{item.answer}</p>
+                      <div className="px-8 pb-8 border-t border-[#E5E5E5]">
+                        <p className="text-[#666666] leading-relaxed font-light pt-6">{item.answer}</p>
                       </div>
                     )}
                   </div>

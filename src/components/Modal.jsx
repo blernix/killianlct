@@ -66,37 +66,37 @@ export default function Modal({ isOpen, onClose, children, title }) {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex justify-center items-center p-4" // Fond un peu plus sombre
+    <div
+      className="fixed inset-0 z-50 bg-black/60 flex justify-center items-center p-4"
       onClick={onClose}
     >
-      <div 
+      <div
         ref={modalRef}
-        // MODIFICATION : On applique le style glassmorphisme ici
-        className="relative flex flex-col w-full max-w-lg max-h-[90vh] rounded-2xl border shadow-2xl
-                   bg-gray-950/50 backdrop-blur-xl border-white/15"
+        className="relative flex flex-col w-full max-w-lg max-h-[90vh] border border-[#E5E5E5] bg-white"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
       >
+        {/* Blue accent line */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
         {/* En-tête de la modale */}
-        <div className="relative flex items-center justify-center p-5 border-b border-white/10 rounded-t">
-          <h2 id="modal-title" className="text-2xl font-bold text-gray-100 text-center">
+        <div className="relative flex items-center justify-center p-8 border-b border-[#E5E5E5]">
+          <h2 id="modal-title" className="text-2xl font-light text-[#2A2A2A] text-center tracking-[-0.02em]">
             {title || 'Fenêtre de dialogue'}
           </h2>
-          <button 
-            onClick={onClose} 
-            // MODIFICATION : On ajuste les couleurs du bouton fermer
-            className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 text-[#666666] hover:text-[#0066FF] transition-colors"
             aria-label="Fermer la fenêtre"
           >
             <X size={24} />
           </button>
         </div>
-        
-        {/* Le contenu est maintenant sur un fond sombre */}
-        <div className="p-6 space-y-6 overflow-y-auto">
+
+        {/* Contenu */}
+        <div className="p-8 space-y-6 overflow-y-auto">
           {children}
         </div>
       </div>

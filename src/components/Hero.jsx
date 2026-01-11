@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 export default function Hero() {
     const title = "Votre site web livré en 3 semaines, pas en 3 mois.";
     const paragraph = "Développement sur-mesure sans les bugs de WordPress. Interface d'administration épurée, performances optimales et formation incluse. Vous êtes autonome dès le premier jour.";
-    const buttonText = "Voir nos réalisations";
+    const buttonText = "Voir nos tarifs";
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
