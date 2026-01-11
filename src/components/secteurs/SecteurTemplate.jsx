@@ -27,6 +27,11 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
+  // Générer la liste des offres disponibles à partir des données de pricing
+  const availableOffers = data.pricing?.packages
+    ? data.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`)
+    : [];
+
   return (
     <>
       <style jsx global>{`
@@ -600,7 +605,7 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
         onClose={closeModal}
         title={getModalTitle(formType)}
       >
-        <ContactForm formType={formType} onClose={closeModal} />
+        <ContactForm formType={formType} onClose={closeModal} availableOffers={availableOffers} />
       </Modal>
     </>
   );
