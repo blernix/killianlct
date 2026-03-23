@@ -199,7 +199,7 @@ export const avocatData = {
       {
         name: "Site Vitrine Essentiel",
         price: "2 500€",
-        monthly: "35€/mois",
+        monthly: "150€/an",
         description: "Pour avocat indépendant ou petit cabinet",
         features: [
           "5 pages (Accueil, À propos, Domaines, Contact, Mentions légales)",
@@ -220,7 +220,7 @@ export const avocatData = {
       {
         name: "Site Professionnel Complet",
         price: "4 500€",
-        monthly: "50€/mois",
+        monthly: "150€/an",
         description: "Pour cabinet établi souhaitant se développer",
         features: [
           "Tout du pack Essentiel +",
@@ -245,7 +245,7 @@ export const avocatData = {
       {
         name: "Site Premium sur-mesure",
         price: "Sur devis",
-        monthly: "75€/mois",
+        monthly: "150€/an",
         description: "Pour cabinet d'avocats avec besoins spécifiques",
         features: [
           "Tout du pack Professionnel +",

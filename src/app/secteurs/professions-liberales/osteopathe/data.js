@@ -227,7 +227,7 @@ export const osteopatheData = {
       {
         name: "Pack Essentiel",
         price: "1 500€",
-        monthly: "35€/mois",
+        monthly: "150€/an",
         description: "Pour ostéopathe souhaitant une présence professionnelle solide",
         features: [
           "5 pages professionnelles (Accueil, À propos, Spécialisations, Contact, Mentions légales)",
@@ -250,7 +250,7 @@ export const osteopatheData = {
       {
         name: "Pack Professionnel",
         price: "2 500€",
-        monthly: "50€/mois",
+        monthly: "150€/an",
         description: "Pour ostéopathe souhaitant développer activement sa patientèle",
         features: [
           "Tout du pack Essentiel +",
@@ -271,7 +271,7 @@ export const osteopatheData = {
       {
         name: "Pack Premium",
         price: "4 000€",
-        monthly: "75€/mois",
+        monthly: "150€/an",
         description: "Pour ostéopathe souhaitant maximiser sa visibilité et son expertise en ligne",
         features: [
           "Tout du pack Professionnel +",

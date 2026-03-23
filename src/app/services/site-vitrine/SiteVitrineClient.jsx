@@ -29,7 +29,7 @@ export default function SiteVitrineClient({ faqData }) {
     {
       name: "Avocat",
       price: "À partir de 2 500€",
-      monthly: "dès 35€/mois",
+      monthly: "puis 150€/an",
       description: "Site conforme CNB 2023, RGPD et secret professionnel",
       icon: Scale,
       features: [
@@ -50,7 +50,7 @@ export default function SiteVitrineClient({ faqData }) {
     {
       name: "Psychologue",
       price: "À partir de 500€",
-      monthly: "dès 25€/mois",
+      monthly: "puis 150€/an",
       description: "Site sobre et empathique avec respect du secret professionnel",
       icon: Brain,
       features: [
@@ -70,7 +70,7 @@ export default function SiteVitrineClient({ faqData }) {
     {
       name: "Ostéopathe",
       price: "À partir de 1 500€",
-      monthly: "dès 35€/mois",
+      monthly: "puis 150€/an",
       description: "Site optimisé SEO local pour développer votre patientèle",
       icon: Activity,
       features: [
@@ -90,7 +90,7 @@ export default function SiteVitrineClient({ faqData }) {
     {
       name: "Artisan",
       price: "À partir de 1 500€",
-      monthly: "dès 35€/mois",
+      monthly: "puis 150€/an",
       description: "Site qui génère des chantiers grâce au référencement local",
       icon: Wrench,
       features: [

@@ -152,7 +152,7 @@ export const psychologueData = {
       {
         name: "Pack Essentiel",
         price: "500€",
-        monthly: "25€/mois",
+        monthly: "150€/an",
         description: "Psychologue en libéral souhaitant une présence professionnelle sobre",
         features: [
           "5 pages (Accueil, À propos, Approche thérapeutique, Contact, Mentions légales)",
@@ -173,7 +173,7 @@ export const psychologueData = {
       {
         name: "Pack Professionnel",
         price: "800€",
-        monthly: "35€/mois",
+        monthly: "150€/an",
         description: "Psychologue souhaitant un site complet avec prise de rendez-vous en ligne",
         features: [
           "Tout du pack Essentiel +",
@@ -194,7 +194,7 @@ export const psychologueData = {
       {
         name: "Pack Premium",
         price: "1 200€",
-        monthly: "50€/mois",
+        monthly: "150€/an",
         description: "Psychologue souhaitant partager son expertise via un blog professionnel",
         features: [
           "Tout du pack Professionnel +",

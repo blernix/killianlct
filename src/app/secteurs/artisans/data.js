@@ -195,7 +195,7 @@ export const artisanData = {
       {
         name: "Site Essentiel",
         price: "1 500€",
-        monthly: "35€/mois",
+        monthly: "150€/an",
         description: "Pour démarrer votre présence en ligne",
         features: [
           "5 pages professionnelles (Accueil, Services, Réalisations, Zone intervention, Contact)",
@@ -217,7 +217,7 @@ export const artisanData = {
       {
         name: "Site Professionnel",
         price: "2 500€",
-        monthly: "50€/mois",
+        monthly: "150€/an",
         description: "Pour développer votre activité et dominer Google",
         features: [
           "Tout du pack Essentiel +",
@@ -240,7 +240,7 @@ export const artisanData = {
       {
         name: "Site Premium",
         price: "Sur devis",
-        monthly: "75€/mois",
+        monthly: "150€/an",
         description: "Pour entreprises artisanales avec équipes multiples",
         features: [
           "Tout du pack Professionnel +",
