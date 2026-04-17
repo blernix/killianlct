@@ -34,6 +34,26 @@ export const seoFaqData = {
       value: "q6",
       question: "L'audit seul suffit-il ou dois-je prendre le partenariat ?",
       answer: "Cela dépend de vos ressources internes. Si vous avez une équipe technique capable d'implémenter nos recommandations et de piloter la stratégie de contenu, l'audit seul peut suffire. Si vous préférez déléguer totalement le pilotage SEO pour vous concentrer sur votre métier, le partenariat est plus adapté. L'avantage du partenariat : l'audit est inclus le 1er mois + nous implémentons directement les corrections."
+    },
+    {
+      value: "q7",
+      question: "Comment fonctionne le SEO local pour les artisans et professions libérales ?",
+      answer: "Le SEO local cible les recherches géolocalisées (ex: 'plombier Melun', 'avocat Seine-et-Marne'). Nous optimisons votre Google My Business, créons des pages de service par ville, utiliser les schémas Schema.org LocalBusiness, et générons des avis clients légitimes. Pour les professions libérales, nous respectons les contraintes déontologiques (pas de faux avis, communication mesurée)."
+    },
+    {
+      value: "q8",
+      question: "Quels sont les délais pour un audit SEO complet ?",
+      answer: "Un audit SEO complet prend généralement 2 à 3 semaines. Semaine 1 : collecte des données et analyse technique. Semaine 2 : analyse concurrentielle et recherche de mots-clés. Semaine 3 : rédaction du rapport détaillé avec plan d'action priorisé. Nous fournissons des livrables intermédiaires pour ne pas rester sans nouvelles."
+    },
+    {
+      value: "q9",
+      question: "Proposez-vous des forfaits SEO pour les petites entreprises ?",
+      answer: "Oui, nous avons des forfaits adaptés aux TPE et indépendants. L'audit SEO de base démarre à 800€. Pour un accompagnement mensuel, nos forfaits débutent à 800€/mois (engagement 6 mois). Nous pouvons également proposer des prestations à la carte (optimisation technique ponctuelle, rédaction d'articles, netlinking). Contactez-nous pour un devis personnalisé."
+    },
+    {
+      value: "q10",
+      question: "Comment mesurez-vous les résultats et le ROI du SEO ?",
+      answer: "Nous suivons des KPIs précis : positions sur les mots-clés stratégiques, trafic organique, leads générés, taux de conversion. Chaque mois, vous recevez un reporting transparent avec les évolutions et analyses. Nous calculons également le ROI estimé basé sur la valeur moyenne d'un client pour votre secteur. Exemple : +5 leads/mois × 2 000€/client = +10 000€/mois de potentiel."
     }
   ]
 };

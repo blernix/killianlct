@@ -124,11 +124,11 @@ export const psychologueData = {
       },
       {
         question: "Puis-je modifier le contenu de mon site moi-même après la livraison ?",
-        answer: "Pour les packs Essentiel et Professionnel : Les modifications de contenu sont incluses dans votre abonnement mensuel (25€/mois ou 35€/mois). Vous nous envoyez vos demandes de modification et nous les réalisons sous 48-72h.\n\nPour le pack Premium avec blog : Vous avez un accès complet au CMS pour gérer votre blog en autonomie (ajout/modification d'articles). Une formation d'1h est incluse. Pour les modifications de structure ou de design, elles sont incluses dans votre abonnement maintenance (50€/mois)."
+        answer: "Pour les packs Essentiel et Professionnel : Les modifications mineures (textes, images, coordonnées, couleurs) sont incluses dans votre abonnement annuel de 150€/an. Vous nous envoyez vos demandes de modification et nous les réalisons sous 48-72h.\n\nPour le pack Premium avec blog : Vous avez un accès complet au CMS pour gérer votre blog en autonomie (ajout/modification d'articles). Une formation d'1h est incluse. Pour les modifications de structure ou de design (refontes), elles sont facturées séparément.\n\nLa première année d'hébergement et de maintenance est incluse dans le prix de création de votre site."
       },
       {
-        question: "Que comprend l'abonnement mensuel ?",
-        answer: "Votre abonnement mensuel inclut :\n\n- Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n- Nom de domaine (renouvellement annuel)\n- Certificat SSL/TLS (sécurité HTTPS)\n- Mises à jour de sécurité\n- Modifications de contenu (textes, images, coordonnées)\n- Support technique par email\n- Surveillance et maintenance préventive\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne et sécurisé tant que l'abonnement est actif."
+        question: "Que comprend l'abonnement annuel ?",
+        answer: "Votre abonnement annuel de 150€ inclut :\n\n- Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n- Nom de domaine (renouvellement annuel inclus)\n- Certificat SSL/TLS (sécurité HTTPS)\n- Mises à jour de sécurité automatiques\n- Modifications mineures (textes, images, coordonnées, couleurs)\n- Support technique par email\n- Surveillance et maintenance préventive\n\nLa première année d'hébergement est incluse dans le prix de création de votre site. À partir de la 2ème année, l'abonnement annuel de 150€/an prend le relais.\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne et sécurisé tant que l'abonnement est actif."
       },
       {
         question: "Et si je veux arrêter l'abonnement après quelques mois ?",

@@ -83,7 +83,7 @@ export default function Header({ onOpenModal }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E5E5E5] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E5E5E5] transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } py-4`}
     >
@@ -125,10 +125,10 @@ export default function Header({ onOpenModal }) {
 
               {/* Le sous-menu déroulant pour Desktop */}
               {link.submenu && (
-               <ul className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 origin-top
-                               bg-white border border-[#E5E5E5] shadow-lg
-                               opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
-                               transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
+                <ul className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 origin-top
+                                bg-white border border-[#E5E5E5] shadow-sm
+                                opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
+                                transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
                   {link.submenu.map((subLink, index) => (
                     <li key={subLink.name} className={index !== link.submenu.length - 1 ? 'border-b border-[#E5E5E5]' : ''}>
                       <Link

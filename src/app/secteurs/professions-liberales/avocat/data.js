@@ -186,8 +186,8 @@ export const avocatData = {
         answer: "Nous assurons une veille juridique continue sur les évolutions du RIN et des règles déontologiques. Si une modification réglementaire impacte votre site, nous vous informons immédiatement et proposons les mises à jour nécessaires. De plus, nous incluons systématiquement 3 mois de maintenance dans nos forfaits, couvrant les ajustements de conformité éventuels post-livraison."
       },
       {
-        question: "Que comprend l'abonnement mensuel ?",
-        answer: "Votre abonnement mensuel inclut :\n\n• Hébergement cloud premium (serveurs français en UE, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel)\n• Certificat SSL/TLS (sécurité HTTPS)\n• Mises à jour de sécurité\n• Modifications de contenu (textes, images, coordonnées, tarifs)\n• Support technique par email\n• Veille réglementaire CNB et alertes conformité\n• Surveillance et maintenance préventive\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et conforme tant que l'abonnement est actif."
+        question: "Que comprend l'abonnement annuel ?",
+        answer: "Votre abonnement annuel de 150€ inclut :\n\n• Hébergement cloud premium (serveurs français en UE, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel inclus)\n• Certificat SSL/TLS (sécurité HTTPS)\n• Mises à jour de sécurité automatiques\n• Modifications mineures (textes, images, coordonnées, tarifs, couleurs)\n• Support technique par email\n• Veille réglementaire CNB et alertes conformité\n• Surveillance et maintenance préventive\n\nLa première année d'hébergement est incluse dans le prix de création de votre site. À partir de la 2ème année, l'abonnement annuel de 150€/an prend le relais.\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et conforme tant que l'abonnement est actif."
       }
     ]
   },
@@ -211,7 +211,7 @@ export const avocatData = {
           "Configuration cookies essentiels uniquement (pas de traceurs publicitaires)",
           "Dossier de conformité complet pour déclaration au Conseil de l'Ordre",
           "Notice de gestion des données clients",
-          "Nom de domaine + hébergement premium UE inclus",
+           "Nom de domaine + hébergement premium UE inclus (1ère année)",
           "Certificat SSL/TLS",
           "3 mois de maintenance avec veille réglementaire"
         ],

@@ -202,8 +202,8 @@ export const osteopatheData = {
         answer: "• Pack Essentiel : 2-3 semaines après validation du contenu et des visuels\n• Pack Professionnel : 3-4 semaines (incluant configuration Calendly et SEO avancé)\n• Pack Premium : 4-6 semaines (incluant rédaction des 3 articles de blog)\n\nLe délai dépend aussi de votre réactivité pour fournir les contenus (textes de présentation, photos, diplômes).\n\nNous vous accompagnons à chaque étape : brief initial, maquettes pour validation, développement, formation, mise en ligne."
       },
       {
-        question: "Que comprend l'abonnement mensuel ?",
-        answer: "Votre abonnement mensuel inclut :\n\n• Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel)\n• Certificat SSL/TLS (sécurité HTTPS)\n• Mises à jour de sécurité\n• Modifications de contenu (textes, images, coordonnées, tarifs)\n• Support technique par email\n• Surveillance et maintenance préventive\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et à jour tant que l'abonnement est actif."
+        question: "Que comprend l'abonnement annuel ?",
+        answer: "Votre abonnement annuel de 150€ inclut :\n\n• Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel inclus)\n• Certificat SSL/TLS (sécurité HTTPS)\n• Mises à jour de sécurité automatiques\n• Modifications mineures (textes, images, coordonnées, tarifs, couleurs)\n• Support technique par email\n• Surveillance et maintenance préventive\n\nLa première année d'hébergement est incluse dans le prix de création de votre site. À partir de la 2ème année, l'abonnement annuel de 150€/an prend le relais.\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et à jour tant que l'abonnement est actif."
       },
       {
         question: "Et si je veux arrêter l'abonnement ?",
@@ -215,7 +215,7 @@ export const osteopatheData = {
       },
       {
         question: "Je débute, est-ce le bon moment pour investir dans un site ?",
-        answer: "C'est justement le meilleur moment. Les premières années sont les plus difficiles pour se constituer une patientèle dans un marché saturé. Un site web professionnel vous donne une longueur d'avance sur les confrères qui n'en ont pas.\n\nLe pack Essentiel à 1 500€ + 35€/mois est conçu pour les ostéopathes en début d'activité : un investissement raisonnable qui commence à générer des résultats pendant que vous développez votre réseau.\n\n3 nouveaux patients par mois via votre site = le site se rembourse tout seul."
+        answer: "C'est justement le meilleur moment. Les premières années sont les plus difficiles pour se constituer une patientèle dans un marché saturé. Un site web professionnel vous donne une longueur d'avance sur les confrères qui n'en ont pas.\n\nLe pack Essentiel à 1 500€ (hébergement 1ère année incluse) est conçu pour les ostéopathes en début d'activité : un investissement raisonnable qui commence à générer des résultats pendant que vous développez votre réseau. À partir de la 2ème année, l'abonnement annuel de 150€/an prend le relais.\n\n3 nouveaux patients par mois via votre site = le site se rembourse tout seul."
       }
     ]
   },

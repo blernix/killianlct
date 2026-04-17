@@ -163,7 +163,7 @@ export const artisanData = {
       },
       {
         question: "Combien coûte un site web pour artisan ?",
-        answer: "Nos sites pour artisans démarrent à 1 500€ + 35€/mois pour un site essentiel (5 pages, galerie photos, formulaire contact, SEO local de base). Pour un site professionnel complet avec blog, avis clients, devis en ligne et SEO local avancé, comptez 2 500€ + 50€/mois. L'abonnement mensuel inclut l'hébergement premium, le nom de domaine, les mises à jour de sécurité, le support technique et la maintenance."
+        answer: "Nos sites pour artisans démarrent à 1 500€ (hébergement 1ère année incluse) pour un site essentiel (5 pages, galerie photos, formulaire contact, SEO local de base). Pour un site professionnel complet avec blog, avis clients, devis en ligne et SEO local avancé, comptez 2 500€ (hébergement 1ère année incluse). À partir de la 2ème année, l'abonnement annuel de 150€/an inclut l'hébergement premium, le nom de domaine, les mises à jour de sécurité, le support technique et la maintenance."
       },
       {
         question: "Combien de temps pour créer le site ?",
@@ -182,8 +182,8 @@ export const artisanData = {
         answer: "Ça dépend du pack choisi. Le pack Essentiel est un site statique : pour modifier le contenu, vous passez par nous (petites modifications comprises dans le support 3 mois). Le pack Professionnel inclut un espace d'administration (CMS) simple qui vous permet d'ajouter des photos de chantiers, des actualités ou des avis clients en toute autonomie. Nous vous formons en 1h, c'est aussi simple qu'utiliser Facebook."
       },
       {
-        question: "Que comprend l'abonnement mensuel ?",
-        answer: "Votre abonnement mensuel inclut :\n\n• Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel)\n• Certificat SSL (sécurité HTTPS)\n• Mises à jour de sécurité\n• Modifications de contenu (textes, images, coordonnées)\n• Support technique par email\n• Surveillance et maintenance préventive\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et à jour tant que l'abonnement est actif."
+        question: "Que comprend l'abonnement annuel ?",
+        answer: "Votre abonnement annuel de 150€ inclut :\n\n• Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)\n• Nom de domaine (renouvellement annuel inclus)\n• Certificat SSL (sécurité HTTPS)\n• Mises à jour de sécurité automatiques\n• Modifications mineures (textes, images, coordonnées, couleurs)\n• Support technique par email\n• Surveillance et maintenance préventive\n\nLa première année d'hébergement est incluse dans le prix de création de votre site. À partir de la 2ème année, l'abonnement annuel de 150€/an prend le relais.\n\nPas de surprise, pas de frais cachés. Votre site reste en ligne, sécurisé et à jour tant que l'abonnement est actif."
       }
     ]
   },
@@ -205,8 +205,8 @@ export const artisanData = {
           "Zone d'intervention avec carte",
           "Responsive mobile & tablette",
           "SEO local de base (balises meta, Schema.org Local Business)",
-          "Nom de domaine inclus",
-          "Hébergement cloud premium inclus",
+           "Nom de domaine inclus (renouvellement annuel inclus)",
+           "Hébergement cloud premium inclus (1ère année)",
           "Certificat SSL sécurisé",
           "3 mois de support technique",
           "Livraison : 3 semaines"
@@ -325,10 +325,10 @@ export const artisanData = {
         note: "Difficile de retrouver une réalisation spécifique"
       },
       {
-        name: "Coût mensuel",
-        us: "À partir de 35€/mois",
+        name: "Coût annuel",
+        us: "150€/an",
         facebook: "Publicités obligatoires",
-        note: "L'abonnement inclut hébergement, maintenance et support"
+        note: "L'abonnement annuel inclut hébergement, maintenance et support"
       },
       {
         name: "Propriété de vos données",

@@ -31,7 +31,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://killian-lecrut.com/og/artisans.png',
+        url: 'https://killian-lecrut.com/logoK.png',
         width: 1200,
         height: 630,
         alt: "Création site web pour artisan - Melun & Seine-et-Marne"

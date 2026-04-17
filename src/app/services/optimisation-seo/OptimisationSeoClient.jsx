@@ -8,10 +8,11 @@ import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
 import {
-  Target, Building2, TrendingUp, Search, PenTool, Link as LinkIcon,
+  Target, Scale, Building2, TrendingUp, Search, PenTool, Link as LinkIcon,
   BarChart3, Wrench, FileText, Smartphone, Clock, Sparkles, ArrowRight,
   CheckCircle, Zap, LineChart, Award, Check, Euro, Users, MousePointerClick,
-  ChevronUp, ChevronDown
+  ChevronUp, ChevronDown, MapPin, Star, BarChart, Target as TargetIcon,
+  Users as UsersIcon, TrendingUp as TrendingUpIcon, Clock as ClockIcon
 } from 'lucide-react';
 
 export default function SeoClient({ faqData }) {
@@ -202,6 +203,362 @@ export default function SeoClient({ faqData }) {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Notre Processus SEO en 4 étapes */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Méthodologie
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Notre Processus SEO en{' '}
+                <span className="text-[#0066FF]">4 Étapes</span>
+              </h2>
+
+              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+                Une approche structurée et transparente pour garantir des résultats mesurables
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5]">
+              {[
+                {
+                  step: "01",
+                  icon: Search,
+                  title: "Audit & Diagnostic",
+                  description: "Analyse complète de votre site, concurrence et marché. Identification des opportunités prioritaires.",
+                  details: [
+                    "Audit technique (vitesse, structure, mobile)",
+                    "Analyse concurrentielle détaillée",
+                    "Recherche de mots-clés pertinents",
+                    "Évaluation du contenu existant"
+                  ]
+                },
+                {
+                  step: "02",
+                  icon: Wrench,
+                  title: "Optimisation Technique",
+                  description: "Correction des problèmes critiques et mise en place des fondations techniques solides.",
+                  details: [
+                    "Optimisation Core Web Vitals",
+                    "Structure sémantique (Schema.org)",
+                    "Amélioration de l'expérience mobile",
+                    "Correction des erreurs d'indexation"
+                  ]
+                },
+                {
+                  step: "03",
+                  icon: PenTool,
+                  title: "Stratégie de Contenu",
+                  description: "Création et optimisation de contenu à forte valeur pour répondre à l'intention des utilisateurs.",
+                  details: [
+                    "Plan éditorial personnalisé",
+                    "Rédaction de contenus optimisés",
+                    "Optimisation des pages existantes",
+                    "Stratégie de netlinking qualitatif"
+                  ]
+                },
+                {
+                  step: "04",
+                  icon: TrendingUp,
+                  title: "Suivi & Optimisation",
+                  description: "Monitoring continu des performances et ajustements stratégiques pour une croissance durable.",
+                  details: [
+                    "Reporting mensuel détaillé",
+                    "Analyse des positions et du trafic",
+                    "Ajustements basés sur les données",
+                    "Veille algorithmique Google"
+                  ]
+                }
+              ].map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group bg-white p-8 hover:bg-[#FAFAFA] transition-colors duration-300"
+                  >
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
+                        <Icon className="text-[#0066FF]" size={24} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="inline-block px-3 py-1 mb-2 border border-[#E5E5E5] text-xs font-medium text-[#0066FF]">
+                          Étape {step.step}
+                        </div>
+                        <h3 className="text-xl font-light text-[#2A2A2A] mb-3">
+                          {step.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-[#666666] mb-4 text-sm leading-relaxed font-light">
+                      {step.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {step.details.map((detail, dIndex) => (
+                        <li key={dIndex} className="flex items-start gap-2 text-[#666666] text-sm font-light">
+                          <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Résultats Concrets */}
+        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Résultats
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Des Résultats Mesurables &{' '}
+                <span className="text-[#0066FF]">Concrets</span>
+              </h2>
+
+              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+                Voici l'impact que notre stratégie SEO a produit pour nos clients
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5]">
+              {[
+                {
+                  icon: TrendingUpIcon,
+                  value: "+150%",
+                  label: "Trafic organique",
+                  description: "Augmentation moyenne en 6 mois"
+                },
+                {
+                  icon: BarChart,
+                  value: "+80%",
+                  label: "Leads qualifiés",
+                  description: "Hausse des demandes de contact"
+                },
+                {
+                  icon: TargetIcon,
+                  value: "Top 3",
+                  label: "Positionnement",
+                  description: "Mots-clés stratégiques atteints"
+                },
+                {
+                  icon: ClockIcon,
+                  value: "24/7",
+                  label: "Acquisition continue",
+                  description: "Trafic qualifié même la nuit"
+                }
+              ].map((result, index) => {
+                const Icon = result.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group bg-white p-10 text-center hover:bg-[#FAFAFA] transition-colors duration-300"
+                  >
+                    <div className="w-16 h-16 border border-[#E5E5E5] flex items-center justify-center mx-auto mb-6 group-hover:border-[#0066FF] transition-colors">
+                      <Icon className="text-[#0066FF]" size={28} />
+                    </div>
+                    <p className="text-5xl font-light text-[#2A2A2A] mb-3">
+                      {result.value}
+                    </p>
+                    <h3 className="text-lg font-light text-[#2A2A2A] mb-2">
+                      {result.label}
+                    </h3>
+                    <p className="text-sm text-[#666666] font-light">
+                      {result.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-16 max-w-4xl mx-auto">
+              <div className="border border-[#E5E5E5] bg-white p-10">
+                <h3 className="text-2xl font-light text-[#2A2A2A] mb-6 text-center">
+                  Étude de cas : Cabinet d'avocat à Melun
+                </h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="font-light text-[#2A2A2A] mb-4">Situation initiale</h4>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                        <span>Position moyenne : 18ème sur Google</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                        <span>120 visiteurs/mois organiques</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                        <span>3-4 demandes de contact/mois</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-light text-[#2A2A2A] mb-4">Après 6 mois de partenariat</h4>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                        <span>Position moyenne : 3ème sur Google</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                        <span>300 visiteurs/mois organiques (+150%)</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
+                        <span>8-10 demandes qualifiées/mois (+200%)</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-8 pt-8 border-t border-[#E5E5E5] text-center">
+                  <p className="text-[#666666] text-sm font-light">
+                    <strong className="text-[#2A2A2A] font-normal">ROI :</strong> Investissement SEO de 800€/mois × 6 mois = 4 800€. Gain : 6 clients additionnels à 2 000€ = 12 000€. ROI net : +7 200€ en 6 mois.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Expertise Sectorielle */}
+        <section className="relative py-32 px-4 bg-white">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          
+          {/* Blue accent line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
+
+          <div className="relative z-10 max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
+                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+                  Expertises
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+                Expertise SEO{' '}
+                <span className="text-[#0066FF]">Par Secteur</span>
+              </h2>
+
+              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+                Nous adaptons notre stratégie SEO aux spécificités de votre métier et de votre localisation
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5]">
+              {[
+                {
+                  title: "SEO pour Avocats",
+                  description: "Référencement local conforme CNB 2023, optimisation pour les recherches juridiques, respect du secret professionnel.",
+                  link: "/secteurs/professions-liberales/avocat",
+                  keywords: ["site conforme CNB", "référencement avocat", "SEO local juridique"],
+                  icon: Scale
+                },
+                {
+                  title: "SEO pour Psychologues",
+                  description: "Stratégie discrète et empathique, référencement local pour thérapeutes, respect du RGPD santé.",
+                  link: "/secteurs/professions-liberales/psychologue",
+                  keywords: ["site psychologue", "référencement thérapeute", "SEO santé mentale"],
+                  icon: UsersIcon
+                },
+                {
+                  title: "SEO pour Ostéopathes",
+                  description: "Optimisation pour les recherches de praticiens locaux, prise de RDV en ligne, développement de patientèle.",
+                  link: "/secteurs/professions-liberales/osteopathe",
+                  keywords: ["site ostéopathe", "référencement santé", "SEO local médecine douce"],
+                  icon: Target
+                },
+                {
+                  title: "SEO pour Artisans",
+                  description: "Référencement ultra-local pour plombiers, électriciens, menuisiers. Optimisation Google My Business.",
+                  link: "/secteurs/artisans",
+                  keywords: ["site artisan", "référencement local", "SEO plombier Melun"],
+                  icon: MapPin
+                }
+              ].map((sector, index) => {
+                const Icon = sector.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300"
+                  >
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
+                        <Icon className="text-[#0066FF]" size={24} />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
+                          {sector.title}
+                        </h3>
+                        <p className="text-[#666666] mb-4 leading-relaxed font-light">
+                          {sector.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {sector.keywords.map((keyword, kIndex) => (
+                            <span
+                              key={kIndex}
+                              className="inline-block px-3 py-1 border border-[#E5E5E5] text-xs text-[#666666] font-light"
+                            >
+                              {keyword}
+                            </span>
+                          ))}
+                        </div>
+                        <a
+                          href={sector.link}
+                          className="inline-flex items-center gap-2 text-[#0066FF] font-medium hover:text-[#2A2A2A] transition-colors"
+                        >
+                          Découvrir notre approche
+                          <ArrowRight size={16} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-16 text-center">
+              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light mb-8">
+                <strong className="text-[#2A2A2A] font-normal">Pourquoi une expertise sectorielle ?</strong> Chaque métier a ses propres codes, son vocabulaire et ses canaux d'acquisition. Un avocat ne sera pas référencé sur les mêmes mots-clés qu'un artisan. Nous maîtrisons ces spécificités pour vous positionner sur les requêtes qui comptent réellement pour votre activité.
+              </p>
+              <button
+                onClick={() => openModal()}
+                className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+              >
+                <span className="flex items-center gap-3">
+                  Discuter de ma stratégie SEO sectorielle
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
             </div>
           </div>
         </section>

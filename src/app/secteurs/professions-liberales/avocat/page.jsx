@@ -25,7 +25,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://killian-lecrut.com/og/avocat.png',
+        url: 'https://killian-lecrut.com/logoK.png',
         width: 1200,
         height: 630,
         alt: "Création site web pour avocat conforme CNB 2023"
