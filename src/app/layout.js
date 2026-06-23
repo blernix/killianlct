@@ -95,6 +95,17 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
         />
 
+        {/* Umami Session Replay */}
+        <Script
+          id="umami-replay"
+          src="https://analytique.killian-lecrut.com/recorder.js"
+          data-website-id="5a20d280-097c-4c88-b6a5-614ac5fa30a1"
+          data-sample-rate="1"
+          data-mask-level="moderate"
+          data-max-duration="300000"
+          strategy="lazyOnload"
+        />
+
         {/* Google Tag Manager */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`
