@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 import {
   CheckCircle,
   AlertCircle,
@@ -22,6 +23,10 @@ export default function DirectusClient() {
   const formType = 'directus';
 
   const toggleFaq = (index) => {
+    const isOpening = expandedFaq !== index;
+    if (isOpening && directusData?.faq?.items?.[index]) {
+      trackFAQToggle(directusData.faq.items[index].question, formType, true);
+    }
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
@@ -80,7 +85,7 @@ export default function DirectusClient() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                 <button
-                  onClick={() => openModal()}
+                  onClick={() => { trackCTAClick('Hero CTA', 'directus'); openModal(); }}
                   className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
                 >
                   <span className="flex items-center gap-3">
@@ -264,7 +269,7 @@ export default function DirectusClient() {
 
             <div className="mt-12 text-center">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Configurer mon interface Directus', 'directus'); openModal(); }}
                 className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 Configurer mon interface Directus
@@ -398,7 +403,7 @@ export default function DirectusClient() {
                   </ul>
 
                   <button
-                    onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
+                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name} - ${pkg.price}`); }}
                     className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
                         ? 'bg-white text-[#0066FF] border border-white hover:bg-transparent hover:text-white'

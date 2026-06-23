@@ -14,6 +14,7 @@ import {
   X, Hash, Folder,
   ChevronDown, ChevronUp
 } from 'lucide-react';
+import { trackCTAClick, trackBlogSearch, trackBlogFilter } from '@/lib/tracking';
 
 export default function BlogClient({ initialArticles, initialCategories, initialTags }) {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
@@ -110,6 +111,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
 
   // Reset filters
   const resetFilters = () => {
+    trackBlogFilter('reset', 'all');
     setSearchQuery('');
     setSelectedCategory('tous');
     setSelectedTag('tous');
@@ -159,7 +161,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                 <input
                   type="text"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => { trackBlogSearch(e.target.value); setSearchQuery(e.target.value); }}
                   placeholder="Rechercher un article, un mot-clé, une thématique..."
                   className="w-full pl-12 pr-4 py-4 border border-[#E5E5E5] bg-white text-[#2A2A2A] font-light placeholder:text-[#999999] focus:outline-none focus:border-[#0066FF] transition-colors"
                 />
@@ -261,7 +263,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                     </div>
                     <div className={`space-y-2 ${!expandedCategories ? 'lg:block hidden' : 'block'}`}>
                       <button
-                        onClick={() => setSelectedCategory('tous')}
+                        onClick={() => { trackBlogFilter('category', 'tous'); setSelectedCategory('tous'); }}
                         className={`w-full text-left px-3 py-2 text-sm transition-colors ${selectedCategory === 'tous' ? 'bg-[#FAFAFA] text-[#0066FF]' : 'text-[#666666] hover:bg-[#FAFAFA]'}`}
                       >
                         Toutes les catégories ({articles.length})
@@ -269,7 +271,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                       {categories.map((category) => (
                         <button
                           key={category}
-                          onClick={() => setSelectedCategory(category)}
+                          onClick={() => { trackBlogFilter('category', category); setSelectedCategory(category); }}
                           className={`w-full text-left px-3 py-2 text-sm transition-colors flex items-center gap-2 ${selectedCategory === category ? 'bg-[#FAFAFA] text-[#0066FF]' : 'text-[#666666] hover:bg-[#FAFAFA]'}`}
                         >
                           {getCategoryIcon(category)}
@@ -295,7 +297,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                     </div>
                     <div className={`flex flex-wrap gap-2 ${!expandedTags ? 'lg:flex hidden' : 'flex'}`}>
                       <button
-                        onClick={() => setSelectedTag('tous')}
+                        onClick={() => { trackBlogFilter('tag', 'tous'); setSelectedTag('tous'); }}
                         className={`px-3 py-1 text-xs border transition-colors ${selectedTag === 'tous' ? 'border-[#0066FF] text-[#0066FF]' : 'border-[#E5E5E5] text-[#666666] hover:border-[#0066FF]'}`}
                       >
                         Tous
@@ -303,7 +305,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                       {tags.slice(0, expandedTags ? tags.length : 15).map((tag) => (
                         <button
                           key={tag}
-                          onClick={() => setSelectedTag(tag)}
+                          onClick={() => { trackBlogFilter('tag', tag); setSelectedTag(tag); }}
                           className={`px-3 py-1 text-xs border transition-colors ${selectedTag === tag ? 'border-[#0066FF] text-[#0066FF]' : 'border-[#E5E5E5] text-[#666666] hover:border-[#0066FF]'}`}
                         >
                           {tag}
@@ -334,7 +336,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                       ].map((option) => (
                         <button
                           key={option.value}
-                          onClick={() => setSortBy(option.value)}
+                          onClick={() => { trackBlogFilter('sort', option.value); setSortBy(option.value); }}
                           className={`w-full text-left px-3 py-2 text-sm transition-colors ${sortBy === option.value ? 'bg-[#FAFAFA] text-[#0066FF]' : 'text-[#666666] hover:bg-[#FAFAFA]'}`}
                         >
                           {option.label}
@@ -403,7 +405,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
 
                         {/* Titre */}
                         <h3 className="text-2xl font-light text-[#2A2A2A] mb-4 group-hover:text-[#0066FF] transition-colors">
-                          <Link href={`/blog/${article.slug}`}>
+                          <Link href={`/blog/${article.slug}`} onClick={() => trackCTAClick(article.title, 'blog_list')}>
                             {article.title}
                           </Link>
                         </h3>
@@ -446,6 +448,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                         {/* Lire la suite */}
                         <Link
                           href={`/blog/${article.slug}`}
+                          onClick={() => trackCTAClick(article.title, 'blog_list')}
                           className="inline-flex items-center gap-2 text-[#0066FF] font-medium hover:text-[#2A2A2A] transition-colors group/link"
                         >
                           Lire l'article complet
@@ -486,7 +489,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-2">
                       <button
-                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        onClick={() => { const targetPage = Math.max(currentPage - 1, 1); trackBlogFilter('pagination', String(targetPage)); setCurrentPage(targetPage); }}
                         disabled={currentPage === 1}
                         aria-label="Page précédente"
                         className="px-4 py-2 border border-[#E5E5E5] bg-white text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors font-light disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[#E5E5E5] disabled:hover:text-[#666666]"
@@ -498,7 +501,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                         <button
                           key={page}
-                          onClick={() => setCurrentPage(page)}
+                          onClick={() => { trackBlogFilter('pagination', String(page)); setCurrentPage(page); }}
                           aria-label={`Page ${page}`}
                           className={`px-4 py-2 border font-light transition-colors ${
                             currentPage === page
@@ -511,7 +514,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                       ))}
                       
                        <button
-                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        onClick={() => { const targetPage = Math.min(currentPage + 1, totalPages); trackBlogFilter('pagination', String(targetPage)); setCurrentPage(targetPage); }}
                         disabled={currentPage === totalPages}
                         aria-label="Page suivante"
                         className="px-4 py-2 border border-[#E5E5E5] bg-white text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors font-light disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[#E5E5E5] disabled:hover:text-[#666666]"
@@ -532,7 +535,7 @@ export default function BlogClient({ initialArticles, initialCategories, initial
                     Contactez-nous pour discuter de votre projet spécifique.
                   </p>
                   <button
-                    onClick={() => openModal('general')}
+                    onClick={() => { trackCTAClick('Poser une question', 'blog'); openModal('general'); }}
                     className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
                   >
                     <span className="flex items-center gap-3">

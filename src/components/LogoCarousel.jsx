@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { trackCarouselClick } from '@/lib/tracking';
 
 const clients = [
   { name: 'Terrasigne', logo: '/logoclients/logoterra.png', url: 'https://terrasigne.fr/' },
@@ -38,7 +39,7 @@ export function LogoCarousel() {
         >
           <div className="infinite-scroll-track flex w-max">
             {[...clients, ...clients].map((client, index) => (
-              <Link key={index} href={client.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+              <Link key={index} href={client.url} target="_blank" rel="noopener noreferrer" onClick={() => trackCarouselClick(client.name)} className="flex-shrink-0">
                 <div className="mx-6 sm:mx-8 flex h-24 w-40 items-center justify-center p-4 border border-[#E5E5E5] hover:border-[#0066FF] bg-white transition-all duration-300 group">
                   <Image
                     src={client.logo}

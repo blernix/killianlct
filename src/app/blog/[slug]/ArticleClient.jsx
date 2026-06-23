@@ -14,6 +14,7 @@ import {
   Facebook, Twitter, Linkedin, Link as LinkIcon,
   ChevronRight, BookOpen, TrendingUp, Shield, Zap, Building
 } from 'lucide-react';
+import { trackCTAClick, trackBlogShare } from '@/lib/tracking';
 
 export default function ArticleClient({ article, relatedArticles }) {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
@@ -59,6 +60,7 @@ export default function ArticleClient({ article, relatedArticles }) {
   };
 
   const handleCopyLink = () => {
+    trackBlogShare('copy', article.slug);
     navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -247,6 +249,7 @@ export default function ArticleClient({ article, relatedArticles }) {
                         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackBlogShare('facebook', article.slug)}
                         className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#4267B2] hover:border-[#4267B2] transition-colors"
                       >
                         <Facebook size={18} />
@@ -255,6 +258,7 @@ export default function ArticleClient({ article, relatedArticles }) {
                         href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackBlogShare('twitter', article.slug)}
                         className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#1DA1F2] hover:border-[#1DA1F2] transition-colors"
                       >
                         <Twitter size={18} />
@@ -263,6 +267,7 @@ export default function ArticleClient({ article, relatedArticles }) {
                         href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareTitle)}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackBlogShare('linkedin', article.slug)}
                         className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#0077B5] hover:border-[#0077B5] transition-colors"
                       >
                         <Linkedin size={18} />
@@ -372,7 +377,7 @@ export default function ArticleClient({ article, relatedArticles }) {
 
                     {/* Titre */}
                     <h3 className="text-xl font-light text-[#2A2A2A] mb-4 group-hover:text-[#0066FF] transition-colors">
-                      <Link href={`/blog/${related.slug}`}>
+                      <Link href={`/blog/${related.slug}`} onClick={() => trackCTAClick(related.title, 'blog_article')}>
                         {related.title}
                       </Link>
                     </h3>
@@ -403,6 +408,7 @@ export default function ArticleClient({ article, relatedArticles }) {
                     {/* Lire la suite */}
                     <Link
                       href={`/blog/${related.slug}`}
+                      onClick={() => trackCTAClick(related.title, 'blog_article')}
                       className="mt-6 inline-flex items-center gap-2 text-[#0066FF] text-sm font-medium hover:text-[#2A2A2A] transition-colors group/link"
                     >
                       Lire l'article
@@ -416,6 +422,7 @@ export default function ArticleClient({ article, relatedArticles }) {
               <div className="mt-16 text-center">
                 <Link
                   href="/blog"
+                  onClick={() => trackCTAClick('Voir tous les articles', 'blog_article')}
                   className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
                 >
                   <BookOpen size={20} />
@@ -440,7 +447,7 @@ export default function ArticleClient({ article, relatedArticles }) {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
-                  onClick={() => openModal('general')}
+                  onClick={() => { trackCTAClick('Demander un audit gratuit', 'blog_article'); openModal('general'); }}
                   className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
                 >
                   <span className="flex items-center gap-3">

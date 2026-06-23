@@ -7,6 +7,7 @@ import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 import {
   TrendingUp, ShieldCheck, Zap, Info, Users, Building, UserCheck,
   LayoutDashboard, FileText, Image as ImageIcon, MessageSquare, Phone,
@@ -21,6 +22,10 @@ export default function SiteVitrineClient({ faqData }) {
   const formType = 'site-vitrine';
 
   const toggleFaq = (index) => {
+    const isOpening = expandedFaq !== index;
+    if (isOpening && faqData?.items?.[index]) {
+      trackFAQToggle(faqData.items[index].question, formType, true);
+    }
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
@@ -178,7 +183,7 @@ export default function SiteVitrineClient({ faqData }) {
             {/* CTA principal */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Hero CTA', 'site-vitrine'); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -391,6 +396,7 @@ export default function SiteVitrineClient({ faqData }) {
                     label: 'Voir les tarifs',
                     icon: ArrowRight,
                     onClick: () => {
+                      trackCTAClick('Voir les tarifs', 'site-vitrine');
                       document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }
@@ -474,7 +480,7 @@ export default function SiteVitrineClient({ faqData }) {
                   {/* Bouton selon le type de package */}
                   {pkg.isGeneric ? (
                     <button
-                      onClick={() => openModal('general')}
+                      onClick={() => { trackPricingClick(pkg.name, formType); openModal('general'); }}
                       className="w-full py-4 px-6 font-medium transition-all duration-300 bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]"
                     >
                       {pkg.cta}
@@ -482,6 +488,7 @@ export default function SiteVitrineClient({ faqData }) {
                   ) : (
                     <a
                       href={pkg.link}
+                      onClick={() => trackCTAClick(pkg.cta, 'site-vitrine')}
                       className="block w-full py-4 px-6 text-center font-medium transition-all duration-300 bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white"
                     >
                       {pkg.cta}

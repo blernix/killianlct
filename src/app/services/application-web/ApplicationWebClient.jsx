@@ -7,6 +7,7 @@ import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 import {
   CheckCircle,
   AlertCircle,
@@ -31,6 +32,10 @@ export default function ApplicationWebClient() {
   const formType = 'application-web';
 
   const toggleFaq = (index) => {
+    const isOpening = expandedFaq !== index;
+    if (isOpening && applicationWebData?.faq?.items?.[index]) {
+      trackFAQToggle(applicationWebData.faq.items[index].question, formType, true);
+    }
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
@@ -99,7 +104,7 @@ export default function ApplicationWebClient() {
             {/* CTA principal */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Hero CTA', 'application-web'); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -283,7 +288,7 @@ export default function ApplicationWebClient() {
 
             <div className="mt-16 text-center">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Lancer mon projet maintenant', 'application-web'); openModal(); }}
                 className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 Lancer mon projet maintenant
@@ -459,7 +464,7 @@ export default function ApplicationWebClient() {
                   cta: {
                     label: 'Obtenir mon devis pour cette offre',
                     icon: ArrowRight,
-                    onClick: () => openModal(values.selectedPackage === 15000 ? 'MVP Simple - 15 000€' : 'Application Métier Complète - 35 000€'),
+                    onClick: () => { trackPricingClick(values.selectedPackage === 15000 ? 'MVP Simple - 15 000€' : 'Application Métier Complète - 35 000€', formType); openModal(values.selectedPackage === 15000 ? 'MVP Simple - 15 000€' : 'Application Métier Complète - 35 000€'); },
                   },
                 };
               }}
@@ -534,7 +539,7 @@ export default function ApplicationWebClient() {
                   </ul>
 
                   <button
-                    onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
+                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name} - ${pkg.price}`); }}
                     className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
                         ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'

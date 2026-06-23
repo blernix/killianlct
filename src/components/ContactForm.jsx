@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Loader2, Send, CheckCircle2, XCircle, Check, Edit3 } from 'lucide-react';
 import CustomSelect from '@/components/ui/CustomSelect';
+import { track, trackFormSubmit } from '@/lib/tracking';
 
 // Configuration centrale pour chaque type de formulaire
 export const formFieldsConfig = {
@@ -82,6 +83,10 @@ export default function ContactForm({ formType = 'general', onClose, initialData
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'recap', 'editing', 'success', 'error', or null
   
+  useEffect(() => {
+    track('modal_open', { form_type: formType, offer: initialData?.selectedOffer || '' });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  
   const requiredFields = ['name', 'email', 'message']; // Définir les champs toujours requis
 
   const validate = (data = formData) => {
@@ -130,8 +135,10 @@ export default function ContactForm({ formType = 'general', onClose, initialData
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, templateParams,
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     ).then(() => {
+       trackFormSubmit(formType, 'success');
        setSubmitStatus('success');
     }, () => {
+       trackFormSubmit(formType, 'error');
        setSubmitStatus('error');
     }).finally(() => {
        setIsSubmitting(false);

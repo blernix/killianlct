@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { MonitorSmartphone, AppWindow, ShoppingCart, TrendingUp, ArrowRight } from "lucide-react";
+import { trackCTAClick } from '@/lib/tracking';
 
 export function Services() {
 const mainServices = [
@@ -62,7 +63,7 @@ const mainServices = [
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5]">
           {mainServices.map((service, index) => (
-            <Link key={service.title} href={service.url}>
+            <Link key={service.title} href={service.url} onClick={() => trackCTAClick('Service - ' + service.title, 'home')}>
               <div className="group relative h-full bg-white p-10 hover:bg-[#FAFAFA] transition-all duration-300">
                 {/* Popular badge */}
                 {service.badge && (

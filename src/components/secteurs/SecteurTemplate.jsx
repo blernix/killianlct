@@ -15,6 +15,7 @@ import {
   ChevronUp,
   ExternalLink
 } from 'lucide-react';
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 
 export default function SecteurTemplate({ data, formType = 'general' }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,11 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
   const closeModal = () => setIsModalOpen(false);
 
   const toggleFaq = (index) => {
-    setExpandedFaq(expandedFaq === index ? null : index);
+    const isOpening = expandedFaq !== index;
+    setExpandedFaq(isOpening ? index : null);
+    if (isOpening && data.faq?.[index]?.question) {
+      trackFAQToggle(data.faq[index].question, formType, true);
+    }
   };
 
   // Générer la liste des offres disponibles à partir des données de pricing
@@ -124,7 +129,7 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
               className="flex flex-col sm:flex-row items-start gap-6 mb-16"
             >
               <button
-                onClick={openModal}
+                onClick={() => { trackCTAClick(data.hero.ctaLabel || 'Hero CTA', formType); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -138,6 +143,7 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
                   href={data.hero.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackExternalClick('demo', data.hero.demoUrl)}
                   className="group px-10 py-5 bg-white text-[#2A2A2A] font-medium border border-[#E5E5E5] hover:border-[#0066FF] transition-all duration-300"
                 >
                   <span className="flex items-center gap-3">
@@ -488,7 +494,7 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
                     </ul>
 
                     <button
-                      onClick={openModal}
+                      onClick={() => { trackPricingClick(pkg.name, formType); openModal(); }}
                       className={`w-full py-4 font-medium transition-all duration-300 ${
                         pkg.highlighted
                           ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
@@ -584,7 +590,7 @@ export default function SecteurTemplate({ data, formType = 'general' }) {
                 Discutons de votre projet. Premier échange gratuit et sans engagement.
               </p>
               <button
-                onClick={openModal}
+                onClick={() => { trackCTAClick('Final CTA', formType); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">

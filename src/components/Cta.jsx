@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { trackCTAClick } from '@/lib/tracking';
 
 export function ContactSection({ onOpenModal }) {
   return (
@@ -37,7 +38,7 @@ export function ContactSection({ onOpenModal }) {
 
           <button
             type="button"
-            onClick={() => onOpenModal('general')}
+            onClick={() => { trackCTAClick('Discuter de mon projet', 'home'); onOpenModal('general'); }}
             className="group relative px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300 mb-10"
           >
             <span className="flex items-center gap-3">

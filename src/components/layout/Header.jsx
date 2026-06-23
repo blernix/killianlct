@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Home, Rocket, BrainCircuit, Rss, Mail, Menu, X, ChevronDown, Briefcase } from "lucide-react";
+import { trackNavClick } from '@/lib/tracking';
 
 // Nouvelle structure de données pour gérer les sous-menus
 const navLinks = [
@@ -88,7 +89,7 @@ export default function Header({ onOpenModal }) {
       } py-4`}
     >
       <nav className="container mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="flex-shrink-0 z-50" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Link href="/" className="flex-shrink-0 z-50" onClick={() => { trackNavClick('header', 'logo'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
           <Image
             src="/logoKback.png"
             alt="Logo Killian Lecrut"
@@ -109,7 +110,7 @@ export default function Header({ onOpenModal }) {
                 </span>
               ) : link.isModal ? (
                 <button
-                  onClick={() => onOpenModal('general')}
+                  onClick={() => { trackNavClick('header', 'contact'); onOpenModal('general'); }}
                   className="font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors"
                 >
                   {link.name}
@@ -117,6 +118,7 @@ export default function Header({ onOpenModal }) {
               ) : (
                 <Link
                   href={link.href}
+                  onClick={() => trackNavClick('header', link.href)}
                   className="font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors"
                 >
                   {link.name}
@@ -133,6 +135,7 @@ export default function Header({ onOpenModal }) {
                     <li key={subLink.name} className={index !== link.submenu.length - 1 ? 'border-b border-[#E5E5E5]' : ''}>
                       <Link
                         href={subLink.href}
+                        onClick={() => trackNavClick('header', subLink.href)}
                         className="block px-6 py-4 text-[#2A2A2A] font-light hover:bg-[#FAFAFA] hover:text-[#0066FF] transition-colors"
                       >
                         {subLink.name}
@@ -186,7 +189,7 @@ export default function Header({ onOpenModal }) {
                         <li key={subLink.name}>
                           <Link
                             href={subLink.href}
-                            onClick={handleLinkClick}
+                            onClick={() => { trackNavClick('header', subLink.href); handleLinkClick(); }}
                             className="block py-3 text-base font-light text-[#666666] hover:text-[#0066FF] transition-colors"
                           >
                             {subLink.name}
@@ -199,6 +202,7 @@ export default function Header({ onOpenModal }) {
               ) : link.isModal ? (
                 <button
                   onClick={() => {
+                    trackNavClick('header', 'contact');
                     handleLinkClick();
                     onOpenModal('general');
                   }}
@@ -210,7 +214,7 @@ export default function Header({ onOpenModal }) {
               ) : (
                 <Link
                   href={link.href}
-                  onClick={handleLinkClick}
+                  onClick={() => { trackNavClick('header', link.href); handleLinkClick(); }}
                   className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                 >
                   <link.icon size={20} />

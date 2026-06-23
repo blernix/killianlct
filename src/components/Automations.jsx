@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Bot, Zap, Network, ArrowRight } from "lucide-react";
+import { trackCTAClick } from '@/lib/tracking';
 
 export function Automations() {
 const features = [
@@ -58,6 +59,7 @@ const features = [
 
             <Link
               href="/expertises/n8n-automatisation"
+              onClick={() => trackCTAClick('En savoir plus automatisations', 'home')}
               className="inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-[#0066FF] text-white hover:bg-white hover:text-[#0066FF] transition-all duration-300"
             >
               <span className="font-medium">En savoir plus</span>

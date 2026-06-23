@@ -7,6 +7,7 @@ import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 import {
   Target, Scale, Building2, TrendingUp, Search, PenTool, Link as LinkIcon,
   BarChart3, Wrench, FileText, Smartphone, Clock, Sparkles, ArrowRight,
@@ -21,6 +22,10 @@ export default function SeoClient({ faqData }) {
   const formType = 'seo';
 
   const toggleFaq = (index) => {
+    const isOpening = expandedFaq !== index;
+    if (isOpening && faqData?.items?.[index]) {
+      trackFAQToggle(faqData.items[index].question, formType, true);
+    }
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
@@ -67,7 +72,7 @@ export default function SeoClient({ faqData }) {
             {/* CTA principal */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Discuter de ma stratégie SEO', 'seo'); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -534,6 +539,7 @@ export default function SeoClient({ faqData }) {
                         </div>
                         <a
                           href={sector.link}
+                          onClick={() => trackCTAClick(`SEO ${sector.title}`, 'seo')}
                           className="inline-flex items-center gap-2 text-[#0066FF] font-medium hover:text-[#2A2A2A] transition-colors"
                         >
                           Découvrir notre approche
@@ -551,7 +557,7 @@ export default function SeoClient({ faqData }) {
                 <strong className="text-[#2A2A2A] font-normal">Pourquoi une expertise sectorielle ?</strong> Chaque métier a ses propres codes, son vocabulaire et ses canaux d'acquisition. Un avocat ne sera pas référencé sur les mêmes mots-clés qu'un artisan. Nous maîtrisons ces spécificités pour vous positionner sur les requêtes qui comptent réellement pour votre activité.
               </p>
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Discuter de ma stratégie SEO sectorielle', 'seo'); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -685,6 +691,7 @@ export default function SeoClient({ faqData }) {
                     label: 'Voir nos offres',
                     icon: ArrowRight,
                     onClick: () => {
+                      trackCTAClick('Voir nos offres', 'seo');
                       document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     },
                   },
@@ -799,7 +806,7 @@ export default function SeoClient({ faqData }) {
                   </ul>
 
                   <button
-                    onClick={() => openModal(`${pkg.name}`)}
+                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name}`); }}
                     className={`w-full py-4 px-6 font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
                       pkg.highlighted
                         ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'

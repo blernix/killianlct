@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { Github, Linkedin } from 'lucide-react';
+import { trackNavClick, trackExternalClick } from '@/lib/tracking';
 
 export function Footer() {
   return (
@@ -24,24 +27,24 @@ export function Footer() {
              <h3 className="text-base font-light text-[#2A2A2A] mb-4">Services</h3>
              <ul className="space-y-3 text-sm">
                <li>
-                 <Link href="/services/site-vitrine" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Site Vitrine
-                 </Link>
-               </li>
-               <li>
-                 <Link href="/services/e-commerce" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   E-commerce
-                 </Link>
-               </li>
-               <li>
-                 <Link href="/services/application-web" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Application Web
-                 </Link>
-               </li>
-               <li>
-                 <Link href="/services/optimisation-seo" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Optimisation SEO
-                 </Link>
+                  <Link href="/services/site-vitrine" onClick={() => trackNavClick('footer', '/services/site-vitrine')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Site Vitrine
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/e-commerce" onClick={() => trackNavClick('footer', '/services/e-commerce')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    E-commerce
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/application-web" onClick={() => trackNavClick('footer', '/services/application-web')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Application Web
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/optimisation-seo" onClick={() => trackNavClick('footer', '/services/optimisation-seo')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Optimisation SEO
+                  </Link>
                </li>
              </ul>
            </div>
@@ -51,24 +54,24 @@ export function Footer() {
              <h3 className="text-base font-light text-[#2A2A2A] mb-4">Secteurs</h3>
              <ul className="space-y-3 text-sm">
                <li>
-                 <Link href="/secteurs/professions-liberales/avocat" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Avocats
-                 </Link>
-               </li>
-               <li>
-                 <Link href="/secteurs/professions-liberales/psychologue" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Psychologues
-                 </Link>
-               </li>
-               <li>
-                 <Link href="/secteurs/professions-liberales/osteopathe" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Ostéopathes
-                 </Link>
-               </li>
-               <li>
-                 <Link href="/secteurs/artisans" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Artisans
-                 </Link>
+                  <Link href="/secteurs/professions-liberales/avocat" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/avocat')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Avocats
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/secteurs/professions-liberales/psychologue" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/psychologue')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Psychologues
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/secteurs/professions-liberales/osteopathe" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/osteopathe')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Ostéopathes
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/secteurs/artisans" onClick={() => trackNavClick('footer', '/secteurs/artisans')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Artisans
+                  </Link>
                </li>
              </ul>
            </div>
@@ -78,41 +81,43 @@ export function Footer() {
              <h3 className="text-base font-light text-[#2A2A2A] mb-4">Contact</h3>
              <ul className="space-y-3 text-sm mb-6">
                <li>
-                 <Link href="/contact" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   Page de contact
-                 </Link>
-               </li>
-               <li>
-                 <a href="tel:+33641970383" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   +33 6 41 97 03 83
-                 </a>
-               </li>
-               <li>
-                 <a href="mailto:killian.lecrut@gmail.com" className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
-                   killian.lecrut@gmail.com
-                 </a>
+                  <Link href="/contact" onClick={() => trackNavClick('footer', '/contact')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    Page de contact
+                  </Link>
+                </li>
+                <li>
+                  <a href="tel:+33641970383" onClick={() => trackExternalClick('tel', '+33641970383')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    +33 6 41 97 03 83
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:killian.lecrut@gmail.com" onClick={() => trackExternalClick('mailto', 'killian.lecrut@gmail.com')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                    killian.lecrut@gmail.com
+                  </a>
                </li>
              </ul>
              <h3 className="text-base font-light text-[#2A2A2A] mb-4">Réseaux</h3>
              <div className="flex gap-4 justify-center md:justify-start">
-               <a
-                 href="https://www.linkedin.com/in/killian-lecrut-a80336176/"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Profil LinkedIn"
-                 className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
-               >
-                 <Linkedin size={20} />
-               </a>
-               <a
-                 href="https://github.com/killianlecrut"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Profil GitHub"
-                 className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
-               >
-                 <Github size={20} />
-               </a>
+                <a
+                  href="https://www.linkedin.com/in/killian-lecrut-a80336176/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Profil LinkedIn"
+                  onClick={() => trackExternalClick('linkedin', 'https://www.linkedin.com/in/killian-lecrut-a80336176/')}
+                  className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a
+                  href="https://github.com/killianlecrut"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Profil GitHub"
+                  onClick={() => trackExternalClick('github', 'https://github.com/killianlecrut')}
+                  className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
+                >
+                  <Github size={20} />
+                </a>
              </div>
            </div>
          </div>

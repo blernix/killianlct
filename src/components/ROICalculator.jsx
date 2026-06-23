@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { TrendingUp, ChevronUp, ChevronDown } from 'lucide-react';
+import { trackROIInteraction } from '@/lib/tracking';
 
 // Configuration des 4 thèmes
 const getThemeConfig = (themeName) => {
@@ -221,7 +222,7 @@ export default function ROICalculator({
                 <div className="absolute right-1 top-1/2 -translate-y-1/2 flex flex-col gap-0.5">
                   <button
                     type="button"
-                    onClick={() => handleIncrement(input.name, input.step || 1)}
+                    onClick={() => { trackROIInteraction('increment', input.name, { value: values[input.name] }); handleIncrement(input.name, input.step || 1); }}
                     className={t.chevronUp}
                     aria-label="Augmenter"
                   >
@@ -229,7 +230,7 @@ export default function ROICalculator({
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleDecrement(input.name, input.step || 1)}
+                    onClick={() => { trackROIInteraction('decrement', input.name, { value: values[input.name] }); handleDecrement(input.name, input.step || 1); }}
                     className={t.chevronDown}
                     aria-label="Diminuer"
                   >
@@ -284,7 +285,7 @@ export default function ROICalculator({
         {results.cta && (
           <div className={t.ctaWrapper}>
             <button
-              onClick={results.cta.onClick}
+              onClick={() => { trackROIInteraction('cta', 'calculator', values); results.cta.onClick(); }}
               className={t.ctaButton}
             >
               {results.cta.label}

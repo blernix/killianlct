@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ImageIcon, ShieldCheck, SlidersHorizontal, ArrowRight } from "lucide-react";
+import { trackCTAClick } from '@/lib/tracking';
 
 export function AdminSection() {
   const features = [
@@ -59,6 +60,7 @@ export function AdminSection() {
 
         <Link
           href="/expertises/directus-cms"
+          onClick={() => trackCTAClick('Découvrir Directus', 'home')}
           className="inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-[#0066FF] text-white hover:bg-white hover:text-[#0066FF] transition-all duration-300 mb-24"
         >
           <span className="font-medium">Découvrir la solution sur-mesure</span>

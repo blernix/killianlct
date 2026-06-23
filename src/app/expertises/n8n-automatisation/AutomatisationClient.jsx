@@ -7,6 +7,7 @@ import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 import {
   CheckCircle,
   AlertCircle,
@@ -28,6 +29,10 @@ export default function AutomatisationClient() {
   const formType = 'automatisation';
 
   const toggleFaq = (index) => {
+    const isOpening = expandedFaq !== index;
+    if (isOpening && n8nData?.faq?.items?.[index]) {
+      trackFAQToggle(n8nData.faq.items[index].question, formType, true);
+    }
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
@@ -89,7 +94,7 @@ export default function AutomatisationClient() {
             {/* CTA principal */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Hero CTA', 'automatisation'); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -270,7 +275,7 @@ export default function AutomatisationClient() {
 
             <div className="mt-16 text-center">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Lancer mon premier workflow', 'automatisation'); openModal(); }}
                 className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 Lancer mon premier workflow
@@ -387,7 +392,7 @@ export default function AutomatisationClient() {
                 Et 200+ autres intégrations disponibles. Si votre outil a une API, on peut le connecter !
               </p>
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Vérifier mes intégrations', 'automatisation'); openModal(); }}
                 className="group inline-flex items-center gap-3 px-8 py-4 border border-[#0066FF] bg-white hover:bg-[#0066FF] hover:text-white transition-all duration-300"
               >
                 <span className="font-medium">Vérifier mes intégrations</span>
@@ -453,7 +458,7 @@ export default function AutomatisationClient() {
                   cta: {
                     label: 'Obtenir mon devis pour cette offre',
                     icon: ArrowRight,
-                    onClick: () => openModal(values.selectedPackage === 1500 ? 'Workflow Unique - 1 500€' : 'Pack 3 Workflows - 3 500€'),
+                    onClick: () => { trackPricingClick(values.selectedPackage === 1500 ? 'Workflow Unique - 1 500€' : 'Pack 3 Workflows - 3 500€', formType); openModal(values.selectedPackage === 1500 ? 'Workflow Unique - 1 500€' : 'Pack 3 Workflows - 3 500€'); },
                   },
                 };
               }}
@@ -533,7 +538,7 @@ export default function AutomatisationClient() {
                   </ul>
 
                   <button
-                    onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
+                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name} - ${pkg.price}`); }}
                     className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
                         ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'

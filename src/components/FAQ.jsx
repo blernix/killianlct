@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { trackFAQToggle } from '@/lib/tracking';
 
 export function FAQ({ title, subtitle, faqItems }) {
   if (!faqItems || faqItems.length === 0) {
@@ -33,7 +34,14 @@ export function FAQ({ title, subtitle, faqItems }) {
         </div>
 
         <div className="space-y-px bg-[#E5E5E5]">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full" onValueChange={(value) => {
+              if (value) {
+                const openedItem = faqItems.find(i => i.value === value);
+                if (openedItem) {
+                  trackFAQToggle(openedItem.question, 'home', true);
+                }
+              }
+            }}>
             {faqItems.map((item, index) => (
               <AccordionItem
                 key={item.value}

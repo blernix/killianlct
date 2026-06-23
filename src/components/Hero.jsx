@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { trackCTAClick } from '@/lib/tracking';
 
 export default function Hero() {
     const paragraph = "Sites web sur-mesure pour avocats, psychologues, ostéopathes et artisans. Conformité réglementaire, performances optimales et formation incluse. Sans WordPress, sans template, juste du code propre adapté à votre métier.";
@@ -79,7 +80,7 @@ export default function Hero() {
                     transition={{ delay: 1.1, duration: 0.8 }}
                     className="flex flex-col sm:flex-row items-start gap-8"
                 >
-                    <Link href="/#services">
+                    <Link href="/#services" onClick={() => trackCTAClick('Découvrir nos offres', 'home')}>
                         <button className="group relative px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300">
                             <span className="flex items-center gap-3">
                                 {buttonText}

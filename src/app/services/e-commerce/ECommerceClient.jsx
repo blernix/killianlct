@@ -7,6 +7,7 @@ import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
+import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
 import {
   Zap, Palette, KeyRound, Scaling, Check, Server, MonitorSmartphone,
   PackageCheck, Banknote, Users, BarChart, Mail, AlertTriangle,
@@ -23,6 +24,10 @@ export default function ECommerceClient({ faqData }) {
   const formType = 'e-commerce';
 
   const toggleFaq = (index) => {
+    const isOpening = expandedFaq !== index;
+    if (isOpening && faqData?.items?.[index]) {
+      trackFAQToggle(faqData.items[index].question, formType, true);
+    }
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
@@ -143,7 +148,7 @@ export default function ECommerceClient({ faqData }) {
             {/* CTA principal */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <button
-                onClick={() => openModal()}
+                onClick={() => { trackCTAClick('Discuter de mon projet', 'e-commerce'); openModal(); }}
                 className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
@@ -457,6 +462,7 @@ export default function ECommerceClient({ faqData }) {
                     label: 'Voir les tarifs',
                     icon: ArrowRight,
                     onClick: () => {
+                      trackCTAClick('Voir les tarifs', 'e-commerce');
                       document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }
@@ -528,7 +534,7 @@ export default function ECommerceClient({ faqData }) {
                   </ul>
 
                   <button
-                    onClick={() => openModal(`${pkg.name} - ${pkg.price}`)}
+                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name} - ${pkg.price}`); }}
                     className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
                       pkg.highlighted
                         ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
