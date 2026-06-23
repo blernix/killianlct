@@ -87,6 +87,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
+        {/* Umami Analytics */}
+        <Script
+          id="umami-analytics"
+          src="https://analytique.killian-lecrut.com/script.js"
+          data-website-id="5a20d280-097c-4c88-b6a5-614ac5fa30a1"
+          strategy="afterInteractive"
+        />
+
         {/* Google Tag Manager */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`

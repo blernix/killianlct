@@ -36,7 +36,7 @@ const navLinks = [
       { name: 'Artisans', href: '/secteurs/artisans' },
     ]
   },
-  // { name: 'Blog', href: '/blog', icon: Rss }, // Vous pourrez décommenter ça plus tard
+  { name: 'Blog', href: '/blog', icon: Rss },
   { name: 'Me Contacter', href: '#', icon: Mail, isModal: true },
 ];
 

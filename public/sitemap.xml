@@ -90,12 +90,42 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Page Contact -->
+   <!-- Page Contact -->
   <url>
     <loc>https://killian-lecrut.com/contact</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+   <!-- Blog -->
+  <url>
+    <loc>https://killian-lecrut.com/blog</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+   <!-- Articles du Blog -->
+  <url>
+    <loc>https://killian-lecrut.com/blog/rgpd-avocats-conformite-cnb</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://killian-lecrut.com/blog/seo-local-artisans-premiere-page-google</loc>
+    <lastmod>2024-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://killian-lecrut.com/blog/automatisation-n8n-artisans-gagner-temps</loc>
+    <lastmod>2024-05-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
