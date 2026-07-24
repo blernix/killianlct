@@ -104,19 +104,6 @@ export default function Hero() {
                     </div>
                 </motion.div>
             </motion.div>
-
-            <style jsx global>{`
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
-
-                body {
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                    font-weight: 300;
-                }
-
-                h1, h2, h3, h4, h5, h6 {
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                }
-            `}</style>
         </section>
     );
 }

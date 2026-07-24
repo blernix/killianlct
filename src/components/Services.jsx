@@ -20,7 +20,7 @@ const mainServices = [
       title: "E-commerce",
       description: "Boutique en ligne sur-mesure avec MedusaJS. Idéal pour artisans qui souhaitent vendre leurs créations en ligne.",
       url: "/services/e-commerce",
-      price: "À partir de 5 000€"
+      price: "À partir de 3 000€"
     },
     {
       icon: <AppWindow className="h-6 w-6" />,

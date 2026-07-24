@@ -30,7 +30,7 @@ export default function MentionsLegalesPage() {
               Mentions Légales et Politique de Confidentialité
             </h1>
             <p className="text-[#666666] font-light">
-              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
+              Dernière mise à jour : 24 juillet 2026
             </p>
           </div>
         </section>

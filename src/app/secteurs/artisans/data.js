@@ -189,84 +189,29 @@ export const artisanData = {
   },
 
   pricing: {
-    title: "Investissement pour Votre Site Artisan",
-    subtitle: "Tarifs transparents et accessibles, conçus pour les artisans et TPE",
-    packages: [
-      {
-        name: "Site Essentiel",
-        price: "1 500€",
-        monthly: "150€/an",
-        description: "Pour démarrer votre présence en ligne",
-        features: [
-          "5 pages professionnelles (Accueil, Services, Réalisations, Zone intervention, Contact)",
-          "Design sobre et professionnel adapté à votre métier",
-          "Galerie photos de vos réalisations (10-15 photos)",
-          "Formulaire de contact pré-qualifiant",
-          "Zone d'intervention avec carte",
-          "Responsive mobile & tablette",
-          "SEO local de base (balises meta, Schema.org Local Business)",
-           "Nom de domaine inclus (renouvellement annuel inclus)",
-           "Hébergement cloud premium inclus (1ère année)",
-          "Certificat SSL sécurisé",
-          "3 mois de support technique",
-          "Livraison : 3 semaines"
-        ],
-        cta: "Idéal pour démarrer",
-        highlighted: false
-      },
-      {
-        name: "Site Professionnel",
-        price: "2 500€",
-        monthly: "150€/an",
-        description: "Pour développer votre activité et dominer Google",
-        features: [
-          "Tout du pack Essentiel +",
-          "Pages illimitées (détail par service, FAQ étendue)",
-          "Galerie photos illimitée avec catégories",
-          "Intégration avis Google automatique",
-          "Section certifications & labels (RGE, Qualibat, etc.)",
-          "Formulaire devis en ligne personnalisé",
-          "Blog pour partager conseils et actualités (CMS intégré)",
-          "SEO local avancé : stratégie mots-clés + Google Business Profile optimisé",
-          "Google Search Console + analytics configurés",
-          "Bouton appel direct mobile optimisé",
-          "Formation CMS (1h) pour autonomie totale",
-          "6 mois de support technique prioritaire",
-          "Livraison : 3-4 semaines"
-        ],
-        cta: "Le plus populaire",
-        highlighted: true
-      },
-      {
-        name: "Site Premium",
-        price: "Sur devis",
-        monthly: "150€/an",
-        description: "Pour entreprises artisanales avec équipes multiples",
-        features: [
-          "Tout du pack Professionnel +",
-          "Espace client sécurisé (suivi chantiers en ligne)",
-          "Système de réservation / prise de RDV en ligne",
-          "Gestion multi-équipes (planning, secteurs)",
-          "Module devis automatisé avec calculs",
-          "Intégrations comptabilité (facturation en ligne)",
-          "Multilingue si clientèle internationale",
-          "Campagne Google Ads initiale (budget pub non inclus)",
-          "Stratégie SEO approfondie + netlinking",
-          "12 mois de support premium",
-          "Livraison : sur mesure"
-        ],
-        cta: "Discutons-en",
-        highlighted: false
-      }
+    simplified: true,
+    startingAt: "800€",
+    monthly: "150€",
+    subtitle: "Un investissement accessible pour développer votre activité",
+    includes: [
+      "Site sur-mesure 5 pages (Accueil, Services, Réalisations, Zone, Contact)",
+      "Design sobre et professionnel adapté à votre métier",
+      "Galerie photos de vos plus belles réalisations",
+      "Formulaire de contact pré-qualifiant",
+      "Zone d'intervention avec carte Google Maps",
+      "Hébergement premium + nom de domaine (1ère année)",
+      "SEO local optimisé pour votre zone de chalandise",
+      "Formation de 2h + 3 mois de support",
+      "Livraison en 3 semaines"
     ],
-    note: "Tous nos forfaits incluent : hébergement premium, nom de domaine, maintenance, SEO local optimisé, et support technique.",
+    note: "Options avancées (devis en ligne, blog, avis Google, espace client) disponibles sur devis",
     justification: {
-      title: "💡 Pourquoi investir dans un site web ?",
+      title: "Pourquoi cet investissement ?",
       points: [
-        "1 chantier à 3 000€ rentabilise le site Essentiel.",
-        "Un site bien référencé génère 20-30 demandes qualifiées par mois.",
-        "Ne plus dépendre du bouche-à-oreille = flux de clients prévisible.",
-        "Votre site travaille 24/7 pendant que vous êtes sur chantier."
+        "1 chantier à 3 000€ rentabilise le site sur-mesure.",
+        "78% des recherches locales aboutissent à un contact dans les 24h.",
+        "Votre site travaille 24/7 pendant que vous êtes sur chantier.",
+        "Paiement en 2× sans frais possible."
       ]
     }
   },
@@ -293,53 +238,16 @@ export const artisanData = {
   comparison: {
     title: "Site Professionnel vs Facebook",
     subtitle: "Pourquoi une simple page Facebook ne suffit pas",
-    categories: [
-      {
-        name: "Référencement Google",
-        us: true,
-        facebook: false,
-        note: "Facebook n'apparaît pas dans les recherches Google locales"
-      },
-      {
-        name: "Contrôle total du contenu",
-        us: true,
-        facebook: "Limité",
-        note: "Facebook peut changer ses règles à tout moment"
-      },
-      {
-        name: "Image professionnelle",
-        us: true,
-        facebook: false,
-        note: "Facebook = amateur aux yeux de 70% des clients"
-      },
-      {
-        name: "Formulaire devis personnalisé",
-        us: true,
-        facebook: "Basique",
-        note: "Facebook propose uniquement messagerie simple"
-      },
-      {
-        name: "Galerie organisée par catégorie",
-        us: true,
-        facebook: "Albums limités",
-        note: "Difficile de retrouver une réalisation spécifique"
-      },
-      {
-        name: "Coût annuel",
-        us: "150€/an",
-        facebook: "Publicités obligatoires",
-        note: "L'abonnement annuel inclut hébergement, maintenance et support"
-      },
-      {
-        name: "Propriété de vos données",
-        us: true,
-        facebook: false,
-        note: "Facebook garde vos contacts et peut fermer votre page"
-      }
-    ],
-    labels: {
-      us: "Site Professionnel",
-      facebook: "Page Facebook"
-    }
+    left: "Site Professionnel",
+    right: "Page Facebook",
+    rows: [
+      { feature: "Référencement Google", leftValue: "✓", rightValue: "✗" },
+      { feature: "Contrôle total du contenu", leftValue: "✓", rightValue: "Limité" },
+      { feature: "Image professionnelle", leftValue: "✓", rightValue: "✗" },
+      { feature: "Formulaire devis personnalisé", leftValue: "✓", rightValue: "Basique" },
+      { feature: "Galerie organisée par catégorie", leftValue: "✓", rightValue: "Albums limités" },
+      { feature: "Coût annuel", leftValue: "150€/an", rightValue: "Publicités obligatoires" },
+      { feature: "Propriété de vos données", leftValue: "✓", rightValue: "✗" },
+    ]
   }
 };

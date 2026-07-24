@@ -40,7 +40,7 @@ export default function ApplicationWebClient() {
   };
 
   // Liste des offres disponibles pour le formulaire
-  const availableOffers = applicationWebData.pricing.packages.map(pkg => `${pkg.name} - ${pkg.price}`);
+  const availableOffers = [];
 
   // Préparer les données FAQ
   const faqItems = applicationWebData.faq.items.map((item, index) => ({
@@ -480,7 +480,7 @@ export default function ApplicationWebClient() {
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-          <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="relative z-10 max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
                 <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
@@ -497,63 +497,56 @@ export default function ApplicationWebClient() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
-              {applicationWebData.pricing.packages.map((pkg, index) => (
-                <div
-                  key={index}
-                  className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
-                    pkg.highlighted ? 'md:scale-105 border-2 border-[#0066FF] relative' : ''
-                  }`}
-                >
-                  {pkg.highlighted && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
-                      {pkg.cta}
-                    </div>
-                  )}
+            <div className="bg-white border-2 border-[#0066FF] p-16 text-center">
+              <div className="inline-block px-4 py-1 mb-6 border border-[#0066FF] bg-white">
+                <span className="text-xs font-medium text-[#0066FF] uppercase tracking-[0.2em]">
+                  Prix d'entrée
+                </span>
+              </div>
+              <div className="mb-4">
+                <span className="text-sm text-[#666666] font-light">À partir de</span>
+              </div>
+              <div className="text-7xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">
+                8 000€
+              </div>
+              <p className="text-sm text-[#666666] font-light mb-12">
+                Pour une application métier complète, sur-mesure et évolutive
+              </p>
 
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-[#666666] text-sm mb-2 font-light">
-                      {pkg.description}
-                    </p>
-                    <p className="text-xs text-[#0066FF] mb-6 font-light">
-                      {pkg.timeframe}
-                    </p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-light text-[#2A2A2A]">
-                        {pkg.price.split('€')[0]}
-                      </span>
-                      {pkg.price.includes('€') && <span className="text-2xl text-[#666666]">€</span>}
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 text-left">
+                {[
+                  "Architecture technique moderne et évolutive",
+                  "Design UX/UI sur-mesure (atelier de conception)",
+                  "Backend optimisé et scalable",
+                  "Hébergement cloud premium (1ère année)",
+                  "Formation équipe (4h) + documentation",
+                  "3 mois de support et maintenance",
+                  "Suivi post-lancement et itérations",
+                  "Code source livré, vous en êtes propriétaire"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-[#0066FF] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-[#666666] font-light">{item}</span>
                   </div>
+                ))}
+              </div>
 
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-3">
-                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={16} />
-                        <span className="text-sm text-[#666666] leading-relaxed font-light">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name} - ${pkg.price}`); }}
-                    className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
-                      pkg.highlighted
-                        ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
-                        : 'bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
-                    }`}
-                  >
-                    {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
-                  </button>
-                </div>
-              ))}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4">
+                <button
+                  onClick={() => { trackPricingClick('Application Web', formType); openModal(); }}
+                  className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+                >
+                  Discuter de mon projet
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                </button>
+              </div>
+              <p className="text-xs text-[#666666] font-light">
+                Prix variable selon la complexité et les intégrations nécessaires
+              </p>
             </div>
 
             {/* Maintenance */}
-            <div className="max-w-5xl mx-auto mb-16">
+            <div className="mt-16 max-w-5xl mx-auto">
               <div className="text-center mb-12">
                 <h3 className="text-3xl font-light text-[#2A2A2A] mb-4">
                   {applicationWebData.pricing.maintenance.title}
@@ -584,7 +577,7 @@ export default function ApplicationWebClient() {
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="mt-12 text-center">
               <p className="text-sm text-[#666666] max-w-3xl mx-auto leading-relaxed p-8 border border-[#E5E5E5] bg-white font-light">
                 <strong className="text-[#2A2A2A] font-medium">{applicationWebData.pricing.note}</strong>
               </p>

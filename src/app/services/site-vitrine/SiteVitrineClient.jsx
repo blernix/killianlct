@@ -7,14 +7,13 @@ import Modal from "@/components/Modal";
 import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
-import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
+import { trackCTAClick, trackPricingClick, trackFAQToggle } from '@/lib/tracking';
 import {
   TrendingUp, ShieldCheck, Zap, Info, Users, Building, UserCheck,
   LayoutDashboard, FileText, Image as ImageIcon, MessageSquare, Phone,
   Newspaper, HelpCircle, CheckCircle, ArrowRight, Sparkles, Euro, Clock, Target,
-  ChevronUp, ChevronDown, Scale, Brain, Activity, Wrench, Briefcase
+  ChevronUp, ChevronDown
 } from 'lucide-react';
-import Image from 'next/image';
 
 export default function SiteVitrineClient({ faqData }) {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
@@ -30,114 +29,7 @@ export default function SiteVitrineClient({ faqData }) {
   };
 
   // Packages disponibles par secteur
-  const packages = [
-    {
-      name: "Avocat",
-      price: "À partir de 2 500€",
-      monthly: "puis 150€/an",
-      description: "Site conforme CNB 2023, RGPD et secret professionnel",
-      icon: Scale,
-      features: [
-        "Conformité CNB 2023 garantie",
-        "Dossier complet pour déclaration à l'Ordre",
-        "Mentions légales rédigées par juristes",
-        "Formulaire sécurisé avec chiffrement bout en bout",
-        "Hébergement français en UE",
-        "Pages dédiées par domaine de compétence",
-        "Section diplômes et certifications",
-        "Support prioritaire 6 mois",
-        "3 forfaits disponibles : Essentiel (2 500€), Professionnel (4 500€), Premium (sur devis)"
-      ],
-      cta: "Voir les offres Avocat",
-      link: "/secteurs/professions-liberales/avocat",
-      highlighted: false
-    },
-    {
-      name: "Psychologue",
-      price: "À partir de 500€",
-      monthly: "puis 150€/an",
-      description: "Site sobre et empathique avec respect du secret professionnel",
-      icon: Brain,
-      features: [
-        "Design apaisant et professionnel",
-        "Conformité RGPD + Secret professionnel",
-        "Présentation détaillée de votre approche thérapeutique",
-        "Formulaire de contact confidentiel",
-        "Numéro ADELI et diplômes mis en valeur",
-        "Intégration Calendly pour prise de RDV (pack Pro)",
-        "Blog professionnel optionnel (pack Premium)",
-        "3 forfaits disponibles : Essentiel (500€), Professionnel (800€), Premium (1 200€)"
-      ],
-      cta: "Voir les offres Psychologue",
-      link: "/secteurs/professions-liberales/psychologue",
-      highlighted: false
-    },
-    {
-      name: "Ostéopathe",
-      price: "À partir de 1 500€",
-      monthly: "puis 150€/an",
-      description: "Site optimisé SEO local pour développer votre patientèle",
-      icon: Activity,
-      features: [
-        "SEO local optimisé (ville + spécialité)",
-        "Pages dédiées par spécialisation (pédiatrie, sport, périnatalité...)",
-        "Conformité RGPD + Secret professionnel",
-        "Motifs de consultation détaillés",
-        "Tarifs et remboursements mutuelles",
-        "Intégration Calendly pour prise de RDV (pack Pro)",
-        "Blog santé et prévention (pack Premium)",
-        "3 forfaits disponibles : Essentiel (1 500€), Professionnel (2 500€), Premium (4 000€)"
-      ],
-      cta: "Voir les offres Ostéopathe",
-      link: "/secteurs/professions-liberales/osteopathe",
-      highlighted: false
-    },
-    {
-      name: "Artisan",
-      price: "À partir de 1 500€",
-      monthly: "puis 150€/an",
-      description: "Site qui génère des chantiers grâce au référencement local",
-      icon: Wrench,
-      features: [
-        "Optimisé Google Maps & recherche locale",
-        "Galerie photos avant/après de vos réalisations",
-        "Zone d'intervention avec carte interactive",
-        "Formulaire devis pré-qualifiant",
-        "Certifications et labels (RGE, Qualibat...)",
-        "Intégration avis Google automatique (pack Pro)",
-        "Blog conseils et actualités (pack Pro)",
-        "3 forfaits disponibles : Essentiel (1 500€), Professionnel (2 500€), Premium (sur devis)"
-      ],
-      cta: "Voir les offres Artisan",
-      link: "/secteurs/artisans",
-      highlighted: false
-    },
-    {
-      name: "Autre Profession",
-      price: "Sur devis",
-      monthly: "selon vos besoins",
-      description: "Vous exercez un autre métier ? Contactez-nous !",
-      icon: Briefcase,
-      features: [
-        "Site sur-mesure adapté à votre secteur",
-        "Design professionnel et moderne",
-        "Formulaire de contact sécurisé",
-        "Responsive mobile & tablette",
-        "SEO technique optimisé",
-        "Hébergement premium inclus",
-        "Nom de domaine inclus",
-        "Support technique inclus",
-        "Maintenance et mises à jour de sécurité"
-      ],
-      cta: "Demander un devis",
-      link: "#contact",
-      highlighted: true,
-      isGeneric: true
-    }
-  ];
-
-  // Liste des offres pour le formulaire
-  const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}${pkg.monthly ? ` + ${pkg.monthly}` : ''}`);
+  const availableOffers = [];
 
   return (
     <>
@@ -193,10 +85,10 @@ export default function SiteVitrineClient({ faqData }) {
               </button>
 
               <div className="flex items-center gap-3 px-6 py-3 border border-[#E5E5E5] bg-white">
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-[#0066FF] border-2 border-white" />
-                  <div className="w-8 h-8 rounded-full bg-[#2A2A2A] border-2 border-white" />
-                  <div className="w-8 h-8 rounded-full bg-[#666666] border-2 border-white" />
+                <div className="flex -space-x-1">
+                  <div className="w-8 h-8 bg-[#0066FF] border border-white" />
+                  <div className="w-8 h-8 bg-[#2A2A2A] border border-white" />
+                  <div className="w-8 h-8 bg-[#666666] border border-white" />
                 </div>
                 <span className="text-sm text-[#666666] font-light">
                   <strong className="text-[#2A2A2A] font-medium">50+ clients</strong> satisfaits
@@ -414,104 +306,85 @@ export default function SiteVitrineClient({ faqData }) {
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-          <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="relative z-10 max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
                 <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
-                  Tarifs par Secteur
+                  Tarifs
                 </span>
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
-                Des Tarifs Adaptés à{' '}
-                <span className="text-[#0066FF]">Votre Profession</span>
+                Un Site Vitrine{' '}
+                <span className="text-[#0066FF]">Sur-Mesure</span>
               </h2>
 
               <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
-                Nos tarifs varient selon votre secteur d'activité et ses contraintes spécifiques : conformité réglementaire, complexité technique, besoins métier. <strong className="text-[#2A2A2A] font-normal">Cliquez sur votre profession pour voir les offres détaillées</strong>.
+                Adapté à votre profession. Les tarifs varient selon votre secteur et ses contraintes spécifiques.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
-              {packages.map((pkg, index) => (
-                <div
-                  key={index}
-                  className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
-                    pkg.highlighted ? 'border-2 border-[#0066FF] relative' : ''
-                  }`}
-                >
-                  {pkg.highlighted && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
-                      Autres professions
-                    </div>
-                  )}
+            <div className="bg-white border-2 border-[#0066FF] p-16 text-center">
+              <div className="inline-block px-4 py-1 mb-6 border border-[#0066FF] bg-white">
+                <span className="text-xs font-medium text-[#0066FF] uppercase tracking-[0.2em]">
+                  Prix d'entrée
+                </span>
+              </div>
+              <div className="mb-4">
+                <span className="text-sm text-[#666666] font-light">À partir de</span>
+              </div>
+              <div className="text-7xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">
+                800€
+              </div>
+              <p className="text-sm text-[#666666] font-light mb-12">
+                + 150€/an d'hébergement
+              </p>
 
-                  {/* Icône */}
-                  {pkg.icon && (
-                    <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center mb-8 group-hover:border-[#0066FF] transition-colors">
-                      <pkg.icon className="text-[#0066FF]" size={24} />
-                    </div>
-                  )}
-
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-[#666666] text-sm mb-6 font-light">
-                      {pkg.description}
-                    </p>
-                    <div className="mb-2">
-                      <span className="text-2xl font-light text-[#2A2A2A]">
-                        {pkg.price}
-                      </span>
-                    </div>
-                    {pkg.monthly && <p className="text-[#0066FF] font-light text-sm">{pkg.monthly}</p>}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 text-left">
+                {[
+                  "Site 5 pages sur-mesure (sans template)",
+                  "Design professionnel adapté à votre métier",
+                  "Formulaire de contact sécurisé (SSL/TLS)",
+                  "Hébergement premium UE + nom de domaine (1ère année)",
+                  "Responsive mobile & tablette",
+                  "Formation de 2h + 3 mois de support",
+                  "Conformité RGPD selon votre profession",
+                  "Modifications illimitées pendant 30 jours"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-[#0066FF] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-[#666666] font-light">{item}</span>
                   </div>
+                ))}
+              </div>
 
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-3">
-                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={16} />
-                        <span className="text-sm text-[#666666] leading-relaxed font-light">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Bouton selon le type de package */}
-                  {pkg.isGeneric ? (
-                    <button
-                      onClick={() => { trackPricingClick(pkg.name, formType); openModal('general'); }}
-                      className="w-full py-4 px-6 font-medium transition-all duration-300 bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]"
-                    >
-                      {pkg.cta}
-                    </button>
-                  ) : (
-                    <a
-                      href={pkg.link}
-                      onClick={() => trackCTAClick(pkg.cta, 'site-vitrine')}
-                      className="block w-full py-4 px-6 text-center font-medium transition-all duration-300 bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white"
-                    >
-                      {pkg.cta}
-                    </a>
-                  )}
-                </div>
-              ))}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4">
+                <button
+                  onClick={() => { trackPricingClick('Site Vitrine', formType); openModal(); }}
+                  className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+                >
+                  Obtenir mon devis personnalisé
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                </button>
+              </div>
+              <p className="text-xs text-[#666666] font-light">
+                Tarif exact selon votre profession (avocat, psychologue, ostéopathe, artisan...)
+              </p>
             </div>
 
-            {/* Ce que comprend l'abonnement */}
-            <div className="max-w-4xl mx-auto">
+            {/* Abonnement */}
+            <div className="mt-16 max-w-4xl mx-auto">
               <div className="relative border border-[#E5E5E5] bg-white p-12">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-sm font-medium">
                   Que comprend l'abonnement ?
                 </div>
-
                 <div className="grid sm:grid-cols-2 gap-px bg-[#E5E5E5] mt-4">
                   {[
                     "Hébergement cloud premium (serveurs français, sauvegardes quotidiennes)",
                     "Nom de domaine (renouvellement annuel inclus)",
                     "Certificat SSL/TLS (sécurité HTTPS)",
                     "Mises à jour de sécurité",
-                    "Modifications de contenu (textes, images, coordonnées)",
+                    "Modifications mineures (textes, images, coordonnées)",
                     "Support technique par email",
                     "Surveillance et maintenance préventive"
                   ].map((point, index) => (
@@ -522,11 +395,9 @@ export default function SiteVitrineClient({ faqData }) {
                   ))}
                 </div>
               </div>
-
-              {/* Note finale */}
               <div className="mt-12 text-center">
                 <p className="text-sm text-[#666666] max-w-3xl mx-auto leading-relaxed p-8 border border-[#E5E5E5] bg-white font-light">
-                  <strong className="text-[#2A2A2A] font-medium">Pas de surprise, pas de frais cachés.</strong> Votre site reste en ligne, sécurisé et performant tant que l'abonnement est actif.
+                  <strong className="text-[#2A2A2A] font-medium">Pas de frais cachés.</strong> La première année d'hébergement est incluse. À partir de la 2ème année : 150€/an.
                 </p>
               </div>
             </div>

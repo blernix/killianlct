@@ -1,10 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Script from "next/script";
-import { Chatbot }  from "@/components/Chatbot"
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 // --- METADATA OPTIMISÉES ---
@@ -125,7 +123,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground`}
+        className={`${inter.variable} ${geistMono.variable} bg-background text-foreground`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>

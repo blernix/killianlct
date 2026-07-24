@@ -193,82 +193,29 @@ export const avocatData = {
   },
 
   pricing: {
-    title: "Investissement pour un Site d'Avocat Conforme",
-    subtitle: "Tarifs transparents, tout compris, sans surprise",
-    packages: [
-      {
-        name: "Site Vitrine Essentiel",
-        price: "2 500€",
-        monthly: "150€/an",
-        description: "Pour avocat indépendant ou petit cabinet",
-        features: [
-          "5 pages (Accueil, À propos, Domaines, Contact, Mentions légales)",
-          "Design sobre et professionnel",
-          "Formulaire de contact avec chiffrement bout en bout",
-          "Responsive mobile & tablette",
-          "Rédaction mentions légales conformes Décret 30/06/2023",
-          "Politique de confidentialité respectant le secret professionnel",
-          "Configuration cookies essentiels uniquement (pas de traceurs publicitaires)",
-          "Dossier de conformité complet pour déclaration au Conseil de l'Ordre",
-          "Notice de gestion des données clients",
-           "Nom de domaine + hébergement premium UE inclus (1ère année)",
-          "Certificat SSL/TLS",
-          "3 mois de maintenance avec veille réglementaire"
-        ],
-        cta: "Idéal pour démarrer"
-      },
-      {
-        name: "Site Professionnel Complet",
-        price: "4 500€",
-        monthly: "150€/an",
-        description: "Pour cabinet établi souhaitant se développer",
-        features: [
-          "Tout du pack Essentiel +",
-          "Pages illimitées (max 3 domaines d'activités dominantes - Vade-mecum)",
-          "Blog juridique intégré (CMS)",
-          "3 articles de blog rédigés et conformes déontologie CNB",
-          "Stratégie de mots-clés juridiques",
-          "Schema.org optimisé profession avocat",
-          "Sitemap XML + Google Search Console",
-          "Prise de RDV en ligne sécurisée (Calendly ou sur-mesure)",
-          "FAQ dynamique et recherchable",
-          "Optimisation SEO local avancée (sans mention dossiers clients)",
-          "Google Business Profile optimisé conforme CNB",
-          "Galerie diplômes et certifications professionnelles",
-          "Registre des traitements RGPD inclus",
-          "Formation gestion blog + conformité (2h)",
-          "6 mois de maintenance prioritaire"
-        ],
-        cta: "Le plus populaire",
-        highlighted: true
-      },
-      {
-        name: "Site Premium sur-mesure",
-        price: "Sur devis",
-        monthly: "150€/an",
-        description: "Pour cabinet d'avocats avec besoins spécifiques",
-        features: [
-          "Tout du pack Professionnel +",
-          "Espace client sécurisé avec authentification",
-          "Gestion documentaire chiffrée",
-          "Module de paiement en ligne (honoraires)",
-          "CRM intégré pour gestion des leads",
-          "Traductions multilingues",
-          "Intégrations spécifiques (logiciel métier, etc.)",
-          "Accompagnement marketing digital",
-          "12 mois de maintenance premium"
-        ],
-        cta: "Discutons-en"
-      }
+    simplified: true,
+    startingAt: "1 200€",
+    monthly: "150€",
+    subtitle: "Un investissement réfléchi pour votre cabinet",
+    includes: [
+      "Site 5 pages sur-mesure (Accueil, Présentation, Domaines, Contact, Mentions légales)",
+      "Design sobre et professionnel conforme aux codes de la profession",
+      "Mentions légales CNB 2023 rédigées (Décret n°2023-552 du 30/06/2023)",
+      "Politique de confidentialité respectant le secret professionnel",
+      "Formulaire de contact avec chiffrement SSL/TLS",
+      "Hébergement premium UE + nom de domaine (1ère année)",
+      "Dossier de conformité pour déclaration au Conseil de l'Ordre",
+      "Formation de 2h + 3 mois de support",
+      "Modifications illimitées pendant 30 jours"
     ],
-    note: "Tous nos forfaits incluent : hébergement premium, nom de domaine, maintenance, conformité RGPD, respect de la déontologie CNB, et support technique.",
+    note: "Options avancées (blog juridique, prise de RDV en ligne, espace client sécurisé) disponibles sur devis",
     justification: {
-      title: "💡 Pourquoi ces tarifs ?",
+      title: "Pourquoi cet investissement ?",
       points: [
         "Un avocat radié pour site non-conforme perd 150 000€/an de CA.",
-        "Gérer seul votre site = 40h de votre temps facturable (10 000€ de manque à gagner).",
-        "1 seul nouveau client à 2 000€ = site rentabilisé.",
-        "Notre forfait vous protège juridiquement ET vous fait gagner du temps."
+        "1 seul nouveau client à 2 000€ rentabilise l'investissement.",
+        "Notre expertise juridique vous protège ET vous fait gagner du temps.",
+        "Paiement en 3× sans frais pour votre trésorerie."
       ]
     }
   },
@@ -294,55 +241,17 @@ export const avocatData = {
 
   comparison: {
     title: "Pourquoi Nous Choisir ?",
-    subtitle: "Comparaison objective avec les autres solutions du marché",
-    categories: [
-      {
-        name: "Conformité CNB 2023",
-        us: true,
-        agency: false,
-        wordpress: false
-      },
-      {
-        name: "Conformité RGPD native",
-        us: true,
-        agency: "Partielle",
-        wordpress: false
-      },
-      {
-        name: "Mentions légales avocat",
-        us: true,
-        agency: false,
-        wordpress: false
-      },
-      {
-        name: "Dossier pour l'Ordre",
-        us: true,
-        agency: false,
-        wordpress: false
-      },
-      {
-        name: "Performance optimisée",
-        us: true,
-        agency: true,
-        wordpress: "Variable"
-      },
-      {
-        name: "Support dédié juridique",
-        us: true,
-        agency: false,
-        wordpress: false
-      },
-      {
-        name: "Prix moyen",
-        us: "2 500€",
-        agency: "3 000-8 000€",
-        wordpress: "500€"
-      }
-    ],
-    columns: [
-      { key: "wordpress", label: "Template WordPress", highlighted: false },
-      { key: "agency", label: "Agence Web Classique", highlighted: false },
-      { key: "us", label: "Nous", highlighted: true }
+    subtitle: "Comparaison objective avec les autres solutions",
+    left: "Nous",
+    right: "Agence Web Classique",
+    rows: [
+      { feature: "Conformité CNB 2023", leftValue: "✓", rightValue: "✗" },
+      { feature: "Conformité RGPD native", leftValue: "✓", rightValue: "Partielle" },
+      { feature: "Mentions légales avocat", leftValue: "✓", rightValue: "✗" },
+      { feature: "Dossier pour l'Ordre", leftValue: "✓", rightValue: "✗" },
+      { feature: "Performance optimisée", leftValue: "✓", rightValue: "✓" },
+      { feature: "Support dédié juridique", leftValue: "✓", rightValue: "✗" },
+      { feature: "Prix moyen", leftValue: "2 500€", rightValue: "3 000-8 000€" },
     ]
   }
 };

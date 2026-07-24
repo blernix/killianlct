@@ -31,79 +31,7 @@ export default function ECommerceClient({ faqData }) {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
-  // Packages disponibles
-  const packages = [
-    {
-      name: "Starter",
-      price: "5 000€ - 10 000€",
-      description: "Pour lancer votre boutique",
-      features: [
-        "10-20 produits",
-        "Design personnalisé",
-        "Paiement Stripe/PayPal sécurisé",
-        "Gestion des stocks & commandes",
-        "Paniers & tunnel de paiement",
-        "Espace client basique",
-        "SEO technique de base (balises meta, Schema.org, sitemap)",
-        "Responsive mobile & tablette",
-        "Formation backoffice (2h)",
-        "Nom de domaine offert 1 an",
-        "Hébergement cloud 1 an inclus",
-        "3 mois de support technique (corrections de bugs)",
-        "Livraison : 4-5 semaines"
-      ],
-      cta: "Idéal pour démarrer",
-      highlighted: false
-    },
-    {
-      name: "Business",
-      price: "10 000€ - 20 000€",
-      description: "La solution la plus complète",
-      features: [
-        "Produits illimités",
-        "Design premium 100% sur-mesure",
-        "Architecture headless (Next.js + MedusaJS)",
-        "Multi-devises & multi-régions",
-        "Promotions & codes promo avancés",
-        "Espace client complet avec historique",
-        "SEO optimisé avancé : stratégie mots-clés + GSC",
-        "Intégrations tierces (analytics, email, etc.)",
-        "Blog intégré avec CMS",
-        "Formation backoffice avancée (4h)",
-        "Nom de domaine offert 1 an",
-        "Hébergement cloud premium 1 an inclus",
-        "6 mois de support technique prioritaire",
-        "Livraison : 6-8 semaines"
-      ],
-      cta: "Le plus populaire",
-      highlighted: true
-    },
-    {
-      name: "Enterprise",
-      price: "Sur devis",
-      description: "Pour les projets ambitieux",
-      features: [
-        "Tout du Business inclus",
-        "Intégrations ERP/CRM complexes",
-        "Marketplace multi-vendeurs",
-        "API personnalisées pour partenaires",
-        "B2B & B2C combinés",
-        "Gestion avancée RMA & SAV",
-        "Workflows métier automatisés",
-        "SEO approfondi : audit + backlinks",
-        "Formation équipe complète (sur-mesure)",
-        "Nom de domaine offert 1 an",
-        "Hébergement cloud enterprise 1 an inclus",
-        "Support prioritaire 12 mois avec SLA",
-        "Livraison : selon complexité (8-12 semaines)"
-      ],
-      cta: "Discutons-en",
-      highlighted: false
-    }
-  ];
-
-  // Liste des offres pour le formulaire
-  const availableOffers = packages.map(pkg => `${pkg.name} - ${pkg.price}`);
+  const availableOffers = [];
 
   return (
     <>
@@ -480,7 +408,7 @@ export default function ECommerceClient({ faqData }) {
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-          <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="relative z-10 max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
                 <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
@@ -489,119 +417,72 @@ export default function ECommerceClient({ faqData }) {
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
-                Tarifs pour une{' '}
-                <span className="text-[#0066FF]">Boutique Performante</span>
+                Une Boutique Qui{' '}
+                <span className="text-[#0066FF]">Vous Appartient</span>
               </h2>
 
               <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
-                Investissez dans une boutique qui vous appartient. <strong className="text-[#2A2A2A] font-normal">Aucun abonnement mensuel</strong>, uniquement votre investissement initial.
+                Investissement unique, pas d'abonnement obligatoire. Votre boutique est 100% votre propriété.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] mb-16">
-              {packages.map((pkg, index) => (
-                <div
-                  key={index}
-                  className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
-                    pkg.highlighted ? 'md:scale-105 border-2 border-[#0066FF] relative' : ''
-                  }`}
-                >
-                  {pkg.highlighted && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
-                      {pkg.cta}
-                    </div>
-                  )}
+            <div className="bg-white border-2 border-[#0066FF] p-16 text-center">
+              <div className="inline-block px-4 py-1 mb-6 border border-[#0066FF] bg-white">
+                <span className="text-xs font-medium text-[#0066FF] uppercase tracking-[0.2em]">
+                  Prix d'entrée
+                </span>
+              </div>
+              <div className="mb-4">
+                <span className="text-sm text-[#666666] font-light">À partir de</span>
+              </div>
+              <div className="text-7xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">
+                3 000€
+              </div>
+              <p className="text-sm text-[#666666] font-light mb-12">
+                Pour une boutique Headless complète (MedusaJS + Next.js)
+              </p>
 
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-[#666666] text-sm mb-6 font-light">
-                      {pkg.description}
-                    </p>
-                    <p className="text-3xl font-light text-[#2A2A2A]">
-                      {pkg.price}
-                    </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 text-left">
+                {[
+                  "Boutique 100% sur-mesure, design personnalisé",
+                  "Gestion complète des produits, stocks et commandes",
+                  "Paiement sécurisé (Stripe, PayPal, CB)",
+                  "Paniers et tunnel de paiement optimisés",
+                  "Espace client avec historique",
+                  "Hébergement premium + nom de domaine (1ère année)",
+                  "Formation de 2h + 3 mois de support",
+                  "Architecture headless évolutive (MedusaJS + Next.js)"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-[#0066FF] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-[#666666] font-light">{item}</span>
                   </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-3">
-                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={16} />
-                        <span className="text-sm text-[#666666] leading-relaxed font-light">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name} - ${pkg.price}`); }}
-                    className={`w-full py-4 px-6 font-medium transition-all duration-300 ${
-                      pkg.highlighted
-                        ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
-                        : 'bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
-                    }`}
-                  >
-                    {pkg.highlighted ? 'Choisir cette offre' : pkg.cta}
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            {/* Note importante + Maintenance */}
-            <div className="max-w-4xl mx-auto space-y-8">
-              <div className="border border-[#E5E5E5] bg-white p-12 text-center">
-                <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
-                  Investissement unique, rentabilité sur le long terme
-                </h3>
-                <p className="text-[#666666] leading-relaxed font-light">
-                  Contrairement aux plateformes SaaS qui prélèvent des frais mensuels à vie, vous investissez une seule fois dans une boutique qui <strong className="text-[#2A2A2A] font-normal">vous appartient totalement</strong>. Après la 1ère année, seuls l'hébergement (~100-200€/an) et la maintenance optionnelle s'appliquent.
-                </p>
+                ))}
               </div>
 
-              {/* Forfaits Maintenance */}
-              <div className="border border-[#E5E5E5] bg-white p-12">
-                <div className="relative mb-8">
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-sm font-medium whitespace-nowrap">
-                    Maintenance & Support Continu
-                  </div>
-                </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4">
+                <button
+                  onClick={() => { trackPricingClick('E-commerce', formType); openModal(); }}
+                  className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+                >
+                  Discuter de mon projet
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                </button>
+              </div>
+              <p className="text-xs text-[#666666] font-light">
+                Prix variable selon le nombre de produits et la complexité des intégrations
+              </p>
+            </div>
 
-                <p className="text-[#666666] text-center mb-8 font-light">
-                  Le support inclus couvre les corrections de bugs. La maintenance payante ajoute les évolutions, le monitoring proactif et l'hébergement continu.
+            {/* Maintenance */}
+            <div className="mt-16 max-w-4xl mx-auto">
+              <div className="border border-[#E5E5E5] bg-white p-12 text-center">
+                <h3 className="text-2xl font-light text-[#2A2A2A] mb-4">
+                  Investissement unique, rentabilité long terme
+                </h3>
+                <p className="text-[#666666] leading-relaxed font-light">
+                  Contrairement à Shopify (30-300€/mois), vous investissez une fois. Après la 1ère année, seuls l'hébergement (~100-200€/an) et la maintenance optionnelle s'appliquent.
                 </p>
-
-                <div className="grid sm:grid-cols-3 gap-px bg-[#E5E5E5]">
-                  {[
-                    {
-                      name: "Maintenance Basique",
-                      price: "300€/mois",
-                      features: ["Monitoring 24/7", "Correctifs de bugs", "Mises à jour sécurité", "Hébergement inclus", "Support email sous 48h"]
-                    },
-                    {
-                      name: "Évolution Active",
-                      price: "800€/mois",
-                      features: ["Tout Basique +", "3h de dev/mois", "Nouvelles features", "Optimisations", "Support sous 24h"]
-                    },
-                    {
-                      name: "Partenariat Premium",
-                      price: "2000€/mois",
-                      features: ["Tout Évolution +", "15h de dev/mois", "Roadmap stratégique", "Support prioritaire", "Conseil mensuel"]
-                    }
-                  ].map((plan, i) => (
-                    <div key={i} className="bg-white p-6">
-                      <h4 className="font-light text-[#2A2A2A] mb-2">{plan.name}</h4>
-                      <p className="text-2xl font-light text-[#0066FF] mb-4">{plan.price}</p>
-                      <ul className="space-y-2">
-                        {plan.features.map((f, j) => (
-                          <li key={j} className="text-sm text-[#666666] font-light flex items-start gap-2">
-                            <Check className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

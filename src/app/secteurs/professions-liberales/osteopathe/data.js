@@ -141,44 +141,17 @@ export const osteopatheData = {
   comparison: {
     title: "Site Professionnel vs Simple Fiche Doctolib",
     subtitle: "Pourquoi une fiche annuaire ne suffit pas dans un marché saturé",
-    categories: [
-      {
-        name: "Différenciation",
-        us: "Design unique, votre identité",
-        doctolib: "Même format que tous les autres"
-      },
-      {
-        name: "Spécialisations détaillées",
-        us: "Pages dédiées illimitées",
-        doctolib: "Quelques lignes de description"
-      },
-      {
-        name: "Référencement Google",
-        us: "Votre nom de domaine, SEO optimisé",
-        doctolib: "Noyé parmi les autres fiches"
-      },
-      {
-        name: "Contrôle total",
-        us: "Vous décidez de tout",
-        doctolib: "Format imposé par la plateforme"
-      },
-      {
-        name: "Tarifs et mutuelles",
-        us: "Section dédiée complète",
-        doctolib: "Informations limitées"
-      },
-      {
-        name: "Blog / Expertise",
-        us: "Partagez vos conseils",
-        doctolib: "Impossible"
-      },
-      {
-        name: "Indépendance",
-        us: "Votre propriété",
-        doctolib: "Dépendance à la plateforme"
-      }
-    ],
-    note: "Doctolib reste utile pour la prise de rendez-vous. Votre site devient votre vitrine professionnelle complète, celle qui vous différencie et inspire confiance."
+    left: "Site Professionnel",
+    right: "Fiche Doctolib",
+    rows: [
+      { feature: "Différenciation", leftValue: "Design unique, votre identité", rightValue: "Même format que tous les autres" },
+      { feature: "Spécialisations détaillées", leftValue: "Pages dédiées illimitées", rightValue: "Quelques lignes de description" },
+      { feature: "Référencement Google", leftValue: "Votre nom de domaine, SEO optimisé", rightValue: "Noyé parmi les autres fiches" },
+      { feature: "Contrôle total", leftValue: "Vous décidez de tout", rightValue: "Format imposé par la plateforme" },
+      { feature: "Tarifs et mutuelles", leftValue: "Section dédiée complète", rightValue: "Informations limitées" },
+      { feature: "Blog / Expertise", leftValue: "Partagez vos conseils", rightValue: "Impossible" },
+      { feature: "Indépendance", leftValue: "Votre propriété", rightValue: "Dépendance à la plateforme" },
+    ]
   },
 
   faq: {
@@ -221,82 +194,29 @@ export const osteopatheData = {
   },
 
   pricing: {
-    title: "Investissement pour Votre Site Professionnel",
-    subtitle: "Tarifs transparents, adaptés aux ostéopathes libéraux",
-    packages: [
-      {
-        name: "Pack Essentiel",
-        price: "1 500€",
-        monthly: "150€/an",
-        description: "Pour ostéopathe souhaitant une présence professionnelle solide",
-        features: [
-          "5 pages professionnelles (Accueil, À propos, Spécialisations, Contact, Mentions légales)",
-          "Design moderne et professionnel adapté au monde de la santé",
-          "Présentation de vos spécialisations et formations",
-          "Section diplômes, parcours et numéro ADELI",
-          "Motifs de consultation détaillés",
-          "Zone d'intervention avec carte Google Maps",
-          "Formulaire de contact sécurisé (chiffrement SSL/TLS)",
-          "Responsive mobile & tablette",
-          "SEO local de base (balises meta, Schema.org HealthBusiness)",
-          "Politique de confidentialité conforme RGPD + Secret professionnel",
-          "Mentions légales conformes",
-          "Nom de domaine + hébergement premium UE inclus 1 an (valeur 200€/an)",
-          "Certificat SSL/TLS",
-          "3 mois de maintenance et mises à jour de sécurité"
-        ],
-        cta: "Choisir ce pack"
-      },
-      {
-        name: "Pack Professionnel",
-        price: "2 500€",
-        monthly: "150€/an",
-        description: "Pour ostéopathe souhaitant développer activement sa patientèle",
-        features: [
-          "Tout du pack Essentiel +",
-          "Pages illimitées (détail par spécialité, par motif de consultation, FAQ étendue)",
-          "Intégration de votre calendrier Calendly personnel (abonnement Calendly à partir de 12€/mois non inclus)",
-          "Configuration et paramétrage des types de séances (première consultation, suivi, urgence)",
-          "Formation Calendly (30min) pour gérer vos disponibilités en autonomie",
-          "Section tarifs détaillée + remboursements mutuelles",
-          "SEO local avancé (stratégie mots-clés, optimisation \"ostéopathe + ville\")",
-          "Google Business Profile optimisé",
-          "Google Search Console + analytics configurés",
-          "FAQ étendue et personnalisée",
-          "6 mois de maintenance prioritaire"
-        ],
-        cta: "Le plus choisi",
-        highlighted: true
-      },
-      {
-        name: "Pack Premium",
-        price: "4 000€",
-        monthly: "150€/an",
-        description: "Pour ostéopathe souhaitant maximiser sa visibilité et son expertise en ligne",
-        features: [
-          "Tout du pack Professionnel +",
-          "Blog professionnel intégré (CMS pour publier en autonomie)",
-          "3 articles de blog rédigés (prévention, conseils santé, thématiques de votre choix)",
-          "Formation complète CMS (1h) pour gérer votre blog en autonomie",
-          "Stratégie éditoriale et calendrier de publication conseillé",
-          "Optimisation SEO avancée pour chaque article",
-          "Section ressources et conseils téléchargeables pour vos patients",
-          "Stratégie SEO approfondie (audit, optimisations techniques, netlinking de base)",
-          "Support prioritaire illimité",
-          "12 mois de maintenance premium"
-        ],
-        cta: "Choisir ce pack"
-      }
+    simplified: true,
+    startingAt: "800€",
+    monthly: "150€",
+    subtitle: "Un investissement raisonné dans un marché concurrentiel",
+    includes: [
+      "Site sur-mesure 5 pages (Accueil, Présentation, Spécialisations, Contact, Mentions légales)",
+      "Design moderne et professionnel adapté au monde de la santé",
+      "Présentation de vos spécialisations et formations",
+      "Section diplômes, parcours et numéro ADELI",
+      "Zone d'intervention avec carte Google Maps",
+      "Formulaire de contact sécurisé (chiffrement SSL/TLS)",
+      "Hébergement premium UE + nom de domaine (1ère année)",
+      "Politique de confidentialité RGPD + Secret professionnel",
+      "Formation de 2h + 3 mois de support"
     ],
-    note: "Tous nos forfaits incluent : hébergement premium, maintenance, conformité RGPD, respect du secret professionnel, et support technique.",
+    note: "Options avancées (prise de RDV en ligne Calendly, blog professionnel, SEO local avancé) disponibles sur devis",
     justification: {
-      title: "Pourquoi investir dans un site professionnel ?",
+      title: "Pourquoi cet investissement ?",
       points: [
-        "Dans un marché saturé, la visibilité en ligne n'est plus optionnelle",
-        "1 Français sur 4 consulte un ostéopathe : les patients existent, il faut qu'ils vous trouvent",
-        "Un site professionnel vous différencie des 40 000 autres ostéopathes",
-        "Votre site travaille 24h/24, même quand vous êtes en consultation",
-        "3 nouveaux patients par mois = site rentabilisé"
+        "Dans un marché saturé, la visibilité en ligne n'est plus optionnelle.",
+        "Votre site travaille 24h/24, même quand vous êtes en consultation.",
+        "3 nouveaux patients par mois = site rentabilisé.",
+        "Paiement en 2× sans frais possible."
       ]
     }
   },

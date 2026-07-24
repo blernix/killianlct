@@ -709,7 +709,7 @@ export default function SeoClient({ faqData }) {
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
-          <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="relative z-10 max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
                 <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
@@ -718,113 +718,68 @@ export default function SeoClient({ faqData }) {
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
-                Deux Manières de{' '}
-                <span className="text-[#0066FF]">Collaborer</span>
+                Investissez dans Votre{' '}
+                <span className="text-[#0066FF]">Visibilité</span>
               </h2>
 
               <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
-                Selon votre maturité et vos objectifs, nous proposons deux approches complémentaires
+                Deux approches selon vos objectifs et votre maturité SEO
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-px bg-[#E5E5E5] max-w-5xl mx-auto mb-16">
-              {[
-                {
-                  badge: "OFFRE INITIALE",
-                  name: "Audit & Recommandations SEO",
-                  price: "800€ - 2 000€",
-                  description: "Diagnostic complet + plan d'action détaillé (implémentation sur devis)",
-                  features: [
-                    "Audit SEO complet (technique, contenu, backlinks)",
-                    "Analyse concurrentielle approfondie",
-                    "Analyse Core Web Vitals et performance",
-                    "Audit Schema.org et données structurées",
-                    "Rapport détaillé des erreurs critiques à corriger",
-                    "Plan d'action priorisé pour la croissance",
-                    "Recommandations stratégiques de contenu",
-                    "Devis séparé pour l'implémentation des corrections",
-                    "Livraison : 2-3 semaines"
-                  ],
-                  cta: "Demander un audit",
-                  highlighted: false
-                },
-                {
-                  badge: "NOTRE RECOMMANDATION",
-                  name: "Partenariat de Croissance SEO",
-                  price: "À partir de 800€/mois",
-                  description: "Accompagnement mensuel pour une croissance durable (engagement 6 mois minimum)",
-                  features: [
-                    "Audit complet inclus le 1er mois",
-                    "Implémentation des corrections techniques critiques",
-                    "Stratégie de contenu mensuelle personnalisée",
-                    "Rédaction et optimisation de contenus (selon forfait)",
-                    "Netlinking qualitatif (construction d'autorité)",
-                    "Suivi des positions et analytics détaillés",
-                    "Ajustements stratégiques mensuels basés sur les données",
-                    "Appels stratégiques réguliers (mensuel ou bimensuel)",
-                    "Reporting transparent des résultats et KPIs",
-                    "Engagement minimum : 6 mois recommandé"
-                  ],
-                  cta: "Le plus populaire",
-                  highlighted: true
-                }
-              ].map((pkg, index) => (
-                <div
-                  key={index}
-                  className={`group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300 ${
-                    pkg.highlighted ? 'border-2 border-[#0066FF] relative md:scale-105' : ''
-                  }`}
-                >
-                  {pkg.highlighted && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0066FF] text-white text-xs font-medium uppercase tracking-wider">
-                      {pkg.cta}
-                    </div>
-                  )}
+            <div className="bg-white border-2 border-[#0066FF] p-16 text-center">
+              <div className="inline-block px-4 py-1 mb-6 border border-[#0066FF] bg-white">
+                <span className="text-xs font-medium text-[#0066FF] uppercase tracking-[0.2em]">
+                  Prix d'entrée
+                </span>
+              </div>
+              <div className="mb-4">
+                <span className="text-sm text-[#666666] font-light">À partir de</span>
+              </div>
+              <div className="text-7xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">
+                800€
+              </div>
+              <p className="text-sm text-[#666666] font-light mb-12">
+                Audit SEO complet + plan d'action priorisé
+              </p>
 
-                  <div className="mb-8">
-                    <p className="text-sm font-medium mb-3 text-[#0066FF]">
-                      {pkg.badge}
-                    </p>
-                    <h3 className="text-3xl font-light text-[#2A2A2A] mb-3">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-[#666666] text-sm mb-6 font-light">
-                      {pkg.description}
-                    </p>
-                    <p className="text-3xl font-light text-[#2A2A2A]">
-                      {pkg.price}
-                    </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 text-left">
+                {[
+                  "Audit SEO complet (technique, contenu, backlinks)",
+                  "Analyse concurrentielle approfondie",
+                  "Rapport détaillé des erreurs à corriger",
+                  "Plan d'action priorisé pour la croissance",
+                  "Recommandations stratégiques de contenu",
+                  "Analyse Core Web Vitals et performance",
+                  "Livraison : 2-3 semaines",
+                  "Suivi mensuel à partir de 500€/mois (optionnel)"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-[#0066FF] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-[#666666] font-light">{item}</span>
                   </div>
+                ))}
+              </div>
 
-                  <ul className="space-y-4 mb-8">
-                    {pkg.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-3">
-                        <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={16} />
-                        <span className="text-sm text-[#666666] leading-relaxed font-light">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    onClick={() => { trackPricingClick(pkg.name, formType); openModal(`${pkg.name}`); }}
-                    className={`w-full py-4 px-6 font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
-                      pkg.highlighted
-                        ? 'bg-[#0066FF] text-white border border-[#0066FF] hover:bg-white hover:text-[#0066FF]'
-                        : 'bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white'
-                    }`}
-                  >
-                    {pkg.highlighted ? 'Démarrer le partenariat' : pkg.cta}
-                    <ArrowRight size={18} />
-                  </button>
-                </div>
-              ))}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4">
+                <button
+                  onClick={() => { trackPricingClick('SEO', formType); openModal(); }}
+                  className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+                >
+                  Discuter de ma stratégie SEO
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                </button>
+              </div>
+              <p className="text-xs text-[#666666] font-light">
+                Prix variable selon la taille du site et le niveau d'audit souhaité
+              </p>
             </div>
 
-            {/* Note importante */}
-            <div className="max-w-4xl mx-auto">
+            {/* Pourquoi investir */}
+            <div className="mt-16 max-w-4xl mx-auto">
               <div className="border border-[#E5E5E5] bg-white p-12">
                 <h3 className="text-2xl font-light text-[#2A2A2A] mb-6 text-center">
-                  Pourquoi le SEO est un investissement, pas une dépense
+                  Pourquoi le SEO est un investissement
                 </h3>
                 <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5]">
                   <div className="bg-white p-8 text-center">
@@ -839,14 +794,14 @@ export default function SeoClient({ faqData }) {
                       <TrendingUp className="text-[#0066FF]" size={24} />
                     </div>
                     <h4 className="font-light text-[#2A2A2A] mb-2">Effet cumulatif</h4>
-                    <p className="text-sm text-[#666666] font-light">Chaque mois de travail SEO s'additionne et amplifie vos résultats</p>
+                    <p className="text-sm text-[#666666] font-light">Chaque mois de travail SEO s'additionne</p>
                   </div>
                   <div className="bg-white p-8 text-center">
                     <div className="w-14 h-14 border border-[#E5E5E5] flex items-center justify-center mx-auto mb-4">
                       <Award className="text-[#0066FF]" size={24} />
                     </div>
                     <h4 className="font-light text-[#2A2A2A] mb-2">Actif durable</h4>
-                    <p className="text-sm text-[#666666] font-light">Votre positionnement reste même si vous pausez temporairement</p>
+                    <p className="text-sm text-[#666666] font-light">Votre positionnement reste si vous pausez</p>
                   </div>
                 </div>
               </div>

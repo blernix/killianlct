@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { trackModalOpen } from '@/lib/tracking';
 
 /**
  * Hook personnalisé pour gérer l'ouverture/fermeture de la modal de contact

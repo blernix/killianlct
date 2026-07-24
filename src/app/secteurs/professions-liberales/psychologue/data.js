@@ -146,78 +146,28 @@ export const psychologueData = {
   },
 
   pricing: {
-    title: "Investissement pour Votre Site Professionnel",
-    subtitle: "Tarifs transparents, sans surprise. Choisissez l'offre adaptée à vos besoins.",
-    packages: [
-      {
-        name: "Pack Essentiel",
-        price: "500€",
-        monthly: "150€/an",
-        description: "Psychologue en libéral souhaitant une présence professionnelle sobre",
-        features: [
-          "5 pages (Accueil, À propos, Approche thérapeutique, Contact, Mentions légales)",
-          "Design sobre, empathique et moderne",
-          "Présentation détaillée de votre approche et de vos spécialités",
-          "Section diplômes, formations et numéro ADELI",
-          "Formulaire de contact avec chiffrement bout en bout",
-          "Responsive mobile & tablette",
-          "Politique de confidentialité conforme RGPD + Secret professionnel",
-          "Mentions légales conformes",
-          "Configuration cookies essentiels uniquement (pas de traceurs publicitaires)",
-          "Nom de domaine + hébergement premium UE inclus 1 an (valeur 200€/an)",
-          "Certificat SSL/TLS",
-          "3 mois de maintenance et mises à jour de sécurité"
-        ],
-        cta: "Choisir ce pack"
-      },
-      {
-        name: "Pack Professionnel",
-        price: "800€",
-        monthly: "150€/an",
-        description: "Psychologue souhaitant un site complet avec prise de rendez-vous en ligne",
-        features: [
-          "Tout du pack Essentiel +",
-          "Pages illimitées (détail par spécialité thérapeutique, public accompagné, etc.)",
-          "Intégration de votre calendrier Calendly personnel",
-          "Configuration et paramétrage des types d'événements",
-          "Formation Calendly (30min) pour gérer vos disponibilités en autonomie",
-          "Intégration technique sur le site (widget, boutons, pages dédiées)",
-          "FAQ étendue et personnalisée",
-          "SEO local optimisé (balises meta, Schema.org Health Professional)",
-          "Google Search Console + analytics configurés",
-          "Zone d'intervention avec carte interactive",
-          "6 mois de maintenance prioritaire"
-        ],
-        cta: "Le plus choisi",
-        highlighted: true
-      },
-      {
-        name: "Pack Premium",
-        price: "1 200€",
-        monthly: "150€/an",
-        description: "Psychologue souhaitant partager son expertise via un blog professionnel",
-        features: [
-          "Tout du pack Professionnel +",
-          "Blog professionnel intégré (CMS pour publier en autonomie)",
-          "3 articles de blog rédigés sur des thématiques de votre choix",
-          "Formation complète CMS (1h) pour gérer votre blog en autonomie",
-          "Stratégie éditoriale et calendrier de publication conseillé",
-          "Optimisation SEO avancée pour chaque article",
-          "Section ressources et documents téléchargeables pour vos patients",
-          "Support prioritaire illimité",
-          "12 mois de maintenance premium"
-        ],
-        cta: "Choisir ce pack"
-      }
+    simplified: true,
+    startingAt: "800€",
+    monthly: "150€",
+    subtitle: "Un investissement raisonné pour votre identité professionnelle",
+    includes: [
+      "Site sur-mesure 5 pages (Accueil, Présentation, Approche, Contact, Mentions légales)",
+      "Design sobre, empathique et apaisant",
+      "Présentation détaillée de votre approche et de vos spécialisations",
+      "Section diplômes, formations et numéro ADELI",
+      "Formulaire de contact avec chiffrement SSL/TLS",
+      "Hébergement premium UE + nom de domaine (1ère année)",
+      "Politique de confidentialité RGPD + Secret professionnel",
+      "Formation de 2h + 3 mois de support"
     ],
-    note: "Tous nos forfaits incluent la conformité RGPD complète, le respect du secret professionnel, et la documentation technique pour votre assurance RCP si besoin.",
+    note: "Options avancées (prise de RDV en ligne, blog professionnel, SEO local avancé) disponibles sur devis",
     justification: {
-      title: "Pourquoi investir dans un site professionnel ?",
+      title: "Pourquoi cet investissement ?",
       points: [
-        "Doctolib reste utile pour la gestion des rendez-vous, votre site devient votre identité professionnelle",
-        "Un site professionnel renforce la confiance et la crédibilité dès le premier contact",
-        "Vous contrôlez entièrement votre image et votre communication",
-        "Aucun abonnement caché : hébergement, maintenance et sécurité inclus"
+        "Un site professionnel renforce la confiance dès le premier contact.",
+        "Vous contrôlez entièrement votre image, avec vos propres mots.",
+        "Aucun abonnement caché : hébergement et maintenance inclus.",
+        "Paiement en 2× sans frais possible."
       ]
     }
   },
