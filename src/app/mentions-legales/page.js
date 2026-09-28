@@ -115,13 +115,13 @@ export default function MentionsLegalesPage() {
                   </div>
 
                   <div className="bg-white p-6">
-                    <h4 className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-4">Via Google Analytics</h4>
+                    <h4 className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-4">Via Umami Analytics</h4>
                     <div className="space-y-3 text-[#666666] font-light text-sm">
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Données collectées :</span> <strong className="text-[#2A2A2A] font-normal">Données de navigation anonymisées</strong></p>
+                      <p><span className="text-xs uppercase tracking-[0.2em]">Données collectées :</span> <strong className="text-[#2A2A2A] font-normal">Données de navigation anonymisées (sans cookie)</strong></p>
                       <p><span className="text-xs uppercase tracking-[0.2em]">Finalité :</span> <strong className="text-[#2A2A2A] font-normal">Analyse statistique de l'audience</strong></p>
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Base légale :</span> <strong className="text-[#2A2A2A] font-normal">Consentement via bandeau cookies</strong></p>
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Conservation :</span> <strong className="text-[#2A2A2A] font-normal">26 mois</strong></p>
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Destinataires :</span> <strong className="text-[#2A2A2A] font-normal">Google LLC (USA) - Accord UE-USA</strong></p>
+                      <p><span className="text-xs uppercase tracking-[0.2em]">Base légale :</span> <strong className="text-[#2A2A2A] font-normal">Intérêt légitime (mesure d'audience, aucun cookie déposé)</strong></p>
+                      <p><span className="text-xs uppercase tracking-[0.2em]">Conservation :</span> <strong className="text-[#2A2A2A] font-normal">Données agrégées, aucune donnée personnelle</strong></p>
+                      <p><span className="text-xs uppercase tracking-[0.2em]">Destinataires :</span> <strong className="text-[#2A2A2A] font-normal">Umami (auto-hébergé en France)</strong></p>
                     </div>
                   </div>
                 </div>
@@ -164,72 +164,9 @@ export default function MentionsLegalesPage() {
             </div>
           </section>
 
-          {/* Section 3 : Cookies */}
+          {/* Section 3 : Service Tiers */}
           <section className="mb-16">
-            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">3. Gestion des Cookies</h2>
-
-            <div className="space-y-8">
-              <div className="border border-[#E5E5E5] bg-white p-8">
-                <h3 className="text-xl font-light text-[#2A2A2A] mb-4">Qu'est-ce qu'un cookie ?</h3>
-                <p className="text-[#666666] font-light leading-relaxed">
-                  Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, smartphone, tablette) lors de la visite d'un site web.
-                  Il permet de conserver des informations sur votre navigation.
-                </p>
-              </div>
-
-              <div className="border border-[#E5E5E5] bg-[#FAFAFA] p-8">
-                <h3 className="text-xl font-light text-[#2A2A2A] mb-6">Cookies utilisés sur ce site</h3>
-
-                <div className="space-y-px bg-[#E5E5E5]">
-                  <div className="bg-white p-6">
-                    <h4 className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-4">Cookies analytiques (Google Analytics)</h4>
-                    <div className="space-y-2 text-[#666666] font-light text-sm">
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Nom :</span> <strong className="text-[#2A2A2A] font-normal">_ga, _gid, _gat</strong></p>
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Finalité :</span> <strong className="text-[#2A2A2A] font-normal">Mesurer l'audience</strong></p>
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Durée :</span> <strong className="text-[#2A2A2A] font-normal">2 ans (_ga), 24h (_gid), 1 min (_gat)</strong></p>
-                      <p><span className="text-xs uppercase tracking-[0.2em]">Consentement :</span> <strong className="text-[#2A2A2A] font-normal">Oui</strong></p>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-6">
-                    <h4 className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-4">Cookies strictement nécessaires</h4>
-                    <p className="text-[#666666] font-light text-sm mb-3">Indispensables au fonctionnement, ne nécessitent pas de consentement :</p>
-                    <div className="space-y-2 text-[#666666] font-light text-sm">
-                      <p>• Cookies de session (authentification)</p>
-                      <p>• Cookies de préférences (langue, choix cookies)</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border border-[#E5E5E5] bg-white p-8">
-                <h3 className="text-xl font-light text-[#2A2A2A] mb-4">Comment gérer les cookies ?</h3>
-                <p className="text-[#666666] font-light mb-6">Vous pouvez modifier vos préférences à tout moment :</p>
-                <div className="space-y-4 text-[#666666] font-light">
-                  <p><span className="text-[#2A2A2A] font-normal">• Bandeau de consentement :</span> Lors de votre première visite</p>
-                  <div>
-                    <p className="text-[#2A2A2A] font-normal mb-2">• Paramètres de votre navigateur :</p>
-                    <div className="ml-6 space-y-1 text-sm">
-                      <p><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Google Chrome</a></p>
-                      <p><a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Mozilla Firefox</a></p>
-                      <p><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Safari</a></p>
-                      <p><a href="https://support.microsoft.com/fr-fr/microsoft-edge" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Microsoft Edge</a></p>
-                    </div>
-                  </div>
-                  <p><span className="text-[#2A2A2A] font-normal">• Module Google Analytics Opt-out :</span> <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Télécharger</a></p>
-                </div>
-                <div className="mt-6 p-4 border border-[#E5E5E5] bg-[#FAFAFA]">
-                  <p className="text-[#666666] font-light text-sm">
-                    La désactivation de certains cookies peut impacter votre expérience de navigation
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 4 : Service Tiers */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">4. Services Tiers Utilisés</h2>
+            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">3. Services Tiers Utilisés</h2>
 
             <div className="space-y-px bg-[#E5E5E5]">
               <div className="bg-white p-8">
@@ -244,20 +181,20 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="bg-[#FAFAFA] p-8">
-                <h3 className="text-xl font-light text-[#2A2A2A] mb-4">Google Analytics</h3>
-                <p className="text-[#666666] font-light mb-4">Analyse de l'audience du site.</p>
+                <h3 className="text-xl font-light text-[#2A2A2A] mb-4">Umami Analytics</h3>
+                <p className="text-[#666666] font-light mb-4">Mesure d'audience du site, sans cookies.</p>
                 <div className="space-y-2 text-[#666666] font-light text-sm">
-                  <p><span className="text-xs uppercase tracking-[0.2em]">Finalité :</span> <strong className="text-[#2A2A2A] font-normal">Statistiques de fréquentation</strong></p>
-                  <p><span className="text-xs uppercase tracking-[0.2em]">Anonymisation :</span> <strong className="text-[#2A2A2A] font-normal">Les adresses IP sont anonymisées</strong></p>
-                  <p><span className="text-xs uppercase tracking-[0.2em]">Confidentialité :</span> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Google Privacy Policy</a></p>
+                  <p><span className="text-xs uppercase tracking-[0.2em]">Finalité :</span> <strong className="text-[#2A2A2A] font-normal">Statistiques de fréquentation anonymes</strong></p>
+                  <p><span className="text-xs uppercase tracking-[0.2em]">Cookies :</span> <strong className="text-[#2A2A2A] font-normal">Aucun cookie déposé</strong></p>
+                  <p><span className="text-xs uppercase tracking-[0.2em]">Confidentialité :</span> <a href="https://umami.is/privacy" target="_blank" rel="noopener noreferrer" className="text-[#0066FF] hover:underline">Umami Privacy Policy</a></p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Section 5 : Liens externes */}
+          {/* Section 4 : Liens externes */}
           <section className="mb-16">
-            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">5. Liens Externes</h2>
+            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">4. Liens Externes</h2>
             <div className="border border-[#E5E5E5] bg-white p-8">
               <p className="text-[#666666] font-light leading-relaxed">
                 Ce site peut contenir des liens hypertextes vers d'autres sites web. Nous n'exerçons aucun contrôle sur ces sites
@@ -267,9 +204,9 @@ export default function MentionsLegalesPage() {
             </div>
           </section>
 
-          {/* Section 6 : Modifications */}
+          {/* Section 5 : Modifications */}
           <section className="mb-16">
-            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">6. Modifications</h2>
+            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">5. Modifications</h2>
             <div className="border border-[#E5E5E5] bg-[#FAFAFA] p-8">
               <p className="text-[#666666] font-light leading-relaxed">
                 Nous nous réservons le droit de modifier ces mentions légales et cette politique de confidentialité à tout moment.
@@ -279,9 +216,9 @@ export default function MentionsLegalesPage() {
             </div>
           </section>
 
-          {/* Section 7 : Contact */}
+          {/* Section 6 : Contact */}
           <section className="mb-16">
-            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">7. Nous Contacter</h2>
+            <h2 className="text-3xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 pb-4 border-b-2 border-[#0066FF]">6. Nous Contacter</h2>
             <div className="border-2 border-[#0066FF] bg-white p-12">
               <p className="text-[#666666] font-light mb-8 leading-relaxed">
                 Pour toute question relative à ces mentions légales, à notre politique de confidentialité,

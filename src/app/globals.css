@@ -132,6 +132,27 @@ html, body {
   
 }
 
+/* --- Curseur personnalisé --- */
+.custom-cursor-active,
+.custom-cursor-active a,
+.custom-cursor-active button {
+  cursor: none;
+}
+
+/* --- Texte rempli au survol (CTA) --- */
+.text-fill-sweep {
+  background-image: linear-gradient(90deg, #2A2A2A, #2A2A2A 50%, #0066FF 50%, #0066FF);
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.text-fill-sweep:hover {
+  background-position: -100% 0;
+}
+
 
 
 
@@ -458,4 +479,69 @@ html, body {
   .markdown-content h4 {
     font-size: 1.125rem; /* 18px */
   }
+}
+
+/* --- Dark mode : contenu markdown des articles --- */
+.dark .markdown-content {
+  color: #999999;
+}
+.dark .markdown-content h1,
+.dark .markdown-content h2,
+.dark .markdown-content h3,
+.dark .markdown-content h4,
+.dark .markdown-content h5,
+.dark .markdown-content h6 {
+  color: #FAFAFA;
+}
+.dark .markdown-content p,
+.dark .markdown-content ul,
+.dark .markdown-content ol,
+.dark .markdown-content td,
+.dark .markdown-content blockquote {
+  color: #999999;
+}
+.dark .markdown-content strong,
+.dark .markdown-content b {
+  color: #FAFAFA;
+}
+.dark .markdown-content a {
+  color: #0066FF;
+  border-bottom-color: #0066FF;
+}
+.dark .markdown-content blockquote {
+  background-color: #1A1A1A;
+  color: #999999;
+}
+.dark .markdown-content code {
+  background-color: #1A1A1A;
+  color: #FAFAFA;
+  border-color: #2A2A2A;
+}
+.dark .markdown-content pre {
+  background-color: #1A1A1A;
+  border-color: #2A2A2A;
+}
+.dark .markdown-content pre code {
+  color: #FAFAFA;
+}
+.dark .markdown-content img {
+  border-color: #2A2A2A;
+}
+.dark .markdown-content table {
+  border-color: #2A2A2A;
+}
+.dark .markdown-content th {
+  background-color: #1A1A1A;
+  color: #FAFAFA;
+  border-color: #2A2A2A;
+}
+.dark .markdown-content td {
+  border-color: #2A2A2A;
+  color: #999999;
+}
+.dark .markdown-content tr:nth-child(even) {
+  background-color: #1A1A1A;
+}
+.dark .markdown-content hr {
+  border-top-color: #2A2A2A;
 }

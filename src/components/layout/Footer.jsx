@@ -6,9 +6,9 @@ import { trackNavClick, trackExternalClick } from '@/lib/tracking';
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#FAFAFA] border-t border-[#E5E5E5]">
+    <footer className="relative bg-[#FAFAFA] dark:bg-[#0A0A0A] border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
       {/* Subtle grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16">
          {/* Grille principale du footer */}
@@ -16,33 +16,33 @@ export function Footer() {
 
            {/* Colonne 1: Identité */}
            <div className="md:col-span-2">
-             <h3 className="text-lg font-light text-[#2A2A2A] mb-4">Killian Lecrut</h3>
-             <p className="text-sm text-[#666666] font-light leading-relaxed max-w-md">
+             <h3 className="text-lg font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Killian Lecrut</h3>
+             <p className="text-sm text-[#666666] dark:text-[#999999] font-light leading-relaxed max-w-md">
                Agence web spécialisée dans la création de sites internet sur-mesure pour professions libérales et artisans à Melun (77). Expertise en conformité réglementaire, SEO local et développement performant.
              </p>
            </div>
 
            {/* Colonne 2: Services */}
            <div>
-             <h3 className="text-base font-light text-[#2A2A2A] mb-4">Services</h3>
+             <h3 className="text-base font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Services</h3>
              <ul className="space-y-3 text-sm">
                <li>
-                  <Link href="/services/site-vitrine" onClick={() => trackNavClick('footer', '/services/site-vitrine')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/services/site-vitrine" onClick={() => trackNavClick('footer', '/services/site-vitrine')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Site Vitrine
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/e-commerce" onClick={() => trackNavClick('footer', '/services/e-commerce')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/services/e-commerce" onClick={() => trackNavClick('footer', '/services/e-commerce')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     E-commerce
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/application-web" onClick={() => trackNavClick('footer', '/services/application-web')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/services/application-web" onClick={() => trackNavClick('footer', '/services/application-web')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Application Web
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/optimisation-seo" onClick={() => trackNavClick('footer', '/services/optimisation-seo')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/services/optimisation-seo" onClick={() => trackNavClick('footer', '/services/optimisation-seo')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Optimisation SEO
                   </Link>
                </li>
@@ -51,25 +51,25 @@ export function Footer() {
 
            {/* Colonne 3: Secteurs */}
            <div>
-             <h3 className="text-base font-light text-[#2A2A2A] mb-4">Secteurs</h3>
+             <h3 className="text-base font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Secteurs</h3>
              <ul className="space-y-3 text-sm">
                <li>
-                  <Link href="/secteurs/professions-liberales/avocat" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/avocat')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/secteurs/professions-liberales/avocat" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/avocat')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Avocats
                   </Link>
                 </li>
                 <li>
-                  <Link href="/secteurs/professions-liberales/psychologue" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/psychologue')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/secteurs/professions-liberales/psychologue" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/psychologue')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Psychologues
                   </Link>
                 </li>
                 <li>
-                  <Link href="/secteurs/professions-liberales/osteopathe" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/osteopathe')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/secteurs/professions-liberales/osteopathe" onClick={() => trackNavClick('footer', '/secteurs/professions-liberales/osteopathe')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Ostéopathes
                   </Link>
                 </li>
                 <li>
-                  <Link href="/secteurs/artisans" onClick={() => trackNavClick('footer', '/secteurs/artisans')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/secteurs/artisans" onClick={() => trackNavClick('footer', '/secteurs/artisans')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Artisans
                   </Link>
                </li>
@@ -78,25 +78,25 @@ export function Footer() {
 
            {/* Colonne 4: Contact & Réseaux */}
            <div>
-             <h3 className="text-base font-light text-[#2A2A2A] mb-4">Contact</h3>
+             <h3 className="text-base font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Contact</h3>
              <ul className="space-y-3 text-sm mb-6">
                <li>
-                  <Link href="/contact" onClick={() => trackNavClick('footer', '/contact')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <Link href="/contact" onClick={() => trackNavClick('footer', '/contact')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     Page de contact
                   </Link>
                 </li>
                 <li>
-                  <a href="tel:+33641970383" onClick={() => trackExternalClick('tel', '+33641970383')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <a href="tel:+33641970383" onClick={() => trackExternalClick('tel', '+33641970383')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     +33 6 41 97 03 83
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:killian.lecrut@gmail.com" onClick={() => trackExternalClick('mailto', 'killian.lecrut@gmail.com')} className="text-[#666666] font-light hover:text-[#0066FF] transition-colors">
+                  <a href="mailto:killian.lecrut@gmail.com" onClick={() => trackExternalClick('mailto', 'killian.lecrut@gmail.com')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
                     killian.lecrut@gmail.com
                   </a>
                </li>
              </ul>
-             <h3 className="text-base font-light text-[#2A2A2A] mb-4">Réseaux</h3>
+             <h3 className="text-base font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Réseaux</h3>
              <div className="flex gap-4 justify-center md:justify-start">
                 <a
                   href="https://www.linkedin.com/in/killian-lecrut-a80336176/"
@@ -104,7 +104,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label="Profil LinkedIn"
                   onClick={() => trackExternalClick('linkedin', 'https://www.linkedin.com/in/killian-lecrut-a80336176/')}
-                  className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
+                  className="w-10 h-10 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center text-[#666666] dark:text-[#999999] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
                 >
                   <Linkedin size={20} />
                 </a>
@@ -114,7 +114,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label="Profil GitHub"
                   onClick={() => trackExternalClick('github', 'https://github.com/killianlecrut')}
-                  className="w-10 h-10 border border-[#E5E5E5] flex items-center justify-center text-[#666666] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
+                  className="w-10 h-10 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center text-[#666666] dark:text-[#999999] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
                 >
                   <Github size={20} />
                 </a>
@@ -123,14 +123,14 @@ export function Footer() {
          </div>
 
         {/* Ligne de séparation et copyright */}
-        <div className="mt-12 pt-8 border-t border-[#E5E5E5] text-center text-sm">
-          <p className="mb-3 text-[#666666] font-light">
+        <div className="mt-12 pt-8 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-center text-sm">
+          <p className="mb-3 text-[#666666] dark:text-[#999999] font-light">
             &copy; {new Date().getFullYear()} Killian Lecrut. Tous droits réservés.
           </p>
           <p>
             <Link
               href="/mentions-legales"
-              className="text-[#666666] font-light hover:text-[#0066FF] transition-colors"
+              className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors"
             >
               Mentions Légales & Politique de Confidentialité
             </Link>

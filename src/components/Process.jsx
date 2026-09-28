@@ -1,5 +1,9 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Reveal } from "@/components/ui/Reveal";
+
 export function Process() {
  const steps = [
     {
@@ -24,63 +28,78 @@ export function Process() {
     },
   ];
 
+  const stepsRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: stepsRef,
+    offset: ["start 0.7", "end 0.6"],
+  });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 90, damping: 25 });
+
   return (
     <section
       id="processus"
-      className="relative py-32 px-4 bg-white"
+      className="relative py-32 px-4 bg-white dark:bg-[#0A0A0A]"
     >
-      {/* Subtle grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-5xl">
-        <div className="mb-24">
-          <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-            <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+        <Reveal className="mb-24">
+          <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+            <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
               Notre Processus
             </span>
           </div>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-[-0.02em] text-[#2A2A2A] leading-[1.1] mb-6">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] leading-[1.1] mb-6">
             Notre Méthode en<br />
             <span className="text-[#0066FF]">4 Étapes</span>
           </h2>
-          <p className="text-lg text-[#666666] max-w-2xl font-light">
+          <p className="text-lg text-[#666666] dark:text-[#999999] max-w-2xl font-light">
             De l'appel découverte à la mise en ligne, tout est chronométré et transparent
           </p>
-        </div>
+        </Reveal>
 
-        <div className="space-y-px bg-[#E5E5E5]">
-          {steps.map((step, index) => (
-            <div key={index} className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300">
-              <div className="flex items-start gap-12">
+        <div ref={stepsRef} className="relative">
+          {/* Rail */}
+          <div className="absolute left-8 top-2 bottom-2 w-px bg-[#E5E5E5] dark:bg-[#2A2A2A] -translate-x-1/2" />
+          <motion.div
+            className="absolute left-8 top-2 bottom-2 w-[2px] bg-[#0066FF] -translate-x-1/2 origin-top"
+            style={{ scaleY }}
+          />
+
+          <div className="space-y-0">
+            {steps.map((step, index) => (
+              <div key={index} className="group relative flex items-start gap-12 px-4 sm:px-8 py-8">
                 {/* Number */}
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 flex items-center justify-center border border-[#E5E5E5] group-hover:border-[#0066FF] transition-colors">
-                    <span className="text-2xl font-light text-[#2A2A2A] group-hover:text-[#0066FF] transition-colors">
+                <div className="flex-shrink-0 relative z-10">
+                  <div className="w-16 h-16 flex items-center justify-center border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A] group-hover:border-[#0066FF] transition-colors">
+                    <span className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] group-hover:text-[#0066FF] transition-colors">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 pt-2">
-                  <h3 className="text-xl font-light text-[#2A2A2A] mb-4">
+                <div className="flex-1 pt-3">
+                  <h3 className="text-xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">
                     {step.stepTitle}
                   </h3>
-                  <p className="text-[#666666] leading-relaxed font-light">
+                  <p className="text-[#666666] dark:text-[#999999] leading-relaxed font-light">
                     {step.description}
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Bottom note */}
-        <div className="mt-16 p-8 border border-[#0066FF]">
-          <p className="text-center text-lg font-light text-[#2A2A2A]">
-            Total : <span className="text-[#0066FF] font-medium">3 semaines</span> pour un site vitrine complet
-          </p>
-        </div>
+        <Reveal className="mt-16">
+          <div className="p-8 border border-[#0066FF]">
+            <p className="text-center text-lg font-light text-[#2A2A2A] dark:text-[#FAFAFA]">
+              Total : <span className="text-[#0066FF] font-medium">3 semaines</span> pour un site vitrine complet
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

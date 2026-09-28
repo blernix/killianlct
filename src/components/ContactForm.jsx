@@ -151,23 +151,23 @@ export default function ContactForm({ formType = 'general', onClose, initialData
   if (submitStatus === 'recap') {
     return (
       <div>
-        <div className="space-y-px bg-[#E5E5E5]">
+        <div className="space-y-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
           {config.fields.map(field => formData[field] && (
-            <div key={field} className="p-4 bg-[#FAFAFA] border border-[#E5E5E5]">
-              <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em] block mb-2">
+            <div key={field} className="p-4 bg-[#FAFAFA] dark:bg-[#0A0A0A] border border-[#E5E5E5] dark:border-[#2A2A2A]">
+              <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em] block mb-2">
                 {field === 'name' ? 'Nom' :
                  field === 'email' ? 'Email' :
                  field === 'company' ? 'Société' :
                  field === 'selectedOffer' ? 'Offre sélectionnée' :
                  'Message'}
               </span>
-              <p className="text-[#2A2A2A] font-light whitespace-pre-wrap break-words">{formData[field]}</p>
+              <p className="text-[#2A2A2A] dark:text-[#FAFAFA] font-light whitespace-pre-wrap break-words">{formData[field]}</p>
             </div>
           ))}
         </div>
-        <div className="mt-6 flex justify-end gap-px bg-[#E5E5E5]">
-          <button onClick={() => setSubmitStatus(null)} className="text-[#666666] hover:text-[#0066FF] font-light py-3 px-6 bg-white hover:bg-[#FAFAFA] flex items-center gap-2 transition-colors" disabled={isSubmitting}><Edit3 size={16}/>Modifier</button>
-          <button onClick={handleFinalSend} className="bg-[#0066FF] hover:bg-white text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-6 flex items-center gap-2 disabled:opacity-50 transition-all" disabled={isSubmitting}>
+        <div className="mt-6 flex justify-end gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
+          <button onClick={() => setSubmitStatus(null)} className="text-[#666666] dark:text-[#999999] hover:text-[#0066FF] font-light py-3 px-6 bg-white dark:bg-[#1A1A1A] hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] flex items-center gap-2 transition-colors" disabled={isSubmitting}><Edit3 size={16}/>Modifier</button>
+          <button onClick={handleFinalSend} className="bg-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-6 flex items-center gap-2 disabled:opacity-50 transition-all" disabled={isSubmitting}>
             {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
             {isSubmitting ? 'Envoi...' : 'Confirmer'}
           </button>
@@ -185,13 +185,13 @@ export default function ContactForm({ formType = 'general', onClose, initialData
             <CheckCircle2 className="text-[#0066FF]" size={48} />
           </div>
         </div>
-        <h3 className="text-2xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">Message envoyé avec succès !</h3>
-        <p className="text-[#666666] font-light mb-8">
+        <h3 className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4 tracking-[-0.02em]">Message envoyé avec succès !</h3>
+        <p className="text-[#666666] dark:text-[#999999] font-light mb-8">
           Merci pour votre demande. Nous vous répondrons dans les plus brefs délais, généralement sous 24h.
         </p>
         <button
           onClick={onClose}
-          className="bg-[#0066FF] hover:bg-white text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-8 transition-all duration-300"
+          className="bg-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-8 transition-all duration-300"
         >
           Fermer
         </button>
@@ -204,24 +204,24 @@ export default function ContactForm({ formType = 'general', onClose, initialData
     return (
       <div className="text-center py-8">
         <div className="flex justify-center mb-8">
-          <div className="w-20 h-20 border-2 border-[#E5E5E5] flex items-center justify-center">
-            <XCircle className="text-[#666666]" size={48} />
+          <div className="w-20 h-20 border-2 border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center">
+            <XCircle className="text-[#666666] dark:text-[#999999]" size={48} />
           </div>
         </div>
-        <h3 className="text-2xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">Erreur d'envoi</h3>
-        <p className="text-[#666666] font-light mb-8">
+        <h3 className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4 tracking-[-0.02em]">Erreur d'envoi</h3>
+        <p className="text-[#666666] dark:text-[#999999] font-light mb-8">
           Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer ou nous contacter directement par email.
         </p>
-        <div className="flex gap-px bg-[#E5E5E5] justify-center">
+        <div className="flex gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A] justify-center">
           <button
             onClick={() => setSubmitStatus(null)}
-            className="bg-white hover:bg-[#FAFAFA] text-[#2A2A2A] font-light py-3 px-6 border border-[#E5E5E5] transition-colors duration-300"
+            className="bg-white dark:bg-[#1A1A1A] hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] text-[#2A2A2A] dark:text-[#FAFAFA] font-light py-3 px-6 border border-[#E5E5E5] dark:border-[#2A2A2A] transition-colors duration-300"
           >
             Réessayer
           </button>
           <button
             onClick={onClose}
-            className="bg-[#0066FF] hover:bg-white text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-6 transition-all duration-300"
+            className="bg-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-6 transition-all duration-300"
           >
             Fermer
           </button>
@@ -235,28 +235,28 @@ export default function ContactForm({ formType = 'general', onClose, initialData
     <form onSubmit={handleSubmit} noValidate className="space-y-6 text-left">
       {config.fields.includes('name') && (
         <div>
-          <label htmlFor="name" className="block text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-2">Nom <span className="text-[#0066FF]">*</span></label>
-          <input type="text" id="name" value={formData.name} onChange={handleChange} onBlur={handleBlur} className={`w-full bg-[#FAFAFA] border p-3 text-[#2A2A2A] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors ${errors.name ? 'border-[#0066FF]' : 'border-[#E5E5E5]'}`} />
+          <label htmlFor="name" className="block text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em] mb-2">Nom <span className="text-[#0066FF]">*</span></label>
+          <input type="text" id="name" value={formData.name} onChange={handleChange} onBlur={handleBlur} className={`w-full bg-[#FAFAFA] dark:bg-[#0A0A0A] border p-3 text-[#2A2A2A] dark:text-[#FAFAFA] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-[#1A1A1A] transition-colors ${errors.name ? 'border-[#0066FF]' : 'border-[#E5E5E5] dark:border-[#2A2A2A]'}`} />
           {errors.name && <p className="text-[#0066FF] text-xs mt-2 font-light">{errors.name}</p>}
         </div>
       )}
       {config.fields.includes('email') && (
         <div>
-          <label htmlFor="email" className="block text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-2">Email <span className="text-[#0066FF]">*</span></label>
-          <input type="email" id="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} className={`w-full bg-[#FAFAFA] border p-3 text-[#2A2A2A] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors ${errors.email ? 'border-[#0066FF]' : 'border-[#E5E5E5]'}`} />
+          <label htmlFor="email" className="block text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em] mb-2">Email <span className="text-[#0066FF]">*</span></label>
+          <input type="email" id="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} className={`w-full bg-[#FAFAFA] dark:bg-[#0A0A0A] border p-3 text-[#2A2A2A] dark:text-[#FAFAFA] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-[#1A1A1A] transition-colors ${errors.email ? 'border-[#0066FF]' : 'border-[#E5E5E5] dark:border-[#2A2A2A]'}`} />
           {errors.email && <p className="text-[#0066FF] text-xs mt-2 font-light">{errors.email}</p>}
         </div>
       )}
       {config.fields.includes('company') && (
         <div>
-          <label htmlFor="company" className="block text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-2">Société / Organisation <span className="text-[#666666] font-light normal-case">(Optionnel)</span></label>
-          <input type="text" id="company" value={formData.company} onChange={handleChange} onBlur={handleBlur} className="w-full bg-[#FAFAFA] border border-[#E5E5E5] p-3 text-[#2A2A2A] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors" />
+          <label htmlFor="company" className="block text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em] mb-2">Société / Organisation <span className="text-[#666666] dark:text-[#999999] font-light normal-case">(Optionnel)</span></label>
+          <input type="text" id="company" value={formData.company} onChange={handleChange} onBlur={handleBlur} className="w-full bg-[#FAFAFA] dark:bg-[#0A0A0A] border border-[#E5E5E5] dark:border-[#2A2A2A] p-3 text-[#2A2A2A] dark:text-[#FAFAFA] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-[#1A1A1A] transition-colors" />
         </div>
       )}
       {config.fields.includes('selectedOffer') && (
         <div>
-          <label htmlFor="selectedOffer" className="block text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-2">
-            Offre sélectionnée <span className="text-[#666666] font-light normal-case">(Optionnel)</span>
+          <label htmlFor="selectedOffer" className="block text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em] mb-2">
+            Offre sélectionnée <span className="text-[#666666] dark:text-[#999999] font-light normal-case">(Optionnel)</span>
           </label>
           {availableOffers.length > 0 ? (
             <CustomSelect
@@ -277,11 +277,11 @@ export default function ContactForm({ formType = 'general', onClose, initialData
               value={formData.selectedOffer}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="w-full bg-[#FAFAFA] border border-[#E5E5E5] p-3 text-[#2A2A2A] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors"
+              className="w-full bg-[#FAFAFA] dark:bg-[#0A0A0A] border border-[#E5E5E5] dark:border-[#2A2A2A] p-3 text-[#2A2A2A] dark:text-[#FAFAFA] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-[#1A1A1A] transition-colors"
               placeholder="Ex: Site Professionnel Complet - 4 500€"
             />
           )}
-          <p className="text-xs text-[#666666] font-light mt-2">
+          <p className="text-xs text-[#666666] dark:text-[#999999] font-light mt-2">
             {availableOffers.length > 0
               ? 'Sélectionnez l\'offre qui vous intéresse'
               : 'Indiquez l\'offre qui vous intéresse ou laissez vide pour en discuter'
@@ -291,13 +291,13 @@ export default function ContactForm({ formType = 'general', onClose, initialData
       )}
       {config.fields.includes('message') && (
         <div>
-          <label htmlFor="message" className="block text-xs font-medium text-[#666666] uppercase tracking-[0.2em] mb-2">Votre message <span className="text-[#0066FF]">*</span></label>
-          <textarea id="message" rows="4" value={formData.message} onChange={handleChange} onBlur={handleBlur} className={`w-full bg-[#FAFAFA] border p-3 text-[#2A2A2A] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors ${errors.message ? 'border-[#0066FF]' : 'border-[#E5E5E5]'}`}></textarea>
+          <label htmlFor="message" className="block text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em] mb-2">Votre message <span className="text-[#0066FF]">*</span></label>
+          <textarea id="message" rows="4" value={formData.message} onChange={handleChange} onBlur={handleBlur} className={`w-full bg-[#FAFAFA] dark:bg-[#0A0A0A] border p-3 text-[#2A2A2A] dark:text-[#FAFAFA] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-[#1A1A1A] transition-colors ${errors.message ? 'border-[#0066FF]' : 'border-[#E5E5E5] dark:border-[#2A2A2A]'}`}></textarea>
           {errors.message && <p className="text-[#0066FF] text-xs mt-2 font-light">{errors.message}</p>}
         </div>
       )}
       <div className='flex justify-center pt-4'>
-        <button type="submit" className="bg-[#0066FF] hover:bg-white text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-8 transition-all duration-300 flex items-center gap-2">
+        <button type="submit" className="bg-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] text-white hover:text-[#0066FF] border border-[#0066FF] font-medium py-3 px-8 transition-all duration-300 flex items-center gap-2">
           Vérifier mon message
         </button>
       </div>

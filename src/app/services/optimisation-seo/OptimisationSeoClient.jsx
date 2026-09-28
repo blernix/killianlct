@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
 import Header from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Modal from "@/components/Modal";
@@ -8,6 +9,9 @@ import ContactForm, { getModalTitle } from "@/components/ContactForm";
 import { useContactModal } from "@/hooks/useContactModal";
 import ROICalculator from "@/components/ROICalculator";
 import { trackCTAClick, trackPricingClick, trackFAQToggle, trackExternalClick } from '@/lib/tracking';
+import { Reveal, RevealStagger, staggerItem } from "@/components/ui/Reveal";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { Particles } from "@/components/ui/Particles";
 import {
   Target, Scale, Building2, TrendingUp, Search, PenTool, Link as LinkIcon,
   BarChart3, Wrench, FileText, Smartphone, Clock, Sparkles, ArrowRight,
@@ -20,6 +24,9 @@ export default function SeoClient({ faqData }) {
   const { isOpen: isModalOpen, initialData, openModal, closeModal } = useContactModal();
   const [expandedFaq, setExpandedFaq] = useState(null);
   const formType = 'seo';
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   const toggleFaq = (index) => {
     const isOpening = expandedFaq !== index;
@@ -35,9 +42,10 @@ export default function SeoClient({ faqData }) {
         <Header onOpenModal={openModal} />
 
         {/* HERO - Swiss Minimal */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] px-4 py-32">
+        <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] dark:bg-[#0A0A0A] px-4 py-32">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-40" />
+          <motion.div style={{ y: gridY }} className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-40" />
+          <Particles />
 
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
@@ -45,107 +53,126 @@ export default function SeoClient({ faqData }) {
           <div className="relative z-10 max-w-6xl mx-auto text-center">
             {/* Badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-12">
-              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A]">
                 <TrendingUp className="text-[#0066FF]" size={16} />
-                <span className="text-sm text-[#2A2A2A] font-light">Croissance durable</span>
+                <span className="text-sm text-[#2A2A2A] dark:text-[#FAFAFA] font-light">Croissance durable</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A]">
                 <LineChart className="text-[#0066FF]" size={16} />
-                <span className="text-sm text-[#2A2A2A] font-light">Analytics avancées</span>
+                <span className="text-sm text-[#2A2A2A] dark:text-[#FAFAFA] font-light">Analytics avancées</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] bg-white">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A]">
                 <Award className="text-[#0066FF]" size={16} />
-                <span className="text-sm text-[#2A2A2A] font-light">Stratégie sur-mesure</span>
+                <span className="text-sm text-[#2A2A2A] dark:text-[#FAFAFA] font-light">Stratégie sur-mesure</span>
               </span>
             </div>
 
             {/* Titre */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-10 leading-[1.05]">
-              Le SEO, Votre{' '}
-              <span className="text-[#0066FF]">Moteur de Croissance</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-10 leading-[1.05]">
+              <span className="block overflow-hidden pb-1 -mb-1">
+                <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: 0.3, duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="block">
+                  Le SEO, Votre{' '}
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-1 -mb-1">
+                <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: 0.42, duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="block text-[#0066FF]">
+                  Moteur de Croissance
+                </motion.span>
+              </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-[#666666] max-w-3xl mx-auto leading-relaxed mb-16 font-light">
-              Arrêtez de <strong className="text-[#2A2A2A] font-normal">payer pour chaque clic</strong>. Construisez un canal d'acquisition durable qui attire des clients qualifiés 24h/24, sans dépendre des publicités.
+            <p className="text-xl sm:text-2xl text-[#666666] dark:text-[#999999] max-w-3xl mx-auto leading-relaxed mb-16 font-light">
+              Arrêtez de <strong className="text-[#2A2A2A] dark:text-[#FAFAFA] font-normal">payer pour chaque clic</strong>. Construisez un canal d'acquisition durable qui attire des clients qualifiés 24h/24, sans dépendre des publicités.
             </p>
 
             {/* CTA principal */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <button
-                onClick={() => { trackCTAClick('Discuter de ma stratégie SEO', 'seo'); openModal(); }}
-                className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
-              >
-                <span className="flex items-center gap-3">
-                  Discuter de ma stratégie SEO
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
+              <Magnetic strength={0.25}>
+                <button
+                  onClick={() => { trackCTAClick('Discuter de ma stratégie SEO', 'seo'); openModal(); }}
+                  className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] hover:text-[#0066FF] transition-all duration-300"
+                >
+                  <span className="flex items-center gap-3">
+                    Discuter de ma stratégie SEO
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+              </Magnetic>
             </div>
 
             {/* Micro-promesses */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] max-w-4xl mx-auto">
+            <RevealStagger className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A] max-w-4xl mx-auto">
               {[
                 "Trafic qualifié constant",
                 "ROI mesurable",
                 "Indépendance publicitaire",
                 "Autorité de marque"
               ].map((promise, i) => (
-                <div key={i} className="flex items-center gap-3 p-6 bg-white hover:bg-[#FAFAFA] transition-colors">
+                <motion.div key={i} variants={staggerItem} className="flex items-center gap-3 p-6 bg-white dark:bg-[#1A1A1A] hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] transition-colors">
                   <CheckCircle className="text-[#0066FF] flex-shrink-0" size={18} />
-                  <span className="text-sm text-[#2A2A2A] font-light">{promise}</span>
-                </div>
+                  <span className="text-sm text-[#2A2A2A] dark:text-[#FAFAFA] font-light">{promise}</span>
+                </motion.div>
               ))}
-            </div>
+            </RevealStagger>
           </div>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 0.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#999999] dark:text-[#666666]">Découvrir</span>
+            <div className="relative w-px h-12 bg-[#E5E5E5] dark:bg-[#2A2A2A] overflow-hidden">
+              <motion.div className="absolute top-0 left-0 w-full h-5 bg-[#0066FF]" animate={{ y: [-20, 48] }} transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }} />
+            </div>
+          </motion.div>
         </section>
 
         {/* Section Redéfinition SEO */}
-        <section className="relative py-32 px-4 bg-white">
+        <section className="relative py-32 px-4 bg-white dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-4xl text-center">
-            <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-              <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal>
+            <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+              <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                 Notre Approche
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
               Le SEO a changé.{' '}
               <span className="text-[#0066FF]">Votre Stratégie Aussi</span>
             </h2>
 
-            <p className="text-lg text-[#666666] leading-relaxed font-light">
-              Le référencement naturel n'est pas une tactique ponctuelle, c'est un <strong className="text-[#2A2A2A] font-normal">investissement stratégique</strong>. Comme un portefeuille financier, il nécessite une analyse continue, des ajustements réguliers et une vision long terme pour maximiser le retour sur investissement.
+            <p className="text-lg text-[#666666] dark:text-[#999999] leading-relaxed font-light">
+              Le référencement naturel n'est pas une tactique ponctuelle, c'est un <strong className="text-[#2A2A2A] dark:text-[#FAFAFA] font-normal">investissement stratégique</strong>. Comme un portefeuille financier, il nécessite une analyse continue, des ajustements réguliers et une vision long terme pour maximiser le retour sur investissement.
             </p>
+            </Reveal>
           </div>
         </section>
 
         {/* Section Les Deux Piliers */}
-        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+        <section className="relative py-32 px-4 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                   Méthodologie
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
                 2 Piliers pour une{' '}
                 <span className="text-[#0066FF]">Croissance Durable</span>
               </h2>
 
-              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+              <p className="text-lg text-[#666666] dark:text-[#999999] max-w-3xl mx-auto font-light">
                 Le succès en référencement repose sur des fondations techniques irréprochables, activées par une stratégie de contenu dynamique
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5]">
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
               {[
                 {
                   icon: Building2,
@@ -174,71 +201,72 @@ export default function SeoClient({ faqData }) {
               ].map((pillar, index) => {
                 const Icon = pillar.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="group bg-white p-12 hover:bg-[#FAFAFA] transition-colors duration-300"
+                    variants={staggerItem}
+                    className="group bg-white dark:bg-[#1A1A1A] p-12 hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] transition-colors duration-300"
                   >
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
+                      <div className="w-16 h-16 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
                         <Icon className="text-[#0066FF]" size={28} />
                       </div>
                       <div className="flex-1">
-                        <div className="inline-block px-3 py-1 mb-3 border border-[#E5E5E5] text-xs font-medium text-[#0066FF]">
+                        <div className="inline-block px-3 py-1 mb-3 border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs font-medium text-[#0066FF]">
                           Pilier {pillar.badge}
                         </div>
-                        <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
+                        <h3 className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-3">
                           {pillar.title}
                         </h3>
                       </div>
                     </div>
-                    <p className="text-[#666666] mb-6 leading-relaxed font-light">
+                    <p className="text-[#666666] dark:text-[#999999] mb-6 leading-relaxed font-light">
                       {pillar.description}
                     </p>
                     <ul className="space-y-3">
                       {pillar.features.map((feature, fIndex) => {
                         const FeatureIcon = feature.icon;
                         return (
-                          <li key={fIndex} className="flex items-center gap-3 text-[#666666] font-light">
+                          <li key={fIndex} className="flex items-center gap-3 text-[#666666] dark:text-[#999999] font-light">
                             <FeatureIcon className="text-[#0066FF] flex-shrink-0" size={16} />
                             <span className="text-sm">{feature.text}</span>
                           </li>
                         );
                       })}
                     </ul>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </RevealStagger>
           </div>
         </section>
 
         {/* Notre Processus SEO en 4 étapes */}
-        <section className="relative py-32 px-4 bg-white">
+        <section className="relative py-32 px-4 bg-white dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
           
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                   Méthodologie
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
                 Notre Processus SEO en{' '}
                 <span className="text-[#0066FF]">4 Étapes</span>
               </h2>
 
-              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+              <p className="text-lg text-[#666666] dark:text-[#999999] max-w-3xl mx-auto font-light">
                 Une approche structurée et transparente pour garantir des résultats mesurables
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5]">
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
               {[
                 {
                   step: "01",
@@ -291,68 +319,69 @@ export default function SeoClient({ faqData }) {
               ].map((step, index) => {
                 const Icon = step.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="group bg-white p-8 hover:bg-[#FAFAFA] transition-colors duration-300"
+                    variants={staggerItem}
+                    className="group bg-white dark:bg-[#1A1A1A] p-8 hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] transition-colors duration-300"
                   >
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
+                      <div className="w-12 h-12 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
                         <Icon className="text-[#0066FF]" size={24} />
                       </div>
                       <div className="flex-1">
-                        <div className="inline-block px-3 py-1 mb-2 border border-[#E5E5E5] text-xs font-medium text-[#0066FF]">
+                        <div className="inline-block px-3 py-1 mb-2 border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs font-medium text-[#0066FF]">
                           Étape {step.step}
                         </div>
-                        <h3 className="text-xl font-light text-[#2A2A2A] mb-3">
+                        <h3 className="text-xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-3">
                           {step.title}
                         </h3>
                       </div>
                     </div>
-                    <p className="text-[#666666] mb-4 text-sm leading-relaxed font-light">
+                    <p className="text-[#666666] dark:text-[#999999] mb-4 text-sm leading-relaxed font-light">
                       {step.description}
                     </p>
                     <ul className="space-y-2">
                       {step.details.map((detail, dIndex) => (
-                        <li key={dIndex} className="flex items-start gap-2 text-[#666666] text-sm font-light">
+                        <li key={dIndex} className="flex items-start gap-2 text-[#666666] dark:text-[#999999] text-sm font-light">
                           <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                           <span>{detail}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </RevealStagger>
           </div>
         </section>
 
         {/* Résultats Concrets */}
-        <section className="relative py-32 px-4 bg-[#FAFAFA]">
+        <section className="relative py-32 px-4 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
           
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                   Résultats
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
                 Des Résultats Mesurables &{' '}
                 <span className="text-[#0066FF]">Concrets</span>
               </h2>
 
-              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+              <p className="text-lg text-[#666666] dark:text-[#999999] max-w-3xl mx-auto font-light">
                 Voici l'impact que notre stratégie SEO a produit pour nos clients
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5]">
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
               {[
                 {
                   icon: TrendingUpIcon,
@@ -381,71 +410,72 @@ export default function SeoClient({ faqData }) {
               ].map((result, index) => {
                 const Icon = result.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="group bg-white p-10 text-center hover:bg-[#FAFAFA] transition-colors duration-300"
+                    variants={staggerItem}
+                    className="group bg-white dark:bg-[#1A1A1A] p-10 text-center hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] transition-colors duration-300"
                   >
-                    <div className="w-16 h-16 border border-[#E5E5E5] flex items-center justify-center mx-auto mb-6 group-hover:border-[#0066FF] transition-colors">
+                    <div className="w-16 h-16 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center mx-auto mb-6 group-hover:border-[#0066FF] transition-colors">
                       <Icon className="text-[#0066FF]" size={28} />
                     </div>
-                    <p className="text-5xl font-light text-[#2A2A2A] mb-3">
+                    <p className="text-5xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-3">
                       {result.value}
                     </p>
-                    <h3 className="text-lg font-light text-[#2A2A2A] mb-2">
+                    <h3 className="text-lg font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-2">
                       {result.label}
                     </h3>
-                    <p className="text-sm text-[#666666] font-light">
+                    <p className="text-sm text-[#666666] dark:text-[#999999] font-light">
                       {result.description}
                     </p>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </RevealStagger>
 
             <div className="mt-16 max-w-4xl mx-auto">
-              <div className="border border-[#E5E5E5] bg-white p-10">
-                <h3 className="text-2xl font-light text-[#2A2A2A] mb-6 text-center">
+              <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A] p-10">
+                <h3 className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-6 text-center">
                   Étude de cas : Cabinet d'avocat à Melun
                 </h3>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h4 className="font-light text-[#2A2A2A] mb-4">Situation initiale</h4>
+                    <h4 className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Situation initiale</h4>
                     <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                      <li className="flex items-start gap-3 text-[#666666] dark:text-[#999999] text-sm font-light">
                         <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                         <span>Position moyenne : 18ème sur Google</span>
                       </li>
-                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                      <li className="flex items-start gap-3 text-[#666666] dark:text-[#999999] text-sm font-light">
                         <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                         <span>120 visiteurs/mois organiques</span>
                       </li>
-                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                      <li className="flex items-start gap-3 text-[#666666] dark:text-[#999999] text-sm font-light">
                         <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                         <span>3-4 demandes de contact/mois</span>
                       </li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-light text-[#2A2A2A] mb-4">Après 6 mois de partenariat</h4>
+                    <h4 className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4">Après 6 mois de partenariat</h4>
                     <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                      <li className="flex items-start gap-3 text-[#666666] dark:text-[#999999] text-sm font-light">
                         <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                         <span>Position moyenne : 3ème sur Google</span>
                       </li>
-                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                      <li className="flex items-start gap-3 text-[#666666] dark:text-[#999999] text-sm font-light">
                         <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                         <span>300 visiteurs/mois organiques (+150%)</span>
                       </li>
-                      <li className="flex items-start gap-3 text-[#666666] text-sm font-light">
+                      <li className="flex items-start gap-3 text-[#666666] dark:text-[#999999] text-sm font-light">
                         <CheckCircle className="text-[#0066FF] flex-shrink-0 mt-0.5" size={14} />
                         <span>8-10 demandes qualifiées/mois (+200%)</span>
                       </li>
                     </ul>
                   </div>
                 </div>
-                <div className="mt-8 pt-8 border-t border-[#E5E5E5] text-center">
-                  <p className="text-[#666666] text-sm font-light">
-                    <strong className="text-[#2A2A2A] font-normal">ROI :</strong> Investissement SEO de 800€/mois × 6 mois = 4 800€. Gain : 6 clients additionnels à 2 000€ = 12 000€. ROI net : +7 200€ en 6 mois.
+                <div className="mt-8 pt-8 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-center">
+                  <p className="text-[#666666] dark:text-[#999999] text-sm font-light">
+                    <strong className="text-[#2A2A2A] dark:text-[#FAFAFA] font-normal">ROI :</strong> Investissement SEO de 800€/mois × 6 mois = 4 800€. Gain : 6 clients additionnels à 2 000€ = 12 000€. ROI net : +7 200€ en 6 mois.
                   </p>
                 </div>
               </div>
@@ -454,32 +484,32 @@ export default function SeoClient({ faqData }) {
         </section>
 
         {/* Expertise Sectorielle */}
-        <section className="relative py-32 px-4 bg-white">
+        <section className="relative py-32 px-4 bg-white dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
           
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                   Expertises
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
                 Expertise SEO{' '}
                 <span className="text-[#0066FF]">Par Secteur</span>
               </h2>
 
-              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light">
+              <p className="text-lg text-[#666666] dark:text-[#999999] max-w-3xl mx-auto font-light">
                 Nous adaptons notre stratégie SEO aux spécificités de votre métier et de votre localisation
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5]">
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
               {[
                 {
                   title: "SEO pour Avocats",
@@ -512,26 +542,27 @@ export default function SeoClient({ faqData }) {
               ].map((sector, index) => {
                 const Icon = sector.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="group bg-white p-10 hover:bg-[#FAFAFA] transition-colors duration-300"
+                    variants={staggerItem}
+                    className="group bg-white dark:bg-[#1A1A1A] p-10 hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] transition-colors duration-300"
                   >
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 border border-[#E5E5E5] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
+                      <div className="w-12 h-12 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center group-hover:border-[#0066FF] transition-colors">
                         <Icon className="text-[#0066FF]" size={24} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-light text-[#2A2A2A] mb-3">
+                        <h3 className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-3">
                           {sector.title}
                         </h3>
-                        <p className="text-[#666666] mb-4 leading-relaxed font-light">
+                        <p className="text-[#666666] dark:text-[#999999] mb-4 leading-relaxed font-light">
                           {sector.description}
                         </p>
                         <div className="flex flex-wrap gap-2 mb-6">
                           {sector.keywords.map((keyword, kIndex) => (
                             <span
                               key={kIndex}
-                              className="inline-block px-3 py-1 border border-[#E5E5E5] text-xs text-[#666666] font-light"
+                              className="inline-block px-3 py-1 border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#666666] dark:text-[#999999] font-light"
                             >
                               {keyword}
                             </span>
@@ -540,25 +571,25 @@ export default function SeoClient({ faqData }) {
                         <a
                           href={sector.link}
                           onClick={() => trackCTAClick(`SEO ${sector.title}`, 'seo')}
-                          className="inline-flex items-center gap-2 text-[#0066FF] font-medium hover:text-[#2A2A2A] transition-colors"
+                          className="inline-flex items-center gap-2 text-[#0066FF] font-medium hover:text-[#2A2A2A] dark:text-[#FAFAFA] transition-colors"
                         >
                           Découvrir notre approche
                           <ArrowRight size={16} />
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </RevealStagger>
 
             <div className="mt-16 text-center">
-              <p className="text-lg text-[#666666] max-w-3xl mx-auto font-light mb-8">
-                <strong className="text-[#2A2A2A] font-normal">Pourquoi une expertise sectorielle ?</strong> Chaque métier a ses propres codes, son vocabulaire et ses canaux d'acquisition. Un avocat ne sera pas référencé sur les mêmes mots-clés qu'un artisan. Nous maîtrisons ces spécificités pour vous positionner sur les requêtes qui comptent réellement pour votre activité.
+              <p className="text-lg text-[#666666] dark:text-[#999999] max-w-3xl mx-auto font-light mb-8">
+                <strong className="text-[#2A2A2A] dark:text-[#FAFAFA] font-normal">Pourquoi une expertise sectorielle ?</strong> Chaque métier a ses propres codes, son vocabulaire et ses canaux d'acquisition. Un avocat ne sera pas référencé sur les mêmes mots-clés qu'un artisan. Nous maîtrisons ces spécificités pour vous positionner sur les requêtes qui comptent réellement pour votre activité.
               </p>
               <button
                 onClick={() => { trackCTAClick('Discuter de ma stratégie SEO sectorielle', 'seo'); openModal(); }}
-                className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
+                className="group px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] hover:text-[#0066FF] transition-all duration-300"
               >
                 <span className="flex items-center gap-3">
                   Discuter de ma stratégie SEO sectorielle
@@ -570,27 +601,27 @@ export default function SeoClient({ faqData }) {
         </section>
 
         {/* Calculateur ROI SEO */}
-        <section className="relative py-32 px-4 bg-white">
+        <section className="relative py-32 px-4 bg-white dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           <div className="relative z-10 mx-auto max-w-4xl">
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal className="text-center mb-16">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                   Calculateur ROI
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
                 Estimez Votre{' '}
                 <span className="text-[#0066FF]">Potentiel de Croissance</span>
               </h2>
 
-              <p className="text-lg text-[#666666] font-light">
+              <p className="text-lg text-[#666666] dark:text-[#999999] font-light">
                 Calculez l'impact d'un meilleur positionnement sur votre chiffre d'affaires
               </p>
-            </div>
+            </Reveal>
 
             <ROICalculator
               title={
@@ -665,7 +696,7 @@ export default function SeoClient({ faqData }) {
                 const yearlyRevenue = additionalRevenue * 12;
 
                 return {
-                  description: `En atteignant le <strong class="text-[#2A2A2A]">Top 3</strong> sur vos mots-clés cibles (CTR: ${currentCTR}% → ${targetCTR}%) :`,
+                  description: `En atteignant le <strong class="text-[#2A2A2A] dark:text-[#FAFAFA]">Top 3</strong> sur vos mots-clés cibles (CTR: ${currentCTR}% → ${targetCTR}%) :`,
                   metrics: [
                     {
                       label: 'Visiteurs additionnels/mois',
@@ -702,48 +733,48 @@ export default function SeoClient({ faqData }) {
         </section>
 
         {/* Section Tarifs */}
-        <section id="tarifs" className="relative py-32 px-4 bg-[#FAFAFA]">
+        <section id="tarifs" className="relative py-32 px-4 bg-[#FAFAFA] dark:bg-[#0A0A0A]">
           {/* Subtle grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
           {/* Blue accent line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
           <div className="relative z-10 max-w-4xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+            <Reveal className="text-center mb-20">
+              <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                   Nos Offres
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-8 leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-8 leading-[1.1]">
                 Investissez dans Votre{' '}
                 <span className="text-[#0066FF]">Visibilité</span>
               </h2>
 
-              <p className="text-lg text-[#666666] max-w-2xl mx-auto font-light">
+              <p className="text-lg text-[#666666] dark:text-[#999999] max-w-2xl mx-auto font-light">
                 Deux approches selon vos objectifs et votre maturité SEO
               </p>
-            </div>
+            </Reveal>
 
-            <div className="bg-white border-2 border-[#0066FF] p-16 text-center">
-              <div className="inline-block px-4 py-1 mb-6 border border-[#0066FF] bg-white">
+            <div className="bg-white dark:bg-[#1A1A1A] border-2 border-[#0066FF] p-16 text-center">
+              <div className="inline-block px-4 py-1 mb-6 border border-[#0066FF] bg-white dark:bg-[#1A1A1A]">
                 <span className="text-xs font-medium text-[#0066FF] uppercase tracking-[0.2em]">
                   Prix d'entrée
                 </span>
               </div>
               <div className="mb-4">
-                <span className="text-sm text-[#666666] font-light">À partir de</span>
+                <span className="text-sm text-[#666666] dark:text-[#999999] font-light">À partir de</span>
               </div>
-              <div className="text-7xl font-light text-[#2A2A2A] mb-4 tracking-[-0.02em]">
+              <div className="text-7xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-4 tracking-[-0.02em]">
                 800€
               </div>
-              <p className="text-sm text-[#666666] font-light mb-12">
+              <p className="text-sm text-[#666666] dark:text-[#999999] font-light mb-12">
                 Audit SEO complet + plan d'action priorisé
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 text-left">
+              <RevealStagger className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 text-left">
                 {[
                   "Audit SEO complet (technique, contenu, backlinks)",
                   "Analyse concurrentielle approfondie",
@@ -754,54 +785,56 @@ export default function SeoClient({ faqData }) {
                   "Livraison : 2-3 semaines",
                   "Suivi mensuel à partir de 500€/mois (optionnel)"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
+                  <motion.div key={i} variants={staggerItem} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-[#0066FF] flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-[#666666] font-light">{item}</span>
-                  </div>
+                    <span className="text-sm text-[#666666] dark:text-[#999999] font-light">{item}</span>
+                  </motion.div>
                 ))}
-              </div>
+              </RevealStagger>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4">
-                <button
-                  onClick={() => { trackPricingClick('SEO', formType); openModal(); }}
-                  className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white hover:text-[#0066FF] transition-all duration-300"
-                >
-                  Discuter de ma stratégie SEO
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </button>
+                <Magnetic strength={0.25}>
+                  <button
+                    onClick={() => { trackPricingClick('SEO', formType); openModal(); }}
+                    className="group inline-flex items-center gap-3 px-10 py-5 bg-[#0066FF] text-white font-medium border border-[#0066FF] hover:bg-white dark:hover:bg-[#1A1A1A] hover:text-[#0066FF] transition-all duration-300"
+                  >
+                    Discuter de ma stratégie SEO
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  </button>
+                </Magnetic>
               </div>
-              <p className="text-xs text-[#666666] font-light">
+              <p className="text-xs text-[#666666] dark:text-[#999999] font-light">
                 Prix variable selon la taille du site et le niveau d'audit souhaité
               </p>
             </div>
 
             {/* Pourquoi investir */}
             <div className="mt-16 max-w-4xl mx-auto">
-              <div className="border border-[#E5E5E5] bg-white p-12">
-                <h3 className="text-2xl font-light text-[#2A2A2A] mb-6 text-center">
+              <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A] p-12">
+                <h3 className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-6 text-center">
                   Pourquoi le SEO est un investissement
                 </h3>
-                <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5]">
-                  <div className="bg-white p-8 text-center">
-                    <div className="w-14 h-14 border border-[#E5E5E5] flex items-center justify-center mx-auto mb-4">
+                <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
+                  <div className="bg-white dark:bg-[#1A1A1A] p-8 text-center">
+                    <div className="w-14 h-14 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center mx-auto mb-4">
                       <MousePointerClick className="text-[#0066FF]" size={24} />
                     </div>
-                    <h4 className="font-light text-[#2A2A2A] mb-2">Coût par clic = 0€</h4>
-                    <p className="text-sm text-[#666666] font-light">Contrairement à Google Ads, chaque visiteur organique est gratuit</p>
+                    <h4 className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-2">Coût par clic = 0€</h4>
+                    <p className="text-sm text-[#666666] dark:text-[#999999] font-light">Contrairement à Google Ads, chaque visiteur organique est gratuit</p>
                   </div>
-                  <div className="bg-white p-8 text-center">
-                    <div className="w-14 h-14 border border-[#E5E5E5] flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-white dark:bg-[#1A1A1A] p-8 text-center">
+                    <div className="w-14 h-14 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center mx-auto mb-4">
                       <TrendingUp className="text-[#0066FF]" size={24} />
                     </div>
-                    <h4 className="font-light text-[#2A2A2A] mb-2">Effet cumulatif</h4>
-                    <p className="text-sm text-[#666666] font-light">Chaque mois de travail SEO s'additionne</p>
+                    <h4 className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-2">Effet cumulatif</h4>
+                    <p className="text-sm text-[#666666] dark:text-[#999999] font-light">Chaque mois de travail SEO s'additionne</p>
                   </div>
-                  <div className="bg-white p-8 text-center">
-                    <div className="w-14 h-14 border border-[#E5E5E5] flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-white dark:bg-[#1A1A1A] p-8 text-center">
+                    <div className="w-14 h-14 border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-center justify-center mx-auto mb-4">
                       <Award className="text-[#0066FF]" size={24} />
                     </div>
-                    <h4 className="font-light text-[#2A2A2A] mb-2">Actif durable</h4>
-                    <p className="text-sm text-[#666666] font-light">Votre positionnement reste si vous pausez</p>
+                    <h4 className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] mb-2">Actif durable</h4>
+                    <p className="text-sm text-[#666666] dark:text-[#999999] font-light">Votre positionnement reste si vous pausez</p>
                   </div>
                 </div>
               </div>
@@ -811,44 +844,44 @@ export default function SeoClient({ faqData }) {
 
         {/* FAQ */}
         {faqData && (
-          <section className="relative py-32 px-4 bg-white">
+          <section className="relative py-32 px-4 bg-white dark:bg-[#0A0A0A]">
             {/* Subtle grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1A1A1A_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A_1px,transparent_1px)] bg-[size:80px_80px] opacity-20" />
 
             <div className="relative z-10 mx-auto max-w-4xl">
-              <div className="text-center mb-16">
-                <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5]">
-                  <span className="text-xs font-medium text-[#666666] uppercase tracking-[0.2em]">
+              <Reveal className="text-center mb-16">
+                <div className="inline-block px-4 py-1 mb-8 border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                  <span className="text-xs font-medium text-[#666666] dark:text-[#999999] uppercase tracking-[0.2em]">
                     FAQ
                   </span>
                 </div>
 
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] mb-6 leading-[1.1]">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.02em] text-[#2A2A2A] dark:text-[#FAFAFA] mb-6 leading-[1.1]">
                   {faqData.title}
                 </h2>
 
-                <p className="text-lg text-[#666666] font-light">
+                <p className="text-lg text-[#666666] dark:text-[#999999] font-light">
                   {faqData.subtitle}
                 </p>
-              </div>
+              </Reveal>
 
-              <div className="space-y-px bg-[#E5E5E5]">
+              <div className="space-y-px bg-[#E5E5E5] dark:bg-[#2A2A2A]">
                 {faqData.items.map((item, index) => (
-                  <div key={index} className="bg-white">
+                  <div key={index} className="bg-white dark:bg-[#1A1A1A]">
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full flex items-center justify-between p-8 text-left hover:bg-[#FAFAFA] transition-colors"
+                      className="w-full flex items-center justify-between p-8 text-left hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] transition-colors"
                     >
-                      <span className="text-lg font-light text-[#2A2A2A] pr-4">{item.question}</span>
+                      <span className="text-lg font-light text-[#2A2A2A] dark:text-[#FAFAFA] pr-4">{item.question}</span>
                       {expandedFaq === index ? (
                         <ChevronUp className="text-[#0066FF] flex-shrink-0" size={24} />
                       ) : (
-                        <ChevronDown className="text-[#666666] flex-shrink-0" size={24} />
+                        <ChevronDown className="text-[#666666] dark:text-[#999999] flex-shrink-0" size={24} />
                       )}
                     </button>
                     {expandedFaq === index && (
-                      <div className="px-8 pb-8 border-t border-[#E5E5E5]">
-                        <p className="text-[#666666] leading-relaxed font-light pt-6">{item.answer}</p>
+                      <div className="px-8 pb-8 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
+                        <p className="text-[#666666] dark:text-[#999999] leading-relaxed font-light pt-6">{item.answer}</p>
                       </div>
                     )}
                   </div>

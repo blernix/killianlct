@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Home, Rocket, BrainCircuit, Rss, Mail, Menu, X, ChevronDown, Briefcase } from "lucide-react";
+import { Home, Rocket, BrainCircuit, Rss, Mail, Menu, X, ChevronDown, Briefcase, Sun, Moon } from "lucide-react";
 import { trackNavClick } from '@/lib/tracking';
+import { useLenis } from '@/components/SmoothScroll';
 
 // Nouvelle structure de données pour gérer les sous-menus
 const navLinks = [
@@ -43,10 +44,27 @@ const navLinks = [
 
 // Le composant accepte la prop "onOpenModal"
 export default function Header({ onOpenModal }) {
+  const lenisRef = useLenis();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initial = stored ? stored === "dark" : prefersDark;
+    setDark(initial);
+    document.documentElement.classList.toggle("dark", initial);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,12 +102,12 @@ export default function Header({ onOpenModal }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E5E5E5] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#0A0A0A] border-b border-[#E5E5E5] dark:border-[#2A2A2A] transition-all duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } py-4`}
     >
       <nav className="container mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="flex-shrink-0 z-50" onClick={() => { trackNavClick('header', 'logo'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+        <Link href="/" className="flex-shrink-0 z-50" onClick={() => { trackNavClick('header', 'logo'); lenisRef.current?.scrollTo(0, { duration: 1.2 }); }}>
           <Image
             src="/logoKback.png"
             alt="Logo Killian Lecrut"
@@ -104,14 +122,14 @@ export default function Header({ onOpenModal }) {
           {navLinks.map((link) => (
             <li key={link.name} className="relative group">
               {link.submenu ? (
-                <span className="flex items-center gap-1 cursor-default font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors">
+                <span className="flex items-center gap-1 cursor-default font-light text-[#2A2A2A] dark:text-[#FAFAFA] hover:text-[#0066FF] transition-colors">
                   {link.name}
                   <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
                 </span>
               ) : link.isModal ? (
                 <button
                   onClick={() => { trackNavClick('header', 'contact'); onOpenModal('general'); }}
-                  className="font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors"
+                  className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] hover:text-[#0066FF] transition-colors"
                 >
                   {link.name}
                 </button>
@@ -119,7 +137,7 @@ export default function Header({ onOpenModal }) {
                 <Link
                   href={link.href}
                   onClick={() => trackNavClick('header', link.href)}
-                  className="font-light text-[#2A2A2A] hover:text-[#0066FF] transition-colors"
+                  className="font-light text-[#2A2A2A] dark:text-[#FAFAFA] hover:text-[#0066FF] transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -128,15 +146,15 @@ export default function Header({ onOpenModal }) {
               {/* Le sous-menu déroulant pour Desktop */}
               {link.submenu && (
                 <ul className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 origin-top
-                                bg-white border border-[#E5E5E5] shadow-sm
+                                bg-white dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-sm
                                 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
                                 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
                   {link.submenu.map((subLink, index) => (
-                    <li key={subLink.name} className={index !== link.submenu.length - 1 ? 'border-b border-[#E5E5E5]' : ''}>
+                    <li key={subLink.name} className={index !== link.submenu.length - 1 ? 'border-b border-[#E5E5E5] dark:border-[#2A2A2A]' : ''}>
                       <Link
                         href={subLink.href}
                         onClick={() => trackNavClick('header', subLink.href)}
-                        className="block px-6 py-4 text-[#2A2A2A] font-light hover:bg-[#FAFAFA] hover:text-[#0066FF] transition-colors"
+                        className="block px-6 py-4 text-[#2A2A2A] dark:text-[#FAFAFA] font-light hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F] hover:text-[#0066FF] transition-colors"
                       >
                         {subLink.name}
                       </Link>
@@ -148,49 +166,59 @@ export default function Header({ onOpenModal }) {
           ))}
         </ul>
 
-        {/* Bouton Hamburger (visible uniquement sur mobile) */}
-        <div className="lg:hidden">
+        {/* Toggle Dark Mode + Bouton Hamburger (mobile) */}
+        <div className="flex items-center gap-3">
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="z-50 w-10 h-10 flex items-center justify-center relative focus:outline-none"
-            aria-label="Ouvrir le menu"
+            onClick={toggleTheme}
+            className="w-10 h-10 flex items-center justify-center border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#2A2A2A] dark:text-[#FAFAFA] hover:border-[#0066FF] hover:text-[#0066FF] transition-colors"
+            aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}
           >
-            {isMenuOpen ? (
-              <X size={30} className="text-[#2A2A2A]" />
-            ) : (
-              <Menu size={30} className="text-[#2A2A2A]" />
-            )}
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="z-50 w-10 h-10 flex items-center justify-center relative focus:outline-none"
+              aria-label="Ouvrir le menu"
+            >
+              {isMenuOpen ? (
+                <X size={30} className="text-[#2A2A2A] dark:text-[#FAFAFA]" />
+              ) : (
+                <Menu size={30} className="text-[#2A2A2A] dark:text-[#FAFAFA]" />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Panel du Menu Mobile */}
       <div
-        className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-white pt-24 px-6 transform transition-transform duration-500 ease-in-out ${
+        className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-white dark:bg-[#0A0A0A] pt-24 px-6 transform transition-transform duration-500 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         } flex flex-col items-center overflow-y-auto`}
       >
         <ul className="flex flex-col items-center w-full">
           {navLinks.map((link) => (
-            <li key={link.name} className="w-full text-center border-b border-[#E5E5E5] last:border-b-0">
+            <li key={link.name} className="w-full text-center border-b border-[#E5E5E5] dark:border-[#2A2A2A] last:border-b-0">
               {link.submenu ? (
                 <div>
                   <button
                     onClick={() => setOpenMobileSubmenu(openMobileSubmenu === link.name ? null : link.name)}
-                    className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
+                    className="w-full py-6 text-xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                   >
                     <link.icon size={20} />
                     {link.name}
                     <ChevronDown size={18} className={`transition-transform ${openMobileSubmenu === link.name ? 'rotate-180' : ''}`} />
                   </button>
                   {openMobileSubmenu === link.name && (
-                    <ul className="bg-[#FAFAFA] pb-4">
+                    <ul className="bg-[#FAFAFA] dark:bg-[#1A1A1A] pb-4">
                       {link.submenu.map((subLink) => (
                         <li key={subLink.name}>
                           <Link
                             href={subLink.href}
                             onClick={() => { trackNavClick('header', subLink.href); handleLinkClick(); }}
-                            className="block py-3 text-base font-light text-[#666666] hover:text-[#0066FF] transition-colors"
+                            className="block py-3 text-base font-light text-[#666666] dark:text-[#999999] hover:text-[#0066FF] transition-colors"
                           >
                             {subLink.name}
                           </Link>
@@ -206,7 +234,7 @@ export default function Header({ onOpenModal }) {
                     handleLinkClick();
                     onOpenModal('general');
                   }}
-                  className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
+                  className="w-full py-6 text-xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                 >
                   <link.icon size={20} />
                   {link.name}
@@ -215,7 +243,7 @@ export default function Header({ onOpenModal }) {
                 <Link
                   href={link.href}
                   onClick={() => { trackNavClick('header', link.href); handleLinkClick(); }}
-                  className="w-full py-6 text-xl font-light text-[#2A2A2A] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
+                  className="w-full py-6 text-xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] flex items-center justify-center gap-3 hover:text-[#0066FF] transition-colors"
                 >
                   <link.icon size={20} />
                   {link.name}

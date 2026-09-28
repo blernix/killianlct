@@ -1,6 +1,9 @@
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -83,8 +86,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <head>
+        {/* Pré-charge le thème avant le rendu pour éviter le flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
+          }}
+        />
         {/* Umami Analytics */}
         <Script
           id="umami-analytics"
@@ -104,17 +113,6 @@ export default function RootLayout({ children }) {
           strategy="lazyOnload"
         />
 
-        {/* Google Tag Manager */}
-        <Script id="gtm-script" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-N62XPDLH');
-          `}
-        </Script>
-
         {/* Injection des données structurées JSON-LD */}
         <script
           type="application/ld+json"
@@ -125,18 +123,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${geistMono.variable} bg-background text-foreground`}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-N62XPDLH"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-
-        {/* <AnimatedBackground /> */}
-        <main className="relative z-10 flex-1">{children}</main>
+        <ScrollProgress />
+        <CustomCursor />
+        <SmoothScroll>
+          <main className="relative z-10 flex-1">{children}</main>
+        </SmoothScroll>
         {/* <div className="fixed bottom-5 right-5 z-50">
           <Chatbot />
         </div> */}

@@ -59,30 +59,30 @@ export default function CustomSelect({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-[#FAFAFA] border border-[#E5E5E5] p-3 text-left text-[#2A2A2A] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white transition-colors flex items-center justify-between"
+        className="w-full bg-[#FAFAFA] dark:bg-[#0A0A0A] border border-[#E5E5E5] dark:border-[#2A2A2A] p-3 text-left text-[#2A2A2A] dark:text-[#FAFAFA] font-light focus:outline-none focus:border-[#0066FF] focus:bg-white dark:focus:bg-[#1A1A1A] transition-colors flex items-center justify-between"
       >
-        <span className={value ? 'text-[#2A2A2A]' : 'text-[#666666]'}>
+        <span className={value ? 'text-[#2A2A2A] dark:text-[#FAFAFA]' : 'text-[#666666] dark:text-[#999999]'}>
           {displayValue}
         </span>
         {isOpen ? (
           <ChevronUp className="text-[#0066FF]" size={20} />
         ) : (
-          <ChevronDown className="text-[#666666]" size={20} />
+          <ChevronDown className="text-[#666666] dark:text-[#999999]" size={20} />
         )}
       </button>
 
       {/* Menu déroulant */}
       {isOpen && (
-        <div className="absolute z-50 w-full mt-px border border-[#E5E5E5] bg-white shadow-lg max-h-60 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-px border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A] shadow-lg max-h-60 overflow-y-auto">
           {options.map((option, index) => (
             <button
               key={index}
               type="button"
               onClick={() => handleSelect(option.value)}
-              className={`w-full text-left p-3 font-light transition-colors border-b border-[#E5E5E5] last:border-b-0
+              className={`w-full text-left p-3 font-light transition-colors border-b border-[#E5E5E5] dark:border-[#2A2A2A] last:border-b-0
                 ${option.value === value
                   ? 'bg-[#0066FF] text-white'
-                  : 'bg-white text-[#2A2A2A] hover:bg-[#FAFAFA]'
+                  : 'bg-white dark:bg-[#1A1A1A] text-[#2A2A2A] dark:text-[#FAFAFA] hover:bg-[#FAFAFA] dark:hover:bg-[#1F1F1F]'
                 }`}
             >
               {option.label}

@@ -72,7 +72,7 @@ export default function Modal({ isOpen, onClose, children, title }) {
     >
       <div
         ref={modalRef}
-        className="relative flex flex-col w-full max-w-lg max-h-[90vh] border border-[#E5E5E5] bg-white"
+        className="relative flex flex-col w-full max-w-lg max-h-[90vh] border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#1A1A1A]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -82,13 +82,13 @@ export default function Modal({ isOpen, onClose, children, title }) {
         <div className="absolute top-0 left-0 w-full h-[2px] bg-[#0066FF]" />
 
         {/* En-tête de la modale */}
-        <div className="relative flex items-center justify-center p-8 border-b border-[#E5E5E5]">
-          <h2 id="modal-title" className="text-2xl font-light text-[#2A2A2A] text-center tracking-[-0.02em]">
+        <div className="relative flex items-center justify-center p-8 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
+          <h2 id="modal-title" className="text-2xl font-light text-[#2A2A2A] dark:text-[#FAFAFA] text-center tracking-[-0.02em]">
             {title || 'Fenêtre de dialogue'}
           </h2>
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 text-[#666666] hover:text-[#0066FF] transition-colors"
+            className="absolute top-6 right-6 text-[#666666] dark:text-[#999999] hover:text-[#0066FF] transition-colors"
             aria-label="Fermer la fenêtre"
           >
             <X size={24} />
