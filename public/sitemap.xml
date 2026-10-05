@@ -62,6 +62,13 @@
   </url>
 
   <url>
+    <loc>https://killian-lecrut.com/secteurs/restaurants</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://killian-lecrut.com/secteurs/professions-liberales/avocat</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>

@@ -33,6 +33,11 @@ export const formFieldsConfig = {
     fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
     modalTitle: 'Demande de devis - Site Artisan',
   },
+  'site-restaurant': {
+    subject: 'Demande de devis pour un Site Restaurant',
+    fields: ['name', 'email', 'company', 'selectedOffer', 'message'],
+    modalTitle: 'Demande de devis - Site Restaurant',
+  },
   'e-commerce': {
     subject: 'Demande de devis pour un Site E-commerce',
     fields: ['name', 'email', 'company', 'selectedOffer', 'message'],

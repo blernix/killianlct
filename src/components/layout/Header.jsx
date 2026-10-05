@@ -36,6 +36,7 @@ const navLinks = [
       { name: 'Ostéopathes', href: '/secteurs/professions-liberales/osteopathe' },
       { name: 'Psychologues', href: '/secteurs/professions-liberales/psychologue' },
       { name: 'Artisans', href: '/secteurs/artisans' },
+      { name: 'Restaurants', href: '/secteurs/restaurants' },
     ]
   },
   { name: 'Blog', href: '/blog', icon: Rss },

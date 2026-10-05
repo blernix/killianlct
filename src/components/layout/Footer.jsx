@@ -68,12 +68,17 @@ export function Footer() {
                     Ostéopathes
                   </Link>
                 </li>
+                 <li>
+                   <Link href="/secteurs/artisans" onClick={() => trackNavClick('footer', '/secteurs/artisans')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
+                     Artisans
+                   </Link>
+                </li>
                 <li>
-                  <Link href="/secteurs/artisans" onClick={() => trackNavClick('footer', '/secteurs/artisans')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
-                    Artisans
-                  </Link>
-               </li>
-             </ul>
+                   <Link href="/secteurs/restaurants" onClick={() => trackNavClick('footer', '/secteurs/restaurants')} className="text-[#666666] dark:text-[#999999] font-light hover:text-[#0066FF] transition-colors">
+                     Restaurants
+                   </Link>
+                </li>
+              </ul>
            </div>
 
            {/* Colonne 4: Contact & Réseaux */}
