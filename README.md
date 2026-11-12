@@ -29,6 +29,19 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Formulaire de contact (EmailJS)
+
+Le site est un export statique : les clés EmailJS sont écrites en dur dans le
+JS **au moment du build**. Sans elles, le formulaire s'affiche normalement mais
+l'envoi échoue sans laisser de trace — les messages sont perdus.
+
+1. Copier `.env.example` en `.env` et renseigner les 3 valeurs
+   (dashboard EmailJS → Account → General / Email Services / Email Templates).
+2. `npm run build` vérifie automatiquement que les 3 valeurs sont bien dans le
+   bundle (`scripts/verifie-build.mjs`). Le build échoue si ce n'est pas le cas.
+
+Le `.env` n'est pas versionné.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
